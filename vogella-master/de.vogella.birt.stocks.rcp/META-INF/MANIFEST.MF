@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Rcp
+Bundle-SymbolicName: de.vogella.birt.stocks.rcp; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: de.vogella.birt.stocks.rcp.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.birt.report.viewer,
+ org.eclipse.birt.report.engine.emitter.html,
+ de.vogella.birt.stocks,
+ org.eclipse.birt,
+ org.eclipse.birt.chart.ui,
+ org.eclipse.birt.chart.device.extension,
+ org.eclipse.birt.chart.device.pdf,
+ org.eclipse.birt.chart.device.svg,
+ org.eclipse.birt.chart.device.swt,
+ org.eclipse.birt.chart.engine.extension,
+ org.eclipse.birt.chart.reportitem,
+ org.eclipse.birt.chart.reportitem.ui,
+ org.eclipse.birt.chart.ui.extension,
+ org.eclipse.birt.core.script.function,
+ org.eclipse.birt.report.engine.script.javascript
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
