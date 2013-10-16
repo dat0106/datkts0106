@@ -3,7 +3,11 @@ package com.example.demo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Toast;
@@ -15,6 +19,7 @@ public class WifiActivity extends Activity {
     CheckBox wifiStatus;
     WifiManager mainWifi;
     TextView status;
+    Button submit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,32 +27,36 @@ public class WifiActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         wifiStatus = (CheckBox)findViewById(R.id.wifiStatus);
-//        status = (CheckBox)findViewById(R.id.log);
+       status = (TextView)findViewById(R.id.log);
+       submit = (Button)findViewById(R.id.submit);
 
-        wifiStatus.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+       submit.setOnClickListener(new OnClickListener() {
 
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // TODO Auto-generated method stub
-                if(isChecked == true){
-                        mainWifi.setWifiEnabled(true);
+        @Override
+        public void onClick(View v) {
+            mainWifi = (WifiManager)getSystemService(Context.WIFI_SERVICE);
+            // TODO Auto-generated method stub
+            //
+            if(wifiStatus.isChecked() == true){
+                  mainWifi.setWifiEnabled(true);
+             }
+              else{
+                  mainWifi.setWifiEnabled(false);
+              }
+              if (mainWifi.isWifiEnabled() == false)
+              {
+                  // If wifi disabled then enable it
+                  Toast.makeText(getApplicationContext(), "wifi is disabled..making it enabled", Toast.LENGTH_LONG).show();
+              }
+              else
+              {
+                   // If wifi disabled then enable it
+                  Toast.makeText(getApplicationContext(), "wifi is  enabled", Toast.LENGTH_LONG).show();
+              }
 
-                }
-                else{
-                    mainWifi.setWifiEnabled(false);
-                }
-                if (mainWifi.isWifiEnabled() == false)
-                {
-                    // If wifi disabled then enable it
-                    Toast.makeText(getApplicationContext(), "wifi is disabled..making it enabled", Toast.LENGTH_LONG).show();
-                }
-                else
-                {
-                     // If wifi disabled then enable it
-                    Toast.makeText(getApplicationContext(), "wifi is  enabled", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+       }
+    });
+
 
         };
 
