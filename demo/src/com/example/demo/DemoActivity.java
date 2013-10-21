@@ -14,21 +14,23 @@ import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 
-public class WifiActivity extends Activity {
+public class DemoActivity extends Activity {
 
     CheckBox wifiStatus;
     WifiManager mainWifi;
     TextView status;
     Button submit;
+    Button call;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_main);
 
-        wifiStatus = (CheckBox)findViewById(R.id.wifiStatus);
+       wifiStatus = (CheckBox)findViewById(R.id.wifiStatus);
        status = (TextView)findViewById(R.id.log);
        submit = (Button)findViewById(R.id.submit);
+       call = (Button) findViewById(R.id.Call);
 
        submit.setOnClickListener(new OnClickListener() {
 
@@ -51,7 +53,7 @@ public class WifiActivity extends Activity {
               else
               {
                    // If wifi disabled then enable it
-                  Toast.makeText(getApplicationContext(), "wifi is  enabled", Toast.LENGTH_LONG).show();
+                  Toast.makeText(getApplicationContext(), "wifi is enabled", Toast.LENGTH_LONG).show();
               }
 
        }
