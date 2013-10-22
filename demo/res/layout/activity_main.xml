@@ -46,7 +46,15 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/submit"
         android:layout_alignBottom="@+id/submit"
-        android:layout_alignRight="@+id/log"
+        android:layout_toRightOf="@+id/submit"
         android:text="@string/call" />
+
+    <Button
+        android:id="@+id/contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/submit"
+        android:layout_below="@+id/submit"
+        android:text="@string/contact" />
 
 </RelativeLayout>
