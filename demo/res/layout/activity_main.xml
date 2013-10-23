@@ -57,4 +57,12 @@
         android:layout_below="@+id/submit"
         android:text="@string/contact" />
 
+    <Button
+        android:id="@+id/sentfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/contact"
+        android:layout_below="@+id/contact"
+        android:text="@string/sentfile" />
+
 </RelativeLayout>

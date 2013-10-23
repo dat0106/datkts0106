@@ -8,5 +8,7 @@
     <string name="call">Call</string>
     <string name="contact">Getting a Result from an Activity</string>
     <string name="title_activity_share">ShareActivity</string>
+    <string name="sentfile">SentFileWithChooser</string>
+    <string name="sent_to">SentTo</string>
 
 </resources>

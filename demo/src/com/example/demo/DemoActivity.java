@@ -14,11 +14,13 @@ import android.content.pm.ResolveInfo;
 import android.database.Cursor;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ShareActionProvider;
 import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
@@ -31,6 +33,8 @@ public class DemoActivity extends Activity {
     Button submit;
     Button call;
     Button getContact;
+    Button sentFileWithChooser;
+    private ShareActionProvider mShareActionProvider;
     static final int PICK_CONTACT_REQUEST = 1; // the request code
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,7 @@ public class DemoActivity extends Activity {
        submit = (Button)findViewById(R.id.submit);
        call = (Button) findViewById(R.id.Call);
        getContact = (Button)findViewById(R.id.contact);
+       sentFileWithChooser =  (Button)findViewById(R.id.sentfile);
 
        submit.setOnClickListener(new OnClickListener() {
 
@@ -95,6 +100,20 @@ public class DemoActivity extends Activity {
             }
         });
 
+       sentFileWithChooser.setOnClickListener(new OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            // TODO Auto-generated method stub
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
+            sendIntent.setType("text/plain");
+            startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.sent_to)));
+        }
+       });
+
+
     };
 
 
@@ -107,8 +126,31 @@ public class DemoActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+
+     // Locate MenuItem with ShareActionProvider
+        MenuItem item = menu.findItem(R.id.menu_item_share);
+
+        // Fetch and store ShareActionProvider
+        mShareActionProvider = (ShareActionProvider) item.getActionProvider();
+
+        mShareActionProvider.setShareIntent(createShareIntent());
+        // Return true to display menu
         return true;
     }
+
+    private Intent createShareIntent() {
+        // TODO Auto-generated method stub
+        // code share use action provider
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
+        sendIntent.setType("text/plain");
+
+        return sendIntent;
+    }
+
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
