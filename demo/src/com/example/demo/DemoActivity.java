@@ -36,7 +36,6 @@ public class DemoActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
        setContentView(R.layout.activity_main);
-
        wifiStatus = (CheckBox)findViewById(R.id.wifiStatus);
        status = (TextView)findViewById(R.id.log);
        submit = (Button)findViewById(R.id.submit);

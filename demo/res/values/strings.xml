@@ -7,5 +7,6 @@
     <string name="wifi">Wifi</string>
     <string name="call">Call</string>
     <string name="contact">Getting a Result from an Activity</string>
+    <string name="title_activity_share">ShareActivity</string>
 
 </resources>
