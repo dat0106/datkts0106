@@ -26,6 +26,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -63,7 +64,7 @@ public class ImageDetailActivity extends FragmentActivity implements OnClickList
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         final int height = displayMetrics.heightPixels;
         final int width = displayMetrics.widthPixels;
-
+        Log.v("LeDat", "height : " +  height+ "and width : " + width);
         // For this sample we'll use half of the longest width to resize our images. As the
         // image scaling ensures the image is larger than this, we should be left with a
         // resolution that is appropriate for both portrait and landscape. For best image quality
