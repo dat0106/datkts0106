@@ -9,8 +9,29 @@
     tools:context=".MainActivity" >
 
     <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hello_world" />
+
+    <Button
+        android:id="@+id/cancel_scheduler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/start_scheduler"
+        android:layout_alignBottom="@+id/start_scheduler"
+        android:layout_alignParentRight="true"
+        android:text="@string/cancel_scheduler"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/start_scheduler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="38dp"
+        android:text="@string/start_scheduler"
+        android:textSize="12sp" />
 
 </RelativeLayout>
