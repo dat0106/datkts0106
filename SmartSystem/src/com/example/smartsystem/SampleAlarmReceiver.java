@@ -33,12 +33,12 @@ public class SampleAlarmReceiver extends WakefulBroadcastReceiver {
                 AlarmManager.INTERVAL_FIFTEEN_MINUTES, alarmIntent);
 
         // chua dung den
-//        ComponentName receiver = new ComponentName(context, SampleBootReceiver.class);
-//        PackageManager pm = context.getPackageManager();
-//
-//        pm.setComponentEnabledSetting(receiver,
-//                PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-//                PackageManager.DONT_KILL_APP);
+        ComponentName receiver = new ComponentName(context, SampleBootReceiver.class);
+        PackageManager pm = context.getPackageManager();
+
+        pm.setComponentEnabledSetting(receiver,
+                PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                PackageManager.DONT_KILL_APP);
     }
 
     public void cancelAlarm(Context context) {
@@ -48,12 +48,12 @@ public class SampleAlarmReceiver extends WakefulBroadcastReceiver {
 
         // Disable {@code SampleBootReceiver} so that it doesn't automatically restart the
         // alarm when the device is rebooted.
-//        ComponentName receiver = new ComponentName(context, SampleBootReceiver.class);
-//        PackageManager pm = context.getPackageManager();
-//
-//        pm.setComponentEnabledSetting(receiver,
-//                PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-//                PackageManager.DONT_KILL_APP);
+        ComponentName receiver = new ComponentName(context, SampleBootReceiver.class);
+        PackageManager pm = context.getPackageManager();
+
+        pm.setComponentEnabledSetting(receiver,
+                PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                PackageManager.DONT_KILL_APP);
 
     }
 }
