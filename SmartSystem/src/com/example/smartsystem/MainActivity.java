@@ -22,7 +22,8 @@ public class MainActivity extends Activity {
         return true;
     }
 
-    public Boolean onOptionItemSelected(MenuItem item){
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
         // when the user click start schedule
         case R.id.start_scheduler:
@@ -31,9 +32,7 @@ public class MainActivity extends Activity {
         case R.id.cancel_scheduler:
             alarm.cancelAlarm(this);
             return true;
-        default:
-            return false;
         }
+        return false;
     }
-
 }
