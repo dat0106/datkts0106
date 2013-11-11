@@ -2,6 +2,8 @@ package com.example.smartsystem;
 
 import java.io.File;
 
+import com.smartsystem.database.SmartSystemDatabase;
+
 import android.R.integer;
 import android.app.IntentService;
 import android.app.NotificationManager;
@@ -12,7 +14,8 @@ import android.support.v4.app.NotificationCompat;
 
 public class SampleSchedulingService extends IntentService{
     private NotificationManager mNotificationManager;
-
+    private int count = 0 ;
+    private SmartSystemDatabase database = new SmartSystemDatabase(this);
     public SampleSchedulingService() {
         super("SchedulingService");
     }
@@ -23,11 +26,21 @@ public class SampleSchedulingService extends IntentService{
 
     @Override
     protected void onHandleIntent(Intent intent) {
+        count++;
+        database.open();
+        database.createData(count);
+        database.close();
+        sendNotification("lập lịch làm việc ");
 
-        sendNotification("lap lịch làm việc");
     }
 
     private void sendNotification(String msg) {
+//        database.open();
+//        String ds = database.getCountData();
+//        database.close();
+//
+//        msg  =  msg +  ds;
+
         mNotificationManager = (NotificationManager)
                 this.getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -43,6 +56,7 @@ public class SampleSchedulingService extends IntentService{
 
         mBuilder.setContentIntent(contentIntent);
         mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
+
 
 
     }

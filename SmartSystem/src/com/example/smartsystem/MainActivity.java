@@ -27,6 +27,7 @@ public class MainActivity extends Activity {
         switch (item.getItemId()) {
         // when the user click start schedule
         case R.id.start_scheduler:
+
             alarm.setAlarm(this);
             return true;
         case R.id.cancel_scheduler:
