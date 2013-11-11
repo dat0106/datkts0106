@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Android Demo Read XML</string>
+    <string name="parsed_data">http://android.vn\nHướng dẫn bởi thanhlong90.it</string>
+    <string name="tkmoi">Tạo tài khoản mới</string>
+    <string name="danh_sach">Danh sách tk</string>
+    <string name="xoa_het">Xóa toàn bộ dữ liệu</string>
+    <string name="hint_ten">Mời nhập tên đăng nhập</string>
+    <string name="hint_mk">Mời nhập mật khẩu</string>
+    <string name="dang_nhap">Đăng nhập</string>
+    <string name="cap_nhat">Cập nhật tên</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>
