@@ -1,10 +1,7 @@
 package com.example.smartsystem;
 
-import java.io.File;
-
 import com.smartsystem.database.SmartSystemDatabase;
 
-import android.R.integer;
 import android.app.IntentService;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -35,11 +32,11 @@ public class SampleSchedulingService extends IntentService{
     }
 
     private void sendNotification(String msg) {
-//        database.open();
-//        String ds = database.getCountData();
-//        database.close();
-//
-//        msg  =  msg +  ds;
+        database.open();
+        String[] ds = database.getCountData();
+        database.close();
+
+        msg  =  msg +  ds[0];
 
         mNotificationManager = (NotificationManager)
                 this.getSystemService(Context.NOTIFICATION_SERVICE);
