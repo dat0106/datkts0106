@@ -1,0 +1,29 @@
+<resources>
+
+    <string name="app_name">JellyBeanClipboard</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_jbclipboard">JBClipboard</string>
+    <string name="title_activity_htmlintent">Html Intent Activity</string>
+    <string name="title_activity_clipdataintent">ClipData Intent Activity</string> 
+    <!-- CDATA tag is required otherwise you can't have the html text
+       properly parsed in Textview  -->
+   <string name="tvHtml"><![CDATA[<b>Link:</b> <a href="http://www.code4reference.com">Code4Reference</a>]]></string>
+   
+   <!-- Text string for button -->
+   <string name="btCopy">Copy</string>
+   <string name="btPaste">Paste</string>
+   <string name="btSendHtmlIntent">send HTML Intent</string>
+   <string name="btSendClipdataIntent">send ClipData Intent</string>
+   
+   <!-- Text string for RadioButton -->
+   <string name="rbHtml">Paste Html</string>
+   <string name="rbText">Paste Text</string>
+   
+   <!-- Text string for Text View -->
+   <string name="tvCopiedText"><b><i>Copied text</i></b></string>
+   <string name="tvcoerceText"><b><i>Copied coerce Text</i></b></string>
+    <string name="tvIntentText"><b><i>Intent Text</i></b></string>
+   <string name="tvIntentHtml"><b><i>Intent Html</i></b></string>
+   <string name="tvIntentClipdataText"><b><i>Intent Clipdata Text</i></b></string>
+   <string name="tvIntentClipdataHtml"><b><i>Intent Clipdata Html</i></b></string>
+</resources>

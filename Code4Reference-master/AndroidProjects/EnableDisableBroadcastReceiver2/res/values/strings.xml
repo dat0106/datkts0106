@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="app_name">EnableDisableBroadcastReceiver2</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_enable_disable">EnableDisable</string>
+    <string name="register_broadcast_receiver">Register Broadcast Receiver</string>
+    <string name="unregister_broadcast_receiver">Unregister Broadcast Receiver</string>
+    
+</resources>
