@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:text="@string/hello_world" />
 
-<!--     <Button
+    <!--
+         <Button
         android:id="@+id/cancel_scheduler"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,6 +33,55 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="38dp"
         android:text="@string/start_scheduler"
-        android:textSize="12sp" /> -->
+        android:textSize="12sp" />
+    -->
+
+    <Button
+        android:id="@+id/button1"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="26dp"
+        android:text="@string/add" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/button1"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@+id/textView1"
+        android:text="View" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/button1"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ems="10" >
+
+            <requestFocus />
+        </EditText>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout1"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/button2"
+        android:text="@string/delete" />
 
 </RelativeLayout>
