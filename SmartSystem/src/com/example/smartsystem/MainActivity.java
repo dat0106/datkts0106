@@ -1,9 +1,15 @@
 package com.example.smartsystem;
 
+import java.util.Calendar;
+
+import util.Util;
+
 import com.smartsystem.database.SmartSystemDatabase;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.SearchManager.OnCancelListener;
+import android.app.TimePickerDialog;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +17,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -19,6 +26,8 @@ public class MainActivity extends Activity {
     Button btn1 ;
     Button btn2 ;
     Button btn3 ;
+    Button start_time ;
+    Button end_time ;
     EditText editText1;
 
     @Override
@@ -26,6 +35,9 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         btn1 =  (Button)findViewById(R.id.button1);
+
+        start_time =  (Button)findViewById(R.id.start_time);
+        end_time =  (Button)findViewById(R.id.end_time);
         editText1 = (EditText)findViewById(R.id.editText1);
         btn1.setOnClickListener(new OnClickListener() {
 
@@ -66,6 +78,44 @@ public class MainActivity extends Activity {
         });
 
 
+        start_time.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                // TODO Auto-generated method stub
+                Calendar mcurrentTime = Calendar.getInstance();
+                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(MainActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        start_time.setText( Util.convertTime(selectedHour) + ":" + Util.convertTime(selectedMinute));
+                    }
+                }, hour, minute, true);//Yes 24 hour time
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+            }
+        });
+        end_time.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                // TODO Auto-generated method stub
+                Calendar mcurrentTime = Calendar.getInstance();
+                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(MainActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        end_time.setText( Util.convertTime(selectedHour) + ":" + Util.convertTime(selectedMinute));
+                    }
+                }, hour, minute, true);//Yes 24 hour time
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+            }
+        });
     }
 
     @Override
@@ -89,4 +139,6 @@ public class MainActivity extends Activity {
         }
         return false;
     }
+
+
 }

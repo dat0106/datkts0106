@@ -28,7 +28,7 @@ public class SampleSchedulingService extends IntentService{
         database.createData(count);
         database.close();
         sendNotification("lập lịch làm việc ");
-
+        
     }
 
     private void sendNotification(String msg) {
@@ -53,8 +53,6 @@ public class SampleSchedulingService extends IntentService{
 
         mBuilder.setContentIntent(contentIntent);
         mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
-
-
 
     }
 }
