@@ -1,16 +1,21 @@
 package com.example.smartsystem;
 
+import java.util.ArrayList;
+
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.SystemClock;
 import android.support.v4.content.WakefulBroadcastReceiver;
 
 public class SampleAlarmReceiver extends WakefulBroadcastReceiver {
     private AlarmManager alarmMgr;
     private PendingIntent  alarmIntent;
+	private ArrayList<PendingIntent> intentArray;
+	private AlarmManager[] alarmManager;
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -22,16 +27,24 @@ public class SampleAlarmReceiver extends WakefulBroadcastReceiver {
     }
 
     public void setAlarm(Context context){
-        alarmMgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(context, SampleAlarmReceiver.class);
+    	alarmManager = new AlarmManager[24];
+    	intentArray =  new ArrayList<PendingIntent>();
+    	for(int i = 0; i <10; i ++){
+    		alarmManager[i] = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+	        Intent intent = new Intent(context, SampleAlarmReceiver.class);
+	        // use Pending Intent for sent signal - send broadcast
+	        PendingIntent pi =  PendingIntent.getBroadcast(context, i, intent, 0);
 
-        // use Pending Intent for sent signal - send broadcast
-        alarmIntent =  PendingIntent.getBroadcast(context, 0, intent, 0);
+//	        alarmManager[i].set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() +  5000* i ,pi);
 
-        alarmMgr.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                AlarmManager.INTERVAL_FIFTEEN_MINUTES,
-                AlarmManager.INTERVAL_FIFTEEN_MINUTES, alarmIntent);
+	        alarmManager[i].setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() +  5000* i, 60000, pi);
 
+	        intentArray.add(pi);
+//	        // for each 15 min
+//	        alarmMgr.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+//	                AlarmManager.INTERVAL_FIFTEEN_MINUTES,
+//	                AlarmManager.INTERVAL_FIFTEEN_MINUTES, alarmIntent);
+    	}
         // chua dung den
         ComponentName receiver = new ComponentName(context, SampleBootReceiver.class);
         PackageManager pm = context.getPackageManager();
