@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Настройки планировчика</string>
+    <string name="settings_label">Настройки</string>
+    <string name="cancel">Отказ</string>
+    <string name="menu_save">Запазване</string>
+    <string name="delete">Изтриване</string>
+    <string name="gadget_state_on">включено</string>
+    <string name="gadget_state_off">изключено</string>
+    <string name="wifi_settings_title">Wi-Fi</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="sound_settings">Звук</string>
+    <string name="vibrate_in_silent_title">Вибрира при тих режим</string>
+    <string name="all_volume_title">Сила на звука</string>
+    <string name="ring_volume_title">Сила на звука при звънене</string>
+    <string name="media_volume_title">Медия</string>
+    <string name="alarm_volume_title">Будилник</string>
+    <string name="notification_volume_title">Известие</string>
+    <string name="sound_category_system_title">Система</string>
+    <string name="screen_timeout">Спящ режим</string>
+    <string name="data_usage_enable_mobile">Mobile data</string>
+    <string name="brightness">Яркост</string>
+    <string name="gadget_brightness_state_auto">автоматична</string>
+    <string name="week_view">Седмица</string>
+    <string name="monthly">Всеки месец</string>
+    <string name="yearly_plain">Всяка година</string>
+    <string name="repeats_label">Повторение</string>
+</resources>

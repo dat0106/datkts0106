@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Nastavitve Scheduler</string>
+    <string name="settings_label">Nastavitve</string>
+    <string name="cancel">Prekliči</string>
+    <string name="menu_save">Shrani</string>
+    <string name="delete">Izbriši</string>
+    <string name="gadget_state_on">vklopljeno</string>
+    <string name="gadget_state_off">izklopljeno</string>
+    <string name="wifi_settings_title">Wi-Fi</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="sound_settings">Zvok</string>
+    <string name="vibrate_in_silent_title">Vibriraj v tihem načinu</string>
+    <string name="all_volume_title">Glasnost</string>
+    <string name="ring_volume_title">Glasnost zvonjenja</string>
+    <string name="media_volume_title">Predstavnost</string>
+    <string name="alarm_volume_title">Alarm</string>
+    <string name="notification_volume_title">Obvestilo</string>
+    <string name="sound_category_system_title">Sistem</string>
+    <string name="screen_timeout">Stanje pripravljenosti</string>
+    <string name="data_usage_enable_mobile">Mobilni podatki</string>
+    <string name="brightness">Svetlost</string>
+    <string name="gadget_brightness_state_auto">samodejno</string>
+    <string name="week_view">Teden</string>
+    <string name="monthly">Mesečno</string>
+    <string name="yearly_plain">Letno</string>
+    <string name="repeats_label">Ponovitev</string>
+</resources>

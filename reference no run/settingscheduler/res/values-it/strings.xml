@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Impostazioni Scheduler</string>
+    <string name="settings_label">Impostazioni</string>
+    <string name="cancel">Annulla</string>
+    <string name="menu_save">Salva</string>
+    <string name="delete">Elimina</string>
+    <string name="gadget_state_on">attivo</string>
+    <string name="gadget_state_off">non attivo</string>
+    <string name="wifi_settings_title">Wi-Fi</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="sound_settings">Audio</string>
+    <string name="vibrate_in_silent_title">Vibra in modalità silenziosa</string>
+    <string name="all_volume_title">Volumi</string>
+    <string name="ring_volume_title">Volume suoneria</string>
+    <string name="media_volume_title">Applicazioni multimediali</string>
+    <string name="alarm_volume_title">Allarme</string>
+    <string name="notification_volume_title">Notifica</string>
+    <string name="sound_category_system_title">Sistema</string>
+    <string name="screen_timeout">Sospensione</string>
+    <string name="data_usage_enable_mobile">Dati mobili</string>
+    <string name="brightness">Luminosità</string>
+    <string name="gadget_brightness_state_auto">auto</string>
+    <string name="week_view">Settimana</string>
+    <string name="monthly">Ogni mese</string>
+    <string name="yearly_plain">Ogni anno</string>
+    <string name="repeats_label">Ripetizione</string>
+</resources>

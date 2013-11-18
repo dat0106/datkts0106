@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">االإعدادات الجدول الزمني</string>
+    <string name="settings_label">الإعدادات</string>
+    <string name="cancel">إلغاء</string>
+    <string name="menu_save">حفظ</string>
+    <string name="delete">حذف</string>
+    <string name="gadget_state_on">تشغيل</string>
+    <string name="gadget_state_off">إيقاف</string>
+    <string name="wifi_settings_title">لاسلكي</string>
+    <string name="bluetooth">بلوتوث</string>
+    <string name="sound_settings">الصوت</string>
+    <string name="vibrate_in_silent_title">اهتزاز عند تشغيل الوضع صامت</string>
+    <string name="all_volume_title">مستويات الصوت</string>
+    <string name="ring_volume_title">مستوى صوت الرنين</string>
+    <string name="media_volume_title">الوسائط</string>
+    <string name="alarm_volume_title">المنبّه</string>
+    <string name="notification_volume_title">التنبيه</string>
+    <string name="sound_category_system_title">النظام</string>
+    <string name="screen_timeout">السكون</string>
+    <string name="data_usage_enable_mobile">بيانات الجوال</string>
+    <string name="brightness">السطوع</string>
+    <string name="gadget_brightness_state_auto">تلقائي</string>
+    <string name="week_view">أسبوع</string>
+    <string name="monthly">شهريًا</string>
+    <string name="yearly_plain">سنويًا</string>
+    <string name="repeats_label">التكرار</string>
+</resources>

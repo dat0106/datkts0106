@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/relativeViewMainActivity" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <RelativeLayout android:orientation="horizontal" android:id="@id/mainActivityToolbarView" android:background="@color/toolbar_background" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/addTaskImageView" android:layout_width="50.0dip" android:layout_height="50.0dip" android:src="@drawable/add" android:scaleType="center" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:onClick="onAddTaskClick" android:contentDescription="@string/menu_save" />
+    </RelativeLayout>
+    <ListView android:id="@id/listViewTasks" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_above="@id/relativeViewMainActivity" android:layout_below="@id/mainActivityToolbarView" />
+</RelativeLayout>

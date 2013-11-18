@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">설정 스케줄러</string>
+    <string name="settings_label">설정</string>
+    <string name="cancel">취소</string>
+    <string name="menu_save">저장</string>
+    <string name="delete">삭제</string>
+    <string name="gadget_state_on">켜짐</string>
+    <string name="gadget_state_off">꺼짐</string>
+    <string name="wifi_settings_title">Wi-Fi</string>
+    <string name="bluetooth">블루투스</string>
+    <string name="sound_settings">소리</string>
+    <string name="vibrate_in_silent_title">무음 시 진동</string>
+    <string name="all_volume_title">볼륨</string>
+    <string name="ring_volume_title">모드 설정</string>
+    <string name="media_volume_title">미디어</string>
+    <string name="alarm_volume_title">알람</string>
+    <string name="notification_volume_title">알림</string>
+    <string name="sound_category_system_title">시스템</string>
+    <string name="screen_timeout">절전 모드</string>
+    <string name="data_usage_enable_mobile">모바일 데이터</string>
+    <string name="brightness">밝기</string>
+    <string name="gadget_brightness_state_auto">자동</string>
+    <string name="week_view">주</string>
+    <string name="monthly">매월</string>
+    <string name="yearly_plain">매년</string>
+    <string name="repeats_label">반복</string>
+</resources>

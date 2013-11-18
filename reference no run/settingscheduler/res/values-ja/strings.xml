@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">スケジューラ 設定</string>
+    <string name="settings_label">設定</string>
+    <string name="cancel">キャンセル</string>
+    <string name="menu_save">保存</string>
+    <string name="delete">削除</string>
+    <string name="gadget_state_on">ON</string>
+    <string name="gadget_state_off">OFF</string>
+    <string name="wifi_settings_title">Wi-Fi</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="sound_settings">音</string>
+    <string name="vibrate_in_silent_title">マナーモード時のバイブレーション</string>
+    <string name="all_volume_title">音量</string>
+    <string name="ring_volume_title">着信音量</string>
+    <string name="media_volume_title">メディア</string>
+    <string name="alarm_volume_title">アラーム</string>
+    <string name="notification_volume_title">通知</string>
+    <string name="sound_category_system_title">システム</string>
+    <string name="screen_timeout">スリープ</string>
+    <string name="data_usage_enable_mobile">モバイルデータ</string>
+    <string name="brightness">画面の明るさ</string>
+    <string name="gadget_brightness_state_auto">自動</string>
+    <string name="week_view">週</string>
+    <string name="monthly">月次</string>
+    <string name="yearly_plain">毎年</string>
+    <string name="repeats_label">繰り返し</string>
+</resources>

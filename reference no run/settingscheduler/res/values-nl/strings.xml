@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Instellingen Scheduler</string>
+    <string name="settings_label">Instellingen</string>
+    <string name="cancel">Annuleren</string>
+    <string name="menu_save">Opslaan</string>
+    <string name="delete">Verwijderen</string>
+    <string name="gadget_state_on">aan</string>
+    <string name="gadget_state_off">uit</string>
+    <string name="wifi_settings_title">Wi-Fi</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="sound_settings">Geluid</string>
+    <string name="vibrate_in_silent_title">Trillen indien stil</string>
+    <string name="all_volume_title">Volumes</string>
+    <string name="ring_volume_title">Belvolume</string>
+    <string name="media_volume_title">Media</string>
+    <string name="alarm_volume_title">Alarm</string>
+    <string name="notification_volume_title">Melding</string>
+    <string name="sound_category_system_title">Systeem</string>
+    <string name="screen_timeout">Slaapstand</string>
+    <string name="data_usage_enable_mobile">Mobiele gegevens</string>
+    <string name="brightness">Helderheid</string>
+    <string name="gadget_brightness_state_auto">automatisch</string>
+    <string name="week_view">Week</string>
+    <string name="monthly">Maandelijks</string>
+    <string name="yearly_plain">Jaarlijks</string>
+    <string name="repeats_label">Herhaling</string>
+</resources>

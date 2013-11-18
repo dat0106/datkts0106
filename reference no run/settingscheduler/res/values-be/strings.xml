@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Налады расклад</string>
+    <string name="settings_label">Налады</string>
+    <string name="cancel">Адмяніць</string>
+    <string name="menu_save">Захаваць</string>
+    <string name="delete">Выдаліць</string>
+    <string name="gadget_state_on">укл.</string>
+    <string name="gadget_state_off">выкл.</string>
+    <string name="wifi_settings_title">Wi-Fi</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="sound_settings">Гук</string>
+    <string name="vibrate_in_silent_title">Вібрацыя ў бязгучным рэжыме</string>
+    <string name="all_volume_title">Гучнасць</string>
+    <string name="ring_volume_title">Гучнасць званка</string>
+    <string name="media_volume_title">Мультымедыя</string>
+    <string name="alarm_volume_title">Будзільнік</string>
+    <string name="notification_volume_title">Апавяшчэнне</string>
+    <string name="sound_category_system_title">Сістэма</string>
+    <string name="screen_timeout">Рэжым сну</string>
+    <string name="data_usage_enable_mobile">Мабільныя дадзеныя</string>
+    <string name="brightness">Яркасць</string>
+    <string name="gadget_brightness_state_auto">аўта</string>
+    <string name="week_view">Тыдзень</string>
+    <string name="monthly">Штомесяц</string>
+    <string name="yearly_plain">Штогод</string>
+    <string name="repeats_label">Паўтарэнне</string>
+</resources>

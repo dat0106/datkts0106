@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">برنامه تنظیمات</string>
+    <string name="settings_label">تنظیمات</string>
+    <string name="cancel">لغو</string>
+    <string name="menu_save">ذخیره</string>
+    <string name="delete">حذف</string>
+    <string name="gadget_state_on">فعال</string>
+    <string name="gadget_state_off">غیرفعال</string>
+    <string name="wifi_settings_title">Wi-Fi</string>
+    <string name="bluetooth">بلوتوث</string>
+    <string name="sound_settings">صدا</string>
+    <string name="vibrate_in_silent_title">لرزش در حالت بی‌صدا</string>
+    <string name="all_volume_title">میزان صدا</string>
+    <string name="ring_volume_title">میزان صدای زنگ</string>
+    <string name="media_volume_title">رسانه</string>
+    <string name="alarm_volume_title">هشدار</string>
+    <string name="notification_volume_title">اعلان</string>
+    <string name="sound_category_system_title">سیستم</string>
+    <string name="screen_timeout">حالت خواب</string>
+    <string name="data_usage_enable_mobile">داده‌های تلفن همراه</string>
+    <string name="brightness">روشنایی</string>
+    <string name="gadget_brightness_state_auto">خودکار</string>
+    <string name="week_view">هفته</string>
+    <string name="monthly">ماهانه</string>
+    <string name="yearly_plain">سالانه</string>
+    <string name="repeats_label">تکرار</string>
+</resources>

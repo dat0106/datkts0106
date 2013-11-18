@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Setări Scheduler</string>
+    <string name="settings_label">Setări</string>
+    <string name="cancel">Anulaţi</string>
+    <string name="menu_save">Salvaţi</string>
+    <string name="delete">Ştergeţi</string>
+    <string name="gadget_state_on">activat</string>
+    <string name="gadget_state_off">dezactivat</string>
+    <string name="wifi_settings_title">Wi-Fi</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="sound_settings">Sunet</string>
+    <string name="vibrate_in_silent_title">Vibrează la profilul Silenţios</string>
+    <string name="all_volume_title">Volumele</string>
+    <string name="ring_volume_title">Volum sonerie</string>
+    <string name="media_volume_title">Media</string>
+    <string name="alarm_volume_title">Alarmă</string>
+    <string name="notification_volume_title">Notificare</string>
+    <string name="sound_category_system_title">Sistem</string>
+    <string name="screen_timeout">Inactivitate</string>
+    <string name="data_usage_enable_mobile">Date mobile</string>
+    <string name="brightness">Luminozitate</string>
+    <string name="gadget_brightness_state_auto">automată</string>
+    <string name="week_view">Săptămână</string>
+    <string name="monthly">Lunar</string>
+    <string name="yearly_plain">Anual</string>
+    <string name="repeats_label">Repetiţie</string>
+</resources>

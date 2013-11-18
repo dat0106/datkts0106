@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Paramètres Scheduler</string>
+    <string name="settings_label">Paramètres</string>
+    <string name="cancel">Annuler</string>
+    <string name="menu_save">Enregistrer</string>
+    <string name="delete">Supprimer</string>
+    <string name="gadget_state_on">activé</string>
+    <string name="gadget_state_off">désactivé</string>
+    <string name="wifi_settings_title">Wi-Fi</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="sound_settings">Son</string>
+    <string name="vibrate_in_silent_title">Vibrer en mode silencieux</string>
+    <string name="all_volume_title">Volume</string>
+    <string name="ring_volume_title">Volume de la sonnerie</string>
+    <string name="media_volume_title">Multimédia</string>
+    <string name="alarm_volume_title">Alarme</string>
+    <string name="notification_volume_title">Notification</string>
+    <string name="sound_category_system_title">Système</string>
+    <string name="screen_timeout">Veille</string>
+    <string name="data_usage_enable_mobile">Données mobiles</string>
+    <string name="brightness">Luminosité</string>
+    <string name="gadget_brightness_state_auto">automatique</string>
+    <string name="week_view">Semaine</string>
+    <string name="monthly">Tous les mois</string>
+    <string name="yearly_plain">Tous les ans</string>
+    <string name="repeats_label">Fréquence</string>
+</resources>

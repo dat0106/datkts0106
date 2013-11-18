@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tetapan Penjadual</string>
+    <string name="settings_label">Tetapan</string>
+    <string name="cancel">Batal</string>
+    <string name="menu_save">Simpan</string>
+    <string name="delete">Padam</string>
+    <string name="gadget_state_on">hidup</string>
+    <string name="gadget_state_off">mati</string>
+    <string name="wifi_settings_title">Wi-Fi</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="sound_settings">Bunyi</string>
+    <string name="vibrate_in_silent_title">Getar apabila senyap</string>
+    <string name="all_volume_title">Kelantangan</string>
+    <string name="ring_volume_title">Kelantangan pendering</string>
+    <string name="media_volume_title">Media</string>
+    <string name="alarm_volume_title">Penggera</string>
+    <string name="notification_volume_title">Pemberitahuan</string>
+    <string name="sound_category_system_title">Sistem</string>
+    <string name="screen_timeout">Tidur</string>
+    <string name="data_usage_enable_mobile">Data mudah alih</string>
+    <string name="brightness">Kecerahan</string>
+    <string name="gadget_brightness_state_auto">auto</string>
+    <string name="week_view">Minggu</string>
+    <string name="monthly">Bulanan</string>
+    <string name="yearly_plain">Tahunan</string>
+    <string name="repeats_label">Repetition</string>
+</resources>

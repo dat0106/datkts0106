@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Подешавања Сцхедулер</string>
+    <string name="settings_label">Подешавања</string>
+    <string name="cancel">Откажи</string>
+    <string name="menu_save">Сачувај</string>
+    <string name="delete">Избриши</string>
+    <string name="gadget_state_on">укључено</string>
+    <string name="gadget_state_off">искључено</string>
+    <string name="wifi_settings_title">Wi-Fi</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="sound_settings">Звук</string>
+    <string name="vibrate_in_silent_title">Вибрација у нечујном режиму</string>
+    <string name="all_volume_title">Јачине звука</string>
+    <string name="ring_volume_title">Јачина звука звона</string>
+    <string name="media_volume_title">Медији</string>
+    <string name="alarm_volume_title">Аларм</string>
+    <string name="notification_volume_title">Обавештење</string>
+    <string name="sound_category_system_title">Систем</string>
+    <string name="screen_timeout">Спавај</string>
+    <string name="data_usage_enable_mobile">Подаци мобилне мреже</string>
+    <string name="brightness">Осветљеност</string>
+    <string name="gadget_brightness_state_auto">аутоматскo</string>
+    <string name="week_view">Недеља</string>
+    <string name="monthly">На месечном нивоу</string>
+    <string name="yearly_plain">На годишњем нивоу</string>
+    <string name="repeats_label">Понављање</string>
+</resources>

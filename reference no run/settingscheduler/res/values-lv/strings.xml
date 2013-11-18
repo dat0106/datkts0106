@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Iestatījumi Ieplānot</string>
+    <string name="settings_label">Iestatījumi</string>
+    <string name="cancel">Atcelt</string>
+    <string name="menu_save">Saglabāt</string>
+    <string name="delete">Dzēst</string>
+    <string name="gadget_state_on">ieslēgts</string>
+    <string name="gadget_state_off">izslēgts</string>
+    <string name="wifi_settings_title">Wi-Fi</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="sound_settings">Skaņa</string>
+    <string name="vibrate_in_silent_title">Vibrē klusuma režīmā</string>
+    <string name="all_volume_title">Skaļumi</string>
+    <string name="ring_volume_title">Zvanītāja skaļums</string>
+    <string name="media_volume_title">Multivide</string>
+    <string name="alarm_volume_title">Signāls</string>
+    <string name="notification_volume_title">Paziņojums</string>
+    <string name="sound_category_system_title">Sistēma</string>
+    <string name="screen_timeout">Miega režīms</string>
+    <string name="data_usage_enable_mobile">Mobilie dati</string>
+    <string name="brightness">Spilgtums</string>
+    <string name="gadget_brightness_state_auto">automātisks</string>
+    <string name="week_view">Nedēļa</string>
+    <string name="monthly">Reizi mēnesī</string>
+    <string name="yearly_plain">Reizi gadā</string>
+    <string name="repeats_label">Atkārtošana</string>
+</resources>

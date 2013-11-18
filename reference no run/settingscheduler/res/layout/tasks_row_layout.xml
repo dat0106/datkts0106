@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/tasksRowLayout" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/enabledCheckBoxImage" android:layout_width="48.0dip" android:layout_height="48.0dip" android:scaleType="center" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:contentDescription="@string/menu_save" />
+    <ImageView android:id="@id/taskTypeImageView" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/run" android:scaleType="center" android:layout_below="@id/enabledCheckBoxImage" android:layout_alignParentLeft="true" android:contentDescription="@string/menu_save" />
+    <TextView android:textAppearance="?android:textAppearanceMedium" android:id="@id/taskTypeAndValueView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="" android:layout_toRightOf="@id/enabledCheckBoxImage" android:layout_alignParentTop="true" />
+    <TextView android:textAppearance="?android:textAppearanceLarge" android:id="@id/timeOfDayView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:layout_below="@id/taskTypeAndValueView" android:layout_alignLeft="@id/taskTypeAndValueView" />
+    <TextView android:textAppearance="?android:textAppearanceSmall" android:gravity="center" android:id="@id/dayOfWeekView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:layout_below="@id/timeOfDayView" android:layout_alignLeft="@id/timeOfDayView" />
+</RelativeLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ustawienia Harmonogramu</string>
+    <string name="settings_label">Ustawienia</string>
+    <string name="cancel">Anuluj</string>
+    <string name="menu_save">Zapisz</string>
+    <string name="delete">Usuń</string>
+    <string name="gadget_state_on">wł.</string>
+    <string name="gadget_state_off">wył.</string>
+    <string name="wifi_settings_title">Wi-Fi</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="sound_settings">Dźwięk</string>
+    <string name="vibrate_in_silent_title">Wibracje po wyciszeniu</string>
+    <string name="all_volume_title">Głośność</string>
+    <string name="ring_volume_title">Głośność dzwonka</string>
+    <string name="media_volume_title">Multimedia</string>
+    <string name="alarm_volume_title">Alarm</string>
+    <string name="notification_volume_title">Powiadomienie</string>
+    <string name="sound_category_system_title">System</string>
+    <string name="screen_timeout">Uśpienie</string>
+    <string name="data_usage_enable_mobile">Dane mobilne</string>
+    <string name="brightness">Jasność ekranu</string>
+    <string name="gadget_brightness_state_auto">automatyczna</string>
+    <string name="week_view">Tydzień</string>
+    <string name="monthly">Co miesiąc</string>
+    <string name="yearly_plain">Co rok</string>
+    <string name="repeats_label">Powtarzanie</string>
+</resources>

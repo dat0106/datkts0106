@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ቅንብሮች Scheduler</string>
+    <string name="settings_label">ቅንብሮች</string>
+    <string name="cancel">ይቅር</string>
+    <string name="menu_save">አስቀምጥ</string>
+    <string name="delete">ሰርዝ</string>
+    <string name="gadget_state_on">በርቷል</string>
+    <string name="gadget_state_off">ጠፍቷል</string>
+    <string name="wifi_settings_title">Wi-Fi</string>
+    <string name="bluetooth">ብሉቱዝ</string>
+    <string name="sound_settings">ድምፅ</string>
+    <string name="vibrate_in_silent_title">ፀጥ ሲል ንዘር</string>
+    <string name="all_volume_title">ድምፆች</string>
+    <string name="ring_volume_title">የስልክ ጥሪ ድምፅ</string>
+    <string name="media_volume_title">ማህደረ መረጃ</string>
+    <string name="alarm_volume_title">ማንቂያ ደውል</string>
+    <string name="notification_volume_title">ማሳወቂያ</string>
+    <string name="sound_category_system_title">ስርዓት</string>
+    <string name="screen_timeout">քնել</string>
+    <string name="data_usage_enable_mobile">Mobile data</string>
+    <string name="brightness">ብሩህነት</string>
+    <string name="gadget_brightness_state_auto">ራስ-ሰር</string>
+    <string name="week_view">ሳምንት</string>
+    <string name="monthly">ወርሃዊ</string>
+    <string name="yearly_plain">በየአመቱ</string>
+    <string name="repeats_label">ድግግሞሽ</string>
+</resources>
