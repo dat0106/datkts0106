@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <initiators>
+            <initiator name="usb_class:GameController"
+                     initiator_type="device"
+                     icon_resource="accy_gamecontroller"
+                     removable="1"
+                     predefined="0"
+                     bearer="usb"
+                     device_type="unknown"/>
+       </initiators>
+</resources>

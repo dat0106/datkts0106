@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <event default_enabled="1">
+        <start_actions>
+            <action id="com.sonyericsson.extras.liveware.actions.bluetooth.Bluetooth"
+                    setting= "on"/>
+            <action id="com.sonyericsson.extras.liveware.actions.launchapp.LaunchApp"
+                    setting= "com.google.android.apps.maps/com.google.android.maps.driveabout.app.DestinationActivity"/>
+        </start_actions>
+        <stop_actions>
+            <action id="com.sonyericsson.extras.liveware.actions.bluetooth.Bluetooth"
+                    setting= "off"/>
+        </stop_actions>
+    </event>
+</resources>

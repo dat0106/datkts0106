@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_wifi">WLAN</string>
+    <string name="action_wifi_hotspot">Hotspot WLAN</string>
+    <string name="dlg_salvador_no_network_access_description_required_usage">É necessário acesso à rede para utilizar a etiqueta. Verifique as suas definições de WLAN ou dados móveis.</string>
+</resources>

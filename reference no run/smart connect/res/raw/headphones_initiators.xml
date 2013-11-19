@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <initiators>
+            <initiator name="Headphones"
+                     initiator_type="device"
+                     icon_resource="smartconnect_headphone_device_icn"
+                     removable="0"
+                     predefined="1"
+                     bearer="audio"
+                     device_type="headphones"/>
+       </initiators>
+</resources>

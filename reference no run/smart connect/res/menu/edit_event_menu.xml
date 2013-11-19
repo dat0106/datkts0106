@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@id/edit_event_menu_rename" android:orderInCategory="10" android:title="@string/edit_event_menu_item_rename" android:showAsAction="0x0" />
+    <item android:id="@id/edit_event_menu_choose_image" android:orderInCategory="10" android:title="@string/choose_image_title" android:showAsAction="0x0" />
+    <item android:id="@id/edit_event_menu_delete_items" android:orderInCategory="10" android:title="@string/edit_event_menu_item_delete_items" android:showAsAction="0x0" />
+    <item android:id="@id/edit_event_menu_delete_event" android:orderInCategory="10" android:title="@string/menu_item_delete_event" android:showAsAction="0x0" />
+    <item android:icon="@drawable/ic_menu_stop" android:id="@id/edit_event_menu_stop" android:orderInCategory="10" android:title="@string/edit_event_menu_item_stop" android:showAsAction="0x2" />
+</menu>

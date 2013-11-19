@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest android:versionCode="30310" android:versionName="3.3.10" package="com.sonyericsson.extras.liveware"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-feature android:name="android.hardware.usb.host" android:required="false" />
+    <uses-sdk android:minSdkVersion="7" android:targetSdkVersion="14" />
+    <permission-group android:label="@string/permission_extension_group_label" android:name="com.sonyericsson.extras.liveware.aef.permission-group.STORE_YOUR_DATA" />
+    <permission-group android:label="@string/permission_display_group_label" android:name="com.sonyericsson.extras.liveware.aef.permission-group.DISPLAY_YOUR_DATA" />
+    <permission android:label="@string/permission_display_label" android:name="com.sonyericsson.extras.liveware.aef.HOSTAPP_PERMISSION" android:protectionLevel="signature" android:permissionGroup="com.sonyericsson.extras.liveware.aef.permission-group.DISPLAY_YOUR_DATA" />
+    <permission android:label="@string/permission_extension_header_label" android:name="com.sonyericsson.extras.liveware.aef.EXTENSION_PERMISSION" android:protectionLevel="dangerous" android:permissionGroup="com.sonyericsson.extras.liveware.aef.permission-group.STORE_YOUR_DATA" android:description="@string/permission_extension_label" />
+    <uses-permission android:name="com.sonyericsson.extras.liveware.aef.HOSTAPP_PERMISSION" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.sonyericsson.permission.BLACKLISTED_USB_DEVICE" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="com.sonyericsson.permission.SETTINGS" />
+    <uses-permission android:name="com.sonyericsson.permission.VENDOR_BUTTON" />
+    <application android:label="@string/app_name" android:icon="@drawable/app_icon" android:name="LivewareManagerApplication" android:debuggable="false">
+        <provider android:name=".db.AccessoryProvider" android:exported="false" android:authorities="com.sonyericsson.extras.liveware.db" />
+        <provider android:name=".aef.notification.provider.NotificationProvider" android:authorities="com.sonyericsson.extras.liveware.aef.notification" android:syncable="true" />
+        <provider android:name=".aef.registration.provider.RegistrationProvider" android:authorities="com.sonyericsson.extras.liveware.aef.registration" android:syncable="true" />
+        <activity android:label="@string/app_name_homescreen" android:name=".ui.HomeScreenActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.sonyericsson.intent.action.GET_PREFERENCE" />
+            </intent-filter>
+            <meta-data android:name="com.sonyericsson.preference.title" android:resource="@string/app_name" />
+            <meta-data android:name="com.sonyericsson.preference.summary" android:resource="@string/about_text" />
+        </activity>
+        <activity android:name=".ui.AccessoryActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="com.sonyericsson.extras.liveware.START_ACCY_VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.ApplicationSelectionActivity" android:exported="false" android:taskAffinity="">
+            <intent-filter>
+                <action android:name="com.sonyericsson.extras.liveware.START_APPLICATION_VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:theme="@android:style/Theme.Translucent.NoTitleBar" android:name=".ui.InstallActivity" android:taskAffinity="" android:excludeFromRecents="true" android:noHistory="false">
+            <intent-filter>
+                <action android:name="com.sonyericsson.extras.liveware.SHOW_INSTALL_MSG" />
+                <action android:name="com.sonyericsson.extras.liveware.SHOW_NEW_ACCID_MSG" />
+                <action android:name="com.sonyericsson.extras.liveware.SHOW_CUSTOMIZED_MSG" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:theme="@android:style/Theme.Translucent.NoTitleBar" android:name=".aef.registration.ui.PermissionActivity" android:taskAffinity="" android:excludeFromRecents="false" android:noHistory="false">
+            <intent-filter>
+                <action android:name="com.sonyericsson.extras.liveware.aef.registration.REQUEST_PERMISSION" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:theme="@android:style/Theme.Dialog" android:name=".ui.PreferredsActivity" android:exported="false" android:taskAffinity="" android:excludeFromRecents="true" android:noHistory="false">
+            <intent-filter>
+                <action android:name="com.sonyericsson.extras.liveware.SHOW_PREFERRED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:theme="@android:style/Theme.Translucent.NoTitleBar" android:name=".asf.NfcHandlerActivity" android:taskAffinity="" android:excludeFromRecents="true" android:launchMode="singleTask" android:noHistory="false">
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+                <data android:scheme="semc" />
+                <data android:host="liveware" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <receiver android:name=".asf.AsfStarter" android:enabled="true">
+            <intent-filter>
+                <action android:name="android.bluetooth.adapter.action.STATE_CHANGED" />
+                <action android:name="android.bluetooth.device.action.ACL_CONNECTED" />
+                <action android:name="android.bluetooth.device.action.ACL_DISCONNECTED" />
+                <action android:name="android.bluetooth.device.action.BOND_STATE_CHANGED" />
+                <action android:name="com.sonyericsson.extras.liveware.DELAYED_INFO" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".asf.BootReceiver" android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".asf.EventReceiver" android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.sonyericsson.hardware.action.USB_OTG_DEVICE_CONNECTED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.sonyericsson.hardware.action.USB_OTG_DEVICE_DISCONNECTED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.bluetooth.device.action.ACL_DISCONNECTED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.sonyericsson.hardware.action.APPLICATION_BUTTON" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.sonyericsson.intent.action.VENDOR_BUTTON" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.sonyericsson.intent.action.HDMI_EVENT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.motorola.intent.action.externaldisplaystate" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.sonyericsson.extras.liveware.test.ACTION_USB_OTG_DEVICE_CONNECTED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.sonyericsson.system.intent.action.HEADSET_PLUG" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.sonyericsson.extras.liveware.test.ACTION_USB_OTG_DEVICE_DISCONNECTED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_DETACHED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_ACCESSORY_ATTACHED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.sonyericsson.settings.MASTERRESET" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".aef.service.InstallEventReceiver" android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <action android:name="android.intent.action.ACTION_UID_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".MarketEventReceiver" android:enabled="true">
+            <intent-filter>
+                <action android:name="com.sonyericsson.extras.liveware.MARKET_EXTENSIONS_SEARCH" />
+                <action android:name="com.sonyericsson.extras.liveware.MARKET_EXTENSION_INFO" />
+            </intent-filter>
+        </receiver>
+        <service android:name=".service.BtService" />
+        <service android:name=".service.EventService" />
+        <service android:name=".asf.event.QueryPowerService" />
+        <service android:name=".aef.service.DbMaintenanceService" />
+        <service android:name=".asf.EventHandler" />
+        <service android:name=".service.ToastService" />
+    </application>
+</manifest>

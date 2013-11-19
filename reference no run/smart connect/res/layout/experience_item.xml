@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/event_background_eventlist_selector" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/EventListItem"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/experience_item_name_row" android:background="@drawable/event_background_header_eventlist_selector" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/EventListItemName.full">
+        <TextView android:textAppearance="?android:textAppearanceLarge" android:id="@id/experience_item_name" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
+        <Switch android:id="@id/experience_item_enable_switch" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="1.0" android:layout_below="@id/experience_item_name_row">
+        <View style="@style/EventListBackgroundPadding.orient" />
+        <ImageView android:id="@id/exp_item_bg" android:scaleType="fitEnd" android:adjustViewBounds="true" style="@style/EventListBackgroundImage.orient" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/experience_item_initiators" android:layout_width="fill_parent" android:layout_height="@dimen/event_list_background_image_height" android:layout_below="@id/experience_item_name_row" style="@style/EventListItemInitiator.full">
+        <LinearLayout android:orientation="horizontal" android:id="@id/experience_item_initiator_device_layout" android:layout_width="@dimen/event_list_initiator_width" android:layout_height="wrap_content">
+            <ImageView android:id="@id/experience_item_initiator_device_icon" style="@style/ASFEventListInitiatorIcon.full" />
+            <TextView android:id="@id/experience_item_initiator_device" style="@style/ASFEventListInitiator" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/experience_item_initiator_time" android:layout_width="@dimen/event_list_initiator_width" android:layout_height="wrap_content">
+            <ImageView android:id="@id/experience_item_initiator_time_icon" android:src="@drawable/time_initiator_selector" style="@style/ASFEventListInitiatorIcon.full" />
+            <TextView android:id="@id/experience_item_initiator_time_hours" style="@style/ASFEventListInitiator" />
+            <TextView android:id="@id/experience_item_initiator_time_weekdays" android:textIsSelectable="false" style="@style/ASFEventListInitiator.full" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

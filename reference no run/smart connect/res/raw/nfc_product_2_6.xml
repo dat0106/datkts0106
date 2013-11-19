@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <event default_enabled="1">
+        <start_actions>
+            <action id="com.sonyericsson.extras.liveware.actions.soundmode.SoundMode"
+                    setting= "normal"/>
+            <action id="com.sonyericsson.extras.liveware.actions.volume.VolumeAction"
+                    setting= "-1;80;-1"/>
+            <action id="com.sonyericsson.extras.liveware.actions.launchapp.LaunchApp"
+                    setting= "com.sonyericsson.music/com.sonyericsson.music.MusicActivity||com.google.android.music"/>
+            <action id="com.sonyericsson.extras.liveware.actions.music.PlayAction"
+                    setting= "play"/>
+            <action id="com.sonyericsson.extras.liveware.actions.facebook.FacebookAction"
+                    setting= "5;@facebook_post_listen"/>
+        </start_actions>
+        <stop_actions>
+            <action id="com.sonyericsson.extras.liveware.actions.music.PlayAction"
+                    setting= "pause"/>
+            <action id="com.sonyericsson.extras.liveware.actions.volume.VolumeAction"
+                    setting= "-1;50;-1"/>
+        </stop_actions>
+    </event>
+</resources>

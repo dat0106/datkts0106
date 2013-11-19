@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@id/smartdevice_selection_delete" android:title="@string/context_menu_item_delete_accy" android:showAsAction="0x0" />
+</menu>

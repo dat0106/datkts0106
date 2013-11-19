@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_wifi_hotspot">Vroča točka WLAN</string>
+    <string name="dlg_salvador_no_network_access_description_required_usage">Za uporabo oznake potrebujete omrežni dostop. Preverite nastavitve WLAN ali mobilnih podatkov.</string>
+</resources>

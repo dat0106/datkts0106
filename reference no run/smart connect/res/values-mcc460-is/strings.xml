@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_wifi_hotspot">Heitur WLAN-reitur</string>
+    <string name="dlg_salvador_no_network_access_description_required_usage">Netaðgang þarf til að nota merkið. Athugaðu WLAN- eða gagnastillingarnar þínar.</string>
+</resources>

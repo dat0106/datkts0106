@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ASFRowLabels">
+        <item name="android:paddingLeft">5.0px</item>
+    </style>
+    <style name="ASFRowCheckboxContainer">
+        <item name="android:layout_width">70.0px</item>
+        <item name="android:layout_height">70.0px</item>
+    </style>
+    <style name="ASFRowRadiobuttonContainer">
+        <item name="android:layout_width">72.0px</item>
+        <item name="android:layout_height">72.0px</item>
+    </style>
+    <style name="ASFRow.Search" parent="@style/ASFRow">
+        <item name="android:layout_height">140.0px</item>
+    </style>
+    <style name="ASFRow.AppImage" parent="@style/ASFRow">
+        <item name="android:padding">8.0px</item>
+        <item name="android:layout_width">88.0px</item>
+        <item name="android:layout_height">88.0px</item>
+    </style>
+    <style name="DividerTextLess.full" parent="@style/DividerTextLess">
+        <item name="android:layout_height">5.0px</item>
+    </style>
+    <style name="ASFRowImageContainer">
+        <item name="android:padding">8.0px</item>
+        <item name="android:layout_width">88.0px</item>
+        <item name="android:layout_height">88.0px</item>
+    </style>
+    <style name="ASFAccyRow.Image" parent="@style/ASFAccyRow">
+        <item name="android:layout_width">190.0px</item>
+        <item name="android:layout_height">190.0px</item>
+    </style>
+    <style name="ASFAccyTitle.full" parent="@style/ASFAccyTitle">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:paddingTop">15.0px</item>
+        <item name="android:paddingBottom">20.0px</item>
+    </style>
+</resources>

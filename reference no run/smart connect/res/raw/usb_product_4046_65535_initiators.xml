@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <initiators>
+            <initiator name="4046:65535"
+                     initiator_type="device"
+                     icon_resource="accy_clay"
+                     removable="1"
+                     predefined="0"
+                     bearer="usb"
+                     notify_external="1"
+                     device_type="dock"/>
+       </initiators>
+</resources>

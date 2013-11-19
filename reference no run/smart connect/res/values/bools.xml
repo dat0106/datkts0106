@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="ga_anonymizeIp">true</bool>
+    <bool name="show_facebook_action">true</bool>
+    <bool name="show_in_launcher">true</bool>
+    <bool name="show_in_xperia_preferences">false</bool>
+    <bool name="is_vanilla_rtl">false</bool>
+    <bool name="water_resistance_warning_enabled">false</bool>
+    <bool name="water_resistance_high">false</bool>
+    <bool name="water_resistance_ignore_audio_plug">false</bool>
+    <bool name="water_resistance_sdcard_warning">false</bool>
+    <bool name="water_resistance_text_only">false</bool>
+    <bool name="water_resistance_dialog_theme_is_light">false</bool>
+</resources>

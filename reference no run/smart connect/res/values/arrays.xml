@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="onOffToggleArray">
+        <item>@string/on</item>
+        <item>@string/off</item>
+        <item>@string/toggle</item>
+    </string-array>
+    <string-array name="pedefined_devices">
+        <item>bluetooth_gamecontroller</item>
+        <item>bluetooth_headphones</item>
+        <item>bluetooth_headset</item>
+        <item>bluetooth_keyboard</item>
+        <item>bluetooth_mouse</item>
+        <item>bluetooth_speakers</item>
+        <item>liveview</item>
+        <item>mw600</item>
+        <item>dr_btn200</item>
+        <item>mdr_1rbt</item>
+        <item>sbh20</item>
+        <item>sbh50</item>
+        <item>smart_wireless_headset_pro</item>
+        <item>smartwatch</item>
+        <item>sony_tablet_s</item>
+        <item>srs_btv25</item>
+        <item>srs_btv5</item>
+        <item>sr_7734</item>
+        <item>sony_bravia</item>
+        <item>wfd_tv</item>
+        <item>sony_nasne</item>
+        <item>ps3</item>
+        <item>bluetooth_pc</item>
+        <item>bluetooth_phone</item>
+        <item>sony_bdr</item>
+        <item>dms</item>
+        <item>dmr</item>
+        <item>wfd</item>
+        <item>bluetooth</item>
+    </string-array>
+    <string-array name="pedefined_experiences">
+        <item>headphones</item>
+        <item>headset</item>
+        <item>charger</item>
+    </string-array>
+</resources>

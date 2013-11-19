@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_wifi_hotspot">WLAN javna pristupna točka</string>
+    <string name="dlg_salvador_no_network_access_description_required_usage">Potreban je mrežni pristup za upotrebu oznake. Provjerite svoje postavke za WLAN ili mobilne podatke.</string>
+</resources>

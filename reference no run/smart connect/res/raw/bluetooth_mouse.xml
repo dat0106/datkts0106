@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <event default_enabled="1">
+        <initiators>
+            <initiator name="Bluetooth mouse"
+                     initiator_type="device"
+                     icon_resource="smartconnect_mouse_device_icn"
+                     removable="1"
+                     predefined="0"
+                     bearer="bluetooth"
+                     device_type="mouse"
+                     manufacturer="2"
+                     device_page_activity="com.sonyericsson.extras.liveware/.ui.SCGenericDevicePages"/>
+        </initiators>
+        <start_actions>
+        </start_actions>
+        <stop_actions>
+        </stop_actions>
+    </event>
+</resources>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:icon="@drawable/add_new_icon" android:id="@id/experience_list_menu_add" android:orderInCategory="2" android:title="@string/event_list_add_event" android:showAsAction="0x6" />
+</menu>

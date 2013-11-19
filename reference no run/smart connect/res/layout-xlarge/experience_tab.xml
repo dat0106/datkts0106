@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/event_fragment_container" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/fragment_experience_list" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="3.0" />
+    <LinearLayout android:orientation="vertical" android:background="?16843598" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="5.0">
+        <FrameLayout android:orientation="vertical" android:id="@id/fragment_experience_detail" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

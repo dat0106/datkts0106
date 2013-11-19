@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_wifi_hotspot">WLAN हॉटस्प.</string>
+    <string name="dlg_salvador_no_network_access_description_required_usage">टैग उपयोग करने के लिए नेटवर्क अभिगम आवश्यक है. अपनी WLAN या मोबाइल डेटा सेटिंग जाँचें.</string>
+</resources>

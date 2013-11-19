@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dlg_salvador_no_network_access_description_required_usage">Απαιτείται πρόσβαση στο δίκτυο για τη χρήση της ετικέτας. Ελέγξτε τις ρυθμίσεις για το WLAN ή τα δεδομένα κινητής τηλεφωνίας.</string>
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TableRow>
+        <TextView android:paddingLeft="@dimen/welcome_page_item_padding" android:paddingRight="@dimen/welcome_page_item_padding" android:text="@string/device_tab" style="@style/WelcomePageHeader.full.Column" />
+        <TextView android:paddingLeft="@dimen/welcome_page_item_padding" android:paddingRight="@dimen/welcome_page_item_padding" android:text="@string/event_tab" style="@style/WelcomePageHeader.full.Column" />
+    </TableRow>
+    <TableRow>
+        <TextView android:paddingLeft="@dimen/welcome_page_item_padding" android:paddingRight="@dimen/welcome_page_item_padding" android:text="@string/welcome_page_devices" style="@style/WelcomePageBody.full.Column" />
+        <TextView android:paddingLeft="@dimen/welcome_page_item_padding" android:paddingRight="@dimen/welcome_page_item_padding" android:text="@string/welcome_page_events" style="@style/WelcomePageBody.full.Column" />
+    </TableRow>
+    <TableRow>
+        <LinearLayout style="@style/WelcomePageImageRow">
+            <View style="@style/WelcomePageImagePadding.orient.full" />
+            <com.sonyericsson.extras.liveware.ui.AspectRatioImageView android:src="@drawable/welcome_page_devices_image" style="@style/WelcomePageImage" />
+        </LinearLayout>
+        <LinearLayout style="@style/WelcomePageImageRow">
+            <View style="@style/WelcomePageImagePadding.orient.full" />
+            <com.sonyericsson.extras.liveware.ui.AspectRatioImageView android:src="@drawable/welcome_page_events_image" style="@style/WelcomePageImage" />
+        </LinearLayout>
+    </TableRow>
+</TableLayout>

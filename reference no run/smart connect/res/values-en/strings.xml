@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="name_usb_disk">USB storage</string>
+    <string name="permission_extension_label">Allow application data sharing using Sony Smart Extras™</string>
+    <string name="somc_copyright">© %s Sony Mobile Communications AB</string>
+    <string name="start_page_empty_text">Create a new event by tapping the plus icon above</string>
+    <string name="dlg_first_time_tag_body">"NFC SmartTag identified
+
+%1$s event associated with this device. Preconfigured actions available.
+
+%1$s will be initiated each time you connect to this NFC tag.
+
+Tap Next to view the %1$s actions associated with NFC SmartTag. "</string>
+    <string name="toggle">Switch</string>
+    <string name="no_android_market">Google Play not installed</string>
+    <string name="volume_ring_description">Ringtone and notifications</string>
+    <string name="volume_media_description">Music, video, games and other media</string>
+    <string name="action_volume">Volume</string>
+    <string name="facebook_error_notification_text">An error occurred. Please sign in.</string>
+    <string name="facebook_log_out_confirm_txt">Log out of Facebook?</string>
+    <string name="time_trigger_repeat_every_day">Everyday</string>
+    <string name="category_network">Wireless and Networks</string>
+    <string name="legal_dialog_data_traffic">Your use of this service may be subject to, for example, data transmission charges depending on your subscription with your service provider. Sony Mobile Communications AB and its providers do not warrant that (a) the service will be error-free (b) your use of the service will be uninterrupted or error-free or (c) the service will meet your requirements or expectations.</string>
+    <string name="preference_summary_google_analytics">Help improve quality by allowing the collection of anonymous usage statistics</string>
+    <string name="preference_title_tts">Text To Speech</string>
+    <string name="salvador_create_event_template_call_number_description">Create a tag for your dog! Example: If your dog runs away, whoever finds it could touch the tag and call the owner.</string>
+    <string name="salvador_event_device_list_description">This is an editable tag. Only you can edit it, but anyone who touches the tag will enjoy the experience.</string>
+    <string name="dlg_salvador_event_not_saved_online_text_2">Event will be saved on the device.</string>
+    <string name="dlg_salvador_delete_tag_text_1">By deleting SmartTag NT3 from the device, the tag will be reset and any events will be deleted.</string>
+    <string name="dlg_salvador_delete_tag_text_2">If someone else connects to this tag and creates an event, you will no longer be the event administrator.</string>
+</resources>

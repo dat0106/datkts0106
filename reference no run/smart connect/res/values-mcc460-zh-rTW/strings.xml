@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_wifi">WLAN</string>
+    <string name="action_wifi_hotspot">WLAN熱點</string>
+    <string name="dlg_salvador_no_network_access_description_required_usage">連接網路後才能使用標籤。請檢查您的WLAN或行動數據設定。</string>
+</resources>

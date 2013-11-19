@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_wifi">„WLAN“</string>
+    <string name="action_wifi_hotspot">„WLAN“ prieigos taškas</string>
+    <string name="dlg_salvador_no_network_access_description_required_usage">Norint naudoti žymą, reikalinga tinklo prieiga. Patikrinkite „WLAN“ arba mobiliojo ryšio duomenų nuostatas.</string>
+</resources>

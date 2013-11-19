@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_wifi">WLAN</string>
+    <string name="action_wifi_hotspot">WLAN ஹாட்ஸ்பாட்</string>
+    <string name="dlg_salvador_no_network_access_description_required_usage">குறிச்சீட்டைப் பயன்படுத்த பிணைய அணுகல் தேவை. உங்கள் WLAN அல்லது மொபைல் தரவு அமைப்புகளைச் சோதிக்கவும்.</string>
+</resources>

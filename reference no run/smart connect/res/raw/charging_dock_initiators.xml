@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <initiators>
+            <initiator name="Charging Dock"
+                     initiator_type="device"
+                     icon_resource="dock_device_icn"
+                     removable="0"
+                     predefined="0"
+                     bearer="power"
+                     device_type="charging_dock"/>
+       </initiators>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <event default_enabled="1" >
+        <start_actions>
+
+            <!--
+            NOTE!!!
+            If you add actions here, remember that there are probably users that already have old mw600 events.
+            -->
+        </start_actions>
+
+        <stop_actions>
+        </stop_actions>
+    </event>
+
+</resources>

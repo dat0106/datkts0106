@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="fill_parent" style="@style/ASFDialogBody"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:layout_gravity="left" android:id="@id/SmartText" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/ASFDialogText" />
+    <TextView android:layout_gravity="left" android:id="@id/SmartQuery" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/ASFDialogText" />
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:layout_gravity="center" android:id="@id/SmartImage" android:layout_width="wrap_content" android:layout_height="110.0sp" />
+    </LinearLayout>
+    <LinearLayout android:gravity="left" android:layout_gravity="left" android:orientation="horizontal" android:id="@id/SmartCheckLO" android:paddingBottom="20.0sp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <CheckBox android:layout_gravity="left" android:id="@id/SmartCheck" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/ASFDialogText" />
+        <TextView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/install_v2_nagging_box" />
+    </LinearLayout>
+</LinearLayout>

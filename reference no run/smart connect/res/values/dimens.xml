@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="asf_row_height">62.0dip</dimen>
+    <dimen name="asf_list_item_height">64.0dip</dimen>
+    <dimen name="asf_list_item_image_padding">8.0dip</dimen>
+    <dimen name="asf_icon_size">32.0dip</dimen>
+    <dimen name="asf_list_item_margin">8.0dip</dimen>
+    <dimen name="asf_list_padding">16.0dip</dimen>
+    <dimen name="event_list_initiator_width">230.0dip</dimen>
+    <dimen name="event_list_initiator_image_padding">6.0dip</dimen>
+    <dimen name="event_list_background_image_height">103.0dip</dimen>
+    <dimen name="welcome_page_item_padding">8.0dip</dimen>
+</resources>

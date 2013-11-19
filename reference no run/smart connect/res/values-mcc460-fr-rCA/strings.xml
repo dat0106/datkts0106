@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_wifi_hotspot">"Point d'accès sans fil"</string>
+    <string name="dlg_salvador_no_network_access_description_required_usage">Un accès réseau est requis pour pouvoir utiliser cette balise. Vérifiez vos paramètres de données mobiles ou WLAN.</string>
+</resources>

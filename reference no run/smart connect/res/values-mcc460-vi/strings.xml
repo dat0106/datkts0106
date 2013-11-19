@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_wifi_hotspot">Điểm truy cập WLAN</string>
+    <string name="dlg_salvador_no_network_access_description_required_usage">Yêu cầu quyền truy cập mạng để sử dụng thẻ. Kiểm tra WLAN của bạn hoặc cài đặt dữ liệu trên di động.</string>
+</resources>

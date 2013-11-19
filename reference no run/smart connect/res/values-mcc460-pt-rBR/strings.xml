@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_wifi">WLAN</string>
+    <string name="action_wifi_hotspot">Ponto de acesso de WLAN</string>
+    <string name="dlg_salvador_no_network_access_description_required_usage">É necessário ter acesso à rede para usar a tag. Verifique as configurações de dados do seu celular ou de sua conexão WLAN.</string>
+</resources>

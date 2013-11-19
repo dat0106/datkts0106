@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@id/menu_check_for_updates" android:orderInCategory="20" android:title="@string/menu_item_search_updates" />
+    <item android:id="@id/menu_legal" android:orderInCategory="20" android:title="@string/menu_item_legal" />
+    <item android:id="@id/menu_about" android:orderInCategory="20" android:title="@string/menu_item_about" />
+</menu>

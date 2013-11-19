@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <initiators>
+            <initiator name="Charger"
+                     initiator_type="device"
+                     icon_resource="accy_charger"
+                     removable="0"
+                     predefined="1"
+                     bearer="power"
+                     device_type="charger"/>
+            <initiator name="Time"
+                     initiator_type="time"
+                     start="10:00 PM"
+                     stop="07:00 AM"/>
+       </initiators>
+</resources>

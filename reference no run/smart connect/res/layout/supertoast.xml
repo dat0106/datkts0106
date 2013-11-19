@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/toast_msg" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:background="@color/toast_title" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/ToastImage" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/app_icon" />
+        <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="@color/row_header_color" android:id="@id/ToastName" android:paddingLeft="2.0sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/app_launch" />
+    </LinearLayout>
+    <TextView android:textColor="#ffffffff" android:id="@id/ToastText" android:paddingLeft="10.0sp" android:paddingRight="10.0sp" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/ASFDialogText" />
+</LinearLayout>

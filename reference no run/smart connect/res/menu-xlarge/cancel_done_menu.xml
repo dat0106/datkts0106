@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:icon="@drawable/close_tablet" android:id="@id/menu_cancel" android:orderInCategory="1" android:title="@string/footer_button_cancel" android:showAsAction="0x6" />
+    <item android:icon="@drawable/check_mark_done_icn" android:id="@id/menu_done" android:orderInCategory="1" android:title="@string/footer_button_done" android:showAsAction="0x6" />
+</menu>

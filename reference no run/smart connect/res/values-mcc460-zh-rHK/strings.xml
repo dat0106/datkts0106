@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_wifi">WLAN</string>
+    <string name="action_wifi_hotspot">WLAN無線基地台</string>
+    <string name="dlg_salvador_no_network_access_description_required_usage">使用標籤需網絡存取權。請檢查您的WLAN或移動數據設定。</string>
+</resources>

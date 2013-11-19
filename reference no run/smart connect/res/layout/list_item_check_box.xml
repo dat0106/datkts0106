@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.sonyericsson.extras.liveware.ui.CheckableListItem android:id="@id/list_item" style="@style/CheckableListItem"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/list_item_content" />
+    <CheckBox android:layout_gravity="center_vertical" android:id="@id/list_item_checkable" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</com.sonyericsson.extras.liveware.ui.CheckableListItem>

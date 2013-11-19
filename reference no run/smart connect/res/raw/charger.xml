@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <event default_enabled="0">
+        <start_actions>
+            <action id="com.sonyericsson.extras.liveware.actions.launchapp.LaunchApp"
+                    setting="com.sonyericsson.organizer/com.sonyericsson.organizer.Organizer||"/>
+            <action id="com.sonyericsson.extras.liveware.actions.soundmode.SoundMode"
+                    setting="silent"/>
+        </start_actions>
+        <stop_actions>
+            <action id="com.sonyericsson.extras.liveware.actions.soundmode.SoundMode"
+                    setting= "normal"/>
+        </stop_actions>
+    </event>
+</resources>

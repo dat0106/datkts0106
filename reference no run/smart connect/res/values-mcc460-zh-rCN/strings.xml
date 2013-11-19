@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_wifi">无线局域网</string>
+    <string name="action_wifi_hotspot">无线局域网热点区</string>
+    <string name="dlg_salvador_no_network_access_description_required_usage">您必须拥有网络访问权限才能使用该标签。请检查您的WLAN或移动数据设定。</string>
+</resources>

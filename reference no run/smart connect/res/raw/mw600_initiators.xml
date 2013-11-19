@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <initiators>
+            <initiator name="MW600"
+                     initiator_type="device"
+                     icon_resource="accy_blink"
+                     removable="1"
+                     predefined="0"
+                     bearer="bluetooth"
+                     device_type="headset"
+                     manufacturer="1"
+                     device_page_activity="com.sonymobile.connectivitycenter/com.sonymobile.connectivitycenter.CCDefaultDevicePageActivity"/>
+       </initiators>
+</resources>

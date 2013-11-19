@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <event default_enabled="1">
+        <initiators>
+            <initiator name="usb_class:Keyboard"
+                     initiator_type="device"
+                     icon_resource="smartconnect_keyboard_device_icn"
+                     removable="1"
+                     predefined="0"
+                     bearer="usb"
+                     device_type="keyboard"/>
+       </initiators>
+        <start_actions>
+        </start_actions>
+        <stop_actions>
+        </stop_actions>
+    </event>
+</resources>

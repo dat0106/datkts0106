@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <initiators>
+            <initiator name="nfc_product_1.2"
+                     initiator_type="device"
+                     icon_resource="accy_nfc_product_1_2"
+                     removable="1"
+                     predefined="0"
+                     bearer="nfc"
+                     device_type="nfc_key_tag"/>
+       </initiators>
+</resources>

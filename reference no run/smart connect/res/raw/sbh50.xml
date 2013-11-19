@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (C) 2013 Sony Mobile Communications AB.
+    All rights, including trade secret rights, reserved.
+ -->
+<resources>
+     <event default_enabled="0">
+        <initiators>
+            <initiator name="SBH50"
+                     initiator_type="device"
+                     icon_resource="accy_collins"
+                     large_icon_resource="accy_collins_full"
+                     removable="1"
+                     predefined="0"
+                     bearer="bluetooth"
+                     device_type="headset"
+                     manufacturer="1"/>
+       </initiators>
+        <start_actions>
+        </start_actions>
+        <stop_actions>
+        </stop_actions>
+    </event>
+</resources>

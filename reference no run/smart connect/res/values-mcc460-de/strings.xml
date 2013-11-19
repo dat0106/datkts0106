@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_wifi_hotspot">WLAN-Hotspot</string>
+    <string name="category_network">WLAN &amp; Netzwerke</string>
+    <string name="dlg_salvador_no_network_access_description_required_usage">Für die Verwendung des Tags ist Netzwerkzugriff erforderlich. Prüfen Sie die Einstellung für WLAN oder mobile Datenübertragung.</string>
+</resources>

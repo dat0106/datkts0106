@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_wifi_hotspot">Точка доступу WLAN</string>
+    <string name="dlg_salvador_no_network_access_description_required_usage">Щоб скористатися тегом, потрібен доступ до мережі. Перевірте установки WLAN або мобільних даних.</string>
+</resources>

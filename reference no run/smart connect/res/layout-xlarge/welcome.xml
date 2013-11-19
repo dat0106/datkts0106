@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:paddingLeft="@dimen/welcome_page_item_padding" android:paddingRight="@dimen/welcome_page_item_padding" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include layout="@layout/welcome_content" />
+        <Button android:layout_gravity="center" android:id="@id/welcome_page_button_ok" android:text="@string/ok" style="@style/WelcomePageButton" />
+    </LinearLayout>
+</ScrollView>

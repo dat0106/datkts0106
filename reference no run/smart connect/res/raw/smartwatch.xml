@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <event default_enabled="0">
+        <initiators>
+            <initiator name="SmartWatch"
+                     initiator_type="device"
+                     icon_resource="accy_newman"
+                     large_icon_resource="accy_newman_full"
+                     removable="1"
+                     predefined="0"
+                     bearer="bluetooth"
+                     device_type="unknown"
+                     manufacturer="1"/>
+       </initiators>
+        <start_actions>
+        </start_actions>
+        <stop_actions>
+        </stop_actions>
+    </event>
+</resources>

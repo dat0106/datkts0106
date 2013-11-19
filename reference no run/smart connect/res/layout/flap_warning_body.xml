@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_width="fill_parent" style="@style/ASFDialogBody">
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:paddingTop="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center" android:id="@id/FlapImage" android:layout_width="wrap_content" android:src="@drawable/flaps_warning" style="@style/FlapImage.orient" />
+        </LinearLayout>
+        <TextView android:layout_gravity="left" android:id="@id/FlapText" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/waterproof_cable_remove_txt" style="@style/ASFDialogText" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/FlapCheckL" android:paddingBottom="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <CheckBox android:id="@id/FlapCheck" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/ASFDialogText" />
+            <TextView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/waterproof_cable_remove_dont_tell_me_again_txt" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

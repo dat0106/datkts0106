@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/smart_key_admin" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textAppearance="?android:textAppearanceSmall" android:id="@id/smartkey_description" android:padding="16.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/select_smart_key_app_info" />
+    <include layout="@layout/listdivider" />
+    <RelativeLayout android:id="@id/smartkey_assign_row" android:padding="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/smartkey_assign_image" android:paddingRight="8.0dip" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/set_search" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textAppearance="?android:textAppearanceMedium" android:id="@id/smartkey_assign_header" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/accy_view_set_and_search" android:layout_toRightOf="@id/smartkey_assign_image" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/smartkey_app_row" android:padding="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/smartkey_app_image" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/set_search" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textAppearance="?android:textAppearanceMedium" android:layout_gravity="left" android:id="@id/smartkey_app_header" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/action_launch_app" android:layout_toRightOf="@id/smartkey_app_image" android:layout_alignParentTop="true" />
+        <TextView android:textAppearance="?android:textAppearanceSmall" android:id="@id/smartkey_app_body" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/smartkey_app_image" android:layout_below="@id/smartkey_app_header" />
+    </RelativeLayout>
+    <include layout="@layout/listdivider" />
+    <Button android:textSize="14.0dip" android:layout_gravity="center_horizontal" android:id="@id/smartkey_button_app" android:layout_width="220.0dip" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:text="@string/smartkey_select_new" />
+</LinearLayout>

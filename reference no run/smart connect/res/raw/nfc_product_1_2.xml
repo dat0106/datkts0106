@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <event default_enabled="1">
+        <start_actions>
+            <action id="com.sonyericsson.extras.liveware.actions.wifi.Wifi"
+                    setting= "on"/>
+            <action id="com.sonyericsson.extras.liveware.actions.soundmode.SoundMode"
+                       setting="normal"/>
+            <action id="com.sonyericsson.extras.liveware.actions.launchapp.LaunchApp"
+                    setting="com.google.android.apps.genie.geniewidget/com.google.android.apps.genie.geniewidget.activities.NewsActivity"/>
+        </start_actions>
+        <stop_actions>
+            <action id="com.sonyericsson.extras.liveware.actions.wifi.Wifi"
+                    setting= "off"/>
+        </stop_actions>
+    </event>
+</resources>

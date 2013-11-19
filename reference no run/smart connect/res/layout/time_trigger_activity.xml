@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/time_trigger_activity" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:padding="@dimen/asf_list_padding" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textAppearance="?android:textAppearanceMedium" android:id="@id/time_trigger_label_between" android:paddingLeft="@dimen/asf_list_item_margin" android:paddingRight="@dimen/asf_list_item_margin" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/time_initiator_between" />
+        <RelativeLayout android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:id="@id/time_trigger_label_minus" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="-" android:layout_centerInParent="true" />
+            <Button android:id="@id/time_trigger_button_left" android:layout_toLeftOf="@id/time_trigger_label_minus" style="@style/ASFTextButtonMedium" />
+            <Button android:id="@id/time_trigger_button_right" android:layout_toRightOf="@id/time_trigger_label_minus" style="@style/ASFTextButtonMedium" />
+        </RelativeLayout>
+        <include layout="@layout/divider" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/time_trigger_repeat" android:background="?16843504" android:paddingLeft="@dimen/asf_list_item_margin" android:paddingRight="@dimen/asf_list_item_margin" android:layout_width="fill_parent" android:layout_height="@dimen/asf_list_item_height">
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:id="@id/time_trigger_repeat_label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/time_trigger_repeat_label" android:singleLine="true" />
+            <TextView android:textAppearance="?android:textAppearanceSmall" android:id="@id/time_trigger_repeat_value" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        </LinearLayout>
+        <include layout="@layout/divider" />
+    </LinearLayout>
+    <include layout="@layout/footer_button_bar" />
+</RelativeLayout>

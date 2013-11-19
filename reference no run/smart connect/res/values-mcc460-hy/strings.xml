@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_wifi_hotspot">WLAN մատ տար</string>
+    <string name="dlg_salvador_no_network_access_description_required_usage">"Ցանցի մուտքի համար հարկավոր է պիտակի օգտ: Ստուգեք  WLAN կամ բջջ տվյ կարգավ:"</string>
+</resources>

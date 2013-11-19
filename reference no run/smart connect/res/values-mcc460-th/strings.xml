@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_wifi_hotspot">ฮอตสปอต WLAN</string>
+    <string name="dlg_salvador_no_network_access_description_required_usage">ต้องสามารถเข้าถึงเครือข่ายเพื่อที่จะใช้แท็ก โปรดตรวจสอบการตั้งค่า WLAN หรือข้อมูลมือถือ</string>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_wifi">شبكة لاسلكية</string>
+    <string name="action_wifi_hotspot">منطقة شبكة لاسلكية</string>
+    <string name="dlg_salvador_no_network_access_description_required_usage">يتطلب الوصول إلى الشبكة استخدام علامة. تحقق من إعدادات WLAN أو بيانات الهاتف النقال.</string>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_wifi">ವೈ-ಫೈ</string>
+    <string name="action_wifi_hotspot">ವೈ-ಫೈ ಹಾಟ್‌ಸ್ಪಾಟ್</string>
+    <string name="dlg_salvador_no_network_access_description_required_usage">ಟ್ಯಾಗ್ ಬಳಸಲು ನೆಟ್‌ವರ್ಕ್ ಪ್ರವೇಶ ಅಗತ್ಯವಿದೆ. ನಿಮ್ಮ WLAN ಅಥವಾ ಮೊಬೈಲ್ ಡೇಟಾ ಸಂಯೋಜನೆಗಳನ್ನು ಪರೀಕ್ಷಿಸಿ.</string>
+</resources>

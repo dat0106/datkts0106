@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <event default_enabled="1">
+        <initiators>
+            <initiator name="DMS"
+                     initiator_type="device"
+                     icon_resource="smartconnect_server_device_icn"
+                     removable="1"
+                     predefined="0"
+                     bearer="dms"
+                     device_type="unknown"
+                     manufacturer="2"
+                     device_page_activity="com.sonymobile.connectivitycenter/com.sonymobile.connectivitycenter.CCDefaultDevicePageActivity"/>
+       </initiators>
+        <start_actions>
+        </start_actions>
+        <stop_actions>
+        </stop_actions>
+    </event>
+</resources>

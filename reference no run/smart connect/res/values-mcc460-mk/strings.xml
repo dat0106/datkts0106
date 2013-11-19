@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_wifi_hotspot">Жешка точка за WLAN</string>
+    <string name="dlg_salvador_no_network_access_description_required_usage">За да ја користите ознакава потребен е мрежен пристап. Проверете ги поставките за WLAN или мобилни податоци.</string>
+</resources>

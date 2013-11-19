@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_wifi_hotspot">WLAN tīklājs</string>
+    <string name="dlg_salvador_no_network_access_description_required_usage">Lai tagu varētu izmantot, nepieciešama piekļuve tīklam. Pārbaudiet savus WLAN vai mobilās ierīces iestatījumus.</string>
+</resources>

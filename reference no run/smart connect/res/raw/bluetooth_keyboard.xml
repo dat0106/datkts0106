@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <event default_enabled="1">
+        <initiators>
+            <initiator name="Bluetooth keyboard"
+                     initiator_type="device"
+                     icon_resource="smartconnect_keyboard_device_icn"
+                     removable="1"
+                     predefined="0"
+                     bearer="bluetooth"
+                     device_type="keyboard"
+                     manufacturer="2"
+                     device_page_activity="com.sonyericsson.extras.liveware/.ui.SCGenericDevicePages"/>
+        </initiators>
+        <start_actions>
+            <action id="com.sonyericsson.extras.liveware.actions.wifi.Wifi"
+                    setting= "on"/>
+            <action id="com.sonyericsson.extras.liveware.actions.volume.VolumeAction"
+                    setting= "60;-1;60"/>
+            <action id="com.sonyericsson.extras.liveware.actions.launchapp.LaunchApp"
+                    setting= "com.android.calendar/com.android.calendar.LaunchActivity"/>
+        </start_actions>
+        <stop_actions>
+        </stop_actions>
+    </event>
+</resources>

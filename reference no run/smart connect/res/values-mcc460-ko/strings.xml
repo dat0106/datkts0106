@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_wifi_hotspot">WLAN 핫스팟</string>
+    <string name="dlg_salvador_no_network_access_description_required_usage">태그를 사용하려면 네트워크에 접속해야 합니다. WLAN 또는 모바일 데이터 설정을 확인하세요.</string>
+</resources>

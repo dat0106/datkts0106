@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <event default_enabled="1">
+        <start_actions>
+               <action id="com.sonyericsson.extras.liveware.actions.wifi.Wifi"
+                       setting="off" />
+               <action id = "com.sonyericsson.extras.liveware.actions.bluetooth.Bluetooth"
+                         setting="off"/>
+               <action id="com.sonyericsson.extras.liveware.actions.soundmode.SoundMode"
+                       setting="silent"/>
+               <action id="com.sonyericsson.extras.liveware.actions.launchapp.LaunchApp"
+                          setting="com.sonyericsson.organizer/com.sonyericsson.organizer.Organizer||com.android.deskclock/com.android.deskclock.AlarmClock||com.google.android.deskclock/com.android.deskclock.AlarmClock"/>
+        </start_actions>
+        <stop_actions>
+               <action id="com.sonyericsson.extras.liveware.actions.wifi.Wifi"
+                       setting="on" />
+               <action id = "com.sonyericsson.extras.liveware.actions.bluetooth.Bluetooth"
+                         setting="on"/>
+               <action id="com.sonyericsson.extras.liveware.actions.soundmode.SoundMode"
+                       setting="normal"/>
+        </stop_actions>
+    </event>
+</resources>

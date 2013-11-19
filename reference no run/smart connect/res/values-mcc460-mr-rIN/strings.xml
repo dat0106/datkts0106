@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_wifi">WLAN</string>
+    <string name="action_wifi_hotspot">WLAN हॉटस्पॉट</string>
+    <string name="dlg_salvador_no_network_access_description_required_usage">टॅग वापरण्यासाठी नेटवर्क प्रवेश आवश्यक आहे. तुमचे वाय-फाय किंवा मोबाईल डेटा सेटिंग तपासा.</string>
+</resources>

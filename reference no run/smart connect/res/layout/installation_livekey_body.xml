@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="fill_parent" style="@style/ASFDialogBody"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="left" android:layout_gravity="left" android:id="@id/LKIntro" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:layout_gravity="center" style="@style/ASFRow.AppImage">
+            <ImageView android:layout_gravity="center" android:id="@id/LKImage" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/smartkey" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/ASFRowLabels">
+            <TextView android:layout_gravity="left" android:id="@id/LKText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dlg_smartkey_activation_msg_1" style="@style/ASFDialogText" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:id="@id/LKExpand" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/ASFDialogText" />
+    <LinearLayout android:id="@id/LKAppRow" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:layout_gravity="center" style="@style/ASFRow.AppImage">
+            <ImageView android:layout_gravity="center" android:id="@id/LKAppImage" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/ASFRowLabels">
+            <TextView android:layout_gravity="left" android:id="@id/LKAppName" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/ASFDialogText" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:id="@id/LKQuery" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/ASFDialogText" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/LKCheckLO" android:paddingBottom="20.0sp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <CheckBox android:layout_gravity="center_vertical" android:id="@id/LKCheck" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/install_v2_nagging_box" style="@style/ASFDialogText" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Smart Connect</string>
+    <string name="tts_action">tts_action</string>
+    <string name="a2dp_setting">a2dp_setting</string>
+    <string name="a2dp_mac_address">mac_address</string>
+    <string name="a2dp_device_name">device_name</string>
+    <string name="app_version_key">app_version_key</string>
+    <string name="open_source_attributions_key">open_source_attributions_key</string>
+    <string name="direct_call_setting_number">direct_call_setting_number</string>
+    <string name="direct_call_setting_type">direct_call_setting_type</string>
+    <string name="direct_call_setting_contact">direct_call_contact</string>
+    <string name="facebook_audience">facebook_audience</string>
+    <string name="ga_trackingId">UA-21337977-30</string>
+    <string name="ga_sampleFrequency">5</string>
+    <string name="facebook_api_key">394649867250121</string>
+    <string name="facebook_url">http://graph.facebook.com</string>
+    <string name="name_smartwatch">SmartWatch</string>
+    <string name="name_smart_wireless_headset_pro">Smart Wireless Headset pro</string>
+    <string name="semc_support_url">http://www.sonyericsson.com/support</string>
+    <string name="semc_url">http://www.sonyericsson.com/cws/products/accessories</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="intent_extra_accessory">com.sonyericsson.extras.liveware.extra.accessory</string>
+    <string name="attributions_text">"The product includes:
+
+The Android Open Source Project (Support Package v4; packages/apps/DeskClock: Alarm(s).java; frameworks/base/core/res/res/drawable-hdpi: ic_audio_*.png; BitmapFun: ImageCache.java, ImageWorker.java, RetainFragment.java, Utils.java; packages/apps/Contacts: PhotoSelectionHandler.java, ContactPhotoUtils.java; frameworks/base/core: Telephony.java)
+
+Project home page: http://source.android.com/
+
+Copyright © 2006–2011 The Android Open Source Project
+
+The Android Open Source Project is licensed under the Apache License, Version 2.0 (the \"License\").
+
+You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+See the License for the specific language governing permissions and limitations under the License.
+
+Facebook SDK for Android
+
+Project home page: https://github.com/facebook/facebook-android-sdk
+
+Copyright © 2011 Facebook, Inc.
+
+Original software licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this software except in complience with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+See the License for the specific language governing permissions and limitations under the License."</string>
+    <string name="copyright_year">2013</string>
+    <string name="event_name_usb_product_4046_53610">Event LiveDock™</string>
+    <string name="event_name_usb_product_4046_53626">Event SmartDoc</string>
+    <string name="event_name_usb_product_4046_65535">Event SmartDoc</string>
+    <string name="event_name_usb_class_gamecontroller">Event Game Controller</string>
+    <string name="event_name_usb_class_keyboard">Event Keyboard</string>
+    <string name="event_name_usb_class_mouse">Event Mouse</string>
+    <string name="event_name_usb_class_storage">Event Mass Storage</string>
+    <string name="event_name_usb_class_generic">Event Generic</string>
+    <string name="event_name_usb_class_audio">Event Audio</string>
+    <string name="event_name_bluetooth_headset">Event Bluetooth Headset</string>
+    <string name="event_name_bluetooth_headphones">Event Bluetooth Headphones</string>
+    <string name="event_name_bluetooth_speakers">Event Bluetooth Speakers</string>
+    <string name="event_name_bluetooth_mouse">Event Bluetooth Mouse</string>
+    <string name="event_name_bluetooth_gamecontroller">Event Bluetooth Game Controller</string>
+    <string name="event_name_liveview">Event LiveView</string>
+    <string name="event_name_sbh20">Event SBH20</string>
+    <string name="event_name_srs_btv25">Event SRS-BTV25</string>
+    <string name="event_name_mdr_1rbt">Event MDR-1RBT</string>
+    <string name="event_name_dr_btn200">Event DR-BTN200</string>
+    <string name="event_name_sony_tablet_s">Event Sony Tablet S</string>
+    <string name="name_nfc_product_1.2">@string/name_nfc_product_1.1</string>
+    <string name="name_nfc_product_1.3">@string/name_nfc_product_1.1</string>
+    <string name="name_nfc_product_1.4">@string/name_nfc_product_1.1</string>
+    <string name="name_nfc_product_2.5">@string/name_nfc_product_1.1</string>
+    <string name="name_nfc_product_2.6">@string/name_nfc_product_1.1</string>
+    <string name="name_nfc_product_2.7">@string/name_nfc_product_1.1</string>
+    <string name="name_nfc_product_2.8">@string/name_nfc_product_1.1</string>
+    <string name="smartkey_application_headset" />
+    <string name="name_srs_btv5">SRS-BTV5</string>
+    <string name="name_sony_bravia">Sony BRAVIA</string>
+    <string name="name_tv">TV</string>
+    <string name="name_sony_nasne">Sony Nasne</string>
+    <string name="name_ps3">PS3</string>
+    <string name="name_pc">PC</string>
+    <string name="name_phone">Phone</string>
+    <string name="name_sony_bdr">Sony BDR</string>
+    <string name="name_dms">DMS</string>
+    <string name="name_dmr">DMR</string>
+    <string name="name_wfd">WFD</string>
+    <string name="name_bluetooth">Bluetooth</string>
+    <string name="name_lt29i">LT29i</string>
+    <string name="name_sony_vaio">Sony VAIO</string>
+    <string name="name_sr_7734">@string/name_srs_btv5</string>
+    <string name="name_charging_dock">@string/name_charger_dock</string>
+    <string name="event_name_charger_nc">Night</string>
+    <string name="event_name_headset_nc">Music on the go</string>
+    <string name="event_name_headphones_nc">Music at home</string>
+    <string name="event_name_nfc_product_1.1_nc">Car</string>
+    <string name="event_name_nfc_product_1.2_nc">Home</string>
+    <string name="event_name_nfc_product_1.3_nc">Bedroom</string>
+    <string name="event_name_nfc_product_1.4_nc">Office</string>
+    <string name="event_name_nfc_product_2.5_nc">Active</string>
+    <string name="event_name_nfc_product_2.6_nc">Listen</string>
+    <string name="event_name_nfc_product_2.7_nc">Watch</string>
+    <string name="event_name_nfc_product_2.8_nc">Play</string>
+    <string name="event_name_bluetooth_keyboard_nc">Office</string>
+    <string name="event_name_mw600_nc">Car</string>
+    <string name="event_name_mhl_nc">TV</string>
+    <string name="event_name_charging_dock_nc">View</string>
+    <string name="preference_key_enable_google_analytics">key_google_analytics</string>
+    <string name="preference_key_enable_vibrations">key_vibrate</string>
+    <string name="preference_key_enable_notifications">key_notification</string>
+    <string name="preference_key_enable_toasts">key_toast</string>
+    <string name="preference_key_screen_main">key_main_screen</string>
+    <string name="preference_key_category_general">key_category_general</string>
+    <string name="preference_key_enable_tts">key_tts</string>
+    <string name="accy_view_download">Download and install</string>
+    <string name="accy_view_set_and_search">Assign and search</string>
+    <string name="app_info">App info</string>
+    <string name="app_launch">App start</string>
+    <string name="app_name_homescreen">Smart Connect</string>
+    <string name="app_view_search">Search for more applications</string>
+    <string name="cancel">Cancel</string>
+    <string name="context_menu_item_delete_accy">Delete</string>
+    <string name="context_menu_item_disable_app">Disable</string>
+    <string name="install_device_msg">Connected: %s</string>
+    <string name="menu_item_about">Version</string>
+    <string name="menu_item_search_updates">Check for updates</string>
+    <string name="name_charger">Charger</string>
+    <string name="name_charger_dock">Charging dock</string>
+    <string name="name_headphones">Headphones</string>
+    <string name="name_headset">Headset</string>
+    <string name="name_usb_keyboard">USB keyboard</string>
+    <string name="name_usb_mouse">USB mouse</string>
+    <string name="name_usb_gamepad">USB Game controller</string>
+    <string name="name_usb_speakers">USB speakers</string>
+    <string name="name_usb_headset">USB headset</string>
+    <string name="name_usb_disk">USB external memory</string>
+    <string name="name_bt_keyboard">Bluetooth keyboard</string>
+    <string name="name_bt_mouse">Bluetooth mouse</string>
+    <string name="name_bt_gamepad">Bluetooth Game controller</string>
+    <string name="name_bt_speakers">Bluetooth speakers</string>
+    <string name="name_bt_headset">Bluetooth headset</string>
+    <string name="name_usb_device">USB device</string>
+    <string name="name_smartdock">SmartDock</string>
+    <string name="no_application">None</string>
+    <string name="ok">OK</string>
+    <string name="permission_display_group_label">Read or update your data</string>
+    <string name="permission_display_label">Allows this Sony certified application to access data provided by all device applications used for viewing and interaction</string>
+    <string name="permission_extension_group_label">Application data</string>
+    <string name="permission_extension_header_label">Share application data</string>
+    <string name="permission_extension_label">Allow sharing application data using Sony Smart Extras™</string>
+    <string name="plugins">Plug-ins</string>
+    <string name="uninstall">Uninstall</string>
+    <string name="dlg_permission_title">Permission required</string>
+    <string name="dlg_permission_body">"%s is installed. In order for it to work with Sony Smart Extras™, the application's data needs to be shared with the Sony Smart Extras™ device."</string>
+    <string name="dlg_permission_query">Allow Sony Smart Extras™ applications to read application data?</string>
+    <string name="dlg_permission_footer">Note that use of application may not be possible if permission is denied</string>
+    <string name="dlg_permission_allow">Allow</string>
+    <string name="dlg_permission_deny">Deny</string>
+    <string name="name_mhl">HDMI/MHL</string>
+    <string name="dlg_smart_launch_msg_1">%s connected</string>
+    <string name="dlg_smart_launch_install_required_msg_2">Install the required application for this device?</string>
+    <string name="dlg_smart_launch_install_recommended_msg_2">Install the recommended application for this device?</string>
+    <string name="dlg_smartkey_activation_msg_1">You have pressed the app key on your device</string>
+    <string name="dlg_smartkey_no_app_set_ask_msg_2">Select application to take action when pressing the app key?</string>
+    <string name="install_v2_nagging_box">Do not ask again</string>
+    <string name="dlg_install_yes">Yes</string>
+    <string name="dlg_install_no">No</string>
+    <string name="select_smart_key_app_info">Select application to take action when pressing the app key on the device</string>
+    <string name="somc_copyright">©%s Sony Mobile Communications AB</string>
+    <string name="device_tab">Devices</string>
+    <string name="event_tab">Events</string>
+    <string name="menu_item_info">App info</string>
+    <string name="edit_event_triggers">When</string>
+    <string name="edit_event_start_actions">Do this</string>
+    <string name="edit_event_stop_actions">At the end</string>
+    <string name="edit_event_initiator_device">Device</string>
+    <string name="edit_event_initiator_time">Time</string>
+    <string name="edit_event_menu_item_rename">Rename event</string>
+    <string name="edit_event_menu_item_copy">Copy event</string>
+    <string name="edit_event_menu_item_delete_items">Delete items</string>
+    <string name="edit_event_menu_item_stop">End event</string>
+    <string name="edit_event_context_menu_delete">Delete</string>
+    <string name="dlg_rename_event_title">Rename event</string>
+    <string name="dlg_rename_button_rename">Rename</string>
+    <string name="dlg_copy_event_title">Copy event</string>
+    <string name="dlg_copy_button_copy">Copy</string>
+    <string name="dlg_delete_event_title">Delete event</string>
+    <string name="dlg_delete_event_text">Delete event %1$s?</string>
+    <string name="dlg_delete_events">Delete event(s)?</string>
+    <string name="event_list_add_event">Add event</string>
+    <string name="event_list_selected_items">%1$d selected</string>
+    <string name="menu_item_delete_event">Delete event</string>
+    <string name="menu_item_disable_event">Disable event</string>
+    <string name="menu_item_enable_event">Enable event</string>
+    <string name="dlg_add_event_title">Create new event</string>
+    <string name="dlg_enter_event_name">Give the event a name</string>
+    <string name="dlg_add_event_button_create">Create</string>
+    <string name="dlg_button_cancel">Cancel</string>
+    <string name="dlg_button_delete">Delete</string>
+    <string name="device_list_last_used">Last used</string>
+    <string name="device_list_suggestions">Suggestions</string>
+    <string name="device_list_title">Device</string>
+    <string name="device_list_none">No initiator selected</string>
+    <string name="footer_button_cancel">Cancel</string>
+    <string name="footer_button_done">Done</string>
+    <string name="time_initiator_title">Time</string>
+    <string name="time_initiator_between">Between:</string>
+    <string name="time_initiator_toast_same_time">Start and stop time cannot be the same</string>
+    <string name="choose_action_title_start_action">Add start action</string>
+    <string name="choose_action_title_stop_action">Add end action</string>
+    <string name="delete_items_title">Delete items</string>
+    <string name="delete_items_button_delete_no_selected">Delete</string>
+    <string name="delete_items_button_delete">Delete (%1$d)</string>
+    <string name="dlg_delete_items_text">Delete items?</string>
+    <string name="start_page_empty_text">Create a new event by tapping the plus icon above.</string>
+    <string name="dlg_first_time_button_next_normal">Enable</string>
+    <string name="dlg_first_time_button_next_large">Next</string>
+    <string name="dlg_first_time_do_not_show_again">Do not show this again</string>
+    <string name="dlg_first_time_tag_body">"NFC SmartTag identified
+
+%1$s event associated with this device. Preconfigured actions available.
+
+%1$s will be initiated each time you connect to this NFC tag.
+
+Tap Next to view the %1$s actions associated with NFC SmartTag."</string>
+    <string name="dlg_first_time_device_with_event">"%1$s connected.
+
+This device will initiate %2$s, a preconfigured set of actions.
+
+Tap Enable to initiate. On the next page, you can edit settings for %2$s."</string>
+    <string name="notification_event_start_actions_counted">Start actions initiated: %d</string>
+    <string name="notification_event_stop_actions_counted">End actions initiated: %d</string>
+    <string name="status_bar_event_start_actions">%s - start</string>
+    <string name="status_bar_event_stop_actions">%s - end</string>
+    <string name="action_bluetooth">Bluetooth</string>
+    <string name="action_launch_app">Start application</string>
+    <string name="action_launch_url">Open webpage</string>
+    <string name="action_play_music">Play tracks</string>
+    <string name="action_sms">Send text message</string>
+    <string name="action_sound_mode">Sound mode</string>
+    <string name="action_wifi">Wi-Fi</string>
+    <string name="action_wifi_hotspot">Wi-Fi hotspot</string>
+    <string name="edit_url">Enter webpage address</string>
+    <string name="new_sms">New text message</string>
+    <string name="no_music">No tracks found</string>
+    <string name="off">Off</string>
+    <string name="on">On</string>
+    <string name="pause">Pause</string>
+    <string name="play">Play</string>
+    <string name="play_next">Play next</string>
+    <string name="play_track">Play track</string>
+    <string name="sms_message_prompt">Message</string>
+    <string name="toggle">Toggle</string>
+    <string name="tts_action_speak_current_time">Read current time</string>
+    <string name="tts_action_speak_sms">Read text messages</string>
+    <string name="tts_current_time">Current time is:</string>
+    <string name="uri_not_recognized">Not a valid web address</string>
+    <string name="no_android_market">Google Play not installed.</string>
+    <string name="volume_ring_description">Ringtone &amp; notifications</string>
+    <string name="volume_alarm_description">Alarms</string>
+    <string name="action_direct_call">Direct call</string>
+    <string name="to">To</string>
+    <string name="add_bt_device">Add Bluetooth device</string>
+    <string name="no_paired_bt_devices">No paired Bluetooth devices</string>
+    <string name="contact_no_phone">No number registered</string>
+    <string name="volume_media_description">Music, video, games &amp; other media</string>
+    <string name="action_volume">Volumes</string>
+    <string name="action_data_traffic">Data traffic</string>
+    <string name="action_a2dp">Bluetooth audio connect</string>
+    <string name="event_name_charger">Night</string>
+    <string name="event_name_headset">Music on the go</string>
+    <string name="event_name_headphones">Music at home</string>
+    <string name="event_name_nfc_product_1.1">Car</string>
+    <string name="name_nfc_product_1.1">SmartTag</string>
+    <string name="event_name_nfc_product_1.2">Home</string>
+    <string name="event_name_nfc_product_1.3">Bedroom</string>
+    <string name="event_name_nfc_product_1.4">Office</string>
+    <string name="name_itchy">LiveDock™</string>
+    <string name="event_name_bluetooth_keyboard">Office</string>
+    <string name="name_liveview">LiveView™</string>
+    <string name="event_name_mw600">Car</string>
+    <string name="name_mw600">MW600</string>
+    <string name="name_srs_btv25">SRS-BTV25</string>
+    <string name="name_sony_tablet_s">Sony Tablet S</string>
+    <string name="event_name_mhl">TV</string>
+    <string name="normal_mode">Normal</string>
+    <string name="silent_mode">Silent</string>
+    <string name="wifidisplay_action">Screen mirroring</string>
+    <string name="facebook_action">Post on Facebook</string>
+    <string name="facebook_message_logged_in">Logged in</string>
+    <string name="facebook_message_audience">Audience</string>
+    <string name="facebook_message_audience_private">Only me</string>
+    <string name="facebook_message_audience_friends_except">Friends except Acquaintances</string>
+    <string name="facebook_message_audience_friends">Friends</string>
+    <string name="facebook_message_audience_public">Public</string>
+    <string name="facebook_message_prompt">Message to post</string>
+    <string name="facebook_error_notification_header">Smart Connect Facebook</string>
+    <string name="facebook_error_notification_text">An error occurred. Please log in.</string>
+    <string name="facebook_log_out_confirm_txt">Log out from Facebook?</string>
+    <string name="working">Updating</string>
+    <string name="facebook_post_play">I’m using SmartTags</string>
+    <string name="facebook_post_active">Working out. SmartTags enabled. Back soon.</string>
+    <string name="facebook_post_watch">I’m using SmartTags</string>
+    <string name="facebook_post_listen">Listening to the coolest music. SmartTags enabled. I just love this sound!</string>
+    <string name="event_name_nfc_product_2.5">Active</string>
+    <string name="event_name_nfc_product_2.6">Listen</string>
+    <string name="event_name_nfc_product_2.7">Watch</string>
+    <string name="event_name_nfc_product_2.8">Play</string>
+    <string name="smartkey_select_new">Select new</string>
+    <string name="dlg_first_time_tag_app_found_uninstall">"NFC SmartTag identified.
+
+SmartTags are now handled by the Smart Connect application. The SmartTags application is no longer used. Any settings done in the SmartTags application have to be redone in the Smart Connect application. To save memory, uninstall the SmartTags application."</string>
+    <string name="dlg_first_time_tag_app_found_info">"NFC SmartTag identified.
+
+SmartTags are now handled by the Smart Connect application. The SmartTags application is no longer used. Any settings done in the SmartTags application have to be redone in the Smart Connect application."</string>
+    <string name="add_device">Add device</string>
+    <string name="welcome_page_devices">Smart Connect helps you connect your devices and find out how to use them.</string>
+    <string name="welcome_page_events">Decide what will happen when you connect to another device. Smart Connect is device and time sensitive. Choose between single and multiple actions.</string>
+    <string name="edit_event_add_condition">Add condition</string>
+    <string name="edit_event_add_start_action">Add start action</string>
+    <string name="edit_event_add_end_action">Add end action</string>
+    <string name="device_page_empty">There are no features or events linked to this device.</string>
+    <string name="event_name_charging_dock">View</string>
+    <string name="vibrate_mode">Vibrate</string>
+    <string name="edit_event_complete_hint">In order for an event to work, you need to select at least one condition and one action.</string>
+    <string name="time_trigger_repeat_label">Repeat</string>
+    <string name="time_trigger_repeat_every_day">Every day</string>
+    <string name="dlg_button_done">Done</string>
+    <string name="action_summary_label_start_actions">Start</string>
+    <string name="action_summary_label_end_actions">End</string>
+    <string name="choose_image_album">Album</string>
+    <string name="choose_image_camera">Take photo</string>
+    <string name="choose_image_title">Change image</string>
+    <string name="toast_photo_picker_error">Could not change image</string>
+    <string name="dlg_button_close">Close</string>
+    <string name="preferences_app_description">Connect to devices. Create automatic actions.</string>
+    <string name="volume_notification_description">Notifications</string>
+    <string name="tts_sms_notification_title">Read text messages out loud</string>
+    <string name="tts_sms_notification_text">On. Tap here to turn off.</string>
+    <string name="tts_sms_notification_ticker">"Read text messages out loud activated "</string>
+    <string name="dlg_tts_sms_turn_off_text">Turn off read out of text messages?</string>
+    <string name="dlg_tts_sms_turn_off_button">Turn off</string>
+    <string name="toast_auto_start_action">Start action added automatically: %s</string>
+    <string name="toast_auto_end_action">End action added automatically: %s</string>
+    <string name="action_app_shortcut">Start shortcut</string>
+    <string name="category_apps">Applications</string>
+    <string name="category_sound">Sound</string>
+    <string name="category_media">Media</string>
+    <string name="category_communication">Communication</string>
+    <string name="category_network">Wireless &amp; Networks</string>
+    <string name="category_tts">Text To Speech</string>
+    <string name="category_display">Display</string>
+    <string name="category_other">Other</string>
+    <string name="action_config_error">Could not configure: %s</string>
+    <string name="action_brightness">Brightness</string>
+    <string name="edit_event_context_menu_edit">Edit</string>
+    <string name="title_waterproof_cable_remove_txt">Waterproof</string>
+    <string name="waterproof_cable_remove_txt">Please close the external connector covers to secure waterproofness.</string>
+    <string name="waterproof_cable_remove_dont_tell_me_again_txt">"Don't tell me again"</string>
+    <string name="device_page_header_smart_key">SmartKey</string>
+    <string name="device_page_header_events">Events</string>
+    <string name="device_page_call_key">Call key settings</string>
+    <string name="device_page_app_key">App key settings</string>
+    <string name="app_key_title">App key</string>
+    <string name="update_smartconnect_body">"You need to update to the latest version of Smart Connect before you can use this accessory.
+
+Do you want to update Smart Connect?"</string>
+    <string name="update_smartconnect_button">Update</string>
+    <string name="legal_dialog_data_traffic">Your use of this service may be subject to for example data transmission charges depending on your subscription with your service provider. Sony Mobile Communications AB and its providers do not warrant that (a) the service will be error-free (b) your use of the service will be uninterrupted or error-free or (c) the service will meet your requirements or expectations.</string>
+    <string name="menu_item_legal">Legal</string>
+    <string name="menu_item_settings">Settings</string>
+    <string name="title_preferences">Settings</string>
+    <string name="preference_title_google_analytics">Data collection</string>
+    <string name="preference_summary_google_analytics">Help improve quality by allowing collection of anonymous usage statistics</string>
+    <string name="preference_title_event_toast">Popup</string>
+    <string name="preference_summary_event_toast">Show small popup when event starts and ends</string>
+    <string name="preference_title_event_notification">Notification</string>
+    <string name="preference_summary_event_notification">Show notification in status bar when event starts and ends</string>
+    <string name="preference_title_event_vibrate">Vibration</string>
+    <string name="preference_summary_event_vibrate">Vibrate when an event starts and ends</string>
+    <string name="preference_category_general">General</string>
+    <string name="preference_category_event">Event</string>
+    <string name="choose_contact">Select contact</string>
+    <string name="action_clear_audio_plus">ClearAudio+</string>
+    <string name="device_list_button_web_shop">Shop accessories</string>
+    <string name="action_show_home_screen">Go to Home screen</string>
+    <string name="dialog_only_owner">This version of Smart Connect can be used only by the owner of the device.</string>
+    <string name="preference_title_tts">Text to speech</string>
+    <string name="preference_summary_tts">Automatically read incoming text messages out loud</string>
+    <string name="app_missing">MISSING: %s</string>
+    <string name="dlg_launchapp_download_recommended">Download app</string>
+    <string name="dlg_launchapp_use_other">Use another app</string>
+    <string name="device_page_menu_rename">Rename device</string>
+    <string name="dlg_rename_device_title">Rename device</string>
+    <string name="name_nfc_product_3">SmartTag NT3</string>
+    <string name="name_tag">tag</string>
+    <string name="finish">Finish</string>
+    <string name="retry">Retry</string>
+    <string name="start">Start</string>
+    <string name="save_locally">Save locally</string>
+    <string name="remove_device">Delete device</string>
+    <string name="button_previous_description">Previous</string>
+    <string name="button_next_description">Next</string>
+    <string name="current_step_txt">Step %1$s of %2$d</string>
+    <string name="salvador_create_event_title_create_share_upper">Create event</string>
+    <string name="salvador_create_event_title_create_share_lower">Share with friends</string>
+    <string name="salvador_create_event_title_event_description">Event description</string>
+    <string name="salvador_create_event_introduction_description">You can edit an event related to this SmartTag NT3. Anyone who touches this tag (via NFC) will experience your event.</string>
+    <string name="salvador_create_event_introduction_description_watch_video">Watch %s for inspiration or create your event below.</string>
+    <string name="salvador_create_event_introduction_description_video">video</string>
+    <string name="salvador_create_event_introduction_create">Create new event</string>
+    <string name="salvador_create_event_template_action_description_decision">Decide what you want to happen when tag is touched (via NFC).</string>
+    <string name="salvador_create_event_template_description_usage">Use one of the suggested events below or select Create own.</string>
+    <string name="salvador_create_event_template_call_number">Call this number</string>
+    <string name="salvador_create_event_template_call_number_description">Create a tag for your dog! Example: If dog runs away, the finder could touch the tag and call the owner.</string>
+    <string name="salvador_create_event_template_share_link">Share link</string>
+    <string name="salvador_create_event_template_share_link_description">Share a link to your favourite web album, music streaming playlist or website.</string>
+    <string name="salvador_create_event_template_share_contact">Share contact</string>
+    <string name="salvador_create_event_template_share_contact_description">Share your business card via your SmartTag NT3.</string>
+    <string name="salvador_create_event_template_create_own">Create own</string>
+    <string name="salvador_create_event_action_add_action">Add action</string>
+    <string name="salvador_create_event_summary_description">When tag is touched with NFC device, this will happen:</string>
+    <string name="salvador_create_event_summary_event_name">Event name:</string>
+    <string name="salvador_event_device_list_description">This is an editable tag. Only you can edit but anyone who touches the tag will enjoy the experience.</string>
+    <string name="salvador_event_associated_with_tag">Event</string>
+    <string name="salvador_no_event_associated_with_tag">No event</string>
+    <string name="salvador_no_event_associated_with_tag_description">There is no event associated with this tag.</string>
+    <string name="dlg_salvador_no_network_access_title">No network access</string>
+    <string name="dlg_salvador_no_network_access_description_required_usage">Network access required to use tag. Check your Wi-Fi or mobile data settings.</string>
+    <string name="dlg_salvador_no_server_connection_title">No server connection</string>
+    <string name="dlg_salvador_no_server_connection_description">Server connection required to create event.</string>
+    <string name="dlg_salvador_event_not_saved_online_title">Event not saved online</string>
+    <string name="dlg_salvador_event_not_saved_online_text_1">Server connection required to save event online.</string>
+    <string name="dlg_salvador_event_not_saved_online_text_2">Event will be saved on device.</string>
+    <string name="dlg_salvador_replace_event_title">Replace existing event</string>
+    <string name="dlg_salvador_replace_event_text">This will replace the existing event connected to SmartTag NT3.</string>
+    <string name="dlg_salvador_share_link_text">You need network access before you can share this link via a SmartTag NT3.</string>
+    <string name="dlg_salvador_delete_tag_warning_title">Note:</string>
+    <string name="dlg_salvador_delete_tag_text_1">By deleting SmartTag NT3 from device, the tag will be reset and any events will be deleted.</string>
+    <string name="dlg_salvador_delete_tag_text_2">If someone else connects to this tag and creates an event, you will no longer be event administrator.</string>
+    <string name="dlg_salvador_delete_tag_no_network_access_text">Network access required to delete SmartTag NT3 from Devices.</string>
+    <string name="dlg_salvador_delete_event_title">Delete event</string>
+    <string name="dlg_salvador_delete_event_text">You are about to delete an event associated with this SmartTag NT3.</string>
+    <string name="dlg_salvador_no_network_access_description_required_remove">Network access required to delete event.</string>
+    <string name="dlg_salvador_event_removed">Event has been deleted.</string>
+    <string name="action_import_contact">Share contact</string>
+    <string name="title_waterresistant_cable_remove_txt">Water resistance</string>
+    <string name="waterresistant_cable_remove_txt">Please close the external connector covers to secure water resistance.</string>
+</resources>

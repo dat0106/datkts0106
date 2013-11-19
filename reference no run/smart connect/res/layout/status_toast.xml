@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/toast_plate" android:layout_width="300.0dip" android:layout_height="wrap_content">
+        <ImageView android:id="@id/ToastImageApp" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:src="@drawable/app_icon" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <View android:id="@id/ToastDivider" android:background="@drawable/toast_divider" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_marginTop="10.0dip" android:layout_below="@id/ToastImageApp" />
+        <ImageView android:id="@id/ToastActionImage" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginTop="10.0dip" android:src="@drawable/action_start_application_" android:layout_below="@id/ToastDivider" android:layout_alignLeft="@id/ToastImageApp" />
+        <TextView android:textSize="17.0sp" android:id="@id/ToastHeader" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="14.0dip" android:layout_toRightOf="@id/ToastImageApp" android:layout_alignParentTop="true" style="@style/ToastText.Title" />
+        <TextView android:textSize="15.0sp" android:id="@id/ToastAction" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="7.0dip" android:layout_toLeftOf="@id/ActionToastImageResult" android:layout_toRightOf="@id/ToastActionImage" android:layout_below="@id/ToastDivider" style="@style/ToastText.Message" />
+        <TextView android:textSize="12.0sp" android:id="@id/ToastActionSetting" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="29.0dip" android:layout_toLeftOf="@id/ActionToastImageResult" android:layout_toRightOf="@id/ToastActionImage" android:layout_below="@id/ToastDivider" style="@style/ToastText.Message" />
+        <ImageView android:id="@id/ActionToastImageResult" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginRight="10.0dip" android:layout_alignTop="@id/ToastActionImage" android:layout_alignParentRight="true" />
+        <ProgressBar android:id="@id/ActionToastImageResultPending" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginRight="10.0dip" android:layout_alignTop="@id/ToastActionImage" android:layout_alignParentRight="true" />
+        <View android:layout_width="fill_parent" android:layout_height="10.0dip" android:layout_below="@id/ToastActionImage" />
+    </RelativeLayout>
+</LinearLayout>

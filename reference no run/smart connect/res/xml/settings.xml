@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:key="@string/preference_key_screen_main"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/preference_category_general" android:key="@string/preference_key_category_general">
+        <com.sonyericsson.extras.liveware.preference.BidiCheckBoxPreference android:persistent="true" android:title="@string/preference_title_google_analytics" android:key="@string/preference_key_enable_google_analytics" android:summary="@string/preference_summary_google_analytics" android:defaultValue="true" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/preference_category_event">
+        <com.sonyericsson.extras.liveware.preference.BidiCheckBoxPreference android:title="@string/preference_title_event_toast" android:key="@string/preference_key_enable_toasts" android:summary="@string/preference_summary_event_toast" android:defaultValue="true" />
+        <com.sonyericsson.extras.liveware.preference.BidiCheckBoxPreference android:title="@string/preference_title_event_notification" android:key="@string/preference_key_enable_notifications" android:summary="@string/preference_summary_event_notification" android:defaultValue="true" />
+        <com.sonyericsson.extras.liveware.preference.BidiCheckBoxPreference android:title="@string/preference_title_event_vibrate" android:key="@string/preference_key_enable_vibrations" android:summary="@string/preference_summary_event_vibrate" android:defaultValue="true" />
+        <com.sonyericsson.extras.liveware.preference.BidiCheckBoxPreference android:title="@string/preference_title_tts" android:key="@string/preference_key_enable_tts" android:summary="@string/preference_summary_tts" android:dependency="@string/preference_key_enable_tts" android:defaultValue="false" />
+    </PreferenceCategory>
+</PreferenceScreen>

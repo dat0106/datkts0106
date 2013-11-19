@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="WelcomePageHeader.full" parent="@style/WelcomePageHeader">
+        <item name="android:textSize">56.0dip</item>
+    </style>
+    <style name="WelcomePageBody.full" parent="@style/WelcomePageBody">
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+    </style>
+    <style name="WelcomePageImagePadding.orient.full" parent="@style/WelcomePageImagePadding.orient">
+        <item name="android:layout_weight">0.2</item>
+    </style>
+    <style name="WelcomePageButton" parent="@style/ASFTextButtonMedium">
+        <item name="android:layout_marginTop">32.0dip</item>
+    </style>
+    <style name="EditPageHint.full" parent="@style/EditPageHint">
+        <item name="android:layout_marginTop">8.0dip</item>
+    </style>
+</resources>
