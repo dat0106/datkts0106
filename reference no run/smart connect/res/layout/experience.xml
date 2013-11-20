@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:id="@id/edit_event" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/edit_event_complete_hint" android:visibility="gone" android:text="@string/edit_event_complete_hint" style="@style/EditPageHint" />
+    <TextView
+        android:id="@id/edit_event_complete_hint"
+        android:visibility="gone"
+        android:text="@string/edit_event_complete_hint"
+        style="@style/EditPageHint" />
     <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.sonyericsson.extras.liveware.ui.AspectRatioImageView android:id="@id/edit_event_background_image" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitStart" />
-        <ListView android:id="@*android:id/list" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/ASFListStyle" />
+        <com.sonyericsson.extras.liveware.ui.AspectRatioImageView
+            android:id="@id/edit_event_background_image"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitStart" />
+        <ListView
+            android:id="@*android:id/list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            style="@style/ASFListStyle" />
     </FrameLayout>
 </LinearLayout>

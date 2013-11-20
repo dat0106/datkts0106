@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.smartsystem"
+    package="com.smartschedule"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -15,7 +15,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.smartsystem.MainActivity"
+            android:name="com.smartschedule.MainActivity"
             android:label="@string/app_name"
             android:uiOptions="splitActionBarWhenNarrow">
             <intent-filter>
@@ -24,16 +24,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".SampleAlarmReceiver"></receiver>
+        <receiver android:name="com.smartschedule.SampleAlarmReceiver"></receiver>
 
-        <receiver android:name=".SampleBootReceiver"
+        <receiver android:name="com.smartschedule.SampleBootReceiver"
                 android:enabled="false">
             <intent-filter>
 
             <action android:name="android.intent.action.BOOT_COMPLETED"></action>
             </intent-filter>
         </receiver>
-        <service android:name=".SampleSchedulingService" />
+        <service android:name="com.smartschedule.SampleSchedulingService" />
     </application>
 
 </manifest>

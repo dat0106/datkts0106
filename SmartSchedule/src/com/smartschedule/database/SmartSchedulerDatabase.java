@@ -61,7 +61,7 @@ public class SmartSchedulerDatabase {
         openHelper.close();
     }
 
-    public long createData(String name, String image, int time_start, int time_end, int category, String state){
+    public long createData(String name, String image, int time_start, int time_end, int category, int state){
         ContentValues event =  new ContentValues();
         event.put(COLUMN_EVENT_NAME, name);
         event.put(COLUMN_EVENT_IMAGE, image);
@@ -123,7 +123,7 @@ public class SmartSchedulerDatabase {
                     + COLUMN_EVENT_ACTION_END + " INT NOT NULL UNIQUE, "
                     + COLUMN_EVENT_STATE + " INT NOT NULL "
                     +	");");
-            arg0.execSQL("CREATE TABLE" + TABLE_SCHEDULE + " ("
+            arg0.execSQL("CREATE TABLE " + TABLE_SCHEDULE + " ("
                     + COLUMN_SCHEDULE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + COLUMN_SCHEDULE_MON + " BOOLEAN DEFAULT FALSE, "
                     + COLUMN_SCHEDULE_TUE + " BOOLEAN DEFAULT FALSE, "
@@ -133,7 +133,7 @@ public class SmartSchedulerDatabase {
                     + COLUMN_SCHEDULE_SAT + " BOOLEAN DEFAULT FALSE, "
                     + COLUMN_SCHEDULE_SUN + " BOOLEAN DEFAULT FALSE "
                     +	");");
-            arg0.execSQL("CREATE TABLE" + TABLE_ACTION + " ("
+            arg0.execSQL("CREATE TABLE " + TABLE_ACTION + " ("
                     + COLUMN_ACTION_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + COLUMN_ACTION_START_ID + " INTEGER DEFAULT NULL, "
                     + COLUMN_ACTION_END_ID + " INTEGER DEFAULT NULL, "

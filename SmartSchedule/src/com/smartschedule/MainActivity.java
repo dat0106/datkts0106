@@ -4,7 +4,6 @@ import java.util.Calendar;
 
 import util.Util;
 
-import com.example.smartsystem.R;
 import com.smartschedule.database.SmartSchedulerDatabase;
 import com.smartschedule.database.SmartSystemDatabase;
 
@@ -50,6 +49,10 @@ public class MainActivity extends Activity {
               database.createData(100);
               database.close();
 
+              smartScheduteDb.open();
+              smartScheduteDb.createData("sample", "image", 123456, 1234567, 1, 1);
+              smartScheduteDb.close();
+
             }
         });
 
@@ -62,7 +65,12 @@ public class MainActivity extends Activity {
               database.open();
               String[] data = database.getCountData();
               database.close();
-              editText1.setText(data[0] + "\n" +  data[1]);
+
+              smartScheduteDb.open();
+              String data1  = smartScheduteDb.getAllData();
+              smartScheduteDb.close();
+
+              editText1.setText(data1 + "\n"+ data[0] + "\n" +  data[1] );
 //              Toast.makeText(getApplicationContext(), data[0] + data[1], Toast.LENGTH_LONG).show();
             }
         });

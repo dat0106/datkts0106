@@ -1,6 +1,5 @@
 package com.smartschedule;
 
-import com.example.smartsystem.R;
 import com.smartschedule.database.SmartSystemDatabase;
 
 import android.app.IntentService;
@@ -29,7 +28,7 @@ public class SampleSchedulingService extends IntentService{
         database.createData(count);
         database.close();
         sendNotification("lập lịch làm việc ");
-        
+
     }
 
     private void sendNotification(String msg) {
