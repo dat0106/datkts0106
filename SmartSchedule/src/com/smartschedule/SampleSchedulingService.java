@@ -1,6 +1,7 @@
-package com.example.smartsystem;
+package com.smartschedule;
 
-import com.smartsystem.database.SmartSystemDatabase;
+import com.example.smartsystem.R;
+import com.smartschedule.database.SmartSystemDatabase;
 
 import android.app.IntentService;
 import android.app.NotificationManager;

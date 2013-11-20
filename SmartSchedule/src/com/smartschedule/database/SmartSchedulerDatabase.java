@@ -1,10 +1,11 @@
-package com.smartsystem.database;
+package com.smartschedule.database;
 
 import java.text.SimpleDateFormat;
 import java.util.concurrent.ScheduledExecutorService;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -51,25 +52,56 @@ public class SmartSchedulerDatabase {
     }
 
     public SmartSchedulerDatabase open() throws  SQLException {
-    	openHelper = new OpenHelper(context);
-    	db = openHelper.getWritableDatabase();
-    	return this;
+        openHelper = new OpenHelper(context);
+        db = openHelper.getWritableDatabase();
+        return this;
     }
 
     public void close(){
-    	openHelper.close();
+        openHelper.close();
     }
 
-    public long createData(String name, String image, int time_start, int time_end){
-    	ContentValues event =  new ContentValues();
-    	event.put(COLUMN_EVENT_NAME, name);
-    	event.put(COLUMN_EVENT_IMAGE, image);
-    	event.put(COLUMN_EVENT_TIME_START, time_start);
-    	event.put(COLUMN_EVENT_TIME_END, time_end);
-//    	String Schedule =  db.rawQuery(sql, selectionArgs);
-//		event.put(COLUMN_EVENT_SCHEDULE, Schedule );
-		return 0;
+    public long createData(String name, String image, int time_start, int time_end, int category, String state){
+        ContentValues event =  new ContentValues();
+        event.put(COLUMN_EVENT_NAME, name);
+        event.put(COLUMN_EVENT_IMAGE, image);
+        event.put(COLUMN_EVENT_TIME_START, time_start);
+        event.put(COLUMN_EVENT_TIME_END, time_end);
 
+        Cursor mCount= db.rawQuery("select count(*) from " + TABLE_EVENT, null);
+        mCount.moveToFirst();
+        int count= mCount.getInt(0);
+        mCount.close();
+        event.put(COLUMN_EVENT_SCHEDULE, count + 1 );
+        event.put(COLUMN_EVENT_CATEGORY, category);
+        event.put(COLUMN_EVENT_ACTION_START, count + 1 );
+        event.put(COLUMN_EVENT_ACTION_END, count + 1 );
+        event.put(COLUMN_EVENT_STATE, state );
+        return db.insert(TABLE_EVENT, null, event);
+
+    }
+
+    public String getAllData() {
+        String[] columns = new String[]{COLUMN_EVENT_ID, COLUMN_EVENT_NAME, COLUMN_EVENT_IMAGE,
+                COLUMN_EVENT_TIME_START, COLUMN_EVENT_TIME_END, COLUMN_EVENT_SCHEDULE,
+                COLUMN_EVENT_CATEGORY, COLUMN_EVENT_ACTION_START, COLUMN_EVENT_ACTION_END,
+                COLUMN_EVENT_STATE};
+        Cursor c =  db.query(TABLE_EVENT, columns, null, null, null, null, null);
+
+
+
+        String result = "";
+
+        int iId = c.getColumnIndex(COLUMN_EVENT_ID);
+        int iName = c.getColumnIndex(COLUMN_EVENT_NAME);
+
+        for(c.moveToFirst(); !c.isAfterLast(); c.moveToNext()){
+            result = result
+                    + " - _id:" + c.getString(iId)
+                    + " - name:" + c.getString(iName) + "\n";
+        }
+//        String[]  total =  new String[]{"count: " + count, " value:" + result};
+        return result;
     }
     //---------------- class OpenHelper ------------------
     private static class OpenHelper extends SQLiteOpenHelper {

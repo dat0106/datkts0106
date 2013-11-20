@@ -1,10 +1,12 @@
-package com.example.smartsystem;
+package com.smartschedule;
 
 import java.util.Calendar;
 
 import util.Util;
 
-import com.smartsystem.database.SmartSystemDatabase;
+import com.example.smartsystem.R;
+import com.smartschedule.database.SmartSchedulerDatabase;
+import com.smartschedule.database.SmartSystemDatabase;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -22,6 +24,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
     private SmartSystemDatabase database = new SmartSystemDatabase(this);
+    private SmartSchedulerDatabase smartScheduteDb = new SmartSchedulerDatabase(this);
     SampleAlarmReceiver alarm = new SampleAlarmReceiver();
     Button btn1 ;
     Button btn2 ;

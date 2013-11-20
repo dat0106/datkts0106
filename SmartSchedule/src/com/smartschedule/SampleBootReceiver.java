@@ -1,4 +1,4 @@
-package com.example.smartsystem;
+package com.smartschedule;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

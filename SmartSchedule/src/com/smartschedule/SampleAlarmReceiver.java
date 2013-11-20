@@ -1,4 +1,4 @@
-package com.example.smartsystem;
+package com.smartschedule;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.smartsystem.database;
+package com.smartschedule.database;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
