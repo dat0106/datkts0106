@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="EventListBackgroundPadding.orient" parent="@style/EventListBackgroundPadding">
+        <item name="android:layout_weight">0.55</item>
+    </style>
+    <style name="EventListBackgroundImage.orient" parent="@style/EventListBackgroundImage">
+        <item name="android:layout_weight">0.45</item>
+    </style>
+    <style name="FlapImage.orient" parent="@style/FlapImage">
+        <item name="android:layout_height">105.0dip</item>
+    </style>
+    <style name="ASFAccyRow.orient" parent="@style/ASFAccyRow">
+        <item name="android:layout_width">0.0dip</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_weight">35.0</item>
+    </style>
+</resources>

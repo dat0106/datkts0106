@@ -29,7 +29,7 @@
             android:focusable="false" />
     </LinearLayout>
 
-    <LinearLayout
+<!--     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/experience_item_name_row"
@@ -43,7 +43,7 @@
             style="@style/EventListBackgroundImage.orient"
             android:adjustViewBounds="true"
             android:scaleType="fitEnd" />
-    </LinearLayout>
+    </LinearLayout> -->
 
     <LinearLayout
         android:id="@id/experience_item_initiators"
@@ -61,12 +61,10 @@
             android:orientation="horizontal" >
 
             <ImageView
-                android:id="@id/experience_item_initiator_device_icon"
-                style="@style/ASFEventListInitiatorIcon.full" />
+                android:id="@id/experience_item_initiator_device_icon" />
 
             <TextView
-                android:id="@id/experience_item_initiator_device"
-                style="@style/ASFEventListInitiator" />
+                android:id="@id/experience_item_initiator_device"/>
         </LinearLayout>
 
         <LinearLayout
@@ -77,16 +75,13 @@
 
             <ImageView
                 android:id="@id/experience_item_initiator_time_icon"
-                style="@style/ASFEventListInitiatorIcon.full"
                 android:src="@drawable/time_initiator_selector" />
 
             <TextView
-                android:id="@id/experience_item_initiator_time_hours"
-                style="@style/ASFEventListInitiator" />
+                android:id="@id/experience_item_initiator_time_hours"/>
 
             <TextView
                 android:id="@id/experience_item_initiator_time_weekdays"
-                style="@style/ASFEventListInitiator.full"
                 android:textIsSelectable="false" />
         </LinearLayout>
     </LinearLayout>
