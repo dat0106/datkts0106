@@ -8,5 +8,6 @@
     <string name="start_scheduler">Start Scheduler</string>
     <string name="add">Add</string>
     <string name="delete">Delete</string>
+    <string name="start_page_empty_text">start_page_empty_text</string>
 
 </resources>
