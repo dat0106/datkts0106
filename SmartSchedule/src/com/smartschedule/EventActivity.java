@@ -2,13 +2,16 @@ package com.smartschedule;
 
 import android.app.Activity;
 import android.app.ListActivity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Switch;
@@ -35,29 +38,34 @@ public class EventActivity extends ListActivity {
         // We pass null for the cursor, then update it in onLoadFinished()
         String[]  name  =  {"1", "2", "3"};
         Boolean[] status = {true, false, true};
-        mAdapter = new EventAdapter(name, status);
+        mAdapter = new EventAdapter(this, name, status);
         setListAdapter(mAdapter);
+//        String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
+//                "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
+//                "Linux", "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux",
+//                "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux", "OS/2" };
+//
+//        MySimpleArrayAdapter adapter = new MySimpleArrayAdapter(this, values);
+//        setListAdapter(adapter);
+
 
     }
 
-    private void setListAdapter(EventAdapter mAdapter2) {
-        // TODO Auto-generated method stub
+   class EventAdapter extends BaseAdapter{
+        private Activity mContext;
+        private final String[] name ;
+        private final Boolean[] status;
 
-    }
 
-    class EventAdapter extends BaseAdapter{
-
-        private String[] name ;
-        private Boolean[] status;
-
-        public EventAdapter(String[] name, Boolean[] status) {
+        public EventAdapter(Activity context, String[] name, Boolean[] status) {
+            mContext =  context;
             this.name = name;
             this.status =  status;
         }
         @Override
         public int getCount() {
             // TODO Auto-generated method stub
-            return 0;
+            return name.length;
         }
 
         @Override
@@ -75,16 +83,48 @@ public class EventActivity extends ListActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 
-            LayoutInflater inflater = getLayoutInflater();
+            LayoutInflater inflater = (LayoutInflater) mContext
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View row;
             row = inflater.inflate(R.layout.event_item, parent, false);
             TextView event_item_name = (TextView) row.findViewById(R.id.event_item_name);
-            Switch event_item_enable_switch = (Switch) row.findViewById(R.id.event_item_enable_switch);
+//            Switch event_item_enable_switch = (Switch) row.findViewById(R.id.event_item_enable_switch);
 
             event_item_name.setText(name[position]);
-            event_item_enable_switch.setActivated(status[position]);;
+//            event_item_enable_switch.setActivated(status[position]);
             return row;
         }
 
     }
+   public class MySimpleArrayAdapter extends ArrayAdapter<String> {
+        private final Context context;
+        private final String[] values;
+
+        public MySimpleArrayAdapter(Context context, String[] values) {
+            super(context, R.layout.event_item1, values);
+            this.context = context;
+            this.values = values;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View rowView = null;
+            LayoutInflater inflater = (LayoutInflater) context
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            rowView = inflater.inflate(R.layout.event_item1, parent, false);
+            TextView textView = (TextView) rowView.findViewById(R.id.event_item_name);
+//            ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
+            textView.setText(values[position]);
+            // Change the icon for Windows and iPhone
+            String s = values[position];
+//            if (s.startsWith("iPhone")) {
+//                imageView.setImageResource(R.drawable.no);
+//            } else {
+//                imageView.setImageResource(R.drawable.ok);
+//            }
+
+            return rowView;
+        }
+    }
+
 }

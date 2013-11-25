@@ -3,11 +3,10 @@
     android:id="@+id/event_list"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:visibility="gone" >
+    android:orientation="vertical" >
 
     <ListView
-        android:id="@+id/event_list_list"
+        android:id="@+android:id/list"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
 
