@@ -26,18 +26,19 @@ public class EventActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_list);
-//        ProgressBar progressBar = new ProgressBar(this);
-//        progressBar.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
-//                LayoutParams.WRAP_CONTENT));
-//
-//        getListView().setEmptyView(progressBar);
-//        ViewGroup root = (ViewGroup) findViewById(android.R.id.content);
-//        root.addView(progressBar);
+        ProgressBar progressBar = new ProgressBar(this);
+        progressBar.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
+                LayoutParams.WRAP_CONTENT));
+
+        getListView().setEmptyView(progressBar);
+        ViewGroup root = (ViewGroup) findViewById(android.R.id.content);
+        root.addView(progressBar);
+
 
         // Create an empty adapter we will use to display the loaded data.
         // We pass null for the cursor, then update it in onLoadFinished()
-        String[]  name  =  {"1", "2", "3"};
-        Boolean[] status = {true, false, true};
+        String[]  name  =  {"1", "2", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3"};
+        Boolean[] status = {true, false, true, true, false, true, true, false, true, true, false, true, true, false, true, true, false, true,true, false, true};
         mAdapter = new EventAdapter(this, name, status);
         setListAdapter(mAdapter);
 //        String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
@@ -83,48 +84,24 @@ public class EventActivity extends ListActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 
+            try {
+    			Thread.sleep(20);
+    		} catch (InterruptedException e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		};
             LayoutInflater inflater = (LayoutInflater) mContext
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View row;
             row = inflater.inflate(R.layout.event_item, parent, false);
             TextView event_item_name = (TextView) row.findViewById(R.id.event_item_name);
-//            Switch event_item_enable_switch = (Switch) row.findViewById(R.id.event_item_enable_switch);
+            Switch event_item_enable_switch = (Switch) row.findViewById(R.id.event_item_enable_switch);
 
             event_item_name.setText(name[position]);
-//            event_item_enable_switch.setActivated(status[position]);
+            event_item_enable_switch.setChecked(status[position]);
             return row;
         }
 
-    }
-   public class MySimpleArrayAdapter extends ArrayAdapter<String> {
-        private final Context context;
-        private final String[] values;
-
-        public MySimpleArrayAdapter(Context context, String[] values) {
-            super(context, R.layout.event_item1, values);
-            this.context = context;
-            this.values = values;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            View rowView = null;
-            LayoutInflater inflater = (LayoutInflater) context
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            rowView = inflater.inflate(R.layout.event_item1, parent, false);
-            TextView textView = (TextView) rowView.findViewById(R.id.event_item_name);
-//            ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
-            textView.setText(values[position]);
-            // Change the icon for Windows and iPhone
-            String s = values[position];
-//            if (s.startsWith("iPhone")) {
-//                imageView.setImageResource(R.drawable.no);
-//            } else {
-//                imageView.setImageResource(R.drawable.ok);
-//            }
-
-            return rowView;
-        }
     }
 
 }

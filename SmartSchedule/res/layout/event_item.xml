@@ -38,22 +38,24 @@
         android:gravity="center_vertical"
         android:orientation="vertical" >
 
-        <LinearLayout
-            android:id="@+id/event_item_initiator_device_layout"
-            android:layout_width="@dimen/event_list_initiator_width"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+         <LinearLayout
+             android:id="@+id/event_item_initiator_device_layout"
+             android:layout_width="@dimen/event_list_initiator_width"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal" >
 
-            <ImageView
-                android:id="@+id/event_item_initiator_device_icon"></ImageView>
+             <ImageView
+                 android:id="@+id/event_item_initiator_device_icon"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content" />
 
+             <TextView
+                 android:id="@+id/event_item_initiator_device"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content" />
+         </LinearLayout>
 
-            <TextView
-                android:id="@+id/event_item_initiator_device"
-                android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"/>
-        </LinearLayout>
-
-<!--         <LinearLayout
+                  <LinearLayout
             android:id="@+id/event_item_initiator_time"
             android:layout_width="@dimen/event_list_initiator_width"
             android:layout_height="wrap_content"
@@ -61,17 +63,23 @@
 
             <ImageView
                 android:id="@+id/event_item_initiator_time_icon"
-
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/time_initiator_selector" />
 
             <TextView
-                android:id="@+id/event_item_initiator_time_hours"/>
+                android:id="@+id/event_item_initiator_time_hours"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/event_item_initiator_time_weekdays"
-                android:textIsSelectable="false"
-                android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" />
-        </LinearLayout> -->
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:textIsSelectable="false" />
+
+        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>
