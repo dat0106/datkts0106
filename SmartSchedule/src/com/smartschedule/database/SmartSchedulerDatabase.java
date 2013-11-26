@@ -1,11 +1,14 @@
 package com.smartschedule.database;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.concurrent.ScheduledExecutorService;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -103,6 +106,37 @@ public class SmartSchedulerDatabase {
 //        String[]  total =  new String[]{"count: " + count, " value:" + result};
         return result;
     }
+
+    public ArrayList getData() {
+        String[] columns = new String[]{COLUMN_EVENT_ID, COLUMN_EVENT_NAME, COLUMN_EVENT_IMAGE,
+                COLUMN_EVENT_TIME_START, COLUMN_EVENT_TIME_END, COLUMN_EVENT_SCHEDULE,
+                COLUMN_EVENT_CATEGORY, COLUMN_EVENT_ACTION_START, COLUMN_EVENT_ACTION_END,
+                COLUMN_EVENT_STATE};
+        Cursor c =  db.query(TABLE_EVENT, columns, null, null, null, null, null);
+
+
+
+        ArrayList<ContentValues> result = new ArrayList<ContentValues>();
+
+        int iId = c.getColumnIndex(COLUMN_EVENT_ID);
+        int iName = c.getColumnIndex(COLUMN_EVENT_NAME);
+        int iTimeStart = c.getColumnIndex(COLUMN_EVENT_TIME_START);
+        int iTimeEnd = c.getColumnIndex(COLUMN_EVENT_TIME_END);
+
+        for(c.moveToFirst(); !c.isAfterLast(); c.moveToNext()){
+            ContentValues cv = new ContentValues();
+
+            DatabaseUtils.cursorRowToContentValues(c, cv);
+
+            result.add(cv);
+        }
+        return result;
+    }
+
+    public ArrayList getData(int id) {
+        // TODO
+    }
+
     //---------------- class OpenHelper ------------------
     private static class OpenHelper extends SQLiteOpenHelper {
         public OpenHelper(Context context) {

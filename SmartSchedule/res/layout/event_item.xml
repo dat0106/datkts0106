@@ -55,7 +55,7 @@
                  android:layout_height="wrap_content" />
          </LinearLayout>
 
-                  <LinearLayout
+         <LinearLayout
             android:id="@+id/event_item_initiator_time"
             android:layout_width="@dimen/event_list_initiator_width"
             android:layout_height="wrap_content"
