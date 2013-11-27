@@ -107,7 +107,8 @@ public class SmartSchedulerDatabase {
         return result;
     }
 
-    public ArrayList getData() {
+    public ArrayList<ContentValues> getData() {
+
         String[] columns = new String[]{COLUMN_EVENT_ID, COLUMN_EVENT_NAME, COLUMN_EVENT_IMAGE,
                 COLUMN_EVENT_TIME_START, COLUMN_EVENT_TIME_END, COLUMN_EVENT_SCHEDULE,
                 COLUMN_EVENT_CATEGORY, COLUMN_EVENT_ACTION_START, COLUMN_EVENT_ACTION_END,
@@ -118,10 +119,10 @@ public class SmartSchedulerDatabase {
 
         ArrayList<ContentValues> result = new ArrayList<ContentValues>();
 
-        int iId = c.getColumnIndex(COLUMN_EVENT_ID);
-        int iName = c.getColumnIndex(COLUMN_EVENT_NAME);
-        int iTimeStart = c.getColumnIndex(COLUMN_EVENT_TIME_START);
-        int iTimeEnd = c.getColumnIndex(COLUMN_EVENT_TIME_END);
+//        int iId = c.getColumnIndex(COLUMN_EVENT_ID);
+//        int iName = c.getColumnIndex(COLUMN_EVENT_NAME);
+//        int iTimeStart = c.getColumnIndex(COLUMN_EVENT_TIME_START);
+//        int iTimeEnd = c.getColumnIndex(COLUMN_EVENT_TIME_END);
 
         for(c.moveToFirst(); !c.isAfterLast(); c.moveToNext()){
             ContentValues cv = new ContentValues();
@@ -133,8 +134,9 @@ public class SmartSchedulerDatabase {
         return result;
     }
 
-    public ArrayList getData(int id) {
-        // TODO
+    public ArrayList<ContentValues> getData(int id) {
+    	// TODO
+		return null;
     }
 
     //---------------- class OpenHelper ------------------
@@ -155,7 +157,7 @@ public class SmartSchedulerDatabase {
                     + COLUMN_EVENT_CATEGORY + " INT NOT NULL, "
                     + COLUMN_EVENT_ACTION_START + " INT NOT NULL UNIQUE, "
                     + COLUMN_EVENT_ACTION_END + " INT NOT NULL UNIQUE, "
-                    + COLUMN_EVENT_STATE + " INT NOT NULL "
+                    + COLUMN_EVENT_STATE + " INT NOT NULL"
                     +	");");
             arg0.execSQL("CREATE TABLE " + TABLE_SCHEDULE + " ("
                     + COLUMN_SCHEDULE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "

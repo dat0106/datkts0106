@@ -1,10 +1,13 @@
 package com.smartschedule;
 
+import java.util.ArrayList;
+
 import com.smartschedule.database.SmartSchedulerDatabase;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ListActivity;
+import android.content.ContentValues;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.widget.SimpleCursorAdapter;
@@ -46,9 +49,10 @@ public class EventActivity extends ListActivity {
 
         // Create an empty adapter we will use to display the loaded data.
         // We pass null for the cursor, then update it in onLoadFinished()
-        String[]  name  =  {"1", "2", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3"};
-        Boolean[] status = {true, false, true, true, false, true, true, false, true, true, false, true, true, false, true, true, false, true,true, false, true};
-        mAdapter = new EventAdapter(this, name, status);
+
+        smartScheduteDb.open();
+        mAdapter = new EventAdapter(this, smartScheduteDb.getData());
+        smartScheduteDb.close();
         setListAdapter(mAdapter);
 
         getListView().setOnItemClickListener(new OnItemClickListener() {
@@ -131,19 +135,17 @@ public class EventActivity extends ListActivity {
     }
    class EventAdapter extends BaseAdapter{
         private Activity mContext;
-        private final String[] name ;
-        private final Boolean[] status;
+        private ArrayList<ContentValues> contentValues ;
 
 
-        public EventAdapter(Activity context, String[] name, Boolean[] status) {
+        public EventAdapter(Activity context, ArrayList<ContentValues> contentValues) {
             mContext =  context;
-            this.name = name;
-            this.status =  status;
+            this.contentValues = contentValues;
         }
         @Override
         public int getCount() {
             // TODO Auto-generated method stub
-            return name.length;
+            return contentValues.size();
         }
 
         @Override
@@ -168,10 +170,19 @@ public class EventActivity extends ListActivity {
             TextView event_item_name = (TextView) row.findViewById(R.id.event_item_name);
             Switch event_item_enable_switch = (Switch) row.findViewById(R.id.event_item_enable_switch);
 
-            event_item_name.setText(name[position]);
-            event_item_enable_switch.setChecked(status[position]);
+            event_item_name.setText(contentValues.get(position).getAsString(SmartSchedulerDatabase.COLUMN_EVENT_NAME));
+            // TODO Chu y bien convert int sang boolean
+            event_item_enable_switch.setChecked(
+            		intToBool(contentValues.get(position).getAsInteger(
+            				SmartSchedulerDatabase.COLUMN_ACTION_STATE)));
             return row;
         }
+		private boolean intToBool(Integer integer) {
+			if(integer == 1){
+				return true;
+			}
+			return false;
+		}
 
     }
 
