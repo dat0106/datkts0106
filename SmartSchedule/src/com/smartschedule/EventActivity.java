@@ -39,6 +39,7 @@ public class EventActivity extends ListActivity {
     private SmartSchedulerDatabase smartScheduteDb = new SmartSchedulerDatabase(this);
     private EventAdapter mAdapter;
     private ListView listView;
+    private ArrayList<ContentValues> contentValues ;
 
     private int selectedItem = -1;
     protected Object mActionMode;
@@ -49,6 +50,10 @@ public class EventActivity extends ListActivity {
 
         // Create an empty adapter we will use to display the loaded data.
         // We pass null for the cursor, then update it in onLoadFinished()
+
+//        smartScheduteDb.open();
+//        smartScheduteDb.createData("sample", "image", 123456, 1234567, 1, 1);
+//        smartScheduteDb.close();
 
         smartScheduteDb.open();
         mAdapter = new EventAdapter(this, smartScheduteDb.getData());
@@ -116,7 +121,11 @@ public class EventActivity extends ListActivity {
                 mode.finish();
                 return true;
             case R.id.menuitem2_delete:
+            	// TODO remove in database
+            	contentValues.remove(selectedItem);
 
+            	mode.finish();
+            	return true;
             default:
                 return false;
             }
@@ -135,12 +144,10 @@ public class EventActivity extends ListActivity {
     }
    class EventAdapter extends BaseAdapter{
         private Activity mContext;
-        private ArrayList<ContentValues> contentValues ;
 
-
-        public EventAdapter(Activity context, ArrayList<ContentValues> contentValues) {
+        public EventAdapter(Activity context, ArrayList<ContentValues> cV) {
             mContext =  context;
-            this.contentValues = contentValues;
+            contentValues = cV;
         }
         @Override
         public int getCount() {
@@ -168,6 +175,7 @@ public class EventActivity extends ListActivity {
             View row;
             row = inflater.inflate(R.layout.event_item, parent, false);
             TextView event_item_name = (TextView) row.findViewById(R.id.event_item_name);
+            TextView event_item_initiator_time_hours = (TextView) row.findViewById(R.id.event_item_initiator_time_hours);
             Switch event_item_enable_switch = (Switch) row.findViewById(R.id.event_item_enable_switch);
 
             event_item_name.setText(contentValues.get(position).getAsString(SmartSchedulerDatabase.COLUMN_EVENT_NAME));
@@ -175,6 +183,16 @@ public class EventActivity extends ListActivity {
             event_item_enable_switch.setChecked(
             		intToBool(contentValues.get(position).getAsInteger(
             				SmartSchedulerDatabase.COLUMN_ACTION_STATE)));
+
+            event_item_enable_switch.setChecked(
+            		intToBool(contentValues.get(position).getAsInteger(
+            				SmartSchedulerDatabase.COLUMN_ACTION_STATE)));
+
+            String  timer  =  contentValues.get(position).getAsString(
+    				SmartSchedulerDatabase.COLUMN_EVENT_TIME_START )+ " : " +
+    				contentValues.get(position).getAsString(
+    				SmartSchedulerDatabase.COLUMN_EVENT_TIME_END);
+            event_item_initiator_time_hours.setText(timer);
             return row;
         }
 		private boolean intToBool(Integer integer) {
