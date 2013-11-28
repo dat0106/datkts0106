@@ -1,155 +1,217 @@
 package com.smartschedule;
 
-import java.util.Calendar;
-
-import util.Util;
+import java.util.ArrayList;
 
 import com.smartschedule.database.SmartSchedulerDatabase;
-import com.smartschedule.database.SmartSystemDatabase;
 
-import android.os.Bundle;
+import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.SearchManager.OnCancelListener;
-import android.app.TimePickerDialog;
+import android.app.ListActivity;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.widget.SimpleCursorAdapter;
+import android.util.Log;
+import android.view.ActionMode;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ScrollView;
-import android.widget.TimePicker;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends Activity {
-    private SmartSystemDatabase database = new SmartSystemDatabase(this);
-    private SmartSchedulerDatabase smartScheduteDb = new SmartSchedulerDatabase(this);
-    SampleAlarmReceiver alarm = new SampleAlarmReceiver();
-    Button btn1 ;
-    Button btn2 ;
-    Button btn3 ;
-    Button start_time ;
-    Button end_time ;
-    EditText editText1;
+public class MainActivity extends ListActivity {
 
+    private SmartSchedulerDatabase smartScheduteDb = new SmartSchedulerDatabase(this);
+    private EventAdapter mAdapter;
+    private ListView listView;
+    private ArrayList<ContentValues> contentValues ;
+
+    private int selectedItem = -1;
+    protected Object mActionMode;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        btn1 =  (Button)findViewById(R.id.button1);
+        setContentView(R.layout.event_list);
 
-        start_time =  (Button)findViewById(R.id.start_time);
-        end_time =  (Button)findViewById(R.id.end_time);
-        editText1 = (EditText)findViewById(R.id.editText1);
-        btn1.setOnClickListener(new OnClickListener() {
+        // Create an empty adapter we will use to display the loaded data.
+        // We pass null for the cursor, then update it in onLoadFinished()
+
+        smartScheduteDb.open();
+        smartScheduteDb.createData("sample", "image", 123456, 1234567, 1, 1);
+        smartScheduteDb.close();
+
+        smartScheduteDb.open();
+        mAdapter = new EventAdapter(this, smartScheduteDb.getData());
+        smartScheduteDb.close();
+        setListAdapter(mAdapter);
+
+        getListView().setOnItemClickListener(new OnItemClickListener() {
 
             @Override
-            public void onClick(View v) {
-              database.open();
-              database.createData(100);
-              database.close();
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                    long id) {
 
-              smartScheduteDb.open();
-              smartScheduteDb.createData("sample", "image", 123456, 1234567, 1, 1);
-              smartScheduteDb.close();
+                selectedItem =  position;
+                // Launch the sample associated with this list position.
+                Intent intent = new Intent(MainActivity.this, EventActivity.class);
+
+                intent.putExtra(
+                        SmartSchedulerDatabase.COLUMN_EVENT_ID,
+                        contentValues.get(selectedItem).getAsInteger(
+                                SmartSchedulerDatabase.COLUMN_EVENT_ID));
+
+                MainActivity.this.startActivity(intent);
+//                 Toast.makeText(getApplicationContext(), "setOnItemClickListener", Toast.LENGTH_LONG).show();
 
             }
         });
 
-        btn2 =  (Button)findViewById(R.id.button2);
-
-        btn2.setOnClickListener(new OnClickListener() {
+        getListView().setOnItemLongClickListener(new OnItemLongClickListener() {
 
             @Override
-            public void onClick(View v) {
-              database.open();
-              String[] data = database.getCountData();
-              database.close();
+            public boolean onItemLongClick(AdapterView<?> parent, View view,
+                    int position, long id) {
 
-              smartScheduteDb.open();
-              String data1  = smartScheduteDb.getAllData();
-              smartScheduteDb.close();
+                if (mActionMode != null) {
+                    return false;
+                }
+                selectedItem =  position;
 
-              editText1.setText(data1 + "\n"+ data[0] + "\n" +  data[1] );
-//              Toast.makeText(getApplicationContext(), data[0] + data[1], Toast.LENGTH_LONG).show();
+                MainActivity.this.startActionMode(mActionModeCallback);
+                view.setSelected(true);
+                return true;
             }
-        });
 
-        btn3 =  (Button)findViewById(R.id.button3);
-
-        btn3.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-              database.open();
-              database.deleteAll();
-              database.close();
-              Toast.makeText(getApplicationContext(), "delete all table", Toast.LENGTH_LONG).show();
-            }
         });
 
 
-        start_time.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-                // TODO Auto-generated method stub
-                Calendar mcurrentTime = Calendar.getInstance();
-                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
-                int minute = mcurrentTime.get(Calendar.MINUTE);
-                TimePickerDialog mTimePicker;
-                mTimePicker = new TimePickerDialog(MainActivity.this, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        start_time.setText( Util.convertTime(selectedHour) + ":" + Util.convertTime(selectedMinute));
-                    }
-                }, hour, minute, true);//Yes 24 hour time
-                mTimePicker.setTitle("Select Time");
-                mTimePicker.show();
-            }
-        });
-        end_time.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-                // TODO Auto-generated method stub
-                Calendar mcurrentTime = Calendar.getInstance();
-                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
-                int minute = mcurrentTime.get(Calendar.MINUTE);
-                TimePickerDialog mTimePicker;
-                mTimePicker = new TimePickerDialog(MainActivity.this, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        end_time.setText( Util.convertTime(selectedHour) + ":" + Util.convertTime(selectedMinute));
-                    }
-                }, hour, minute, true);//Yes 24 hour time
-                mTimePicker.setTitle("Select Time");
-                mTimePicker.show();
-            }
-        });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+    private ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-        // when the user click start schedule
-        case R.id.start_scheduler:
 
-            alarm.setAlarm(this);
-            return true;
-        case R.id.cancel_scheduler:
-            alarm.cancelAlarm(this);
+        // Called when the action mode is created; startActionMode() was called
+        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+            // Inflate a menu resource providing context menu items
+            MenuInflater inflater = mode.getMenuInflater();
+            // Assumes that you have "contexual.xml" menu resources
+            inflater.inflate(R.menu.rowselection, menu);
             return true;
         }
-        return false;
-    }
 
+        // Called each time the action mode is shown. Always called after
+        // onCreateActionMode, but
+        // may be called multiple times if the mode is invalidated.
+        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+            return false; // Return false if nothing is done
+        }
+
+        // Called when the user selects a contextual menu item
+        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+            switch (item.getItemId()) {
+            case R.id.menuitem1_show:
+                show();
+                // Action picked, so close the CAB
+
+                mode.finish();
+                return true;
+            case R.id.menuitem2_delete:
+                // TODO remove in database
+                contentValues.remove(selectedItem);
+
+                mode.finish();
+                return true;
+            default:
+                return false;
+            }
+        }
+
+        // Called when the user exits the action mode
+        public void onDestroyActionMode(ActionMode mode) {
+            mActionMode = null;
+            selectedItem  = -1;
+        }
+    };
+
+    private void show() {
+        Toast.makeText(MainActivity.this,
+                String.valueOf(selectedItem), Toast.LENGTH_LONG).show();
+    }
+   class EventAdapter extends BaseAdapter{
+        private Activity mContext;
+
+        public EventAdapter(Activity context, ArrayList<ContentValues> cV) {
+            mContext =  context;
+            contentValues = cV;
+        }
+        @Override
+        public int getCount() {
+            // TODO Auto-generated method stub
+            return contentValues.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            // TODO Auto-generated method stub
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            // TODO Auto-generated method stub
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            LayoutInflater inflater = (LayoutInflater) mContext
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View row;
+            row = inflater.inflate(R.layout.event_item, parent, false);
+            TextView event_item_name = (TextView) row.findViewById(R.id.event_item_name);
+            TextView event_item_initiator_time_hours = (TextView) row.findViewById(R.id.event_item_initiator_time_hours);
+            Switch event_item_enable_switch = (Switch) row.findViewById(R.id.event_item_enable_switch);
+
+            event_item_name.setText(contentValues.get(position).getAsString(SmartSchedulerDatabase.COLUMN_EVENT_NAME));
+            // TODO Chu y bien convert int sang boolean
+            event_item_enable_switch.setChecked(
+                    intToBool(contentValues.get(position).getAsInteger(
+                            SmartSchedulerDatabase.COLUMN_ACTION_STATE)));
+
+            event_item_enable_switch.setChecked(
+                    intToBool(contentValues.get(position).getAsInteger(
+                            SmartSchedulerDatabase.COLUMN_ACTION_STATE)));
+
+            String  timer  =  contentValues.get(position).getAsString(
+                    SmartSchedulerDatabase.COLUMN_EVENT_TIME_START )+ " : " +
+                    contentValues.get(position).getAsString(
+                    SmartSchedulerDatabase.COLUMN_EVENT_TIME_END);
+            event_item_initiator_time_hours.setText(timer);
+            return row;
+        }
+        private boolean intToBool(Integer integer) {
+            if(integer == 1){
+                return true;
+            }
+            return false;
+        }
+
+    }
 
 }
