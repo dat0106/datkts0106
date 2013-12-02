@@ -27,6 +27,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.smartschedule.EventActivity"
+            android:theme="@android:style/Theme.Holo.Light"
             android:label="@string/app_name"
             android:uiOptions="splitActionBarWhenNarrow"
             android:parentActivityName=".MainActivity">

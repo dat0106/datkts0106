@@ -2,6 +2,7 @@ package com.smartschedule;
 
 import java.util.ArrayList;
 
+import util.Util;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -9,24 +10,24 @@ import android.app.ListActivity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.BaseAdapter;
-import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -36,266 +37,319 @@ import com.smartschedule.database.SmartSchedulerDatabase;
 
 public class MainActivity extends ListActivity {
 
-    private SmartSchedulerDatabase smartScheduteDb = new SmartSchedulerDatabase(
-            this);
-    private EventAdapter mAdapter;
-    private ArrayList<ContentValues> contentValues;
+	private SmartSchedulerDatabase smartScheduteDb = new SmartSchedulerDatabase(
+			this);
+	private EventAdapter mAdapter;
+	private ArrayList<ContentValues> contentValues;
 
-    private int selectedItem = -1;
-    protected Object mActionMode;
+	private int selectedItem = -1;
+	protected Object mActionMode;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.event_list);
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.event_list);
 
-        // Create an empty adapter we will use to display the loaded data.
-        // We pass null for the cursor, then update it in onLoadFinished()
+		// Create an empty adapter we will use to display the loaded data.
+		// We pass null for the cursor, then update it in onLoadFinished()
+		getData();
+		mAdapter = new EventAdapter(this);
+		setListAdapter(mAdapter);
 
-        smartScheduteDb.open();
-        mAdapter = new EventAdapter(this, smartScheduteDb.getData());
-        smartScheduteDb.close();
-        setListAdapter(mAdapter);
+		getListView().setOnItemClickListener(new OnItemClickListener() {
 
-        getListView().setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
 
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                    int position, long id) {
+				selectedItem = position;
+				// Launch the sample associated with this list position.
+				startEventActivity();
 
-                selectedItem = position;
-                // Launch the sample associated with this list position.
-                Intent intent = new Intent(MainActivity.this,
-                        EventActivity.class);
+			}
+		});
 
-                intent.putExtra(
-                        SmartSchedulerDatabase.COLUMN_EVENT_ID,
-                        contentValues.get(selectedItem).getAsInteger(
-                                SmartSchedulerDatabase.COLUMN_EVENT_ID));
+		getListView().setOnItemLongClickListener(new OnItemLongClickListener() {
 
-                MainActivity.this.startActivity(intent);
-                // Toast.makeText(getApplicationContext(),
-                // "setOnItemClickListener", Toast.LENGTH_LONG).show();
+			@Override
+			public boolean onItemLongClick(AdapterView<?> parent, View view,
+					int position, long id) {
 
-            }
-        });
+				if (mActionMode != null) {
+					return false;
+				}
+				selectedItem = position;
 
-        getListView().setOnItemLongClickListener(new OnItemLongClickListener() {
+				MainActivity.this.startActionMode(mActionModeCallback);
+				view.setSelected(true);
 
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view,
-                    int position, long id) {
+				return true;
+			}
 
-                if (mActionMode != null) {
-                    return false;
-                }
-                selectedItem = position;
+		});
 
-                MainActivity.this.startActionMode(mActionModeCallback);
-                view.setSelected(true);
+	}
 
-                return true;
-            }
+	protected void startEventActivity() {
+		Intent intent = new Intent(MainActivity.this,
+				EventActivity.class);
 
-        });
+		intent.putExtra(
+				SmartSchedulerDatabase.COLUMN_EVENT_ID,
+				contentValues.get(selectedItem).getAsInteger(
+						SmartSchedulerDatabase.COLUMN_EVENT_ID));
 
-    }
+		MainActivity.this.startActivity(intent);
+	}
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.add_menu, menu);
-        return true;
-    }
+	/**
+	 * @doc get content values in database
+	 */
+	private void getData() {
+		smartScheduteDb.openRead();
+		contentValues = smartScheduteDb.getData();
+		smartScheduteDb.close();
+	}
 
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		super.onCreateOptionsMenu(menu);
+		getMenuInflater().inflate(R.menu.add_menu, menu);
+		return true;
+	}
 
-        case R.id.add_menu:
-            final View View = android.view.View.inflate(this,
-                    R.layout.dialog_add_event, null);
+	// create add event
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
 
-            final EditText textView = (EditText) View.findViewById(R.id.dialog_add_event);
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle(R.string.title_dialog_add_event);
-            builder.setView(View)
-                    .setCancelable(false)
-                    .setPositiveButton(R.string.create,
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog,
-                                        int id) {
-                                    // get name to sent
-                                    String checkDisableCreate = (String) textView.getText().toString();
+		case R.id.add_menu:
+			final View View = android.view.View.inflate(this,
+					R.layout.dialog_add_event, null);
 
-                                    // TODO ADD event need more edit
-                                     smartScheduteDb.open();
-                                     smartScheduteDb.createData(checkDisableCreate, "image", 123456, 1234567, 1, 1);
-                                     smartScheduteDb.close();
-                                     
-                                   Toast.makeText(getBaseContext(), checkDisableCreate, Toast.LENGTH_LONG).show();
-                                    dialog.dismiss();
-                                }
-                            })
-                    .setNegativeButton(R.string.cancel,
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog,
-                                        int id) {
-                                    dialog.cancel();
-                                }
-                            });
+			final EditText textView = (EditText) View
+					.findViewById(R.id.dialog_add_event);
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle(R.string.title_dialog_add_event);
+			builder.setView(View)
+					.setCancelable(false)
+					.setPositiveButton(R.string.create,
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+										int id) {
+									// get name to sent
+									String checkDisableCreate = (String) textView
+											.getText().toString();
 
-            final AlertDialog dialog = builder.create();
-            dialog.show();
+									// TODO ADD event need more edit
+									// image chua lam , state chua lam mac dinh
+									// mang 0
+									smartScheduteDb.open();
+									smartScheduteDb.createData(
+											checkDisableCreate, "image", 1, 2);
+									smartScheduteDb.close();
 
-            dialog.getButton(Dialog.BUTTON_POSITIVE).setEnabled(false);
+									getData();
 
-            TextWatcher watcher = new TextWatcher() {
+									mAdapter.notifyDataSetChanged();
 
-                @Override
-                public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-                }
+									dialog.dismiss();
+								}
+							})
+					.setNegativeButton(R.string.cancel,
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+										int id) {
+									dialog.cancel();
+								}
+							});
 
-                @Override
-                public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
-                        int arg3) {
-                }
+			final AlertDialog dialog = builder.create();
+			dialog.show();
 
-                @Override
-                public void afterTextChanged(Editable arg0) {
-                    String checkDisableCreate = (String) textView.getText().toString();
-                    if(checkDisableCreate.isEmpty()){
-                        dialog.getButton(Dialog.BUTTON_POSITIVE).setEnabled(false);
-                    }else{
-                        dialog.getButton(Dialog.BUTTON_POSITIVE).setEnabled(true);
-                    }
-                }
-            };
+			dialog.getButton(Dialog.BUTTON_POSITIVE).setEnabled(false);
 
-            textView.addTextChangedListener(watcher);
+			TextWatcher watcher = new TextWatcher() {
 
-            return true;
-        }
+				@Override
+				public void onTextChanged(CharSequence arg0, int arg1,
+						int arg2, int arg3) {
+				}
 
-        return super.onOptionsItemSelected(item);
-    }
+				@Override
+				public void beforeTextChanged(CharSequence arg0, int arg1,
+						int arg2, int arg3) {
+				}
 
-    private ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
+				@Override
+				public void afterTextChanged(Editable arg0) {
+					String checkDisableCreate = (String) textView.getText()
+							.toString();
+					if (checkDisableCreate.isEmpty()) {
+						dialog.getButton(Dialog.BUTTON_POSITIVE).setEnabled(
+								false);
+					} else {
+						dialog.getButton(Dialog.BUTTON_POSITIVE).setEnabled(
+								true);
+					}
+				}
+			};
 
-        // Called when the action mode is created; startActionMode() was called
-        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-            // Inflate a menu resource providing context menu items
-            MenuInflater inflater = mode.getMenuInflater();
-            // Assumes that you have "contexual.xml" menu resources
-            inflater.inflate(R.menu.rowselection, menu);
-            return true;
-        }
+			textView.addTextChangedListener(watcher);
 
-        // Called each time the action mode is shown. Always called after
-        // onCreateActionMode, but
-        // may be called multiple times if the mode is invalidated.
-        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-            return false; // Return false if nothing is done
-        }
+			return true;
+		}
 
-        // Called when the user selects a contextual menu item
-        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-            switch (item.getItemId()) {
-            case R.id.menuitem1_show:
-                show();
-                // Action picked, so close the CAB
+		return super.onOptionsItemSelected(item);
+	}
 
-                mode.finish();
-                return true;
-            case R.id.menuitem2_delete:
-                // TODO remove in database
-                contentValues.remove(selectedItem);
+	private ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
 
-                mode.finish();
-                return true;
-            default:
-                return false;
-            }
-        }
+		// Called when the action mode is created; startActionMode() was called
+		public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+			// Inflate a menu resource providing context menu items
+			MenuInflater inflater = mode.getMenuInflater();
+			// Assumes that you have "contexual.xml" menu resources
+			inflater.inflate(R.menu.rowselection, menu);
+			return true;
+		}
 
-        // Called when the user exits the action mode
-        public void onDestroyActionMode(ActionMode mode) {
-            mActionMode = null;
-            selectedItem = -1;
-        }
-    };
+		// Called each time the action mode is shown. Always called after
+		// onCreateActionMode, but
+		// may be called multiple times if the mode is invalidated.
+		public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+			return false; // Return false if nothing is done
+		}
 
-    private void show() {
-        Toast.makeText(MainActivity.this, String.valueOf(selectedItem),
-                Toast.LENGTH_LONG).show();
-    }
+		// Called when the user selects a contextual menu item
+		public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+			switch (item.getItemId()) {
+			case R.id.menuitem1_show:
+				show();
+				startEventActivity();
+				mode.finish();
+				return true;
+			case R.id.menuitem2_delete:
 
-    class EventAdapter extends BaseAdapter {
-        private Activity mContext;
+				smartScheduteDb.open();
+				int logDelete = smartScheduteDb.delete(contentValues.get(selectedItem)
+						.getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_ID));
 
-        public EventAdapter(Activity context, ArrayList<ContentValues> cV) {
-            mContext = context;
-            contentValues = cV;
-        }
+				if(logDelete!=1) {
+					Log.e(MainActivity.this.toString(), "error delete event");
+				}
+				smartScheduteDb.close();
 
-        @Override
-        public int getCount() {
-            // TODO Auto-generated method stub
-            return contentValues.size();
-        }
+				getData();
+				mAdapter.notifyDataSetChanged();
+				mode.finish();
+				return true;
+			default:
+				return false;
+			}
+		}
 
-        @Override
-        public Object getItem(int position) {
-            // TODO Auto-generated method stub
-            return null;
-        }
+		// Called when the user exits the action mode
+		public void onDestroyActionMode(ActionMode mode) {
+			mActionMode = null;
+			selectedItem = -1;
+		}
+	};
 
-        @Override
-        public long getItemId(int position) {
-            // TODO Auto-generated method stub
-            return position;
-        }
+	private void show() {
+		Toast.makeText(MainActivity.this, String.valueOf(selectedItem),
+				Toast.LENGTH_LONG).show();
+	}
 
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+	class EventAdapter extends BaseAdapter {
+		private Activity mContext;
 
-            LayoutInflater inflater = (LayoutInflater) mContext
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View row;
-            row = inflater.inflate(R.layout.event_item, parent, false);
-            TextView event_item_name = (TextView) row
-                    .findViewById(R.id.event_item_name);
-            TextView event_item_initiator_time_hours = (TextView) row
-                    .findViewById(R.id.event_item_initiator_time_hours);
-            Switch event_item_enable_switch = (Switch) row
-                    .findViewById(R.id.event_item_enable_switch);
+		public EventAdapter(Activity context) {
+			mContext = context;
+		}
 
-            event_item_name.setText(contentValues.get(position).getAsString(
-                    SmartSchedulerDatabase.COLUMN_EVENT_NAME));
-            // TODO Chu y bien convert int sang boolean
-            event_item_enable_switch.setChecked(intToBool(contentValues.get(
-                    position).getAsInteger(
-                    SmartSchedulerDatabase.COLUMN_ACTION_STATE)));
+		@Override
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return contentValues.size();
+		}
 
-            event_item_enable_switch.setChecked(intToBool(contentValues.get(
-                    position).getAsInteger(
-                    SmartSchedulerDatabase.COLUMN_ACTION_STATE)));
+		@Override
+		public Object getItem(int position) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 
-            String timer = contentValues.get(position).getAsString(
-                    SmartSchedulerDatabase.COLUMN_EVENT_TIME_START)
-                    + " : "
-                    + contentValues.get(position).getAsString(
-                            SmartSchedulerDatabase.COLUMN_EVENT_TIME_END);
-            event_item_initiator_time_hours.setText(timer);
-            return row;
-        }
+		@Override
+		public long getItemId(int position) {
+			// TODO Auto-generated method stub
+			return position;
+		}
 
-        private boolean intToBool(Integer integer) {
-            if (integer == 1) {
-                return true;
-            }
-            return false;
-        }
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
 
-    }
+			LayoutInflater inflater = (LayoutInflater) mContext
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			View row;
+			row = inflater.inflate(R.layout.event_item, parent, false);
+			TextView event_item_name = (TextView) row
+					.findViewById(R.id.event_item_name);
+			TextView event_item_initiator_time_hours = (TextView) row
+					.findViewById(R.id.event_item_initiator_time_hours);
+			Switch event_item_enable_switch = (Switch) row
+					.findViewById(R.id.event_item_enable_switch);
+
+			event_item_name.setText(contentValues.get(position).getAsString(
+					SmartSchedulerDatabase.COLUMN_EVENT_NAME));
+			// TODO Chu y bien convert int sang boolean
+
+			int status = contentValues.get(position).getAsInteger(
+					SmartSchedulerDatabase.COLUMN_ACTION_STATE);
+
+			if (status >= 2) {
+				event_item_enable_switch.setEnabled(false);
+			} else {
+				event_item_enable_switch.setEnabled(true);
+				event_item_enable_switch.setChecked(Util.intToBool(status));
+			}
+
+			event_item_enable_switch
+					.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+						@Override
+						public void onCheckedChanged(CompoundButton buttonView,
+								boolean isChecked) {
+							if (isChecked) {
+								// update data
+								Toast.makeText(getApplicationContext(),
+										"checked", Toast.LENGTH_LONG).show();
+							} else {
+								Toast.makeText(getApplicationContext(),
+										"unchecked", Toast.LENGTH_LONG).show();
+							}
+						}
+					});
+
+			String timer = Util.getTime(contentValues.get(position).getAsString(
+					SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_HOUR))
+
+					+ ":"
+					+ Util.getTime(contentValues
+							.get(position)
+							.getAsString(
+									SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_MINUTE))
+					+ " ~ "
+					+ Util.getTime(contentValues.get(position).getAsString(
+							SmartSchedulerDatabase.COLUMN_EVENT_TIME_END_HOUR))
+					+ ":"
+					+ Util.getTime(contentValues
+							.get(position)
+							.getAsString(
+									SmartSchedulerDatabase.COLUMN_EVENT_TIME_END_MINUTE));
+			event_item_initiator_time_hours.setText(timer);
+			return row;
+		}
+
+	}
 
 }

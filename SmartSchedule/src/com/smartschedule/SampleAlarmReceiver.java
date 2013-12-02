@@ -83,4 +83,14 @@ public class SampleAlarmReceiver extends WakefulBroadcastReceiver {
                 PackageManager.DONT_KILL_APP);
 
     }
+
+	public void setSchedule(Context context, int i) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void cancelSchedule(Context context, int i) {
+		// TODO Auto-generated method stub
+
+	}
 }

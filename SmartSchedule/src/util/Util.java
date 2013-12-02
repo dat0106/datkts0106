@@ -7,4 +7,19 @@ public class Util {
         }
         return time.toString();
     }
+
+    public static String getTime(String asString) {
+    	if(asString == null){
+    		return "--";
+    	}
+    	return asString;
+	}
+
+    public  static boolean intToBool(Integer integer) {
+		if (integer == 1) {
+			return true;
+		}
+		return false;
+	}
+
 }

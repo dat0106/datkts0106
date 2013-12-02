@@ -1,10 +1,6 @@
 package com.smartschedule.database;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.concurrent.ScheduledExecutorService;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -22,8 +18,10 @@ public class SmartSchedulerDatabase {
     public static final String COLUMN_EVENT_ID = "_id";
     public static final String COLUMN_EVENT_NAME = "name";
     public static final String COLUMN_EVENT_IMAGE = "image";
-    public static final String COLUMN_EVENT_TIME_START = "time_start";
-    public static final String COLUMN_EVENT_TIME_END = "time_end";
+    public static final String COLUMN_EVENT_TIME_START_HOUR = "time_start_hour";
+    public static final String COLUMN_EVENT_TIME_START_MINUTE = "time_start_minute";
+    public static final String COLUMN_EVENT_TIME_END_HOUR = "time_end_hour";
+    public static final String COLUMN_EVENT_TIME_END_MINUTE = "time_end_minute";
     public static final String COLUMN_EVENT_SCHEDULE = "schedule";
     public static final String COLUMN_EVENT_CATEGORY = "category";
     public static final String COLUMN_EVENT_ACTION_START = "action_start";
@@ -60,23 +58,27 @@ public class SmartSchedulerDatabase {
         return this;
     }
 
+    public SmartSchedulerDatabase openRead() throws  SQLException {
+        openHelper = new OpenHelper(context);
+        db = openHelper.getReadableDatabase();
+        return this;
+    }
+
     public void close(){
         openHelper.close();
     }
 
-    public long createData(String name, String image, int time_start, int time_end, int category, int state){
+    public long createData(String name, String image, int category, int state){
         ContentValues event =  new ContentValues();
         event.put(COLUMN_EVENT_NAME, name);
         event.put(COLUMN_EVENT_IMAGE, image);
-        event.put(COLUMN_EVENT_TIME_START, time_start);
-        event.put(COLUMN_EVENT_TIME_END, time_end);
+        event.put(COLUMN_EVENT_CATEGORY, category);
 
         Cursor mCount= db.rawQuery("select count(*) from " + TABLE_EVENT, null);
         mCount.moveToFirst();
         int count= mCount.getInt(0);
         mCount.close();
         event.put(COLUMN_EVENT_SCHEDULE, count + 1 );
-        event.put(COLUMN_EVENT_CATEGORY, category);
         event.put(COLUMN_EVENT_ACTION_START, count + 1 );
         event.put(COLUMN_EVENT_ACTION_END, count + 1 );
         event.put(COLUMN_EVENT_STATE, state );
@@ -86,7 +88,8 @@ public class SmartSchedulerDatabase {
 
     public String getAllData() {
         String[] columns = new String[]{COLUMN_EVENT_ID, COLUMN_EVENT_NAME, COLUMN_EVENT_IMAGE,
-                COLUMN_EVENT_TIME_START, COLUMN_EVENT_TIME_END, COLUMN_EVENT_SCHEDULE,
+                COLUMN_EVENT_TIME_START_HOUR, COLUMN_EVENT_TIME_START_MINUTE,
+                COLUMN_EVENT_TIME_END_HOUR, COLUMN_EVENT_TIME_END_MINUTE, COLUMN_EVENT_SCHEDULE,
                 COLUMN_EVENT_CATEGORY, COLUMN_EVENT_ACTION_START, COLUMN_EVENT_ACTION_END,
                 COLUMN_EVENT_STATE};
         Cursor c =  db.query(TABLE_EVENT, columns, null, null, null, null, null);
@@ -110,10 +113,11 @@ public class SmartSchedulerDatabase {
     public ArrayList<ContentValues> getData() {
 
         String[] columns = new String[]{COLUMN_EVENT_ID, COLUMN_EVENT_NAME, COLUMN_EVENT_IMAGE,
-                COLUMN_EVENT_TIME_START, COLUMN_EVENT_TIME_END, COLUMN_EVENT_SCHEDULE,
+        		COLUMN_EVENT_TIME_START_HOUR, COLUMN_EVENT_TIME_START_MINUTE,
+                COLUMN_EVENT_TIME_END_HOUR, COLUMN_EVENT_TIME_END_MINUTE, COLUMN_EVENT_SCHEDULE,
                 COLUMN_EVENT_CATEGORY, COLUMN_EVENT_ACTION_START, COLUMN_EVENT_ACTION_END,
                 COLUMN_EVENT_STATE};
-        Cursor c =  db.query(TABLE_EVENT, columns, null, null, null, null, null);
+        Cursor c =  db.query(TABLE_EVENT, columns, null, null, null, null, COLUMN_EVENT_ID + " DESC");
 
 
 
@@ -139,6 +143,10 @@ public class SmartSchedulerDatabase {
 		return null;
     }
 
+	public int delete(int id) {
+		return db.delete(TABLE_EVENT, COLUMN_EVENT_ID + "=" + id, null);
+	}
+
     //---------------- class OpenHelper ------------------
     private static class OpenHelper extends SQLiteOpenHelper {
         public OpenHelper(Context context) {
@@ -151,8 +159,10 @@ public class SmartSchedulerDatabase {
                     + COLUMN_EVENT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + COLUMN_EVENT_NAME + " TEXT, "
                     + COLUMN_EVENT_IMAGE + " TEXT, "
-                    + COLUMN_EVENT_TIME_START + " UNSIGNER BIG INT NOT NULL DEFAULT 0, "
-                    + COLUMN_EVENT_TIME_END + " UNSIGNER BIG INT NOT NULL DEFAULT 0, "
+                    + COLUMN_EVENT_TIME_START_HOUR + " INT DEFAULT NULL, "
+                    + COLUMN_EVENT_TIME_START_MINUTE + " INT DEFAULT NULL, "
+                    + COLUMN_EVENT_TIME_END_HOUR + " INT DEFAULT NULL, "
+                    + COLUMN_EVENT_TIME_END_MINUTE + " INT DEFAULT NULL, "
                     + COLUMN_EVENT_SCHEDULE + " INT NOT NULL UNIQUE, "
                     + COLUMN_EVENT_CATEGORY + " INT NOT NULL, "
                     + COLUMN_EVENT_ACTION_START + " INT NOT NULL UNIQUE, "
@@ -186,4 +196,5 @@ public class SmartSchedulerDatabase {
             onCreate(arg0);
         }
     }
+
 }
