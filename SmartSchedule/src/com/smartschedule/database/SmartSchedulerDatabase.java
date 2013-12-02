@@ -1,6 +1,7 @@
 package com.smartschedule.database;
 
 import java.util.ArrayList;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -8,7 +9,7 @@ import android.database.DatabaseUtils;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
+import android.util.Log;
 
 public class SmartSchedulerDatabase {
 
@@ -48,87 +49,93 @@ public class SmartSchedulerDatabase {
     private static Context context;
     private SQLiteDatabase db;
     private OpenHelper openHelper;
+
     public SmartSchedulerDatabase(Context c) {
         SmartSchedulerDatabase.context = c;
     }
 
-    public SmartSchedulerDatabase open() throws  SQLException {
+    public SmartSchedulerDatabase open() throws SQLException {
         openHelper = new OpenHelper(context);
         db = openHelper.getWritableDatabase();
         return this;
     }
 
-    public SmartSchedulerDatabase openRead() throws  SQLException {
+    public SmartSchedulerDatabase openRead() throws SQLException {
         openHelper = new OpenHelper(context);
         db = openHelper.getReadableDatabase();
         return this;
     }
 
-    public void close(){
+    public void close() {
         openHelper.close();
     }
 
-    public long createData(String name, String image, int category, int state){
-        ContentValues event =  new ContentValues();
+    public long createData(String name, String image, int category, int state) {
+        ContentValues event = new ContentValues();
         event.put(COLUMN_EVENT_NAME, name);
         event.put(COLUMN_EVENT_IMAGE, image);
         event.put(COLUMN_EVENT_CATEGORY, category);
 
-        Cursor mCount= db.rawQuery("select count(*) from " + TABLE_EVENT, null);
+        Cursor mCount = db
+                .rawQuery("select count(*) from " + TABLE_EVENT, null);
         mCount.moveToFirst();
-        int count= mCount.getInt(0);
+        int count = mCount.getInt(0);
         mCount.close();
-        event.put(COLUMN_EVENT_SCHEDULE, count + 1 );
-        event.put(COLUMN_EVENT_ACTION_START, count + 1 );
-        event.put(COLUMN_EVENT_ACTION_END, count + 1 );
-        event.put(COLUMN_EVENT_STATE, state );
+        event.put(COLUMN_EVENT_SCHEDULE, count + 1);
+        event.put(COLUMN_EVENT_ACTION_START, count + 1);
+        event.put(COLUMN_EVENT_ACTION_END, count + 1);
+        event.put(COLUMN_EVENT_STATE, state);
         return db.insert(TABLE_EVENT, null, event);
 
     }
 
     public String getAllData() {
-        String[] columns = new String[]{COLUMN_EVENT_ID, COLUMN_EVENT_NAME, COLUMN_EVENT_IMAGE,
-                COLUMN_EVENT_TIME_START_HOUR, COLUMN_EVENT_TIME_START_MINUTE,
-                COLUMN_EVENT_TIME_END_HOUR, COLUMN_EVENT_TIME_END_MINUTE, COLUMN_EVENT_SCHEDULE,
-                COLUMN_EVENT_CATEGORY, COLUMN_EVENT_ACTION_START, COLUMN_EVENT_ACTION_END,
-                COLUMN_EVENT_STATE};
-        Cursor c =  db.query(TABLE_EVENT, columns, null, null, null, null, null);
-
-
+        String[] columns = new String[] { COLUMN_EVENT_ID, COLUMN_EVENT_NAME,
+                COLUMN_EVENT_IMAGE, COLUMN_EVENT_TIME_START_HOUR,
+                COLUMN_EVENT_TIME_START_MINUTE, COLUMN_EVENT_TIME_END_HOUR,
+                COLUMN_EVENT_TIME_END_MINUTE, COLUMN_EVENT_SCHEDULE,
+                COLUMN_EVENT_CATEGORY, COLUMN_EVENT_ACTION_START,
+                COLUMN_EVENT_ACTION_END, COLUMN_EVENT_STATE };
+        Cursor c = db.query(TABLE_EVENT, columns, null, null, null, null, null);
 
         String result = "";
 
         int iId = c.getColumnIndex(COLUMN_EVENT_ID);
         int iName = c.getColumnIndex(COLUMN_EVENT_NAME);
 
-        for(c.moveToFirst(); !c.isAfterLast(); c.moveToNext()){
-            result = result
-                    + " - _id:" + c.getString(iId)
-                    + " - name:" + c.getString(iName) + "\n";
+        for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+            result = result + " - _id:" + c.getString(iId) + " - name:"
+                    + c.getString(iName) + "\n";
         }
-//        String[]  total =  new String[]{"count: " + count, " value:" + result};
+        // String[] total = new String[]{"count: " + count, " value:" + result};
         return result;
     }
 
     public ArrayList<ContentValues> getData() {
 
-        String[] columns = new String[]{COLUMN_EVENT_ID, COLUMN_EVENT_NAME, COLUMN_EVENT_IMAGE,
-        		COLUMN_EVENT_TIME_START_HOUR, COLUMN_EVENT_TIME_START_MINUTE,
-                COLUMN_EVENT_TIME_END_HOUR, COLUMN_EVENT_TIME_END_MINUTE, COLUMN_EVENT_SCHEDULE,
-                COLUMN_EVENT_CATEGORY, COLUMN_EVENT_ACTION_START, COLUMN_EVENT_ACTION_END,
-                COLUMN_EVENT_STATE};
-        Cursor c =  db.query(TABLE_EVENT, columns, null, null, null, null, COLUMN_EVENT_ID + " DESC");
+        String[] columns = new String[] { COLUMN_EVENT_ID, COLUMN_EVENT_NAME,
+                COLUMN_EVENT_IMAGE, COLUMN_EVENT_TIME_START_HOUR,
+                COLUMN_EVENT_TIME_START_MINUTE, COLUMN_EVENT_TIME_END_HOUR,
+                COLUMN_EVENT_TIME_END_MINUTE, COLUMN_EVENT_SCHEDULE,
+                COLUMN_EVENT_CATEGORY, COLUMN_EVENT_ACTION_START,
+                COLUMN_EVENT_ACTION_END, COLUMN_EVENT_STATE };
+        Cursor c = null;
 
-
+        try {
+            c = db.query(TABLE_EVENT, columns, null, null, null, null,
+                    COLUMN_EVENT_ID + " DESC");
+        } catch (Exception e) {
+            Log.e(SmartSchedulerDatabase.this.toString(), e.getMessage());
+        }
 
         ArrayList<ContentValues> result = new ArrayList<ContentValues>();
 
-//        int iId = c.getColumnIndex(COLUMN_EVENT_ID);
-//        int iName = c.getColumnIndex(COLUMN_EVENT_NAME);
-//        int iTimeStart = c.getColumnIndex(COLUMN_EVENT_TIME_START);
-//        int iTimeEnd = c.getColumnIndex(COLUMN_EVENT_TIME_END);
+        // int iId = c.getColumnIndex(COLUMN_EVENT_ID);
+        // int iName = c.getColumnIndex(COLUMN_EVENT_NAME);
+        // int iTimeStart = c.getColumnIndex(COLUMN_EVENT_TIME_START);
+        // int iTimeEnd = c.getColumnIndex(COLUMN_EVENT_TIME_END);
 
-        for(c.moveToFirst(); !c.isAfterLast(); c.moveToNext()){
+        for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
             ContentValues cv = new ContentValues();
 
             DatabaseUtils.cursorRowToContentValues(c, cv);
@@ -138,16 +145,55 @@ public class SmartSchedulerDatabase {
         return result;
     }
 
-    public ArrayList<ContentValues> getData(int id) {
-    	// TODO
-		return null;
+    public ContentValues getData(int id) {
+        String[] columns = new String[] { COLUMN_EVENT_ID, COLUMN_EVENT_NAME,
+                COLUMN_EVENT_IMAGE, COLUMN_EVENT_TIME_START_HOUR,
+                COLUMN_EVENT_TIME_START_MINUTE, COLUMN_EVENT_TIME_END_HOUR,
+                COLUMN_EVENT_TIME_END_MINUTE, COLUMN_EVENT_SCHEDULE,
+                COLUMN_EVENT_CATEGORY, COLUMN_EVENT_ACTION_START,
+                COLUMN_EVENT_ACTION_END, COLUMN_EVENT_STATE };
+        Cursor c = null;
+
+        try {
+            c = db.query(TABLE_EVENT, columns, COLUMN_EVENT_ID + "=" + id,
+                    null, null, null, COLUMN_EVENT_ID + " DESC");
+        } catch (Exception e) {
+            Log.e(SmartSchedulerDatabase.this.toString(), e.getMessage());
+        }
+
+
+        ArrayList<ContentValues> result = new ArrayList<ContentValues>();
+
+        // int iId = c.getColumnIndex(COLUMN_EVENT_ID);
+        // int iName = c.getColumnIndex(COLUMN_EVENT_NAME);
+        // int iTimeStart = c.getColumnIndex(COLUMN_EVENT_TIME_START);
+        // int iTimeEnd = c.getColumnIndex(COLUMN_EVENT_TIME_END);
+
+        for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+            ContentValues cv = new ContentValues();
+
+            DatabaseUtils.cursorRowToContentValues(c, cv);
+
+            result.add(cv);
+        }
+        if(result.size() == 1){
+            return  result.get(0);
+        }else {
+            Log.e(SmartSchedulerDatabase.this.toString(), "error when getdata follow id");
+            return new ContentValues();
+        }
     }
 
-	public int delete(int id) {
-		return db.delete(TABLE_EVENT, COLUMN_EVENT_ID + "=" + id, null);
-	}
+    public int update_event(ContentValues contentValues, int event_id) {
+        return db.update(TABLE_EVENT, contentValues, COLUMN_EVENT_ID + "="
+                + event_id, null);
+    }
 
-    //---------------- class OpenHelper ------------------
+    public int delete(int id) {
+        return db.delete(TABLE_EVENT, COLUMN_EVENT_ID + "=" + id, null);
+    }
+
+    // ---------------- class OpenHelper ------------------
     private static class OpenHelper extends SQLiteOpenHelper {
         public OpenHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -155,37 +201,35 @@ public class SmartSchedulerDatabase {
 
         @Override
         public void onCreate(SQLiteDatabase arg0) {
-            arg0.execSQL("CREATE TABLE " + TABLE_EVENT + " ("
-                    + COLUMN_EVENT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                    + COLUMN_EVENT_NAME + " TEXT, "
-                    + COLUMN_EVENT_IMAGE + " TEXT, "
-                    + COLUMN_EVENT_TIME_START_HOUR + " INT DEFAULT NULL, "
-                    + COLUMN_EVENT_TIME_START_MINUTE + " INT DEFAULT NULL, "
-                    + COLUMN_EVENT_TIME_END_HOUR + " INT DEFAULT NULL, "
-                    + COLUMN_EVENT_TIME_END_MINUTE + " INT DEFAULT NULL, "
-                    + COLUMN_EVENT_SCHEDULE + " INT NOT NULL UNIQUE, "
-                    + COLUMN_EVENT_CATEGORY + " INT NOT NULL, "
-                    + COLUMN_EVENT_ACTION_START + " INT NOT NULL UNIQUE, "
-                    + COLUMN_EVENT_ACTION_END + " INT NOT NULL UNIQUE, "
-                    + COLUMN_EVENT_STATE + " INT NOT NULL"
-                    +	");");
+            arg0.execSQL("CREATE TABLE " + TABLE_EVENT + " (" + COLUMN_EVENT_ID
+                    + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                    + COLUMN_EVENT_NAME + " TEXT, " + COLUMN_EVENT_IMAGE
+                    + " TEXT, " + COLUMN_EVENT_TIME_START_HOUR
+                    + " INT DEFAULT NULL, " + COLUMN_EVENT_TIME_START_MINUTE
+                    + " INT DEFAULT NULL, " + COLUMN_EVENT_TIME_END_HOUR
+                    + " INT DEFAULT NULL, " + COLUMN_EVENT_TIME_END_MINUTE
+                    + " INT DEFAULT NULL, " + COLUMN_EVENT_SCHEDULE
+                    + " INT NOT NULL UNIQUE, " + COLUMN_EVENT_CATEGORY
+                    + " INT NOT NULL, " + COLUMN_EVENT_ACTION_START
+                    + " INT NOT NULL UNIQUE, " + COLUMN_EVENT_ACTION_END
+                    + " INT NOT NULL UNIQUE, " + COLUMN_EVENT_STATE
+                    + " INT NOT NULL" + ");");
             arg0.execSQL("CREATE TABLE " + TABLE_SCHEDULE + " ("
-                    + COLUMN_SCHEDULE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                    + COLUMN_SCHEDULE_ID
+                    + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + COLUMN_SCHEDULE_MON + " BOOLEAN DEFAULT FALSE, "
                     + COLUMN_SCHEDULE_TUE + " BOOLEAN DEFAULT FALSE, "
                     + COLUMN_SCHEDULE_WED + " BOOLEAN DEFAULT FALSE, "
                     + COLUMN_SCHEDULE_THU + " BOOLEAN DEFAULT FALSE, "
                     + COLUMN_SCHEDULE_FRI + " BOOLEAN DEFAULT FALSE, "
                     + COLUMN_SCHEDULE_SAT + " BOOLEAN DEFAULT FALSE, "
-                    + COLUMN_SCHEDULE_SUN + " BOOLEAN DEFAULT FALSE "
-                    +	");");
+                    + COLUMN_SCHEDULE_SUN + " BOOLEAN DEFAULT FALSE " + ");");
             arg0.execSQL("CREATE TABLE " + TABLE_ACTION + " ("
                     + COLUMN_ACTION_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + COLUMN_ACTION_START_ID + " INTEGER DEFAULT NULL, "
                     + COLUMN_ACTION_END_ID + " INTEGER DEFAULT NULL, "
                     + COLUMN_ACTION_STATE + " INTEGER NOT NULL, "
-                    + COLUMN_ACTION_NAME + " TEXT "
-                    +	");");
+                    + COLUMN_ACTION_NAME + " TEXT " + ");");
         }
 
         @Override
