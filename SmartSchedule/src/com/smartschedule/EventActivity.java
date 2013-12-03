@@ -1,6 +1,5 @@
 package com.smartschedule;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 import util.Util;
@@ -23,7 +22,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 public class EventActivity extends Activity {
-    private ScheduleServiceReceiver smartScheduleDb = new ScheduleServiceReceiver(
+    private SmartSchedulerDatabase smartScheduleDb = new SmartSchedulerDatabase(
             this);
     SampleAlarmReceiver schedule = new SampleAlarmReceiver();
     Button btn1;

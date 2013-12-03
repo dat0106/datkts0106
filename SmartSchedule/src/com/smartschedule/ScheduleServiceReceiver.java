@@ -92,6 +92,8 @@ public class ScheduleServiceReceiver extends WakefulBroadcastReceiver {
         intent.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, id);
 
         PendingIntent pi = PendingIntent.getBroadcast(context, id, intent, 0);
+        
+        alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, triggerAtMillis, intervalMillis, operation);
     }
 
     public void cancelSchedule(Context context, int i) {
