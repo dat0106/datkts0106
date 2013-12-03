@@ -22,9 +22,8 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 public class EventActivity extends Activity {
-    private SmartSchedulerDatabase smartScheduleDb = new SmartSchedulerDatabase(
-            this);
-    SampleAlarmReceiver schedule = new SampleAlarmReceiver();
+    private SmartSchedulerDatabase smartScheduleDb = new SmartSchedulerDatabase(this);
+    ScheduleServiceReceiver schedule = new ScheduleServiceReceiver();
     Button btn1;
     Button btn2;
     Button btn3;
@@ -245,6 +244,8 @@ public class EventActivity extends Activity {
             smartScheduleDb.close();
             schedule.setSchedule(this, contentValues
                     .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_ID));
+
+//            schedule.setAlarm(this);
             finish();
             return true;
         case R.id.cancel_scheduler:
