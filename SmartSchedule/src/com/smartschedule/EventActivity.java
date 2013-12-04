@@ -242,8 +242,7 @@ public class EventActivity extends Activity {
             smartScheduleDb.update_event(contentValues, contentValues
                     .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_ID));
             smartScheduleDb.close();
-            schedule.setSchedule(this, contentValues
-                    .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_ID));
+            schedule.setSchedule(this, contentValues);
 
 //            schedule.setAlarm(this);
             finish();
