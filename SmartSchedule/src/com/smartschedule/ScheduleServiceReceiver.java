@@ -103,11 +103,12 @@ public class ScheduleServiceReceiver extends WakefulBroadcastReceiver {
                 .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_ID);
         alarmMgr = (AlarmManager) context
                 .getSystemService(context.ALARM_SERVICE);
-        Intent intent = new Intent(context, ScheduleServiceReceiver.class);
-        intent.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, id);
+        Intent intentStart = new Intent(context, ScheduleServiceReceiver.class);
+        intentStart.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, id);
+        intentStart.putExtra("check_start_end", 0);
 
         PendingIntent piStart = PendingIntent.getBroadcast(context, id * 2,
-                intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                intentStart, PendingIntent.FLAG_UPDATE_CURRENT);
 
         Calendar startTime = Calendar.getInstance();
 
@@ -125,8 +126,11 @@ public class ScheduleServiceReceiver extends WakefulBroadcastReceiver {
         alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP,
                 startTime.getTimeInMillis(), 300000, piStart);
 
+        Intent intentEnd = new Intent(context, ScheduleServiceReceiver.class);
+        intentEnd.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, id);
+        intentEnd.putExtra("check_start_end", 1);
         PendingIntent piEnd = PendingIntent.getBroadcast(context, id * 2 + 1,
-                intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                intentEnd, PendingIntent.FLAG_UPDATE_CURRENT);
 
         Calendar endTime = Calendar.getInstance();
 
@@ -157,11 +161,12 @@ public class ScheduleServiceReceiver extends WakefulBroadcastReceiver {
                 .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_ID);
         alarmMgr = (AlarmManager) context
                 .getSystemService(context.ALARM_SERVICE);
-        Intent intent = new Intent(context, ScheduleServiceReceiver.class);
-        intent.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, id);
+        Intent intentStart = new Intent(context, ScheduleServiceReceiver.class);
+        intentStart.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, id);
+        intentStart.putExtra("check_start_end", 0);
 
         PendingIntent piStart = PendingIntent.getBroadcast(context, id * 2,
-                intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                intentStart, PendingIntent.FLAG_UPDATE_CURRENT);
         try {
             alarmMgr.cancel(piStart);
             Log.v(this.toString(),
@@ -176,9 +181,11 @@ public class ScheduleServiceReceiver extends WakefulBroadcastReceiver {
                             + " " + e.getMessage());
         }
 
+        Intent intentEnd = new Intent(context, ScheduleServiceReceiver.class);
+        intentEnd.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, id);
+        intentEnd.putExtra("check_start_end", 1);
         PendingIntent piEnd = PendingIntent.getBroadcast(context, id * 2 + 1,
-                intent, PendingIntent.FLAG_UPDATE_CURRENT);
-
+                intentEnd, PendingIntent.FLAG_UPDATE_CURRENT);
         try {
             alarmMgr.cancel(piEnd);
             // TODO remove Toast

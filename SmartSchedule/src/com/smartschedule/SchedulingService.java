@@ -1,5 +1,7 @@
 package com.smartschedule;
 
+import java.util.jar.Attributes.Name;
+
 import com.smartschedule.database.SmartSchedulerDatabase;
 import com.smartschedule.database.SmartSystemDatabase;
 
@@ -27,10 +29,13 @@ public class SchedulingService extends IntentService{
         count++;
 
         int event_id = intent.getExtras().getInt(SmartSchedulerDatabase.COLUMN_EVENT_ID);
+        String name = intent.getExtras().getString(SmartSchedulerDatabase.COLUMN_EVENT_NAME);
+        int check_start_end = intent.getExtras().getInt("check_start_end");
+
         database.open();
         database.createData(count);
         database.close();
-        sendNotification("lập lịch làm việc ", event_id);
+        sendNotification("lập lịch làm việc " + name + ": " + check_start_end  +  "id", event_id);
 
     }
 
