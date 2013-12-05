@@ -96,21 +96,29 @@ public class ScheduleServiceReceiver extends WakefulBroadcastReceiver {
         Intent intent = new Intent(context, ScheduleServiceReceiver.class);
         intent.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, id);
 
-        PendingIntent pi = PendingIntent.getBroadcast(context, id, intent, PendingIntent.FLAG_ONE_SHOT);
+        PendingIntent piStart = PendingIntent.getBroadcast(context, id*2, intent, PendingIntent.FLAG_ONE_SHOT);
 
-        Calendar mcurrentTime = Calendar.getInstance();
-        Calendar mcurrentTime1 = Calendar.getInstance();
+        Calendar startTime = Calendar.getInstance();
 
-        mcurrentTime1.set(Calendar.HOUR_OF_DAY, contentValues.getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_HOUR));
-        mcurrentTime1.set(Calendar.MINUTE, contentValues.getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_MINUTE));
-        mcurrentTime1.set(Calendar.SECOND, 0);
-        String dat = mcurrentTime.getTime().toString() + "\n" +
-                mcurrentTime1.getTime().toString() + "\n" +
-                (mcurrentTime1.getTimeInMillis() - mcurrentTime.getTimeInMillis());
+        startTime.set(Calendar.HOUR_OF_DAY, contentValues.getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_HOUR));
+        startTime.set(Calendar.MINUTE, contentValues.getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_MINUTE));
+        startTime.set(Calendar.SECOND, 0);
+
+        // DateUtils.DAY_IN_MILLIS
+        alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, startTime.getTimeInMillis(), 300000, piStart);
+
+        PendingIntent piEnd = PendingIntent.getBroadcast(context, id*2 + 1, intent, PendingIntent.FLAG_ONE_SHOT);
+
+        Calendar endTime = Calendar.getInstance();
+
+        endTime.set(Calendar.HOUR_OF_DAY, contentValues.getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_TIME_END_HOUR));
+        endTime.set(Calendar.MINUTE, contentValues.getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_TIME_END_MINUTE));
+        endTime.set(Calendar.SECOND, 0);
+        String dat = startTime.getTime().toString() + "\n" +  endTime.getTime().toString();
 
         Toast.makeText(context, dat, Toast.LENGTH_LONG).show();
         // DateUtils.DAY_IN_MILLIS
-        alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, mcurrentTime1.getTimeInMillis(), 60000*5, pi);
+        alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, endTime.getTimeInMillis(), 300000, piEnd);
     }
 
     public void cancelSchedule(Context context,  ContentValues contentValues) {
