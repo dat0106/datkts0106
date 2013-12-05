@@ -39,6 +39,7 @@ public class MainActivity extends ListActivity {
 
     private SmartSchedulerDatabase smartScheduleDb = new SmartSchedulerDatabase(
             this);
+    ScheduleServiceReceiver schedule = new ScheduleServiceReceiver();
     private EventAdapter mAdapter;
     private ArrayList<ContentValues> contentValues;
 
@@ -52,7 +53,7 @@ public class MainActivity extends ListActivity {
 
         // Create an empty adapter we will use to display the loaded data.
         // We pass null for the cursor, then update it in onLoadFinished()
-        getData();
+        contentValues = getData();
         mAdapter = new EventAdapter(this);
         setListAdapter(mAdapter);
 
@@ -92,31 +93,21 @@ public class MainActivity extends ListActivity {
 
     @Override
     protected void onStart() {
-        // TODO Auto-generated method stub
         super.onStart();
         // reload list view
-        getData();
+        contentValues = getData();
         mAdapter.notifyDataSetChanged();
 
     }
+
     protected void startEventActivity() {
-        Intent intent = new Intent(MainActivity.this,
-                EventActivity.class);
+        Intent intent = new Intent(MainActivity.this, EventActivity.class);
         intent.putExtra(
                 SmartSchedulerDatabase.COLUMN_EVENT_ID,
                 contentValues.get(selectedItem).getAsInteger(
                         SmartSchedulerDatabase.COLUMN_EVENT_ID));
 
         MainActivity.this.startActivity(intent);
-    }
-
-    /**
-     * @doc get content values in database
-     */
-    private void getData() {
-        smartScheduleDb.openRead();
-        contentValues = smartScheduleDb.getData();
-        smartScheduleDb.close();
     }
 
     @Override
@@ -156,7 +147,7 @@ public class MainActivity extends ListActivity {
                                             checkDisableCreate, "image", 1, 2);
                                     smartScheduleDb.close();
 
-                                    getData();
+                                    contentValues = getData();
 
                                     mAdapter.notifyDataSetChanged();
 
@@ -239,15 +230,16 @@ public class MainActivity extends ListActivity {
             case R.id.menuitem2_delete:
 
                 smartScheduleDb.open();
-                int logDelete = smartScheduleDb.delete(contentValues.get(selectedItem)
-                        .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_ID));
+                int logDelete = smartScheduleDb.delete(contentValues.get(
+                        selectedItem).getAsInteger(
+                        SmartSchedulerDatabase.COLUMN_EVENT_ID));
 
-                if(logDelete!=1) {
+                if (logDelete != 1) {
                     Log.e(MainActivity.this.toString(), "error delete event");
                 }
                 smartScheduleDb.close();
 
-                getData();
+                contentValues = getData();
                 mAdapter.notifyDataSetChanged();
                 mode.finish();
                 return true;
@@ -277,19 +269,16 @@ public class MainActivity extends ListActivity {
 
         @Override
         public int getCount() {
-            // TODO Auto-generated method stub
             return contentValues.size();
         }
 
         @Override
         public Object getItem(int position) {
-            // TODO Auto-generated method stub
             return null;
         }
 
         @Override
         public long getItemId(int position) {
-            // TODO Auto-generated method stub
             return position;
         }
 
@@ -329,17 +318,32 @@ public class MainActivity extends ListActivity {
                                 boolean isChecked) {
                             if (isChecked) {
                                 // update data
-                                Toast.makeText(getApplicationContext(),
-                                        "checked", Toast.LENGTH_LONG).show();
+                                contentValues
+                                        .get(selectedItem)
+                                        .put(SmartSchedulerDatabase.COLUMN_EVENT_STATE,
+                                                1);
+                                update(contentValues.get(selectedItem));
+                                schedule.setSchedule(getApplicationContext(),
+                                        contentValues.get(selectedItem));
                             } else {
-                                Toast.makeText(getApplicationContext(),
-                                        "unchecked", Toast.LENGTH_LONG).show();
+                                // update data
+                                contentValues
+                                        .get(selectedItem)
+                                        .put(SmartSchedulerDatabase.COLUMN_EVENT_STATE,
+                                                0);
+                                update(contentValues.get(selectedItem));
+                                schedule.cancelSchedule(
+                                        getApplicationContext(),
+                                        contentValues.get(selectedItem));
                             }
                         }
                     });
 
-            String timer = Util.getTime(contentValues.get(position).getAsString(
-                    SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_HOUR))
+            String timer = Util
+                    .getTime(contentValues
+                            .get(position)
+                            .getAsString(
+                                    SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_HOUR))
 
                     + ":"
                     + Util.getTime(contentValues
@@ -358,6 +362,38 @@ public class MainActivity extends ListActivity {
             return row;
         }
 
+    }
+
+    /* ----------------------- database ------------------------------ */
+    /**
+     * @return
+     * @doc get content values in database
+     */
+    private ArrayList<ContentValues> getData() {
+        smartScheduleDb.openRead();
+        ArrayList<ContentValues> cV = smartScheduleDb.getData();
+        smartScheduleDb.close();
+        return cV;
+    }
+
+    private ContentValues getData(int Id) {
+        smartScheduleDb.openRead();
+        ContentValues cV = smartScheduleDb.getData(Id);
+        smartScheduleDb.close();
+        return cV;
+    }
+
+    private int update(ContentValues cV) {
+        ContentValues cv = new ContentValues();
+
+        cv.put(SmartSchedulerDatabase.COLUMN_EVENT_STATE,
+                cV.getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_STATE));
+
+        smartScheduleDb.open();
+        int result = smartScheduleDb.update_event(cV,
+                cV.getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_ID));
+        smartScheduleDb.close();
+        return result;
     }
 
 }

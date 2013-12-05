@@ -223,7 +223,8 @@ public class EventActivity extends Activity {
             NavUtils.navigateUpTo(this, new Intent(this, MainActivity.class));
             return true;
         case R.id.done_scheduler:
-
+            // update state
+            contentValues.put(SmartSchedulerDatabase.COLUMN_EVENT_STATE, 1);
             ContentValues cv = new ContentValues();
             cv.put(SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_HOUR,
                     contentValues
@@ -237,12 +238,16 @@ public class EventActivity extends Activity {
             cv.put(SmartSchedulerDatabase.COLUMN_EVENT_TIME_END_MINUTE,
                     contentValues
                             .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_TIME_END_MINUTE));
-            // TODO still do not update schedule
+            cv.put(SmartSchedulerDatabase.COLUMN_EVENT_STATE,
+                    contentValues
+                            .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_STATE));
+
             smartScheduleDb.open();
             smartScheduleDb.update_event(contentValues, contentValues
                     .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_ID));
             smartScheduleDb.close();
-            schedule.setSchedule(this, contentValues);
+            // TODO kiem tra thoi gian set co ton tai ko
+            schedule.setSchedule(getApplicationContext(), contentValues);
 
 //            schedule.setAlarm(this);
             finish();
