@@ -18,7 +18,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 public class ScheduleServiceReceiver extends WakefulBroadcastReceiver {
-    private AlarmManager alarmMgr;
+    private AlarmManager alarmMgrStart;
+    private AlarmManager alarmMgrEnd;
     private PendingIntent alarmIntent;
     private ArrayList<PendingIntent> intentArray;
     private AlarmManager[] alarmManager;
@@ -101,14 +102,17 @@ public class ScheduleServiceReceiver extends WakefulBroadcastReceiver {
     public void setSchedule(Context context, ContentValues contentValues) {
         int id = contentValues
                 .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_ID);
-        alarmMgr = (AlarmManager) context
+        alarmMgrStart = (AlarmManager) context
+                .getSystemService(context.ALARM_SERVICE);
+
+        alarmMgrEnd = (AlarmManager) context
                 .getSystemService(context.ALARM_SERVICE);
         Intent intentStart = new Intent(context, ScheduleServiceReceiver.class);
         intentStart.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, id);
-        intentStart.putExtra("check_start_end", 0);
+        intentStart.putExtra("check_start_end", 1);
 
         PendingIntent piStart = PendingIntent.getBroadcast(context, id * 2,
-                intentStart, PendingIntent.FLAG_UPDATE_CURRENT);
+                intentStart, PendingIntent.FLAG_CANCEL_CURRENT);
 
         Calendar startTime = Calendar.getInstance();
 
@@ -123,14 +127,14 @@ public class ScheduleServiceReceiver extends WakefulBroadcastReceiver {
         startTime.set(Calendar.SECOND, 0);
 
         // DateUtils.DAY_IN_MILLIS
-        alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP,
+        alarmMgrStart.setRepeating(AlarmManager.RTC_WAKEUP,
                 startTime.getTimeInMillis(), 300000, piStart);
 
         Intent intentEnd = new Intent(context, ScheduleServiceReceiver.class);
         intentEnd.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, id);
-        intentEnd.putExtra("check_start_end", 1);
+        intentEnd.putExtra("check_start_end", 0);
         PendingIntent piEnd = PendingIntent.getBroadcast(context, id * 2 + 1,
-                intentEnd, PendingIntent.FLAG_UPDATE_CURRENT);
+                intentEnd, PendingIntent.FLAG_CANCEL_CURRENT);
 
         Calendar endTime = Calendar.getInstance();
 
@@ -152,23 +156,26 @@ public class ScheduleServiceReceiver extends WakefulBroadcastReceiver {
                         + "  \nTime End : " + endTime.getTime().toString(),
                 Toast.LENGTH_LONG).show();
         // DateUtils.DAY_IN_MILLIS
-        alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP,
+        alarmMgrEnd.setRepeating(AlarmManager.RTC_WAKEUP,
                 endTime.getTimeInMillis(), 300000, piEnd);
     }
 
     public void cancelSchedule(Context context, ContentValues contentValues) {
         int id = contentValues
                 .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_ID);
-        alarmMgr = (AlarmManager) context
+        alarmMgrStart = (AlarmManager) context
+                .getSystemService(context.ALARM_SERVICE);
+
+        alarmMgrEnd = (AlarmManager) context
                 .getSystemService(context.ALARM_SERVICE);
         Intent intentStart = new Intent(context, ScheduleServiceReceiver.class);
         intentStart.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, id);
-        intentStart.putExtra("check_start_end", 0);
+        intentStart.putExtra("check_start_end", 1);
 
         PendingIntent piStart = PendingIntent.getBroadcast(context, id * 2,
                 intentStart, PendingIntent.FLAG_UPDATE_CURRENT);
         try {
-            alarmMgr.cancel(piStart);
+        	alarmMgrStart.cancel(piStart);
             Log.v(this.toString(),
                     "cancel alarmManager "
                             + contentValues
@@ -183,11 +190,11 @@ public class ScheduleServiceReceiver extends WakefulBroadcastReceiver {
 
         Intent intentEnd = new Intent(context, ScheduleServiceReceiver.class);
         intentEnd.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, id);
-        intentEnd.putExtra("check_start_end", 1);
+        intentEnd.putExtra("check_start_end", 0);
         PendingIntent piEnd = PendingIntent.getBroadcast(context, id * 2 + 1,
                 intentEnd, PendingIntent.FLAG_UPDATE_CURRENT);
         try {
-            alarmMgr.cancel(piEnd);
+        	alarmMgrEnd.cancel(piEnd);
             // TODO remove Toast
             Toast.makeText(
                     context,
