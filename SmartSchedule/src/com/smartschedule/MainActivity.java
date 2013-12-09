@@ -285,6 +285,9 @@ public class MainActivity extends ListActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 
+            // set selectedItem
+            selectedItem = position;
+
             LayoutInflater inflater = (LayoutInflater) mContext
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View row;
@@ -296,11 +299,11 @@ public class MainActivity extends ListActivity {
             Switch event_item_enable_switch = (Switch) row
                     .findViewById(R.id.event_item_enable_switch);
 
-            event_item_name.setText(contentValues.get(position).getAsString(
+            event_item_name.setText(contentValues.get(selectedItem).getAsString(
                     SmartSchedulerDatabase.COLUMN_EVENT_NAME));
             // TODO Chu y bien convert int sang boolean
 
-            int status = contentValues.get(position).getAsInteger(
+            int status = contentValues.get(selectedItem).getAsInteger(
                     SmartSchedulerDatabase.COLUMN_ACTION_STATE);
 
             if (status >= 2) {
@@ -341,13 +344,13 @@ public class MainActivity extends ListActivity {
 
             String timer = Util
                     .getTime(contentValues
-                            .get(position)
+                            .get(selectedItem)
                             .getAsString(
                                     SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_HOUR))
 
                     + ":"
                     + Util.getTime(contentValues
-                            .get(position)
+                            .get(selectedItem)
                             .getAsString(
                                     SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_MINUTE))
                     + " ~ "
@@ -355,7 +358,7 @@ public class MainActivity extends ListActivity {
                             SmartSchedulerDatabase.COLUMN_EVENT_TIME_END_HOUR))
                     + ":"
                     + Util.getTime(contentValues
-                            .get(position)
+                            .get(selectedItem)
                             .getAsString(
                                     SmartSchedulerDatabase.COLUMN_EVENT_TIME_END_MINUTE));
             event_item_initiator_time_hours.setText(timer);

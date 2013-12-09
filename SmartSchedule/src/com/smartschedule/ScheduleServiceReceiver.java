@@ -39,6 +39,7 @@ public class ScheduleServiceReceiver extends WakefulBroadcastReceiver {
 //        service.putExtra("check_start_end", 1);
         startWakefulService(context, intent);
 
+
     }
 
     public void setAlarm(Context context) {
