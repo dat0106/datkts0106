@@ -119,7 +119,7 @@ public class ScheduleServiceReceiver extends WakefulBroadcastReceiver {
         intentStart.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, id);
         intentStart.putExtra("check_start_end", 1);
 
-        PendingIntent piStart = PendingIntent.getBroadcast(context, id * 2000,
+        PendingIntent piStart = PendingIntent.getBroadcast(context, id * 2,
                 intentStart, PendingIntent.FLAG_UPDATE_CURRENT);
 
         Calendar startTime = Calendar.getInstance();
@@ -141,7 +141,7 @@ public class ScheduleServiceReceiver extends WakefulBroadcastReceiver {
         Intent intentEnd = new Intent(context, ScheduleServiceReceiver.class);
         intentEnd.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, id);
         intentEnd.putExtra("check_start_end", 0);
-        PendingIntent piEnd = PendingIntent.getBroadcast(context, id * 2000 + 1,
+        PendingIntent piEnd = PendingIntent.getBroadcast(context, id * 2 + 1,
                 intentEnd, PendingIntent.FLAG_UPDATE_CURRENT);
 
         Calendar endTime = Calendar.getInstance();
