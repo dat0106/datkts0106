@@ -1,31 +1,52 @@
-12-09 13:58:00.600: I/com.smartschedule.SchedulingService@415a6a58(908): Volume default:  
-12-09 13:58:00.600: I/com.smartschedule.SchedulingService@415a6a58(908): STREAM_RING : 7
-12-09 13:58:00.600: I/com.smartschedule.SchedulingService@415a6a58(908): STREAM_MUSIC : 11
-12-09 13:58:00.600: I/com.smartschedule.SchedulingService@415a6a58(908): STREAM_ALARM : 6
-12-09 13:58:00.600: I/com.smartschedule.SchedulingService@415a6a58(908): STREAM_NOTIFICATION : 7
-12-09 13:58:00.600: I/com.smartschedule.SchedulingService@415a6a58(908): STREAM_SYSTEM : 7
-12-09 13:58:00.600: I/com.smartschedule.SchedulingService@415a6a58(908): STREAM_VOICE_CALL : 4
-12-09 13:58:00.600: I/com.smartschedule.SchedulingService@415a6a58(908): STREAM_DTMF : 15
-12-09 13:58:00.600: I/com.smartschedule.SchedulingService@415a6a58(908): Completed service @ 18375223
-12-09 14:00:00.420: V/com.smartschedule.ScheduleServiceReceiver@4156b108(908): COLUMN_EVENT_ID1 check_start_end1
-12-09 14:00:00.440: I/com.smartschedule.SchedulingService@41582a70(908): Start service @ 18495065
-12-09 14:00:00.510: I/com.smartschedule.SchedulingService@41582a70(908): Volume default:  
-12-09 14:00:00.510: I/com.smartschedule.SchedulingService@41582a70(908): STREAM_RING : 7
-12-09 14:00:00.510: I/com.smartschedule.SchedulingService@41582a70(908): STREAM_MUSIC : 11
-12-09 14:00:00.510: I/com.smartschedule.SchedulingService@41582a70(908): STREAM_ALARM : 6
-12-09 14:00:00.510: I/com.smartschedule.SchedulingService@41582a70(908): STREAM_NOTIFICATION : 7
-12-09 14:00:00.510: I/com.smartschedule.SchedulingService@41582a70(908): STREAM_SYSTEM : 7
-12-09 14:00:00.510: I/com.smartschedule.SchedulingService@41582a70(908): STREAM_VOICE_CALL : 4
-12-09 14:00:00.510: I/com.smartschedule.SchedulingService@41582a70(908): STREAM_DTMF : 15
-12-09 14:00:00.510: I/com.smartschedule.SchedulingService@41582a70(908): Completed service @ 18495132
-12-09 14:03:00.430: V/com.smartschedule.ScheduleServiceReceiver@414c3468(908): COLUMN_EVENT_ID1 check_start_end0
-12-09 14:03:00.450: I/com.smartschedule.SchedulingService@415814e8(908): Start service @ 18675075
-12-09 14:03:00.530: I/com.smartschedule.SchedulingService@415814e8(908): Volume default:  
-12-09 14:03:00.530: I/com.smartschedule.SchedulingService@415814e8(908): STREAM_RING : 7
-12-09 14:03:00.530: I/com.smartschedule.SchedulingService@415814e8(908): STREAM_MUSIC : 11
-12-09 14:03:00.530: I/com.smartschedule.SchedulingService@415814e8(908): STREAM_ALARM : 6
-12-09 14:03:00.530: I/com.smartschedule.SchedulingService@415814e8(908): STREAM_NOTIFICATION : 7
-12-09 14:03:00.530: I/com.smartschedule.SchedulingService@415814e8(908): STREAM_SYSTEM : 7
-12-09 14:03:00.530: I/com.smartschedule.SchedulingService@415814e8(908): STREAM_VOICE_CALL : 4
-12-09 14:03:00.530: I/com.smartschedule.SchedulingService@415814e8(908): STREAM_DTMF : 15
-12-09 14:03:00.530: I/com.smartschedule.SchedulingService@415814e8(908): Completed service @ 18675159
+12-09 15:31:00.951: I/com.smartschedule.SchedulingService@41544958(1601): Volume default:  
+12-09 15:31:00.951: I/com.smartschedule.SchedulingService@41544958(1601): STREAM_RING : 1
+12-09 15:31:00.951: I/com.smartschedule.SchedulingService@41544958(1601): STREAM_MUSIC : 2
+12-09 15:31:00.951: I/com.smartschedule.SchedulingService@41544958(1601): STREAM_ALARM : 2
+12-09 15:31:00.951: I/com.smartschedule.SchedulingService@41544958(1601): STREAM_NOTIFICATION : 1
+12-09 15:31:00.951: I/com.smartschedule.SchedulingService@41544958(1601): STREAM_SYSTEM : 1
+12-09 15:31:00.951: I/com.smartschedule.SchedulingService@41544958(1601): STREAM_VOICE_CALL : 2
+12-09 15:31:00.951: I/com.smartschedule.SchedulingService@41544958(1601): STREAM_DTMF : 2
+12-09 15:31:00.990: I/com.smartschedule.SchedulingService@41544958(1601): Volume set:  
+12-09 15:31:00.990: I/com.smartschedule.SchedulingService@41544958(1601): STREAM_RING : 1
+12-09 15:31:00.990: I/com.smartschedule.SchedulingService@41544958(1601): STREAM_MUSIC : 2
+12-09 15:31:00.990: I/com.smartschedule.SchedulingService@41544958(1601): STREAM_ALARM : 2
+12-09 15:31:00.990: I/com.smartschedule.SchedulingService@41544958(1601): STREAM_NOTIFICATION : 1
+12-09 15:31:00.990: I/com.smartschedule.SchedulingService@41544958(1601): STREAM_SYSTEM : 1
+12-09 15:31:00.990: I/com.smartschedule.SchedulingService@41544958(1601): STREAM_VOICE_CALL : 2
+12-09 15:31:00.990: I/com.smartschedule.SchedulingService@41544958(1601): STREAM_DTMF : 2
+12-09 15:31:00.990: I/com.smartschedule.SchedulingService@41544958(1601): Volume Max:  
+12-09 15:31:00.990: I/com.smartschedule.SchedulingService@41544958(1601): STREAM_RING : 7
+12-09 15:31:00.990: I/com.smartschedule.SchedulingService@41544958(1601): STREAM_MUSIC : 15
+12-09 15:31:00.990: I/com.smartschedule.SchedulingService@41544958(1601): STREAM_ALARM : 7
+12-09 15:31:00.990: I/com.smartschedule.SchedulingService@41544958(1601): STREAM_NOTIFICATION : 7
+12-09 15:31:00.990: I/com.smartschedule.SchedulingService@41544958(1601): STREAM_SYSTEM : 7
+12-09 15:31:00.990: I/com.smartschedule.SchedulingService@41544958(1601): STREAM_VOICE_CALL : 5
+12-09 15:31:00.990: I/com.smartschedule.SchedulingService@41544958(1601): STREAM_DTMF : 15
+12-09 15:31:01.000: I/com.smartschedule.SchedulingService@41544958(1601): Completed service @ 23955621
+12-09 15:33:00.801: V/com.smartschedule.ScheduleServiceReceiver@414baa80(1601): COLUMN_EVENT_ID1 check_start_end0
+12-09 15:33:00.921: I/com.smartschedule.SchedulingService@41543f18(1601): Start service @ 24075541
+12-09 15:33:00.980: I/com.smartschedule.SchedulingService@41543f18(1601): Volume default:  
+12-09 15:33:00.980: I/com.smartschedule.SchedulingService@41543f18(1601): STREAM_RING : 1
+12-09 15:33:00.980: I/com.smartschedule.SchedulingService@41543f18(1601): STREAM_MUSIC : 2
+12-09 15:33:00.980: I/com.smartschedule.SchedulingService@41543f18(1601): STREAM_ALARM : 2
+12-09 15:33:00.980: I/com.smartschedule.SchedulingService@41543f18(1601): STREAM_NOTIFICATION : 1
+12-09 15:33:00.980: I/com.smartschedule.SchedulingService@41543f18(1601): STREAM_SYSTEM : 1
+12-09 15:33:00.980: I/com.smartschedule.SchedulingService@41543f18(1601): STREAM_VOICE_CALL : 2
+12-09 15:33:00.980: I/com.smartschedule.SchedulingService@41543f18(1601): STREAM_DTMF : 2
+12-09 15:33:01.060: I/com.smartschedule.SchedulingService@41543f18(1601): Volume set:  
+12-09 15:33:01.060: I/com.smartschedule.SchedulingService@41543f18(1601): STREAM_RING : 1
+12-09 15:33:01.060: I/com.smartschedule.SchedulingService@41543f18(1601): STREAM_MUSIC : 2
+12-09 15:33:01.060: I/com.smartschedule.SchedulingService@41543f18(1601): STREAM_ALARM : 2
+12-09 15:33:01.060: I/com.smartschedule.SchedulingService@41543f18(1601): STREAM_NOTIFICATION : 1
+12-09 15:33:01.060: I/com.smartschedule.SchedulingService@41543f18(1601): STREAM_SYSTEM : 1
+12-09 15:33:01.060: I/com.smartschedule.SchedulingService@41543f18(1601): STREAM_VOICE_CALL : 2
+12-09 15:33:01.060: I/com.smartschedule.SchedulingService@41543f18(1601): STREAM_DTMF : 2
+12-09 15:33:01.070: I/com.smartschedule.SchedulingService@41543f18(1601): Volume Max:  
+12-09 15:33:01.070: I/com.smartschedule.SchedulingService@41543f18(1601): STREAM_RING : 7
+12-09 15:33:01.070: I/com.smartschedule.SchedulingService@41543f18(1601): STREAM_MUSIC : 15
+12-09 15:33:01.070: I/com.smartschedule.SchedulingService@41543f18(1601): STREAM_ALARM : 7
+12-09 15:33:01.070: I/com.smartschedule.SchedulingService@41543f18(1601): STREAM_NOTIFICATION : 7
+12-09 15:33:01.070: I/com.smartschedule.SchedulingService@41543f18(1601): STREAM_SYSTEM : 7
+12-09 15:33:01.070: I/com.smartschedule.SchedulingService@41543f18(1601): STREAM_VOICE_CALL : 5
+12-09 15:33:01.070: I/com.smartschedule.SchedulingService@41543f18(1601): STREAM_DTMF : 15
+12-09 15:33:01.081: I/com.smartschedule.SchedulingService@41543f18(1601): Completed service @ 24075703
