@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:background="#ffedeeee" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:padding="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="15.0sp" android:textColor="#ff333333" android:gravity="left" android:layout_gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/the_audiomanager_widget_is_a_great" />
+        <ImageView android:layout_gravity="center_horizontal" android:paddingTop="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/am_tour_9" />
+        <TextView android:textSize="15.0sp" android:textColor="#ff333333" android:gravity="left" android:layout_gravity="center_horizontal" android:paddingTop="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/when_adding_the_audiomanager_widget" />
+        <TextView android:textSize="15.0sp" android:textColor="#ff333333" android:gravity="left" android:layout_gravity="center_horizontal" android:paddingTop="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/note_you_will_also_be_able_to_download" />
+    </LinearLayout>
+</ScrollView>

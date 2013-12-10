@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:persistent="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/settings_title" android:key="app_preferences">
+        <ListPreference android:entries="@array/themes" android:title="@string/themes_title" android:key="theme" android:summary="@string/themes_summary" android:defaultValue="normal" android:shouldDisableView="true" android:dialogTitle="@string/themes_dialog_title" android:entryValues="@array/themesValues" />
+        <CheckBoxPreference android:title="@string/volumizer_title" android:key="volumizer" android:summary="@string/volumizer_description" android:defaultValue="false" />
+        <CheckBoxPreference android:title="@string/status_title" android:key="statBar" android:summary="@string/status_setting_description" android:defaultValue="false" />
+        <CheckBoxPreference android:title="@string/settings_unlink_title" android:key="unLink" android:summary="@string/settings_unlink_description" android:defaultValue="false" />
+        <CheckBoxPreference android:title="@string/restore_ringer" android:key="showDialog" android:summary="@string/show_or_hide_restore_ringer_dialog" android:defaultValue="true" />
+        <CheckBoxPreference android:title="@string/vibrate_profile" android:key="vibrateProfile" android:summary="@string/vibrate_profile_set" android:defaultValue="true" />
+        <CheckBoxPreference android:title="@string/swipe_navigation" android:key="enableSwipe" android:summary="@string/swipe_navigation_summary" android:defaultValue="true" />
+        <PreferenceScreen android:title="@string/audio_profiles_title" android:key="shortcut_profiles" android:summary="@string/shortcutSummary" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/widget_settings_title" android:key="widget_preferences">
+        <PreferenceScreen android:title="@string/refreshRate_title" android:key="refreshRate" android:summary="@string/refreshRate_summary" />
+        <ListPreference android:entries="@array/skins" android:title="@string/widget_preference_skin_title" android:key="widget_preference_skin" android:summary="@string/widget_preference_skin_summary" android:shouldDisableView="true" android:dialogTitle="@string/configuration_selectSkin" android:entryValues="@array/skins" />
+        <CheckBoxPreference android:title="@string/widget_preference_transparent_title" android:key="widgetTransparent" android:summary="@string/widget_preference_transparent_summary" android:defaultValue="false" />
+        <PreferenceScreen android:title="@string/download_skins_title" android:key="downloadSkins" android:summary="@string/download_skins_description" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/about_title" android:key="about_us">
+        <PreferenceScreen android:title="@string/more_applications" android:key="moreApplications" android:summary="@string/more_applications_summary" />
+        <PreferenceScreen android:title="@string/title_intent_preference" android:summary="@string/summary_intent_preference">
+            <intent android:action="android.intent.action.VIEW" android:data="http://www.smartandroidapps.com/faqs-and-tips-for-audiomanager" />
+        </PreferenceScreen>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/feedback_main_title">
+        <PreferenceScreen android:title="@string/feedback_title" android:key="email" android:summary="@string/feedback_description" />
+    </PreferenceCategory>
+</PreferenceScreen>

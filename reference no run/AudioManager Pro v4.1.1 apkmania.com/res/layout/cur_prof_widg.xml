@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="top|center" android:orientation="vertical" android:id="@id/cur_prof_layout" android:background="@drawable/selectable_background_am_green" android:padding="@dimen/widget_margin" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/cur_prof_icon" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/shortcut_icon" />
+    <TextView android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/curprof" android:paddingTop="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/unknown" android:singleLine="true" />
+</LinearLayout>

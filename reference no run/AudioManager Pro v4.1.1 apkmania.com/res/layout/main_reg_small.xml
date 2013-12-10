@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:gravity="center" >
+
+    <ImageView
+        android:id="@id/background"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="fitXY" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center" >
+
+        <ImageView
+            android:id="@id/alarm"
+            android:layout_width="12.0dip"
+            android:layout_height="49.0dip"
+            android:layout_marginLeft="4.0dip"
+            android:layout_marginRight="4.0dip"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@id/widget_label_alarm_small"
+            android:layout_width="20.0dip"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/alarm"
+            android:layout_marginTop="2.0dip"
+            android:gravity="center"
+            android:lines="1"
+            android:text="@string/widget_label_alarm_small"
+            android:textColor="#ffffffff"
+            android:textSize="9.0sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@id/music"
+            android:layout_width="12.0dip"
+            android:layout_height="49.0dip"
+            android:layout_alignBottom="@id/alarm"
+            android:layout_marginLeft="4.0dip"
+            android:layout_marginRight="4.0dip"
+            android:layout_toRightOf="@id/alarm"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@id/widget_label_media_small"
+            android:layout_width="20.0dip"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/widget_label_alarm_small"
+            android:layout_marginTop="2.0dip"
+            android:layout_toRightOf="@id/widget_label_alarm_small"
+            android:gravity="center"
+            android:lines="1"
+            android:text="@string/widget_label_media_small"
+            android:textColor="#ffffffff"
+            android:textSize="9.0sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@id/alert"
+            android:layout_width="12.0dip"
+            android:layout_height="49.0dip"
+            android:layout_alignBottom="@id/alarm"
+            android:layout_marginLeft="4.0dip"
+            android:layout_marginRight="4.0dip"
+            android:layout_toRightOf="@id/music"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@id/widget_label_alert_small"
+            android:layout_width="20.0dip"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/widget_label_alarm_small"
+            android:layout_marginTop="2.0dip"
+            android:layout_toRightOf="@id/widget_label_media_small"
+            android:gravity="center"
+            android:lines="1"
+            android:text="@string/widget_label_alert_small"
+            android:textColor="#ffffffff"
+            android:textSize="9.0sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@id/ringer"
+            android:layout_width="12.0dip"
+            android:layout_height="49.0dip"
+            android:layout_alignBottom="@id/alarm"
+            android:layout_marginLeft="4.0dip"
+            android:layout_marginRight="4.0dip"
+            android:layout_toRightOf="@id/alert"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@id/widget_label_ringer_small"
+            android:layout_width="20.0dip"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/widget_label_alarm_small"
+            android:layout_marginTop="2.0dip"
+            android:layout_toRightOf="@id/widget_label_alert_small"
+            android:gravity="center"
+            android:lines="1"
+            android:text="@string/widget_label_ringer_small"
+            android:textColor="#ffffffff"
+            android:textSize="9.0sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@id/system"
+            android:layout_width="12.0dip"
+            android:layout_height="49.0dip"
+            android:layout_alignBottom="@id/alarm"
+            android:layout_marginLeft="4.0dip"
+            android:layout_marginRight="4.0dip"
+            android:layout_toRightOf="@id/ringer"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@id/widget_label_system_small"
+            android:layout_width="20.0dip"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/widget_label_alarm_small"
+            android:layout_marginTop="2.0dip"
+            android:layout_toRightOf="@id/widget_label_ringer_small"
+            android:gravity="center"
+            android:lines="1"
+            android:text="@string/widget_label_system_small"
+            android:textColor="#ffffffff"
+            android:textSize="9.0sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@id/voice"
+            android:layout_width="12.0dip"
+            android:layout_height="49.0dip"
+            android:layout_alignBottom="@id/alarm"
+            android:layout_marginLeft="4.0dip"
+            android:layout_marginRight="4.0dip"
+            android:layout_toRightOf="@id/system"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@id/widget_label_voice_small"
+            android:layout_width="20.0dip"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/widget_label_alarm_small"
+            android:layout_marginTop="2.0dip"
+            android:layout_toRightOf="@id/widget_label_system_small"
+            android:gravity="center"
+            android:lines="1"
+            android:text="@string/widget_label_voice_small"
+            android:textColor="#ffffffff"
+            android:textSize="9.0sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="vibrate_entries">
+        <item>Всегда</item>
+        <item>Никогда</item>
+        <item>Только в режиме без звука</item>
+        <item>Только не в режиме без звука</item>
+    </string-array>
+    <string-array name="select_dialog_days">
+        <item>Воскресенье</item>
+        <item>Понедельник</item>
+        <item>Вторник</item>
+        <item>Среда</item>
+        <item>Четверг</item>
+        <item>Пятница</item>
+        <item>Суббота</item>
+    </string-array>
+    <string-array name="days_abbreviated">
+        <item>Bс</item>
+        <item>Пн</item>
+        <item>Bт</item>
+        <item>Cр</item>
+        <item>Чт</item>
+        <item>Пт</item>
+        <item>Cб</item>
+    </string-array>
+    <string-array name="ringerMode">
+        <item>@string/normal_button</item>
+        <item>@string/silent_button</item>
+        <item>@string/vibeInSilent_button</item>
+    </string-array>
+</resources>

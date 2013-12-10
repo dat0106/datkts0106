@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:background="#ffedeeee" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:padding="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="15.0sp" android:textColor="#ff333333" android:gravity="left" android:layout_gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/audiomanager_pro_is_the_fully" />
+        <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="#ff333333" android:gravity="left" android:layout_gravity="center_horizontal" android:paddingTop="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/features" />
+        <TextView android:textSize="15.0sp" android:textColor="#ff333333" android:gravity="left" android:layout_gravity="center_horizontal" android:paddingTop="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/features_msg" />
+    </LinearLayout>
+</ScrollView>

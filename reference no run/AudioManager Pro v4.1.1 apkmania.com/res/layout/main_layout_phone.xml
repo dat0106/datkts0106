@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/mainBackground"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background_holo_dark"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@id/ad"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:visibility="gone" />
+
+    <com.smartandroidapps.audiowidgetlib.ui.CustomViewPager
+        android:id="@id/pager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/ad"
+        android:layout_alignParentTop="true" />
+
+</RelativeLayout>

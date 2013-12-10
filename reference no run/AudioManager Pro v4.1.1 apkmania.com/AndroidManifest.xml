@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest android:versionCode="1098" android:versionName="4.1.1" android:installLocation="internalOnly" package="com.smartandroidapps.audiowidgetpro"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <application android:label="@string/app_name" android:icon="@drawable/icon" android:name="com.smartandroidapps.audiowidgetlib.AApplication" android:backupAgent=".MyBackupAgent" android:restoreAnyVersion="true" android:hardwareAccelerated="true">
+        <receiver android:label="@string/widget_title_large" android:name="com.smartandroidapps.audiowidgetlib.widget.Main">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/appwidget_info" />
+        </receiver>
+        <receiver android:label="@string/widget_title_small" android:name="com.smartandroidapps.audiowidgetlib.widget.Mainsmall">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/appwidget_info2" />
+        </receiver>
+        <receiver android:label="@string/widget_volume_lock_title" android:name="com.smartandroidapps.audiowidgetlib.widget.VolumeLockWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/volume_lock_widget_info" />
+        </receiver>
+        <service android:name="com.smartandroidapps.audiowidgetlib.services.UpdateService" />
+        <receiver android:name="com.smartandroidapps.audiowidgetlib.receivers.AlarmUpdateReceiver" android:process=":remote" />
+        <receiver android:name="com.smartandroidapps.audiowidgetlib.receivers.TurnRingerOn" />
+        <activity android:theme="@style/DialogSelectorWhenLarge" android:label="@string/configuration_title" android:name="com.smartandroidapps.audiowidgetlib.activities.ConfigurationActivity" android:configChanges="keyboardHidden|orientation">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:theme="@*android:style/Theme.Light.NoTitleBar" android:label="@string/app_name" android:name="com.smartandroidapps.audiowidgetlib.guidedtour.GuidedTourActivity" android:configChanges="keyboardHidden|orientation">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity-alias android:label="@string/configuration_title" android:name=".ConfigurationActivity" android:targetActivity="com.smartandroidapps.audiowidgetlib.activities.ConfigurationActivity" />
+        <activity-alias android:label="@string/app_name" android:name=".GuidedTourActivity" android:targetActivity="com.smartandroidapps.audiowidgetlib.guidedtour.GuidedTourActivity" />
+        <activity android:theme="@style/Theme.AudioManager" android:label="@string/app_name" android:name="com.smartandroidapps.audiowidgetlib.activities.MainActivity" android:exported="true" android:launchMode="singleTask" android:logo="@drawable/am_top_banner" android:uiOptions="0x1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity-alias android:theme="@style/Theme.AudioManager" android:label="@string/app_name_free" android:name=".MainActivity" android:exported="true" android:targetActivity="com.smartandroidapps.audiowidgetlib.activities.MainActivity" android:logo="@drawable/am_top_banner" android:uiOptions="0x1" />
+        <activity android:theme="@style/NoActionSelector" android:label="@string/ActivityProfiles" android:icon="@drawable/shortcut_icon" android:name="com.smartandroidapps.audiowidgetlib.activities.ProfilesActivity" android:configChanges="keyboardHidden|orientation">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity-alias android:theme="@style/NoActionSelector" android:label="@string/ActivityProfiles" android:icon="@drawable/shortcut_icon" android:name=".ProfilesActivity" android:targetActivity="com.smartandroidapps.audiowidgetlib.activities.ProfilesActivity" />
+        <activity-alias android:theme="@style/NoActionSelector" android:label="@string/ActivityProfiles" android:icon="@drawable/shortcut_icon" android:name=".CreateProfileShortcuts" android:targetActivity="com.smartandroidapps.audiowidgetlib.activities.ProfilesActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity-alias>
+        <activity android:theme="@style/NoTitleNoActionSelector" android:label="@string/app_name" android:name="com.smartandroidapps.audiowidgetlib.activities.SettingsActivity" android:screenOrientation="user" android:configChanges="keyboardHidden|orientation">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.Translucent" android:label="@string/app_name" android:name="com.smartandroidapps.audiowidgetlib.activities.PromoActivity" android:configChanges="keyboardHidden|orientation">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity-alias android:label="@string/app_name" android:name=".PromoActivity" android:targetActivity="com.smartandroidapps.audiowidgetlib.activities.PromoActivity" />
+        <activity-alias android:label="@string/app_name" android:name=".SettingsActivity" android:targetActivity="com.smartandroidapps.audiowidgetlib.activities.SettingsActivity" />
+        <activity-alias android:label="@string/ActivityProfileList" android:icon="@drawable/shortcut_icon" android:name=".CreateProfileListShortcut" android:targetActivity="com.smartandroidapps.audiowidgetlib.activities.SettingsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity-alias>
+        <activity android:theme="@style/DialogSelector" android:name="com.smartandroidapps.audiowidgetlib.activities.ApplyShortcutProfile">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity-alias android:label="@string/app_name" android:name=".ApplyShortcutProfile" android:targetActivity="com.smartandroidapps.audiowidgetlib.activities.ApplyShortcutProfile" />
+        <receiver android:name="com.smartandroidapps.audiowidgetlib.receivers.ApplyScheduleProfileReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="com.smartandroidapps.audiowidgetpro.APPLY_SCHEDULE" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.smartandroidapps.audiowidgetlib.receivers.BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.smartandroidapps.audiowidgetlib.receivers.RingerModeReceiver" android:enabled="true">
+            <intent-filter>
+                <action android:name="android.media.RINGER_MODE_CHANGED" />
+                <action android:name="android.media.VOLUME_CHANGED_ACTION" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.smartandroidapps.audiowidgetlib.receivers.VolumeLockReceiver" android:enabled="false">
+            <intent-filter>
+                <action android:name="android.media.RINGER_MODE_CHANGED" />
+                <action android:name="android.media.VOLUME_CHANGED_ACTION" />
+            </intent-filter>
+        </receiver>
+        <service android:name="com.smartandroidapps.audiowidgetlib.services.VolumeLockService" android:enabled="true" />
+        <activity android:name="com.smartandroidapps.audiowidgetlib.API">
+            <intent-filter>
+                <action android:name="com.smartandroidapps.audiowidgetpro.intent.action.GET_PROFILES" />
+                <action android:name="com.smartandroidapps.audiowidgetpro.intent.action.APPLY_PROFILE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity-alias android:label="@string/app_name" android:name=".API" android:targetActivity="com.smartandroidapps.audiowidgetlib.API" />
+        <activity android:theme="@style/DialogSelector" android:label="@string/scheduler_popup_title" android:icon="@drawable/alarm" android:name="com.smartandroidapps.audiowidgetlib.activities.ScheduleActivity" android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity-alias android:label="@string/scheduler_popup_title" android:name=".ScheduleActivity" android:targetActivity="com.smartandroidapps.audiowidgetlib.activities.ScheduleActivity" />
+        <activity android:theme="@style/DialogSelector" android:label="@string/restore_ringer" android:icon="@drawable/alarm" android:name="com.smartandroidapps.audiowidgetlib.activities.RingerModeDialog" android:launchMode="singleInstance" android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity-alias android:label="@string/restore_ringer" android:name=".RingerModeDialog" android:targetActivity="com.smartandroidapps.audiowidgetlib.activities.RingerModeDialog" />
+        <activity android:theme="@style/DialogSelectorWhenLarge" android:label="@string/edit_title" android:icon="@drawable/edit" android:name="com.smartandroidapps.audiowidgetlib.activities.EditDialogActivity" android:launchMode="singleTask" android:configChanges="keyboardHidden|orientation">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <receiver android:label="@string/curprof_widget_title" android:name="com.smartandroidapps.audiowidgetlib.receivers.CurrentProfileWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/profile_widget_info" />
+        </receiver>
+        <activity-alias android:label="@string/edit_title" android:name=".EditDialogActivity" android:targetActivity="com.smartandroidapps.audiowidgetlib.activities.EditDialogActivity" />
+        <meta-data android:name="com.google.android.backup.api_key" android:value="AEdPqrEAAAAIcubQaVlbyQIHXf74rj9X8390GkuVTxh0YGaS8w" />
+        <activity android:theme="@style/NoActionSelector" android:name="com.smartandroidapps.audiowidgetlib.widget.WidgConfig">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+        <service android:name="com.smartandroidapps.audiowidgetlib.services.ToggleService" />
+    </application>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.android.vending.CHECK_LICENSE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <permission android:label="@string/API_Label" android:icon="@drawable/icon" android:name="com.smartandroidapps.audiowidgetpro.permission.AUDIOMANAGER_API" android:protectionLevel="normal" android:description="@string/API_Description" />
+</manifest>

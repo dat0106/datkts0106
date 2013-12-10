@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Preference android:persistent="false" android:title="@string/when" android:key="timeToRestore" android:summary="@string/select_when_to_restore" />
+    <Preference android:persistent="false" android:title="@string/profiles_menu_title" android:key="profileToRestore" android:summary="@string/select_profile_to_restore" />
+    <CheckBoxPreference android:persistent="false" android:title="@string/alarm_vibrate" android:key="vibrateApplyRinger" android:summary="@string/alarm_vibrate_summary" />
+</PreferenceScreen>

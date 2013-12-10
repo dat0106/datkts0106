@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:paddingLeft="10.0dip" android:paddingTop="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/topBanner" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/am_top_banner_tablet" android:layout_centerHorizontal="true" />
+    <TextView android:gravity="left" android:id="@id/textView1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/widget_mode" android:layout_below="@id/topBanner" android:layout_centerHorizontal="false" />
+    <RadioGroup android:id="@id/radioGroup1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_below="@id/textView1" android:layout_alignParentLeft="true" android:layout_alignParentTop="false" android:layout_centerInParent="false">
+        <RadioButton android:id="@id/radio0" android:paddingTop="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:text="@string/profile_list_mode" />
+        <RadioButton android:id="@id/radio1" android:paddingTop="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/toggle_mode" />
+    </RadioGroup>
+    <TextView android:gravity="left" android:id="@id/mode_desc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/prof_list_mode_desc" android:layout_below="@id/radioGroup1" />
+    <Button android:textColor="#ffffffff" android:id="@id/contbtn" android:background="@drawable/btn_default_holo_light" android:layout_width="160.0dip" android:layout_height="40.0dip" android:layout_marginTop="25.0dip" android:text="@string/btn_continue" android:layout_below="@id/mode_desc" android:layout_centerHorizontal="true" />
+</RelativeLayout>

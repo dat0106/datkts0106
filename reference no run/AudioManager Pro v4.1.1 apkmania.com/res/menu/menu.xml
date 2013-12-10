@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:icon="@drawable/ic_menu_archive" android:id="@id/menu_backup" android:title="@string/menu_backup_profiles" android:showAsAction="0x0" />
+    <item android:icon="@drawable/ic_menu_mark" android:id="@id/menu_restore" android:title="@string/menu_restore_profiles" android:showAsAction="0x0" />
+    <item android:icon="@drawable/ic_menu_preferences" android:id="@id/menu_settings" android:title="@string/settings" android:showAsAction="0x0" />
+    <item android:icon="@drawable/ic_menu_save" android:id="@id/menu_save" android:title="@string/saveProfiles" android:showAsAction="0x2" />
+    <item android:icon="@drawable/ic_menu_star" android:id="@id/menu_upgrade" android:title="@string/upgrade" android:showAsAction="0x0" />
+    <item android:icon="@drawable/ic_menu_help" android:id="@id/menu_help" android:visible="false" android:title="@string/help" android:showAsAction="0x0" />
+    <item android:icon="@drawable/ic_lock" android:id="@id/menu_lock" android:title="@string/volume_lock" android:showAsAction="0x2" />
+    <item android:icon="@drawable/ic_normal_mode" android:id="@id/menu_ringermode" android:title="@string/mode_menu_title" android:showAsAction="0x2" />
+</menu>

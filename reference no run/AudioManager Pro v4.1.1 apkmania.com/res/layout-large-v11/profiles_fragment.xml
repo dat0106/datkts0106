@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:dslv="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="20.0sp" android:textStyle="bold" android:textColor="#ff000000" android:id="@id/anchor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="5.0dip" android:text="@string/audio_profiles_title" />
+    <TextView android:textColor="#ff828282" android:id="@id/anchor2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:text="@string/audio_profiles_description" android:layout_below="@id/anchor" />
+    <com.mobeta.android.dslv.DragSortListView android:id="@id/profile_list" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/selectable_background_am_green" android:cacheColorHint="#00000000" android:divider="#ffdfdfdf" android:dividerHeight="1.0dip" android:layout_below="@id/anchor2" dslv:collapsed_height="5.0dip" dslv:drag_scroll_start="0.33" dslv:max_drag_scroll_speed="0.5" dslv:float_background_color="#cc99cc00" dslv:remove_mode="none" dslv:track_drag_scroll="false" />
+</RelativeLayout>

@@ -8,8 +8,10 @@ import com.smartschedule.database.SmartSchedulerDatabase;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
@@ -27,6 +29,7 @@ public class EventActivity extends Activity {
     Button btn1;
     Button btn2;
     Button btn3;
+    Button btnTest;
     Button start_time;
     Button end_time;
     EditText editText1;
@@ -46,6 +49,7 @@ public class EventActivity extends Activity {
                 SmartSchedulerDatabase.COLUMN_EVENT_ID));
 
         btn1 = (Button) findViewById(R.id.button1);
+
 
         start_time = (Button) findViewById(R.id.start_time);
         start_time
@@ -184,6 +188,51 @@ public class EventActivity extends Activity {
                 mTimePicker.setTitle("Select Time");
                 mTimePicker.show();
             }
+        });
+
+        test();
+    }
+
+    private void test() {
+        btnTest = (Button) findViewById(R.id.button_test);
+
+        btnTest.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                final View View = android.view.View.inflate(EventActivity.this,
+                        R.layout.dialog_sound_manager, null);
+
+                final EditText textView = (EditText) View
+                        .findViewById(R.id.dialog_add_event);
+                AlertDialog.Builder builder = new AlertDialog.Builder(EventActivity.this);
+                builder.setTitle(R.string.title_dialog_add_event);
+                builder.setView(View)
+                        .setCancelable(false)
+                        .setPositiveButton(R.string.done,
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,
+                                            int id) {
+                                        // get name to sent
+                                        String checkDisableCreate = (String) textView
+                                                .getText().toString();
+
+
+                                        dialog.dismiss();
+                                    }
+                                })
+                        .setNegativeButton(R.string.cancel,
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,
+                                            int id) {
+                                        dialog.cancel();
+                                    }
+                                });
+
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+
         });
     }
 

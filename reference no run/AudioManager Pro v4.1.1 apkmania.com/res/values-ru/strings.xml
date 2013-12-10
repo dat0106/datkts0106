@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_intent_preference">Об AudioManager</string>
+    <string name="summary_intent_preference">Нажмите здесь, чтобы узнать больше об AudioManager.</string>
+    <string name="profile_applied">Профиль применён</string>
+    <string name="ok">Готово</string>
+    <string name="cancel">Отмена</string>
+    <string name="rename_title">Переименовать</string>
+    <string name="rename_message">Введите название нового профиля</string>
+    <string name="shortcut_title">Создать ярлык</string>
+    <string name="shortcut_message">Вы действительно хотите создать ярлык для этого профиля на домашнем экране?</string>
+    <string name="shortcut_create">Создать ярлык для этого профиля на домашнем экране?</string>
+    <string name="delete_title">Удалить</string>
+    <string name="delete_message">Вы действительно хотите удалить этот профиль?</string>
+    <string name="profile_renamed">Профиль переименован</string>
+    <string name="profile_deleted">Профиль удалён</string>
+    <string name="profile_notfound">Профиль не найден</string>
+    <string name="configuration_refreshLabel">Частота обновлений:</string>
+    <string name="configuration_refreshText">Установите время автоматического обновления виджета. Обратите внимание на то, что тем чаще виджет будет обновляться, тем быстрее будет разряжаться ваша батарея.</string>
+    <string name="configuration_neverUpdate">Не обновлять</string>
+    <string name="configuration_addWidget">Добавить виджет</string>
+    <string name="configuration_widgetSkin">Скин виджета:</string>
+    <string name="configuration_selectSkin">Выберите скин:</string>
+    <string name="configuration_everyMin">Каждую(ые) %d минуту(ы)</string>
+    <string name="help">Справка</string>
+    <string name="settings">Настройки</string>
+    <string name="upgrade">Апгрейд</string>
+    <string name="saveProfiles">Сохранить в Профилях</string>
+    <string name="viewProfiles">Показать профили</string>
+    <string name="helpTitle">Справка AudioManager</string>
+    <string name="consoleTitle">Консоль AudioManager</string>
+    <string name="menu_newAudioProfile">Новый аудиопрофиль</string>
+    <string name="loud_button">Громко</string>
+    <string name="mute_button">Беззвучный</string>
+    <string name="save">Сохранить</string>
+    <string name="profile_saved">Профиль сохранён</string>
+    <string name="showMe">Показать</string>
+    <string name="menu_newAudioManagerPro">Новый AudioManager Pro!</string>
+    <string name="audio_profiles_title">Мои аудиопрофили</string>
+    <string name="audio_profiles_description">Нажмите на любой профиль для применения настроек или нажмите и удерживайте для дополнительных настроек.</string>
+    <string name="new_profile">Введите имя для этого профиля:</string>
+    <string name="volumizer_title">Звуковое сопровождение</string>
+    <string name="volumizer_description">Воспроизводить сигнал при изменении уровня громкости</string>
+    <string name="status_title">Ярлык в области уведомлений</string>
+    <string name="status_setting_description">Включить или выключить ярлык в области уведомлений</string>
+    <string name="feedback_title">Связаться с разработчиком</string>
+    <string name="feedback_description">Сообщить об ошибке или отправить предложение.</string>
+    <string name="feedback_main_title">Обратная связь</string>
+    <string name="settings_title">Настройки</string>
+    <string name="about_title">О приложении</string>
+    <string name="status_enabled">AudioManager ярлык в области уведомлений включен.</string>
+    <string name="status_description">Последний заданный профиль:</string>
+    <string name="alarmLabel">Будильника</string>
+    <string name="musicLabel">Мультимедиа</string>
+    <string name="alertsLabel">Сообщения</string>
+    <string name="ringerLabel">Звонка</string>
+    <string name="ringerType">Режим:</string>
+    <string name="systemLabel">Системы</string>
+    <string name="voicecallLabel">Разговора</string>
+    <string name="widget_title_large">AudioManager Большой</string>
+    <string name="widget_title_small">AudioManager Маленький</string>
+    <string name="configuration_title">Настройки AudioManager</string>
+    <string name="menu_Important">Важное замечание</string>
+    <string name="shortcutTitle">Аудиопрофили</string>
+    <string name="shortcutSummary">Нажмите здесь для создания ярлыка на домашнем экране</string>
+    <string name="widget_settings_title">Настройки виджета</string>
+    <string name="widget_preference_skin_title">Скин виджета</string>
+    <string name="widget_preference_skin_summary">Нажмите здесь для выбора вашего скина</string>
+    <string name="refreshRate_title">Частота обновлений</string>
+    <string name="refreshRate_summary">Нажмите здесь для изменения частоты обновления виджета</string>
+    <string name="mode_menu_title">Режим</string>
+    <string name="normal_button">Обычный</string>
+    <string name="vibrate_button">Вибрация</string>
+    <string name="silent_button">Беззвучный</string>
+    <string name="volume_menu_title">Громкость</string>
+    <string name="profiles_menu_title">Профили</string>
+    <string name="view_button">Показать</string>
+    <string name="widget_label_alarm">БУДИЛЬНИК</string>
+    <string name="widget_label_media">МУЛЬТИМЕДИА</string>
+    <string name="widget_label_alert">УВЕДОМЛЕНИЯ</string>
+    <string name="widget_label_ringer">ЗВОНОК</string>
+    <string name="widget_label_system">СИСТЕМА</string>
+    <string name="widget_label_voice">РАЗГОВОР</string>
+    <string name="widget_label_alarm_small">Б</string>
+    <string name="widget_label_media_small">М</string>
+    <string name="widget_label_alert_small">У</string>
+    <string name="widget_label_ringer_small">З</string>
+    <string name="widget_label_system_small">С</string>
+    <string name="widget_label_voice_small">Р</string>
+    <string name="download_skins_title">Загрузить скины</string>
+    <string name="download_skins_description">Нажмите здесь для загрузки новых скинов</string>
+    <string name="important_msg2_title">Что нового?</string>
+    <string name="ActivityConsole">AudioManager Консоль</string>
+    <string name="ActivityProfiles">AudioManager Профиль</string>
+    <string name="ActivityProfileList">Список профилей AudioManager</string>
+    <string name="API_Label">AudioManager Pro API</string>
+    <string name="API_Description">Доступ к профилям AudioManager</string>
+    <string name="profile_last_applied">Последний раз применялся</string>
+    <string name="profile_none_applied">Не применялся</string>
+    <string name="license_error_title">Ошибка проверки лицензии</string>
+    <string name="license_error_description">Мы не можем проверить вашу лицензию и подозреваем, что эта копия приложения является пиратской. Если вы считаете, что это ошибка, пожалуйста, сообщите нам. Если вам понравилось это приложение, пожалуйста, поддержите его дальнейшую разработку, купив его.</string>
+    <string name="buy">Купить</string>
+    <string name="help_msg">" Обратите внимание, что если флаг \"Использовать этот уровень
+\u0009\u0009громкости и для уведомлений\" в настройках громкости вызова вашего
+\u0009\u0009телефона
+"<b>установлен</b>" , громкость уведомлений будет всегда соответствовать громкости вызова.
+
+ "<b>Громкость Будильника:</b>" Устанавливает громкость для всех будильников на телефоне.
+
+ "<b>Громкость Мультимедия:</b>" Устанавливает громкость воспроизведения мультимедиа на телефоне.
+
+ "<b>Громкость Уведомлений:</b>" Устанавливает громкость для всех уведомлений и оповещений на телефоне.
+
+ "<b>Громкость Звонка:</b>" Устанавливает громкость звонка на телефоне.
+
+ "<b>Громкость Системы:</b>" Устанавливает громкость системы на телефоне.
+
+ "<b>Громкость Разговора:</b>" Устанавливает громкость разговора на телефоне.
+
+Посетите "<b>www.smartandroidapps.com/audiomanager.php</b> для получения большей информации о приложении. В разделе FAQ вы найдете ответы на самые частые вопросы, также вы можете с нами связаться по e-mail <b>info@smartandroidapps.com</b>" . 
+
+ "<b>Спасибо</b> , <i>"
+
+команда Smart Android Apps"</i>" "</string>
+    <string name="important_msg">" Пожалуйста,
+"<b>прочитайте внимательно</b>" : следуюшие два вопроса взяты прямо из списка частозадаваемых (FAQ) с сайта AudioManager
+
+ "<b>Громкость моих уведомлений отключена, но когда я пыстаюсь изменить громкость звонка, также меняется громкость уведомлений. Это нормально? </b>" 
+
+ Да, это нормально, т.к. в Вашем телефоне включена опция "<b>Использовать этот уровень громкости и для уведомлений</b>" Проверить , так ли это, вы можете в настройках громкости, проследовав: Настройки - Звук - Громкость. Если галка на этой опции не установлена, вы сможете устанавливать громкость звонка и уведомлений независимо друг от друга. 
+
+ "<b>После обновления версии AudioManager мой виджет не работает, выглядит ужасно. Что я могу сделать в этом случае?</b>" 
+
+ Мы настоятельно рекомендуем удалить виджет с домашнего экрана и установить его заново после того, как вы обновили версию AudioManager. Это должно исправить проблему обновления или некорректного отображения виджета 
+
+ "<b>Спасибо</b> , <i>"
+
+команда Smart Android Apps"</i>" "</string>
+    <string name="important_msg2">" Для получения справки в вопросах громкости уведомлений и оповещений
+\u0009\u0009нажмите клавишу Меню и выберите пункт
+"<b>Справка</b> Удаление виджета с домашнего экрана и ,вновь, его добавление должно решить проблемы с ним ( <b>рекомендуется</b>" после обновления программы). 
+
+ "<b>Список изменений:</b>" 
+* Исправлен баг интерфейса на Droid X и Droid 2. 
+* Исправлены мелкие недочеты. 
+
+Пишите нам по электронной почте: ваши баг-репорты и пожелания помогут сделать программу лучше. 
+
+ "<b>Спасибо</b> , <i>"
+
+команда Smart Android Apps"</i>" "</string>
+    <string name="welcome_msg">" Хотите больше
+"<b>AudioManager Pro </b>" доступен в Android-маркете! 
+
+ "<b>Особенности AudioManager Pro:</b>" 
+
+* Десятки бесплатных скинов для вашего виджета! (большого и малого) 
+
+* Сохраняйте Ваши настройки в Аудиопрофили. 
+
+* Создавайте ярлыки для ваших профилей на домашнем экране для их быстрой смены 
+
+* Доступно нижнее меню с удобными кнопками режима, громкости и профилей 
+
+* Skin Development Kit (SDK) доступен для создания ваших собственных скинов виджета 
+
+* Доступен API для интегрирования с профилями AudioManager. 
+
+* Плагин AudioManager Pro доступен для скачивания. 
+
+* Интеграция с Wiggle для автоматической смены профилей. 
+
+* Без рекламы! 
+
+Поддержав нас, Вы стимулируете создание лучшего продукта! 
+
+ "<b>Спасибо</b> , <i>"
+
+команда Smart Android Apps"</i>" "</string>
+    <string name="description_free">Audio Manager - это виджет для домашнего экрана и менеджер аудиопрофилей, который позволяет вам получить текушие настройки уровней громкости на вашем Android. Нажмите на виджет для регулировки громкости. Рекомендуем AudioManager Pro с полным набором возможностей, скинами и без рекламы!</string>
+    <string name="description_pro">Полнофункциональная версия популярного виджета AudioManager и менеджер аудиопрофилей. Все ваши настройки громкости прямо на домашнем экране. Нажмите на виджет для регулировки громкости. Возможности: * Более десятка скинов для виджета * Сохранение аудиопрофилей (предустановок) * Создание ярлыков для профилей * Без рекламы</string>
+    <string name="promo_text_free">Менеджер аудиопрофилей и виджет для настройки уровней громкости на вашем Android.</string>
+    <string name="promo_text_pro">Полнофункциональная версия популярного виджета AudioManager и менеджер аудиопрофилей.</string>
+    <string name="notifications_linked_title">Обнаружена связь уровней громкости</string>
+    <string name="notifications_unlink_button">Разорвать связь уровней громкости</string>
+    <string name="notifications_linked_message">Громкость Ваших уведомлений в настоящий момент связана с громкостью звонка. Это не позволит Вам настраивать два этих параметра по отдельности. Чтобы разорвать эту связь, нажмите на кнопку внизу или ознакомьтесь со справкой программы AudioManager (клавиша Меню > Справка) для того, чтобы сделать это вручную.</string>
+    <string name="schedule_title">Установить расписание</string>
+    <string name="scheduler_popup_title">Планировщик</string>
+    <string name="scheduler_popup_status">Статус:</string>
+    <string name="scheduler_popup_status_enabled">Планировщик включен</string>
+    <string name="scheduler_popup_status_disabled">Планировщик отключен</string>
+    <string name="scheduler_popup_start">Начало:</string>
+    <string name="scheduler_popup_repeat">Повторять:</string>
+    <string name="scheduler_popup_repeat_selectdays">Выберите дни</string>
+    <string name="upgrade_message">Срок действия этой версии приложения истек, обновите программу до последней версии.</string>
+    <string name="classarm_license_results">Закрыть</string>
+    <string name="classarm_license_check">Проверка лицензии ARM</string>
+    <string name="err_01">OK</string>
+    <string name="err_04">"Лицензия не была выпущена из-за временных технических проблем.
+ Пожалуйста, попробуйте позже (04)"</string>
+    <string name="err_08">"Лицензия не была выпущена из-за временных технических проблем.
+ Пожалуйста, попробуйте позже. (08)"</string>
+    <string name="err_0e">"Лицензия не была выпущена из-за временных технических проблем.
+ Пожалуйста, попробуйте позже. (0E)"</string>
+    <string name="err_09">"Не удалось установить историю покупки этого приложения.
+ Пожайлуйста, обратитесь в службу поддержки. (09)"</string>
+    <string name="err_0a">"Этот телефон не зарегистрирован в Tstore.
+ Пожалуйста, зарегистрируйте и попробуйте позже. (0A)"</string>
+    <string name="err_0c">"Лицензия не была выпущена из-за временных технических проблем.
+ Пожалуйста, попробуйте позже. (0C)"</string>
+    <string name="err_0d">"Лицензия на это приложение не может быть проверена
+ Пожайлуйста, обратитесь в службу поддержки. (0D)"</string>
+    <string name="err_11">"Неизвестный номер телефона.
+ Проверьте , правильно ли оборудована USIM , и если она заблокирована, разблокируйте USIM. (11)"</string>
+    <string name="err_12">"Информация приложения не может быть найдена.
+ Пожайлуйста, обратитесь в службу поддержки. (12)"</string>
+    <string name="err_13">"Передача данных (3G, WIFI) недоступна для данного телефона.
+ Пожалуйста, проверьте настройки передачи данных и попробуйте снова. (13)"</string>
+    <string name="err_14">"Программа Tstore не установлена.
+ Пожалуйста, установите Tstore и попробуйте снова. (14)"</string>
+    <string name="err_arm">Служба ARM не найдена.</string>
+    <string name="AM">AM</string>
+    <string name="PM">PM</string>
+    <string name="settings_unlink_title">Связь Оповещений и Звонка</string>
+    <string name="settings_unlink_description">Нажмите здесь, чтобы установить или отменить связь громкость этих событий</string>
+    <string name="settings_unlink_true">Связь уровней громкости установлена</string>
+    <string name="settings_unlink_false">Связь уровней громкости разорвана</string>
+    <string name="profile_options">Опции профиля</string>
+    <string name="download_skins_message">Пожалуйста, выберите один из следующих вариантов:</string>
+    <string name="download_skins_button1">Официальные скины</string>
+    <string name="download_skins_button2">Все скины</string>
+    <string name="vibeInSilent_button">Вибрация в Беззвучном</string>
+    <string name="enable_alarm">Включить планировщик</string>
+    <string name="time">Время</string>
+    <string name="alarm_repeat">Дни недели</string>
+    <string name="alarm_vibrate">Вибрировать</string>
+    <string name="alarm_vibrate_summary">Вибрировать при применении</string>
+    <string name="select_days_toast">Выберите дни недели перед сохранением!</string>
+    <string name="dialog_overwrite_message">"Профиль уже существует. Вы хотите перезаписать
+\u0009\u0009его?"</string>
+    <string name="more_applications">Больше приложений</string>
+    <string name="more_applications_summary">Найти другие приложения, разработанные нами.</string>
+    <string name="hint1">Пятиполосный Эквалайзер</string>
+    <string name="hint2">11 предустановок (Normal, Classical, Dance, Flat, Folk, Heavy Metal, Hip Hop, Jazz, Pop, Rock и Latin)</string>
+    <string name="hint3">Система автоопределения предустановки</string>
+    <string name="hint4">Сэмплер для тестирования Ваших настроек</string>
+    <string name="hint5">Усиление бассов Bass Boost</string>
+    <string name="hint6">Визуализация</string>
+    <string name="hint7">Эффект реверберации</string>
+    <string name="hint8">Поддержка большинства музыкальных плееров</string>
+    <string name="hint9">Интеграция со стоковым плеером Android</string>
+    <string name="hint10">Работа с сервисами, аналогичными Pandora и Spotify</string>
+    <string name="hint11">Power mode - опции для включения-отключения эффектов</string>
+    <string name="hint12">Виджет эквалайзера 4х1 для домашнего экрана</string>
+    <string name="hint13">Быстрый доступ из области уведомлений</string>
+    <string name="hint14">Нет необходимости в Root-правах</string>
+    <string name="backup_message">Введите имя файла для Вашего нового резервирования. Сохраненный файл будет содержать всю информацию о Ваших настройках профилей. Все файлы сохраняются на SD-карте, поэтому убедитесь, что она доступна.</string>
+    <string name="sdcard_not_available">SD-карта недоступна. Попробуйте позже</string>
+    <string name="no_backups_available">Нет файлов для восстановления.</string>
+    <string name="filename_required">Необходимо ввести имя файла</string>
+    <string name="profile_override_message">Восстановление этого профиля перезапишет все существующие. Вы действительно хотите восстановить?</string>
+    <string name="backup_error">Ошибка при попытке сохранения профилей в %s.</string>
+    <string name="backup_success">Профили успешно сохранены в %s.</string>
+    <string name="import_error">Ошибка при попытке восстановления профилей из %s.</string>
+    <string name="import_success">Профили успешно восстановлены из %s.</string>
+    <string name="edit_title">Изменить профиль</string>
+    <string name="restore_ringer">Восстановление Звонка</string>
+    <string name="when">Восстановление после:</string>
+    <string name="select_profile_to_restore">Выбор профиля для восстановления</string>
+    <string name="select_when_to_restore">Выберите время для восстановленияя</string>
+    <string name="when_and_profile_fields_are_required">неполная информация</string>
+    <string name="restore_ringer_set">Звонок будет восстановлен</string>
+    <string name="dont_show">Не показывать</string>
+    <string name="show_or_hide_restore_ringer_dialog">Включите опцию Восстановление Звонка</string>
+    <string name="saving_profiles_upgrade_message">Доступно только в полной версии, нажмите кнопку, чтобы купить.</string>
+    <string name="skins_upgrade_message">Доступно только в полной версии, нажмите кнопку, чтобы купить.</string>
+    <string name="upgrade_to_full_version">Обновление до полной версии</string>
+    <string name="hours">часов</string>
+    <string name="minutes">минут</string>
+    <string name="sortBy">Сортировать по</string>
+    <string name="byDate">По дате</string>
+    <string name="byName">по имени</string>
+    <string name="backup_path">/sdcard/audiomanagerpro/backups/</string>
+</resources>

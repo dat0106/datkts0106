@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:background="#ffedeeee" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:padding="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_gravity="center_horizontal" android:paddingTop="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/am_logo_tour" />
+        <TextView android:textSize="34.0sp" android:textStyle="bold" android:textColor="#ff494e55" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="AudioManager" />
+        <TextView android:textSize="15.0sp" android:textColor="#ff333333" android:gravity="left" android:layout_gravity="center_horizontal" android:paddingTop="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/welcome_and_thanks_for_downloading" />
+        <TextView android:textSize="24.0sp" android:textStyle="bold" android:textColor="#ff3197be" android:layout_gravity="center_horizontal" android:paddingTop="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/swipe_page_to_begin" />
+    </LinearLayout>
+</ScrollView>

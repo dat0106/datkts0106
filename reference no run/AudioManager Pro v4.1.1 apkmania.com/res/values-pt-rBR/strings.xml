@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AudioManager Pro</string>
+    <string name="title_intent_preference">Sobre AudioManager</string>
+    <string name="summary_intent_preference">Clique aqui para saber mais sobre AudioManager.</string>
+    <string name="profile_applied">Perfil Aplicada</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancelar</string>
+    <string name="rename_title">Renomear Perfil</string>
+    <string name="rename_message">Digite seu nome de novo perfil</string>
+    <string name="shortcut_title">C Shortcut</string>
+    <string name="shortcut_message">Tem certeza que quer criar uma casa-screen atalho para este perfil?</string>
+    <string name="shortcut_create">Você deseja criar um shortcut na tela inicial para este perfil?</string>
+    <string name="delete_title">Deletar Perfil</string>
+    <string name="delete_message">Tem certeza de que deseja excluir este perfil?</string>
+    <string name="profile_renamed">Perfil Renomeado</string>
+    <string name="profile_deleted">Perfil Excluida</string>
+    <string name="profile_notfound">Perfil não encontrado</string>
+    <string name="configuration_refreshLabel">Taxa de atualização:</string>
+    <string name="configuration_refreshText">Ajuste o tempo que leva para o widget atualizar automaticamente. Lembre-se que quanto mais rápido você atualizar o seu widget mais bateria irá a gastar.</string>
+    <string name="configuration_neverUpdate">Nunca atualize</string>
+    <string name="configuration_addWidget">Adicionar widget</string>
+    <string name="configuration_widgetSkin">Widget Skin:</string>
+    <string name="configuration_selectSkin">Selecione o seu skin:</string>
+    <string name="configuration_everyMin">Cada %d min(s)</string>
+    <string name="help">Ajuda</string>
+    <string name="settings">Opções</string>
+    <string name="upgrade">Upgrade</string>
+    <string name="saveProfiles">Salvar os Perfis</string>
+    <string name="viewProfiles">Ver Perfis</string>
+    <string name="helpTitle">AudioManager Ajuda</string>
+    <string name="consoleTitle">AudioManager Console</string>
+    <string name="menu_newAudioProfile">Novo Audio Perfis</string>
+    <string name="loud_button">Alto</string>
+    <string name="mute_button">Mudo</string>
+    <string name="save">Salvar</string>
+    <string name="profile_saved">Perfil Salvo</string>
+    <string name="showMe">Mostra-me</string>
+    <string name="menu_newAudioManagerPro">Novo AudioManager Pro!</string>
+    <string name="audio_profiles_title">Meu Audio Perfis</string>
+    <string name="audio_profiles_description">Toque em qualquer perfil para aplicar as configurações ou pressione mais longo para mais opções.</string>
+    <string name="new_profile">Digite o nome para este perfil:</string>
+    <string name="volumizer_title">Volumizador</string>
+    <string name="volumizer_description">Toca um som quando o volume e ajustado</string>
+    <string name="status_title">Barra de status shortcut</string>
+    <string name="status_setting_description">Habilitar ou inabilitar barra de status shortcut</string>
+    <string name="feedback_title">Contato com o desenvolvedor</string>
+    <string name="feedback_description">Relatar erros ou envie sugestões</string>
+    <string name="feedback_main_title">Comentários</string>
+    <string name="settings_title">Configurações</string>
+    <string name="about_title">Acerca de</string>
+    <string name="status_enabled">AudioManager barra de status shortcut habilitado.</string>
+    <string name="status_description">Ultimo Perfil aplicada:</string>
+    <string name="alarmLabel">Alarme</string>
+    <string name="musicLabel">Midia</string>
+    <string name="alertsLabel">Alertas</string>
+    <string name="ringerLabel">Tocador</string>
+    <string name="ringerType">Modo:</string>
+    <string name="systemLabel">Sistema</string>
+    <string name="voicecallLabel">Chamadas de Voz</string>
+    <string name="widget_title_large">AudioManager Largo</string>
+    <string name="widget_title_small">AudioManager Pequeno</string>
+    <string name="configuration_title">AudioManager Configurações</string>
+    <string name="menu_Important">Aviso Importante</string>
+    <string name="shortcutTitle">Audio Perfis</string>
+    <string name="shortcutSummary">Toque aqui para criar um home-screen shortcut</string>
+    <string name="widget_settings_title">Widget Configurações</string>
+    <string name="widget_preference_skin_title">Widget skin</string>
+    <string name="widget_preference_skin_summary">Toque aqui para selecionar seu skin</string>
+    <string name="refreshRate_title">Taxa de Atualização</string>
+    <string name="refreshRate_summary">"Toque aqui para mudar o widget's Taxa de Atualização"</string>
+    <string name="mode_menu_title">Modo</string>
+    <string name="normal_button">Normal</string>
+    <string name="vibrate_button">Vibrar</string>
+    <string name="silent_button">Silencioso</string>
+    <string name="volume_menu_title">Volume</string>
+    <string name="profiles_menu_title">Perfis</string>
+    <string name="view_button">Ver</string>
+    <string name="widget_label_alarm">ALARMA</string>
+    <string name="widget_label_media">MIDIA</string>
+    <string name="widget_label_alert">ALERTAS</string>
+    <string name="widget_label_ringer">SINEIRO</string>
+    <string name="widget_label_system">SYSTEMA</string>
+    <string name="widget_label_voice">VOZ</string>
+    <string name="widget_label_alarm_small">A</string>
+    <string name="widget_label_media_small">M</string>
+    <string name="widget_label_alert_small">N</string>
+    <string name="widget_label_ringer_small">S</string>
+    <string name="widget_label_system_small">S</string>
+    <string name="widget_label_voice_small">V</string>
+    <string name="download_skins_title">Baixar skins</string>
+    <string name="download_skins_description">Clique aqui para baixar novos skins</string>
+    <string name="important_msg2_title">O que ha de novo?</string>
+    <string name="ActivityConsole">AudioManager Console</string>
+    <string name="ActivityProfiles">AudioManager Perfis</string>
+    <string name="ActivityProfileList">AudioManager Lista de Perfis</string>
+    <string name="API_Label">AudioManager Pro API</string>
+    <string name="API_Description">Acesso para AudioManager Perfis</string>
+    <string name="profile_last_applied">Aplicada pela última vez em</string>
+    <string name="profile_none_applied">Nenhum</string>
+    <string name="license_error_title">Error de Licença</string>
+    <string name="license_error_description">Não foi possível validar a sua licença e suspeito que esta aplicação pode ter sido pirateado. Se você acredita que isso é um erro, por favor contacte-nos. Se você gosta de nosso aplicativo, por favor, ajudem o nosso desenvolvimento através de comprá-lo.</string>
+    <string name="buy">Comprar</string>
+    <string name="help_msg">" Por favor, note que se o \"Use o volume de chamadas recebidas para
+\u0009\u0009notificações\" check-box no seu volume de sineiro do seu celular é
+\u0009\u0009Configurações
+"<b>Verificado</b>" , o volume de alerta será sempre definido pelo volume do seu sineiro.
+
+ "<b>Volume de Alarme:</b>" Controla o fluxo de audio para todas as alarmes do seu celular
+
+ "<b>Volume de Midia:</b>" Controla o fluxo de audio para todos as suas Reproduçãos de Midia.
+
+ "<b>Volume de Alertas:</b>" Controla o fluxo de audio para todas as suas notificações e alertas.
+
+ "<b>Volume do Sineiro:</b>" Controla o fluxo de audio para todas os seus ringers no celular.
+
+ "<b>Volume do Sistema:</b>" Controla o fluxo de audio para todos os sues volumenes do sistema.
+
+ "<b>Volume de chamadas de voz:</b>" Controla o fluxo de audio chamadas do seu celular .
+
+Porfavor visite "<b>www.smartandroidapps.com/audiomanager.php</b> para aprender mais da app. Visite a seccion de FAQ para frequentes preguntas o e-mail nos os seus pensamentos a <b>info@smartandroidapps.com</b>" . 
+
+ "<b>Muito Obrigado</b> , <i>"
+
+Equipe de Smart Android Apps"</i>" "</string>
+    <string name="important_msg">" Porfavor
+"<b>Leia com atenção</b>" as duas seguientes preguntas tomadas directamente do AudioManager's FAQ website.
+
+ "<b>Meu volume de alertas se inabilita quando eu trato de adjustar meu volume de sineiro, isso afeta o meu volume de alertas, tambem, e isso normal?</b>" 
+
+Sim,este é um comportamento normal que só se aplica se o seu telefone atualmente tem o "<b>Usar volume de chamadas recebidas as notificações</b>" opção ativado. Para verificar se este for o caso, você deve entrar em seu configurações de volume do sineiro em Som e configurações de
+\u0009\u0009vídeo. Se esa opção estiver desmarcada, você podra ajustar tanto o volumes de toque e alertas de forma independente. 
+
+ "<b>Após AudioManager atualizar o meu widget não funciona ou os gráficos se olhar estranho, o que eu posso façer ?</b>" 
+os recomendamos altamente deletar e re-adicionar o seu widget no seu home-screen toda vez que voce actualize o AudioManager. isso vai a fixar qualquer problema com o refrescar do widget's ou os seus graficos. 
+
+ "<b>Muito Obrigado</b> , <i>"
+
+Equipe do Smart Android Apps"</i>" "</string>
+    <string name="important_msg2">" Para preguntas relacionadas a suas notificações volume de (alertas)
+\u0009\u0009pressione o botão de Menu >
+"<b>Ajuda</b> Deletando eRe-adicionando o widget para o seu home-screen vai a fixar a maioria dos sues problemas ( <b>recomendado</b>" depuis de instalar uma nova actualização ). 
+
+ "<b>ChangeLog:</b>" 
+*Novo Perfil de feição de agenda disponíveis para a aplicação automática de perfis com base no dia e hora. Para definir uma agenda, navegue até a tela de Perfis, pressione e segure o perfil que gostaria de definir a agenda e selecione Definir Agenda. 
+* Adicionado localizações de idioma para russo e italiano. 
+* Fixar errores pequenos. 
+
+E-mail nos para qualquer error o sugestion nos agradecemos o seu apoio e queremos continuar trazendo-lhes melhores produtos. 
+
+ "<b>Muito Obrigado</b> , <i>"
+
+Equipe do Smart Android Apps"</i>" "</string>
+    <string name="welcome_msg">" Voce quer mais recursos?
+"<b>AudioManager Pro </b>" esta disponivel no mercado de Android 
+
+ "<b>Recursos adicional no AudioManager Pro:</b>" 
+
+* Mais de uma duzia de fundos para voce experimentar em seu widget (Ambos grandes e pequenas) 
+
+* Salve as configurações de volumem como perfis de audio (presets). 
+
+* Gerar tela inicial de atalhos para os seus perfis aplicá-los rapidamente. 
+
+* Rodapé do menu disponível com o volume da campainha, botões de modo e perfil. 
+
+* Skin Development Kit (SDK) disponíveis para criar e lançar os seus próprios fundos de widget. 
+
+* API disponível para integração com os Perfis do AudioManager . 
+
+* Localidade AudioManager Pro plug-in disponível para baixar. 
+
+* Integração com Wiggle para mudar perfis automaticamente. 
+
+* Não tem anúncios. 
+
+Agradecemos o seu apoio à medida que continuaremos trazendo melhores produtos. 
+
+ "<b>Muito Obrigado</b> , <i>"
+
+Smart Android Apps team"</i>" "</string>
+    <string name="description_free">Audio Manager é um widget para tela inicial e manager de Volume que lhe permite obter leituras ao vivo do seus niveis atuais de volume em seu telefone Android. Toque no widget para ajustar os níveis de volume. Cheque AudioManager Pro para mais recursos, skins e nao tem ads!</string>
+    <string name="description_pro">Versão completa do popular AudioManager Widget e manager de Volume. Obter todos os seus níveis de volume corrente direto da sua tela inicial. Toque no widget para ajustar os níveis de volume de forma independente. Features: * Mais de uma duzia de fundos para o widget * Salvar Perfis de Audio (presets) * Gerar acceso directo de Perfis * Nao tem ads</string>
+    <string name="promo_text_free">Manager de Volume e widget para controlar os seus niveis de volume no seu celular Android.</string>
+    <string name="promo_text_pro">Versao completa do seu popular AudioManager Widget e manager de Volume.</string>
+    <string name="notifications_linked_title">Fluxos de Volume ligado foi detectado</string>
+    <string name="notifications_unlink_button">Desligado</string>
+    <string name="notifications_linked_message">As suas notificações de volume estam actualmente ligadas a o seu volume de campainha; esto nao vai te dejar adjustar os dois fluxos independentemente. para desligar, Toque no botoaon de em baixo o visite a ajuda de AudioManager (Botão de Menu > Ajuda) para instruções de como-fazer.</string>
+    <string name="schedule_title">Estabelecer Horario</string>
+    <string name="scheduler_popup_title">Programador de Horario</string>
+    <string name="scheduler_popup_status">Estado:</string>
+    <string name="scheduler_popup_status_enabled">Habilitar</string>
+    <string name="scheduler_popup_status_disabled">Desahabilitar</string>
+    <string name="scheduler_popup_start">Start:</string>
+    <string name="scheduler_popup_repeat">Repetir:</string>
+    <string name="scheduler_popup_repeat_selectdays">Selecione os Dias</string>
+    <string name="AM">AM</string>
+    <string name="PM">PM</string>
+    <string name="settings_unlink_title">Vinculação da Campainha e Alertas</string>
+    <string name="settings_unlink_description">Clique aqui para ligar ou desligar o volume</string>
+    <string name="settings_unlink_true">Volume ligados</string>
+    <string name="settings_unlink_false">Volume desligados</string>
+    <string name="profile_options">Opções de Perfil</string>
+    <string name="download_skins_message">Por favor, escolha uma das seguintes duas opções:</string>
+    <string name="download_skins_button1">Skins Oficial</string>
+    <string name="download_skins_button2">Todas as Skins</string>
+    <string name="vibeInSilent_button">Vibrar ao silêncio</string>
+    <string name="enable_alarm">Ligue Scheduler</string>
+    <string name="time">Horário</string>
+    <string name="alarm_repeat">Repetir</string>
+    <string name="alarm_vibrate">Vibrar</string>
+    <string name="alarm_vibrate_summary">Vibrar quando aplicado</string>
+    <string name="select_days_toast">Selecionar dias antes de salvar.</string>
+    <string name="dialog_overwrite_message">Perfil já existe. Deseja substituí-lo?</string>
+    <string name="more_applications">Mais aplicações</string>
+    <string name="more_applications_summary">Veja outros aplicativos desenvolvidos por nós.</string>
+    <string name="backup_message">Digite um nome de arquivo para usar em seu novo backup. Este novo arquivo de backup irá conter informações sobre o seu predefinições personalizadas. Todos os arquivos de backup são armazenados em seu cartão SD, verifique se o cartão SD está disponível.</string>
+    <string name="filename_label">Nome do arquivo:</string>
+    <string name="filename_hint">nome do arquivo</string>
+    <string name="menu_backup_profiles">Cópia de segurança</string>
+    <string name="menu_restore_profiles">Restaurar</string>
+    <string name="sdcard_not_available">SD não disponível.</string>
+    <string name="no_backups_available">Não há backups disponíveis.</string>
+    <string name="restore_profiles">Cópia de segurança</string>
+    <string name="backup_profiles">Restaurar</string>
+    <string name="filename_required">Requerida nome do arquivo, tente novamente.</string>
+    <string name="profile_override_message">Para restaurar este backup você irá substituir todos os perfis personalizado atual. Deseja restaurar o backup?</string>
+    <string name="backup_error">Erro ao tentar fazer backup de perfis para %s.</string>
+    <string name="backup_success">Com sucesso backup perfis para %s.</string>
+    <string name="import_error">Erro ao tentar restaurar os perfis de %s.</string>
+    <string name="import_success">Perfis restaurado com êxito %s.</string>
+    <string name="edit_title">Editar perfil</string>
+    <string name="restore_ringer">Restaurar tocador</string>
+    <string name="when">Restaurar após:</string>
+    <string name="select_profile_to_restore">Selecione o perfil para restaurar</string>
+    <string name="select_when_to_restore">Selecione ao restauraro</string>
+    <string name="when_and_profile_fields_are_required">Informações incompletas</string>
+    <string name="restore_ringer_set">Tocador será restaurado</string>
+    <string name="dont_show">Não mostrar</string>
+    <string name="show_or_hide_restore_ringer_dialog">Habilitar a opção para restaurar tocador</string>
+    <string name="saving_profiles_upgrade_message">Disponível apenas na versão completa, clique em comprar.</string>
+    <string name="skins_upgrade_message">Disponível apenas na versão completa, clique em comprar.</string>
+    <string name="upgrade_to_full_version">Atualização para a versão completa</string>
+    <string name="hours">Horas</string>
+    <string name="minutes">Minutos</string>
+    <string name="sortBy">Classificar por</string>
+    <string name="byDate">Por data</string>
+    <string name="byName">Pelo nome</string>
+    <string name="backup_path">/sdcard/audiomanagerpro/backups/</string>
+</resources>

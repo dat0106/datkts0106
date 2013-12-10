@@ -65,15 +65,8 @@
         android:layout_alignBottom="@+id/button1"
         android:layout_alignRight="@+id/linearLayout1"
         android:text="@string/delete" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/linearLayout1"
-        android:layout_centerHorizontal="true"
-        android:text="View" />
     <!--
+
     <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
@@ -143,5 +136,22 @@
             android:text="--:--" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button1"
+        android:layout_alignBottom="@+id/button1"
+        android:layout_toRightOf="@+id/button1"
+        android:text="View" />
+
+    <Button
+        android:id="@+id/button_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout1"
+        android:layout_toLeftOf="@+id/button3"
+        android:text="Test" />
 
 </RelativeLayout>

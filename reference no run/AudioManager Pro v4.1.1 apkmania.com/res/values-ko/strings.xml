@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AudioManager Pro</string>
+    <string name="title_intent_preference">AudioManager에 대해서</string>
+    <string name="summary_intent_preference">AudioManager를 더 자세히 알고 싶으시면 클릭하십시오.</string>
+    <string name="profile_applied">프로필 적용</string>
+    <string name="ok">확인</string>
+    <string name="cancel">취소</string>
+    <string name="rename_title">프로필 이름 변경</string>
+    <string name="rename_message">새 프로필 이름 입력</string>
+    <string name="shortcut_title">바로가기 만들기</string>
+    <string name="shortcut_message">프로필에 홈스크린 바로가기를 정말로 만드시겠습니까?</string>
+    <string name="shortcut_create">프로필에 홈스크린 바로가기를 만드시겠습니까?</string>
+    <string name="delete_title">프로필 삭제</string>
+    <string name="delete_message">프로필을 정말로 삭제 하십니까?</string>
+    <string name="profile_renamed">프로필 이름이 변경 되었습니다</string>
+    <string name="profile_deleted">프로필이 삭제 되었습니다</string>
+    <string name="profile_notfound">프로필을 찾을 수 없습니다</string>
+    <string name="configuration_refreshLabel">새로고침 속도:</string>
+    <string name="configuration_refreshText">위젯이 자동으로 새로고침을 할 때 걸리는 시간을 설정하십시오. 더 빠르게 시간을 설정할수록 배터리가 더 많이 소모됩니다.</string>
+    <string name="configuration_neverUpdate">업데이트 하지 않음</string>
+    <string name="configuration_addWidget">위젯 추가</string>
+    <string name="configuration_widgetSkin">위젯 스킨:</string>
+    <string name="configuration_selectSkin">스킨 선택:</string>
+    <string name="configuration_everyMin">매 %d 분</string>
+    <string name="help">도움말</string>
+    <string name="settings">설정</string>
+    <string name="upgrade">업그레이드</string>
+    <string name="saveProfiles">프로필로 저장</string>
+    <string name="viewProfiles">프로필 보기</string>
+    <string name="helpTitle">AudioManager 도움말</string>
+    <string name="consoleTitle">AudioManager 콘솔</string>
+    <string name="menu_newAudioProfile">새 오디오 프로필</string>
+    <string name="loud_button">크게</string>
+    <string name="mute_button">음소거</string>
+    <string name="save">저장</string>
+    <string name="profile_saved">프로필이 저장되었습니다</string>
+    <string name="showMe">보기</string>
+    <string name="menu_newAudioManagerPro">새로운 AudioManager Pro!</string>
+    <string name="audio_profiles_title">내 오디오 프로필</string>
+    <string name="audio_profiles_description">설정 적용시 살짝 누르고 옵션을 볼 때는 길게 눌러 주십시오.</string>
+    <string name="new_profile">프로필 이름 입력.:</string>
+    <string name="volumizer_title">볼륨 설정</string>
+    <string name="volumizer_description">"볼륨 스트림 조정시 '삑' 소리가 납니다"</string>
+    <string name="status_title">상태 바 바로가기</string>
+    <string name="status_setting_description">상태 바 바로가기 활성화/비활성화</string>
+    <string name="feedback_title">개발자에게 문의</string>
+    <string name="feedback_description">버그나 의견 보내기.</string>
+    <string name="feedback_main_title">피드백</string>
+    <string name="settings_title">설정</string>
+    <string name="about_title">정보</string>
+    <string name="status_enabled">AudioManager 상태 바 바로가기가 활성화 되었습니다.</string>
+    <string name="status_description">마지막 프로파일 적용:</string>
+    <string name="alarmLabel">알람 볼륨</string>
+    <string name="musicLabel">미디어 볼륨</string>
+    <string name="alertsLabel">알림음 볼륨</string>
+    <string name="ringerLabel">벨소리 볼륨</string>
+    <string name="ringerType">모드:</string>
+    <string name="systemLabel">시스템 볼륨</string>
+    <string name="voicecallLabel">음성 통화 볼륨</string>
+    <string name="widget_title_large">AudioManager 크게</string>
+    <string name="widget_title_small">AudioManager 작게</string>
+    <string name="configuration_title">AudioManager 환경</string>
+    <string name="menu_Important">중요 알림</string>
+    <string name="shortcutTitle">오디오 프로필</string>
+    <string name="shortcutSummary">홈 스크린 바로가기를 만드려면 여기를 누르십시오</string>
+    <string name="widget_settings_title">위젯 설정</string>
+    <string name="widget_preference_skin_title">위젯 스킨</string>
+    <string name="widget_preference_skin_summary">스킨을 설정하려면 여기를 누르십시오</string>
+    <string name="refreshRate_title">새로고침 속도</string>
+    <string name="refreshRate_summary">위젯의 새로고침 속도를 설정하려면 여기를 누르십시오</string>
+    <string name="mode_menu_title">모드</string>
+    <string name="normal_button">기본</string>
+    <string name="vibrate_button">진동</string>
+    <string name="silent_button">무음</string>
+    <string name="volume_menu_title">볼륨</string>
+    <string name="profiles_menu_title">프로필</string>
+    <string name="view_button">보기</string>
+    <string name="widget_label_alarm">알람</string>
+    <string name="widget_label_media">미디어</string>
+    <string name="widget_label_alert">알림음</string>
+    <string name="widget_label_ringer">벨소리</string>
+    <string name="widget_label_system">시스템</string>
+    <string name="widget_label_voice">음성</string>
+    <string name="widget_label_alarm_small">A</string>
+    <string name="widget_label_media_small">M</string>
+    <string name="widget_label_alert_small">N</string>
+    <string name="widget_label_ringer_small">R</string>
+    <string name="widget_label_system_small">S</string>
+    <string name="widget_label_voice_small">V</string>
+    <string name="download_skins_title">스킨 다운로드</string>
+    <string name="download_skins_description">새 스킨을 다운로드 하려면 여기를 클릭하십시오</string>
+    <string name="important_msg2_title">새로운 정보!</string>
+    <string name="ActivityConsole">AudioManager 콘솔</string>
+    <string name="ActivityProfiles">AudioManager 프로필</string>
+    <string name="ActivityProfileList">AudioManager 프로필 항목</string>
+    <string name="API_Label">AudioManager Pro API</string>
+    <string name="API_Description">AudioManager 프로필 엑세스</string>
+    <string name="profile_last_applied">마지막에 적용</string>
+    <string name="profile_none_applied">없음</string>
+    <string name="buy">구입</string>
+    <string name="help_msg">" 모바일 벨소리 볼륨 설정에 알림 메시지에 수신 통화 볼륨 확인란이 "<b>체크되어 있으면</b>" 알림음 볼륨의 설정은 벨소리 볼륨의 설정과 동일합니다.
+
+ "<b>알람 볼륨:</b>" 모바일 알람의 모든 오디오 스트림 제어.
+
+ "<b>미디어 볼륨:</b>" 모바일 녹음 재생의 모든 오디오 스트림 제어.
+
+ "<b>알림음 볼륨:</b>" 모바일 알림음과 통지의 모든 오디오 스트림 제어.
+
+ "<b>벨소리 볼륨:</b>" 모바일 벨소리 볼륨의 모든 오디오 스트림 제어.
+
+ "<b>시스템 Volume:</b>" 모바일 시스템 소리의 모든 오디오 스트림 제어.
+
+ "<b>음성 통화 볼륨:</b>" 모바일 통화음의 모든 오디오 스트림 제어.
+
+ 이 어플리케이션에 대해 더 자세히 알고 싶으시면 "<b>www.smartandroidapps.com/audiomanager.php</b> 를 방문하십시오. FAQ 섹션을 사용하여 자주 질문되는 사항을 보거나 <b>info@smartandroidapps.com</b>" 으로 이메일을 보내 주십시오. . 
+
+ "<b>감사합니다</b> , <i>"
+
+Smart Android 앱스 팀"</i>" "</string>
+    <string name="important_msg">" AudioManager FAQ 웹사이트의 두 질문을
+"<b>조심스럽게</b>" 읽어 주십시오.
+
+ "<b>벨소리 볼륨을 설정하려고 하면 알림음 볼륨이 비활성화 됩니다. 알림음 볼륨까지 영향을 미치는데 정상인가요?</b>" 
+
+네, 귀하의 모바일 옵션 설정에 "<b>알림 메시지에 수신 통화 볼륨</b>" 이 확인되어 있으면 정상적인 현상입니다. 이것이 문제인지 확인하려면 소리 및 디스플레이 설정 에서 벨소리 볼륨 설정을 보시면 됩니다. 만약 이 옵션이 확인이 안되어 있으면 벨소리와 알림 볼륨을 따로 설정할 수 있습니다. 
+
+ "<b>AudioManager를 업데이트 하면 위젯을 사용할 수 없거나 그래픽이 이상하게 보여요. 어떻게 해야 하나요?</b>" 
+
+저희는 AudioManager를 업데이트 할 때마다 홈스크린에 위젯을 다시 더하는 것을 권장합니다. 이렇게 하면 위젯의 새로고침 또는 그래픽 문제가 없어질 것입니다. 
+
+ "<b>감사합니다</b> , <i>"
+
+Smart Android 앱스 팀"</i>" "</string>
+    <string name="important_msg2">" 알림(알림음) 볼륨에 관한 질문은 메뉴 버튼을 누르십시오 > "<b>도움말</b> 섹션. 홈스크린에 위젯을 삭제하고 다시 더하는 것은 대부분의 문제를 고칠수 있습니다. (새로운 업데이트 후 <b>권장</b>" ). 
+
+더 좋은 제품과 업데이트를 만들수 있도록 질문 또는 의견이 있으면 이메일을 보내 주십시오. 
+
+ "<b>감사합니다</b> , <i>"
+
+Smart Android 앱스 팀"</i>" "</string>
+    <string name="welcome_msg">" 더 많은 기능을 원하십니까?
+"<b>AudioManager Pro </b>" 구입이 가능합니다! 
+
+ "<b>AudioManager Pro의 새로운 기능:</b>" 
+
+* 위젯에 사용할 수 있는 무료 스킨! (대/소 크기) 
+
+* 오디오 프로필에 볼륨 설정 저장 (프리셋). 
+
+* 프로필에 홈스크린 바로가기를 만들고 바로 적용 하십시오. 
+
+* 푸터 메뉴가 이제 벨소리 모드, 볼륨과 프로필 버튼과 같이 사용 가능. 
+
+* 자신만의 스킨을 만들수 있는 Skin Development Kit (SDK) 사용 가능. 
+
+* AudioManager 프로필 통합 가능한 API 사용 가능. 
+
+* 다운로드 가능한 로케일 AudioManager Pro 플러그인. 
+
+* 프로필을 자동적으로 바꿀수 있는 Wiggle과 통합 가능. 
+
+* 광고 없음. 
+
+계속 지원해 주셔서 감사 드리고 더 좋은 제품을 제공해 드리겠습니다. 
+
+ "<b>감사합니다</b> , <i>"
+
+Smart Android 앱스 팀"</i>" "</string>
+    <string name="description_free">Audio Manager 는 당신의 안드로이드 폰에 실시간 볼륨 레벨을 읽을 수 있는 홈스크린 위젯과 볼륨 관리자 입니다. 볼륨 레벨에 대해서 더 알고 싶으시면 위젯을 클릭하십시오. 더 많은 기능, 스킨과 광고가 없는 AudioManager Pro 를 한번 보십시오!</string>
+    <string name="description_pro">AudioManager 위젯과 볼륨 관리자의 완벽한 기능이 갖춰진 버전. 홈스크린에서 현재 볼륨 레벨 가지고 오기. 볼륨 레벨을 따로 지정하기 위해서는 위젯을 클릭하십시오. 특징: * 사용할 수 있는 많은 무료 스킨 * 오디오 프로필 저장 (프리셋) * 프로필 바로가기 만들기 * 광고 없음</string>
+    <string name="promo_text_free">당신의 안드로이드 폰의 볼륨 레벨을 관리할 볼륨 관리자와 위젯.</string>
+    <string name="promo_text_pro">AudioManager 위젯과 볼륨 관리자의 완벽한 기능이 갖춰진 버전.</string>
+    <string name="notifications_linked_title">링크된 볼륨 탐지</string>
+    <string name="notifications_unlink_button">링크 해제</string>
+    <string name="notifications_linked_message">알림음 볼륨이 벨소리 볼륨과 링크되어 있습니다. 이 두 볼륨을 독립적으로 조절할 수 없습니다. 링크 해제를 위해 아래 버튼을 누르거나 사용방법을 참고해 주십시오.</string>
+    <string name="schedule_title">스케줄 설정</string>
+    <string name="scheduler_popup_title">스케줄러</string>
+    <string name="scheduler_popup_status">상태:</string>
+    <string name="scheduler_popup_status_enabled">활성화</string>
+    <string name="scheduler_popup_status_disabled">비활성화</string>
+    <string name="scheduler_popup_start">시작:</string>
+    <string name="scheduler_popup_repeat">반복:</string>
+    <string name="scheduler_popup_repeat_selectdays">요일 선택</string>
+    <string name="upgrade_message">이 버전은 종료 되었으니 최신 버전으로 업그레이드 하십시오.</string>
+    <string name="classarm_license_results">종료</string>
+    <string name="classarm_license_check">ARM 라이선스 확인</string>
+    <string name="err_01">확인</string>
+    <string name="err_04">"일시적인 장애로 라이선스 발급에 실패하였습니다.
+ 잠시후에 다시 시도해 주십시요.(04)"</string>
+    <string name="err_08">"일시적인 장애로 라이선스 발급에 실패하였습니다.
+ 잠시후에 다시 시도해 주십시요.(08)"</string>
+    <string name="err_0e">"일시적인 장애로 라이선스 발급에 실패하였습니다.
+ 잠시후에 다시 시도해 주십시요.(0E)"</string>
+    <string name="err_09">"상품 구매내역 확인에 실패하였습니다.
+ 자세한 사항은 고객센터로 문의 바랍니다.(09)"</string>
+    <string name="err_0a">"Tstore 미가입된 단말입니다.
+ 가입 후 이용을 해주시기 바랍니다.(0A)"</string>
+    <string name="err_0c">"일시적인 장애로 라이선스 발급에 실패하였습니다.
+ 잠시후에 다시 시도해 주십시요.(0C)"</string>
+    <string name="err_0d">"어플리케이션의 라이선스 정보 확인이 불가능합니다.
+ 자세한 사항은 고객센터로 문의 바랍니다.(0D)"</string>
+    <string name="err_11">"핸드폰 번호를 확인할 수 없습니다.
+ USIM 장착여부 확인 및 USIM 잠금이 된 경우 해제를 해주시기 바랍니다. (11)"</string>
+    <string name="err_12">"어플리케이션의 정보 확인이 불가능합니다.
+ 자세한 사항은 고객센터로 문의 바랍니다.(12)"</string>
+    <string name="err_13">"핸드폰에서 데이타통신(3G, WIFI)이 되고 있지 않습니다.
+ 핸드폰의 데이터 통신 설정부분을 확인 후 재 실행을 해 주십시요. (13)"</string>
+    <string name="err_14">"Tstore 전용프로그램이 설치 되어 있지 않습니다.
+ Tstore 전용프로그램을 설치하신 후 재 실행을 해 주십시요. (14)"</string>
+    <string name="err_arm">ARM 서비스를 찾을 수 없습니다.</string>
+    <string name="AM">오전</string>
+    <string name="PM">오후</string>
+    <string name="settings_unlink_title">벨소리와 알림음 링크</string>
+    <string name="settings_unlink_description">볼륨 스트림 링크 또는 링크 해제시 여기를 클릭하세요</string>
+    <string name="settings_unlink_true">볼륨 스트림 링크</string>
+    <string name="settings_unlink_false">볼륨 스트림 링크 해제</string>
+    <string name="profile_options">프로필 옵션</string>
+    <string name="download_skins_message">스킨 옵션 선택:</string>
+    <string name="download_skins_button1">공식 스킨</string>
+    <string name="download_skins_button2">모든 스킨</string>
+    <string name="vibeInSilent_button">무음시 진동</string>
+    <string name="enable_alarm">스케줄러 켜기</string>
+    <string name="time">시간</string>
+    <string name="alarm_repeat">반복</string>
+    <string name="alarm_vibrate">진동</string>
+    <string name="alarm_vibrate_summary">적용시 진동</string>
+    <string name="select_days_toast">날짜 선택후 저장</string>
+    <string name="dialog_overwrite_message">프로필이 이미 있습니다. 덮어쓰시겠습니까?</string>
+    <string name="more_applications">다른 어플</string>
+    <string name="more_applications_summary">개발사의 다른 어플을 보여 줍니다</string>
+    <string name="backup_message">새 백업에 사용할 파일명을 입력하세요. 백업 파일에는 저장된 프로필의 모든 정보가 포함됩니다. 모든 백업 파일은 SD카드에 저장되므로 SD카드가 가능한지 확인해 주십시오.</string>
+    <string name="filename_label">파일명:</string>
+    <string name="filename_hint">백업 파일명</string>
+    <string name="menu_backup_profiles">백업 프로필</string>
+    <string name="menu_restore_profiles">프로필 복구</string>
+    <string name="sdcard_not_available">SD카드가 가능하지 않습니다. 다시해 주세요.</string>
+    <string name="no_backups_available">백업 복구가 가능하지 않습니다.</string>
+    <string name="restore_profiles">프로필 복구</string>
+    <string name="backup_profiles">프로필 백업</string>
+    <string name="filename_required">파일명이 필요하니 다시해 주세요.</string>
+    <string name="profile_override_message">현재의 프로필에 덮어쓰기 합니다. 이 백업을 복구합니까?</string>
+    <string name="backup_error">%s(으)로 프로필 백업 오류 발생.</string>
+    <string name="backup_success">%s(으)로 프로필 백업 성공.</string>
+    <string name="import_error">%s(으)로부터 프로필 복구 오류 발생.</string>
+    <string name="import_success">%s(으)로부터 프로필 복구 성공.</string>
+    <string name="edit_title">프로필 편집</string>
+    <string name="restore_ringer">벨소리 복원</string>
+    <string name="when">시간</string>
+    <string name="select_profile_to_restore">복원 프로필 선택</string>
+    <string name="select_when_to_restore">복원 시간 선택</string>
+    <string name="when_and_profile_fields_are_required">시간과 프로필 영역이 필요합니다.</string>
+    <string name="restore_ringer_set">벨소리가 복원될 것입니다.</string>
+    <string name="dont_show">다시 보여주지 않음</string>
+    <string name="show_or_hide_restore_ringer_dialog">벨소리 복원 대화 보이거나 숨기기</string>
+    <string name="saving_profiles_upgrade_message">정식 버전에서만 사용 가능합니다. 구입합니다.</string>
+    <string name="skins_upgrade_message">정식 버전에서만 사용 가능합니다. 구입합니다.</string>
+    <string name="upgrade_to_full_version">정식 버전으로 업그레이드</string>
+    <string name="hours">시간</string>
+    <string name="minutes">분</string>
+    <string name="sortBy">정렬</string>
+    <string name="byDate">날짜별로</string>
+    <string name="byName">이름으로</string>
+    <string name="app_name_free">AudioManager</string>
+</resources>

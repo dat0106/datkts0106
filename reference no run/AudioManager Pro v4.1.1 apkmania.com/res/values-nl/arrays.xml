@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="vibrate_entries">
+        <item>Altijd</item>
+        <item>Nooit</item>
+        <item>Alleen in de stille modus</item>
+        <item>Alleen buiten de stille modus</item>
+    </string-array>
+    <string-array name="select_dialog_days">
+        <item>Zondag</item>
+        <item>Maandag</item>
+        <item>Dinsdag</item>
+        <item>Woensdag</item>
+        <item>Donderdag</item>
+        <item>Vrijdag</item>
+        <item>Zaterdag</item>
+    </string-array>
+    <string-array name="days_abbreviated">
+        <item>Z</item>
+        <item>M</item>
+        <item>D</item>
+        <item>W</item>
+        <item>D</item>
+        <item>V</item>
+        <item>Z</item>
+    </string-array>
+</resources>

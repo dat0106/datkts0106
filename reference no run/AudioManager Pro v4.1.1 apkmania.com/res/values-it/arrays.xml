@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="vibrate_entries">
+        <item>Sempre</item>
+        <item>Mai</item>
+        <item>Solo in mod. silenziosa</item>
+        <item>Solo se mod. silenziosa non attiva</item>
+    </string-array>
+    <string-array name="select_dialog_days">
+        <item>Domenica</item>
+        <item>Lunedi</item>
+        <item>Martedi</item>
+        <item>Mercoledi</item>
+        <item>Giovedi</item>
+        <item>VenerdÃ</item>
+        <item>Sabato</item>
+    </string-array>
+    <string-array name="days_abbreviated">
+        <item>D</item>
+        <item>L</item>
+        <item>M</item>
+        <item>M</item>
+        <item>G</item>
+        <item>V</item>
+        <item>S</item>
+    </string-array>
+    <string-array name="ringerMode">
+        <item>@string/normal_button</item>
+        <item>@string/silent_button</item>
+        <item>@string/vibeInSilent_button</item>
+    </string-array>
+</resources>

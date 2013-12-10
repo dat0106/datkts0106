@@ -14,6 +14,13 @@
     <string name="title_dialog_add_event">Create Event</string>
     <string name="hint_dialog_add_event">Please insert name event</string>
     <string name="cancel">Cancel</string>
+    <string name="done">Done</string>
     <string name="create">Create</string>
+    <string name="alarmLabel">Alarm</string>
+    <string name="musicLabel">Music</string>
+    <string name="ringerLabel">Ringer</string>
+    <string name="alertsLabel">Notification</string>
+    <string name="systemLabel">System</string>
+    <string name="voicecallLabel">Voice Call</string>
 
 </resources>

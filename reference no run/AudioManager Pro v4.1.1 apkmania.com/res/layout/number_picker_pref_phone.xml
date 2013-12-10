@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/labelLayout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip">
+            <TextView android:ellipsize="end" android:gravity="center" android:layout_width="80.0dip" android:layout_height="wrap_content" android:layout_marginRight="2.0dip" android:text="@string/hours" android:singleLine="true" />
+            <TextView android:ellipsize="end" android:gravity="center" android:layout_width="80.0dip" android:layout_height="wrap_content" android:text="@string/minutes" android:singleLine="true" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/labelLayout">
+            <com.smartandroidapps.audiowidgetlib.ui.NumberPicker android:id="@id/hour_picker" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <com.smartandroidapps.audiowidgetlib.ui.NumberPicker android:id="@id/min_picker" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

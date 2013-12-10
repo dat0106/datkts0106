@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textAppearance="?android:textAppearanceSmall" android:textColor="#ffffffff" android:gravity="left" android:id="@id/ssid_description" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="20.0dip" android:text="@string/new_profile" />
+    <EditText android:textAppearance="?android:textAppearanceMedium" android:gravity="fill_horizontal" android:id="@id/profileName" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="5.0dip" android:scrollHorizontally="true" android:singleLine="true" android:maxLength="30" android:capitalize="sentences" android:autoText="false" android:imeOptions="actionDone" />
+    <CheckBox android:id="@id/shortcut" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="5.0dip" android:text="@string/shortcut_create" />
+</LinearLayout>
