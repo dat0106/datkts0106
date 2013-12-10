@@ -2,9 +2,9 @@ package com.smartschedule;
 
 import java.util.Calendar;
 
-import util.Util;
-
 import com.smartschedule.database.SmartSchedulerDatabase;
+import com.smartschedule.dialog.DialogSoundManager;
+import com.smartschedule.util.Util;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -200,34 +201,8 @@ public class EventActivity extends Activity {
 
             @Override
             public void onClick(View arg0) {
-                final View View = android.view.View.inflate(EventActivity.this,
-                        R.layout.dialog_sound_manager, null);
 
-                final EditText textView = (EditText) View
-                        .findViewById(R.id.dialog_add_event);
-                AlertDialog.Builder builder = new AlertDialog.Builder(EventActivity.this);
-                builder.setTitle(R.string.title_dialog_add_event);
-                builder.setView(View)
-                        .setCancelable(false)
-                        .setPositiveButton(R.string.done,
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog,
-                                            int id) {
-                                        // get name to sent
-                                        String checkDisableCreate = (String) textView
-                                                .getText().toString();
-
-
-                                        dialog.dismiss();
-                                    }
-                                })
-                        .setNegativeButton(R.string.cancel,
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog,
-                                            int id) {
-                                        dialog.cancel();
-                                    }
-                                });
+                AlertDialog.Builder builder = new DialogSoundManager(EventActivity.this);
 
                 final AlertDialog dialog = builder.create();
                 dialog.show();

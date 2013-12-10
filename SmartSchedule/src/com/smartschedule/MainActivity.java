@@ -2,7 +2,6 @@ package com.smartschedule;
 
 import java.util.ArrayList;
 
-import util.Util;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -34,6 +33,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.smartschedule.database.SmartSchedulerDatabase;
+import com.smartschedule.util.Util;
 
 public class MainActivity extends ListActivity {
 

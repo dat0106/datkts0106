@@ -1,4 +1,4 @@
-package util;
+package com.smartschedule.util;
 
 public class Util {
     public static String convertTime(Integer time){
