@@ -22,5 +22,8 @@
     <string name="alertsLabel">Notification</string>
     <string name="systemLabel">System</string>
     <string name="voicecallLabel">Voice Call</string>
-
+<string name="normal">Normal</string>
+<string name="vibrate">Vibrate</string>
+<string name="silent">Silent</string>
 </resources>
+

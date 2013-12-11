@@ -1,4 +1,4 @@
-package com.smartschedule.dialog;
+package com.smartschedule.action;
 
 import com.smartschedule.EventActivity;
 import com.smartschedule.R;

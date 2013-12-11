@@ -2,8 +2,9 @@ package com.smartschedule;
 
 import java.util.Calendar;
 
+import com.smartschedule.action.ActivitySoundManager;
+import com.smartschedule.action.DialogSoundManager;
 import com.smartschedule.database.SmartSchedulerDatabase;
-import com.smartschedule.dialog.DialogSoundManager;
 import com.smartschedule.util.Util;
 
 import android.os.Bundle;
@@ -202,10 +203,13 @@ public class EventActivity extends Activity {
             @Override
             public void onClick(View arg0) {
 
-                AlertDialog.Builder builder = new DialogSoundManager(EventActivity.this);
+//                AlertDialog.Builder builder = new DialogSoundManager(EventActivity.this);
+//
+//                final AlertDialog dialog = builder.create();
+//                dialog.show();
 
-                final AlertDialog dialog = builder.create();
-                dialog.show();
+                Intent i = new Intent(EventActivity.this, ActivitySoundManager.class);
+                startActivity(i);
             }
 
         });
