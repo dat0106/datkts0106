@@ -6,13 +6,17 @@ import com.smartschedule.util.MiscUtils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.media.AudioManager;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
 import android.media.ToneGenerator;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -26,18 +30,20 @@ import android.widget.ToggleButton;
 public class ActivitySoundManager extends Activity {
 
     private int mRingerMode = -1;
-    private CheckBox radioNormal;
-    private CheckBox radioVibrate;
-    private CheckBox radioSilent;
+    private RadioButton radioNormal;
+    private RadioButton radioVibrate;
+    private RadioButton radioSilent;
+
+    private Button alarmRingtone;
+    private Button phoneRingtone;
+    private Button notificationRingtone;
 
     private ToggleButton mToggleVibe;
     private ToneGenerator mToneGenerator;
     private int mVibeMode = -1;
     private SeekBar music;
     private TextView musicProgress;
-    private Button notificationRingtone;
     private Uri notificationRingtoneUri;
-    private Button phoneRingtone;
     private Uri phoneRingtoneUri;
     private SeekBar ringer;
     private TextView ringerProgress;
@@ -50,7 +56,6 @@ public class ActivitySoundManager extends Activity {
     private boolean volumizer;
     private SeekBar alarm;
     private TextView alarmProgress;
-    private Button alarmRingtone;
     private Uri alarmRingtoneUri;
     private SeekBar alert;
     private TextView alertProgress;
@@ -58,6 +63,13 @@ public class ActivitySoundManager extends Activity {
     private Button saveButton;
     private Button cancelButton;
     private Button mButtonVibe;
+
+    int musicNum ;
+    int notificationNum ;
+    int alarmNum ;
+    int systemNum;
+    int voiceCallNum ;
+    int ringNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,19 +80,19 @@ public class ActivitySoundManager extends Activity {
 
         setContentView(R.layout.activity_sound_manager);
 
-//        final SeekBar textView = (SeekBar) View
-//                .findViewById(R.id.dialog_add_event);
+        // final SeekBar textView = (SeekBar) View
+        // .findViewById(R.id.dialog_add_event);
 
         Typeface localTypeface = null;
         if (Build.VERSION.SDK_INT >= 4) {
-            localTypeface = MiscUtils.CreateTypefaceFromRawResource(ActivitySoundManager.this,
-                    R.raw.digital);
+            localTypeface = MiscUtils.CreateTypefaceFromRawResource(
+                    ActivitySoundManager.this, R.raw.digital);
         }
 
-        this.radioNormal =  (CheckBox) findViewById(R.id.radio_normal);
-        radioNormal.setChecked(true);
-        this.radioVibrate =  (CheckBox) findViewById(R.id.radio_vibrate);
-        this.radioSilent =  (CheckBox) findViewById(R.id.radio_silent);
+        this.radioNormal = (RadioButton) findViewById(R.id.radio_normal);
+
+        this.radioVibrate = (RadioButton) findViewById(R.id.radio_vibrate);
+        this.radioSilent = (RadioButton) findViewById(R.id.radio_silent);
         this.alarmRingtone = ((Button) findViewById(R.id.alarmRingtone));
         this.phoneRingtone = ((Button) findViewById(R.id.phoneRingtone));
         this.notificationRingtone = ((Button) findViewById(R.id.notificationRingtone));
@@ -115,6 +127,53 @@ public class ActivitySoundManager extends Activity {
             this.voiceProgress.setTypeface(localTypeface);
         }
 
+        this.alarmRingtone = ((Button)findViewById(R.id.alarmRingtone));
+        this.phoneRingtone = ((Button)findViewById(R.id.phoneRingtone));
+        this.notificationRingtone = ((Button)findViewById(R.id.notificationRingtone));
+        this.alarmRingtone.setOnClickListener(new View.OnClickListener()
+        {
+          public void onClick(View paramAnonymousView)
+          {
+
+            Intent localIntent = new Intent("android.intent.action.RINGTONE_PICKER");
+//            localIntent.putExtra("android.intent.extra.ringtone.TITLE", ActivitySoundManager.this.getText(R.string.alarm_ringtone));
+            localIntent.putExtra("android.intent.extra.ringtone.SHOW_SILENT", true);
+            localIntent.putExtra("android.intent.extra.ringtone.SHOW_DEFAULT", true);
+            localIntent.putExtra("android.intent.extra.ringtone.DEFAULT_URI", Settings.System.DEFAULT_ALARM_ALERT_URI);
+            localIntent.putExtra("android.intent.extra.ringtone.EXISTING_URI", ActivitySoundManager.this.alarmRingtoneUri);
+            localIntent.putExtra("android.intent.extra.ringtone.TYPE", 4);
+            ActivitySoundManager.this.startActivityForResult(localIntent, 1002);
+          }
+        });
+        this.phoneRingtone.setOnClickListener(new View.OnClickListener()
+        {
+          public void onClick(View paramAnonymousView)
+          {
+            Intent localIntent = new Intent("android.intent.action.RINGTONE_PICKER");
+//            localIntent.putExtra("android.intent.extra.ringtone.TITLE", ActivitySoundManager.this.getText(R.string.phone_ringtone));
+            localIntent.putExtra("android.intent.extra.ringtone.SHOW_SILENT", true);
+            localIntent.putExtra("android.intent.extra.ringtone.SHOW_DEFAULT", true);
+            localIntent.putExtra("android.intent.extra.ringtone.DEFAULT_URI", Settings.System.DEFAULT_RINGTONE_URI);
+            localIntent.putExtra("android.intent.extra.ringtone.EXISTING_URI", ActivitySoundManager.this.phoneRingtoneUri);
+            localIntent.putExtra("android.intent.extra.ringtone.TYPE", 1);
+            ActivitySoundManager.this.startActivityForResult(localIntent, 1000);
+          }
+        });
+        this.notificationRingtone.setOnClickListener(new View.OnClickListener()
+        {
+          public void onClick(View paramAnonymousView)
+          {
+            Intent localIntent = new Intent("android.intent.action.RINGTONE_PICKER");
+//            localIntent.putExtra("android.intent.extra.ringtone.TITLE", ActivitySoundManager.this.getText(R.string.notification_ringtone));
+            localIntent.putExtra("android.intent.extra.ringtone.SHOW_SILENT", true);
+            localIntent.putExtra("android.intent.extra.ringtone.SHOW_DEFAULT", true);
+            localIntent.putExtra("android.intent.extra.ringtone.DEFAULT_URI", Settings.System.DEFAULT_NOTIFICATION_URI);
+            localIntent.putExtra("android.intent.extra.ringtone.EXISTING_URI", ActivitySoundManager.this.notificationRingtoneUri);
+            localIntent.putExtra("android.intent.extra.ringtone.TYPE", 2);
+            ActivitySoundManager.this.startActivityForResult(localIntent, 1001);
+          }
+        });
+
         this.music
                 .setMax(this.am.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
         this.alarm
@@ -131,85 +190,147 @@ public class ActivitySoundManager extends Activity {
         setSeekBarListeners();
 
         // update bt
-
+        // TODO set up ringermode theo may
+        radioNormal.setChecked(true);
+        mRingerMode = 2;
         updateUI(true);
-//        this.setTitle(R.string.title_dialog_add_event);
+        // this.setTitle(R.string.title_dialog_add_event);
 
-//        this.setView(View)
-//                .setCancelable(false)
-//                .setPositiveButton(R.string.done,
-//                        new DialogInterface.OnClickListener() {
-//                            public void onClick(DialogInterface dialog, int id) {
-//                                // get name to sent
-//                                // String checkDisableCreate = (String) textView
-//                                // .getText().toString();
-//
-//                                dialog.dismiss();
-//                            }
-//                        })
-//                .setNegativeButton(R.string.cancel,
-//                        new DialogInterface.OnClickListener() {
-//                            public void onClick(DialogInterface dialog, int id) {
-//                                dialog.cancel();
-//                            }
-//                        });
+        // this.setView(View)
+        // .setCancelable(false)
+        // .setPositiveButton(R.string.done,
+        // new DialogInterface.OnClickListener() {
+        // public void onClick(DialogInterface dialog, int id) {
+        // // get name to sent
+        // // String checkDisableCreate = (String) textView
+        // // .getText().toString();
+        //
+        // dialog.dismiss();
+        // }
+        // })
+        // .setNegativeButton(R.string.cancel,
+        // new DialogInterface.OnClickListener() {
+        // public void onClick(DialogInterface dialog, int id) {
+        // dialog.cancel();
+        // }
+        // });
 
     }
+
+    protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+    {
+      super.onActivityResult(paramInt1, paramInt2, paramIntent);
+      if (paramInt2 == -1)
+      {
+        Uri localUri = (Uri)paramIntent.getParcelableExtra("android.intent.extra.ringtone.PICKED_URI");
+
+        switch (paramInt1)
+        {
+        case 1000:
+          this.phoneRingtoneUri = localUri;
+          getTitleForRingtone(1, localUri, this.phoneRingtone);
+          break;
+        case 1001:
+          this.notificationRingtoneUri = localUri;
+          getTitleForRingtone(2, localUri, this.notificationRingtone);
+          break;
+        case 1002:
+          this.alarmRingtoneUri = localUri;
+          getTitleForRingtone(4, localUri, this.alarmRingtone);
+        }
+      }
+    }
+
+    private void getTitleForRingtone(int paramInt, Uri paramUri, TextView paramTextView)
+    {
+      Object localObject2 ;
+      Object localObject1 = null;
+      if (paramUri != null) {}
+      for (;;)
+      {
+        try
+        {
+          localObject1 = RingtoneManager.getRingtone(this, paramUri);
+          if (localObject1 == null) {
+            continue;
+          }
+          localObject1 = ((Ringtone)localObject1).getTitle(this);
+          localObject2 = localObject1;
+        }
+        catch (NullPointerException localNullPointerException)
+        {
+          continue;
+        }
+
+        Log.v(ActivitySoundManager.this.toString(), (String)localObject2);
+        paramTextView.setText((CharSequence)localObject2);
+        return;
+
+      }
+    }
+
 
     public void onRadioButtonClicked(View view) {
         // Is the button now checked?
-        boolean checked =  ((RadioButton) view).isChecked();
+        boolean checked = ((RadioButton) view).isChecked();
 
         // Check which radio button was clicked
-        switch(view.getId()) {
-            case R.id.radio_normal:
-                if (checked){
-                    mRingerMode = 2;
-                }
-                break;
-            case R.id.radio_silent:
-                if (checked){
-                    mRingerMode = 1;
-                }
-                break;
-            case R.id.radio_vibrate:
-                if (checked){
-                    mRingerMode = 0;
-                }
-                break;
+        switch (view.getId()) {
+        case R.id.radio_normal:
+            if (checked) {
+                mRingerMode = AudioManager.RINGER_MODE_NORMAL;
+                updateNormal(notificationNum, ringNum, systemNum);
+            }
+            break;
+        case R.id.radio_vibrate:
+            if (checked) {
+                mRingerMode = AudioManager.RINGER_MODE_VIBRATE;
+
+                updateVibrateOrSilent();
+            }
+            break;
+        case R.id.radio_silent:
+            if (checked) {
+                mRingerMode = AudioManager.RINGER_MODE_SILENT;
+
+                updateVibrateOrSilent();
+            }
+            break;
         }
     }
+
     private void updateUI(boolean paramBoolean) {
-        int k = am.getStreamVolume(AudioManager.STREAM_MUSIC);
-        int j = am.getStreamVolume(AudioManager.STREAM_NOTIFICATION);
-        int i1 = am.getStreamVolume(AudioManager.STREAM_ALARM);
-        int i = am.getStreamVolume(AudioManager.STREAM_SYSTEM);
-        int n = am.getStreamVolume(AudioManager.STREAM_VOICE_CALL);
-        int m = 0;
+        musicNum = am.getStreamVolume(AudioManager.STREAM_MUSIC);
+        notificationNum = am.getStreamVolume(AudioManager.STREAM_NOTIFICATION);
+        alarmNum = am.getStreamVolume(AudioManager.STREAM_ALARM);
+        systemNum = am.getStreamVolume(AudioManager.STREAM_SYSTEM);
+        voiceCallNum = am.getStreamVolume(AudioManager.STREAM_VOICE_CALL);
+        ringNum = am.getStreamVolume(AudioManager.STREAM_RING);
+        ;
         boolean bool = true;
 
         if (paramBoolean) {
-            this.music.setProgress(k);
-            this.alert.setProgress(j);
-            this.alarm.setProgress(i1);
-            this.system.setProgress(i);
-            this.voice.setProgress(n);
-            this.musicProgress.setText("" + k + "/" + ""
+            this.music.setProgress(musicNum);
+            this.alert.setProgress(notificationNum);
+            this.alarm.setProgress(alarmNum);
+            this.system.setProgress(systemNum);
+            this.voice.setProgress(voiceCallNum);
+            this.musicProgress.setText("" + musicNum + "/" + ""
                     + this.am.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
             this.alertProgress
                     .setText(""
-                            + j
+                            + notificationNum
                             + "/"
                             + ""
                             + this.am
                                     .getStreamMaxVolume(AudioManager.STREAM_NOTIFICATION));
-            this.systemProgress.setText("" + i + "/" + ""
+            this.systemProgress.setText("" + alarmNum + "/" + ""
                     + this.am.getStreamMaxVolume(AudioManager.STREAM_ALARM));
-            this.alarmProgress.setText("" + i1 + "/" + ""
+            this.alarmProgress.setText("" + systemNum + "/" + ""
                     + this.am.getStreamMaxVolume(AudioManager.STREAM_SYSTEM));
             this.voiceProgress
                     .setText(""
-                            + n
+                            + voiceCallNum
                             + "/"
                             + ""
                             + this.am
@@ -227,38 +348,9 @@ public class ActivitySoundManager extends Activity {
             // this.alarmRingtone);
         }
         if (this.mRingerMode != 2) {
-            this.alarm.setEnabled(true);
-            if (this.ringer.getVisibility() != 0) {
-                this.music.setEnabled(false);
-            } else {
-                this.ringer.setEnabled(false);
-                this.music.setEnabled(true);
-            }
-            this.alert.setEnabled(false);
-            this.system.setEnabled(false);
-            this.voice.setEnabled(true);
             updateVibrateOrSilent();
         } else {
-            this.alarm.setEnabled(true);
-            this.music.setEnabled(true);
-
-            this.alert.setEnabled(true);
-            // ko hieu lam j
-            // if (this.ringer.getVisibility() != 0) {
-            // this.alert.setEnabled(true);
-            // } else {
-            // this.ringer.setEnabled(true);
-            // SeekBar localSeekBar = this.alert;
-            // if (bool) {
-            // bool = false;
-            // } else {
-            // bool = true;
-            // }
-            // localSeekBar.setEnabled(bool);
-            // }
-            this.system.setEnabled(true);
-            this.voice.setEnabled(true);
-            updateNormal(j, m, i, k);
+            updateNormal(notificationNum, ringNum, systemNum);
         }
         // setPressedStates();
     }
@@ -268,10 +360,10 @@ public class ActivitySoundManager extends Activity {
                 AudioManager.STREAM_VOICE_CALL, this.voiceProgress));
         this.system.setOnSeekBarChangeListener(new OnAudioSeekBarListener(
                 AudioManager.STREAM_SYSTEM, this.systemProgress));
-        if (this.ringer.getVisibility() == 0) {
-            this.ringer.setOnSeekBarChangeListener(new OnAudioSeekBarListener(
-                    AudioManager.STREAM_RING, this.ringerProgress));
-        }
+
+        this.ringer.setOnSeekBarChangeListener(new OnAudioSeekBarListener(
+                AudioManager.STREAM_RING, this.ringerProgress));
+
         this.music.setOnSeekBarChangeListener(new OnAudioSeekBarListener(
                 AudioManager.STREAM_MUSIC, this.musicProgress));
         this.alarm.setOnSeekBarChangeListener(new OnAudioSeekBarListener(
@@ -284,6 +376,7 @@ public class ActivitySoundManager extends Activity {
             SeekBar.OnSeekBarChangeListener {
         private TextView progressTextView;
         private int stream;
+        boolean checkMode = false;
 
         public OnAudioSeekBarListener(int paramInt, TextView paramTextView) {
             this.stream = paramInt;
@@ -292,62 +385,94 @@ public class ActivitySoundManager extends Activity {
 
         public void onProgressChanged(SeekBar paramSeekBar, int paramInt,
                 boolean paramBoolean) {
+            switch (stream) {
+                case AudioManager.STREAM_RING:
+                    if(checkMode){
+                        ringNum = paramInt;
+                    }
+                    if (paramInt == 0) {
+                        ActivitySoundManager.this.radioVibrate.setChecked(true);
+                        mRingerMode = 1;
+                        updateVibrateOrSilent();
+                    } else {
+                        ActivitySoundManager.this.radioNormal.setChecked(true);
+                        mRingerMode = 2;
+                        updateNormal(notificationNum, ringNum, systemNum);
+                    }
+
+                    break;
+                case AudioManager.STREAM_NOTIFICATION:
+                    if(checkMode){
+                        notificationNum = paramInt;
+                    }
+
+                    break;
+                case AudioManager.STREAM_SYSTEM:
+                    if(checkMode){
+                        systemNum = paramInt;
+                    }
+
+                    break;
+                case AudioManager.STREAM_ALARM:
+                    alarmNum = paramInt;
+
+                    break;
+                case AudioManager.STREAM_MUSIC:
+                    musicNum = paramInt;
+
+                    break;
+                case AudioManager.STREAM_VOICE_CALL:
+                    voiceCallNum = paramInt;
+
+                    break;
+                default:
+                    break;
+            }
+
             this.progressTextView.setText(paramInt
                     + "/"
                     + ActivitySoundManager.this.am
                             .getStreamMaxVolume(this.stream));
-            // if (paramBoolean) {
-            // if (EditDialogActivity.this.ringer.getVisibility() == 0) {
-            // boolean bool = MiscUtils.isNotificationAndRingerLinked(
-            // DialogSoundManager.this.getContentResolver(),
-            // EditDialogActivity.this, false);
-            // if ((this.stream == 2) && (bool)) {
-            // EditDialogActivity.this.alert.setProgress(paramInt);
-            // }
-            // }
-            // if (EditDialogActivity.this.volumizer) {
-            // EditDialogActivity.this.playBeepingTone(this.stream);
-            // }
-            // }
+
         }
 
         public void onStartTrackingTouch(SeekBar paramSeekBar) {
+            checkMode = true;
         }
 
         public void onStopTrackingTouch(SeekBar paramSeekBar) {
+            checkMode = false;
         }
     }
 
     private void updateVibrateOrSilent() {
+        this.alert.setEnabled(false);
+        this.system.setEnabled(false);
         this.alert.setProgress(0);
         this.system.setProgress(0);
-        this.alertProgress.setText("0/" + this.am.getStreamMaxVolume(5));
-        this.systemProgress.setText("0/" + this.am.getStreamMaxVolume(1));
-        if (this.ringer.getVisibility() != 0) {
-            this.music.setProgress(0);
-            this.musicProgress.setText("0/" + this.am.getStreamMaxVolume(3));
-        } else {
-            this.ringer.setProgress(0);
-            this.ringerProgress.setText("0/" + this.am.getStreamMaxVolume(2));
-        }
+        this.alertProgress.setText("0/"
+                + this.am.getStreamMaxVolume(AudioManager.STREAM_NOTIFICATION));
+        this.systemProgress.setText("0/"
+                + this.am.getStreamMaxVolume(AudioManager.STREAM_SYSTEM));
+        this.ringer.setProgress(0);
+        this.ringerProgress.setText("0/"
+                + this.am.getStreamMaxVolume(AudioManager.STREAM_RING));
+
     }
 
-    private void updateNormal(int paramInt1, int paramInt2, int paramInt3,
-            int paramInt4) {
-        this.alert.setProgress(paramInt1);
+    private void updateNormal(int notification, int paramInt2, int paramInt3) {
+        this.alert.setEnabled(true);
+        this.system.setEnabled(true);
+        this.alert.setProgress(notification);
         this.system.setProgress(paramInt3);
-        this.alertProgress.setText("" + paramInt1 + "/" + ""
-                + this.am.getStreamMaxVolume(5));
+        this.alertProgress.setText("" + notification + "/" + ""
+                + this.am.getStreamMaxVolume(AudioManager.STREAM_NOTIFICATION));
         this.systemProgress.setText("" + paramInt3 + "/" + ""
-                + this.am.getStreamMaxVolume(1));
-        if (this.ringer.getVisibility() != 0) {
-            this.music.setProgress(paramInt4);
-            this.musicProgress.setText("" + paramInt4 + "/" + ""
-                    + this.am.getStreamMaxVolume(3));
-        } else {
-            this.ringerProgress.setText("" + paramInt2 + "/" + ""
-                    + this.am.getStreamMaxVolume(2));
-            this.ringer.setProgress(paramInt2);
-        }
+                + this.am.getStreamMaxVolume(AudioManager.STREAM_SYSTEM));
+
+        this.ringerProgress.setText("" + paramInt2 + "/" + ""
+                + this.am.getStreamMaxVolume(2));
+        this.ringer.setProgress(paramInt2);
+
     }
 }

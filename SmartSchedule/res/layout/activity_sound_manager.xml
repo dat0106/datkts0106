@@ -18,15 +18,15 @@
         <RadioGroup
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginTop="10dip"
+            android:gravity="center"
             android:orientation="horizontal" >
 
             <RadioButton
                 android:id="@+id/radio_normal"
                 android:layout_width="wrap_content"
-                android:layout_marginLeft="25dip"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="25dip"
                 android:onClick="onRadioButtonClicked"
                 android:text="@string/normal" />
 
@@ -34,7 +34,6 @@
                 android:id="@+id/radio_vibrate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:onClick="onRadioButtonClicked"
                 android:text="@string/vibrate" />
 
@@ -45,6 +44,8 @@
                 android:layout_marginRight="25dip"
                 android:onClick="onRadioButtonClicked"
                 android:text="@string/silent" />
+
+
         </RadioGroup>
     </LinearLayout>
 
@@ -87,7 +88,7 @@
                 android:ellipsize="end"
                 android:singleLine="true"
                 android:textColor="#ff000000"
-                android:textSize="14.0sp" />
+                android:textSize="10.0sp" />
 
             <TextView
                 android:id="@+id/musicLabel"
@@ -130,7 +131,7 @@
                 android:ellipsize="end"
                 android:singleLine="true"
                 android:textColor="#ff000000"
-                android:textSize="14.0sp" />
+                android:textSize="10.0sp" />
 
             <TextView
                 android:id="@+id/alertsLabel"
@@ -159,7 +160,7 @@
                 android:ellipsize="end"
                 android:singleLine="true"
                 android:textColor="#ff000000"
-                android:textSize="14.0sp" />
+                android:textSize="10.0sp" />
 
             <TextView
                 android:id="@+id/systemLabel"
