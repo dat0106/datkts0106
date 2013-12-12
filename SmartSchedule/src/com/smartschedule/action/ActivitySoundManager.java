@@ -16,6 +16,7 @@ import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
@@ -25,6 +26,10 @@ import android.widget.ToggleButton;
 public class ActivitySoundManager extends Activity {
 
     private int mRingerMode = -1;
+    private CheckBox radioNormal;
+    private CheckBox radioVibrate;
+    private CheckBox radioSilent;
+
     private ToggleButton mToggleVibe;
     private ToneGenerator mToneGenerator;
     private int mVibeMode = -1;
@@ -72,6 +77,10 @@ public class ActivitySoundManager extends Activity {
                     R.raw.digital);
         }
 
+        this.radioNormal =  (CheckBox) findViewById(R.id.radio_normal);
+        radioNormal.setChecked(true);
+        this.radioVibrate =  (CheckBox) findViewById(R.id.radio_vibrate);
+        this.radioSilent =  (CheckBox) findViewById(R.id.radio_silent);
         this.alarmRingtone = ((Button) findViewById(R.id.alarmRingtone));
         this.phoneRingtone = ((Button) findViewById(R.id.phoneRingtone));
         this.notificationRingtone = ((Button) findViewById(R.id.notificationRingtone));
@@ -122,7 +131,7 @@ public class ActivitySoundManager extends Activity {
         setSeekBarListeners();
 
         // update bt
-        mRingerMode = 2;
+
         updateUI(true);
 //        this.setTitle(R.string.title_dialog_add_event);
 
@@ -154,16 +163,19 @@ public class ActivitySoundManager extends Activity {
         // Check which radio button was clicked
         switch(view.getId()) {
             case R.id.radio_normal:
-                if (checked)
-                    // Pirates are the best
+                if (checked){
+                    mRingerMode = 2;
+                }
                 break;
             case R.id.radio_silent:
-                if (checked)
-                    // Ninjas rule
+                if (checked){
+                    mRingerMode = 1;
+                }
                 break;
             case R.id.radio_vibrate:
-                if (checked)
-                    // Ninjas rule
+                if (checked){
+                    mRingerMode = 0;
+                }
                 break;
         }
     }
@@ -175,19 +187,7 @@ public class ActivitySoundManager extends Activity {
         int n = am.getStreamVolume(AudioManager.STREAM_VOICE_CALL);
         int m = 0;
         boolean bool = true;
-        // if (this.ringer.getVisibility() == 0) {
-        // bool = MiscUtils.isNotificationAndRingerLinked(
-        // getContentResolver(), this, false);
-        // m = this.mProfile.getStreamValue(2);
-        // if (bool) {
-        // this.alert.setEnabled(false);
-        // }
-        // if (paramBoolean) {
-        // this.ringer.setProgress(m);
-        // this.ringerProgress.setText("" + m + "/" + ""
-        // + this.am.getStreamMaxVolume(2));
-        // }
-        // }
+
         if (paramBoolean) {
             this.music.setProgress(k);
             this.alert.setProgress(j);
