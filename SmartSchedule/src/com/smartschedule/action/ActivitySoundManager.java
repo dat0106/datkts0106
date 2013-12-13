@@ -1,9 +1,13 @@
 package com.smartschedule.action;
 
+import com.smartschedule.EventActivity;
+import com.smartschedule.MainActivity;
 import com.smartschedule.R;
+import com.smartschedule.database.SmartSchedulerDatabase;
 import com.smartschedule.util.MiscUtils;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,7 +21,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.provider.Settings;
+import android.support.v4.app.NavUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -38,9 +45,7 @@ public class ActivitySoundManager extends Activity {
     private Button phoneRingtone;
     private Button notificationRingtone;
 
-    private ToggleButton mToggleVibe;
-    private ToneGenerator mToneGenerator;
-    private int mVibeMode = -1;
+
     private SeekBar music;
     private TextView musicProgress;
     private Uri notificationRingtoneUri;
@@ -49,20 +54,17 @@ public class ActivitySoundManager extends Activity {
     private TextView ringerProgress;
     private SeekBar system;
     private TextView systemProgress;
-    private ToggleButton toggleSilent;
-    private Vibrator vibe;
+
     private SeekBar voice;
     private TextView voiceProgress;
-    private boolean volumizer;
+
     private SeekBar alarm;
     private TextView alarmProgress;
     private Uri alarmRingtoneUri;
     private SeekBar alert;
     private TextView alertProgress;
     private AudioManager am;
-    private Button saveButton;
-    private Button cancelButton;
-    private Button mButtonVibe;
+
 
     int musicNum ;
     int notificationNum ;
@@ -389,16 +391,17 @@ public class ActivitySoundManager extends Activity {
                 case AudioManager.STREAM_RING:
                     if(checkMode){
                         ringNum = paramInt;
+                        if (paramInt == 0) {
+                            ActivitySoundManager.this.radioVibrate.setChecked(true);
+                            mRingerMode = 1;
+                            updateVibrateOrSilent();
+                        } else {
+                            ActivitySoundManager.this.radioNormal.setChecked(true);
+                            mRingerMode = 2;
+                            updateNormal(notificationNum, ringNum, systemNum);
+                        }
                     }
-                    if (paramInt == 0) {
-                        ActivitySoundManager.this.radioVibrate.setChecked(true);
-                        mRingerMode = 1;
-                        updateVibrateOrSilent();
-                    } else {
-                        ActivitySoundManager.this.radioNormal.setChecked(true);
-                        mRingerMode = 2;
-                        updateNormal(notificationNum, ringNum, systemNum);
-                    }
+
 
                     break;
                 case AudioManager.STREAM_NOTIFICATION:
@@ -475,4 +478,35 @@ public class ActivitySoundManager extends Activity {
         this.ringer.setProgress(paramInt2);
 
     }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        // when the user click start schedule
+        case android.R.id.home:
+            // Navigate "up" the demo structure to the launchpad activity.
+            // for more.
+            NavUtils.navigateUpTo(this, new Intent(this, MainActivity.class));
+            return true;
+        case R.id.done_scheduler:
+
+            finish();
+            return true;
+        case R.id.cancel_scheduler:
+            // schedule.cancelSchedule(this, 1);
+            // do nothing
+            finish();
+            return true;
+        }
+        return false;
+    }
+
 }

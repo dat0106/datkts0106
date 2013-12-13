@@ -19,6 +19,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dip"
+            android:layout_marginBottom="10dip"
             android:gravity="center"
             android:orientation="horizontal" >
 
@@ -60,7 +61,7 @@
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dip"
+            android:layout_marginTop="10dip"
             android:orientation="vertical" >
 
             <TextView
@@ -79,7 +80,7 @@
             <Button
                 android:id="@+id/alarmRingtone"
                 android:layout_width="wrap_content"
-                android:layout_height="25.0dip"
+                android:layout_height="30.0dip"
                 android:layout_alignBaseline="@+id/alarmLabel"
                 android:layout_marginLeft="6.0dip"
                 android:layout_marginRight="10.0dip"
@@ -88,7 +89,7 @@
                 android:ellipsize="end"
                 android:singleLine="true"
                 android:textColor="#ff000000"
-                android:textSize="10.0sp" />
+                android:textSize="12.0sp" />
 
             <TextView
                 android:id="@+id/musicLabel"
@@ -122,7 +123,7 @@
             <Button
                 android:id="@+id/phoneRingtone"
                 android:layout_width="wrap_content"
-                android:layout_height="25.0dip"
+                android:layout_height="30.0dip"
                 android:layout_alignBaseline="@+id/ringerLabel"
                 android:layout_marginLeft="6.0dip"
                 android:layout_marginRight="10.0dip"
@@ -131,7 +132,7 @@
                 android:ellipsize="end"
                 android:singleLine="true"
                 android:textColor="#ff000000"
-                android:textSize="10.0sp" />
+                android:textSize="12.0sp" />
 
             <TextView
                 android:id="@+id/alertsLabel"
@@ -151,7 +152,7 @@
             <Button
                 android:id="@+id/notificationRingtone"
                 android:layout_width="wrap_content"
-                android:layout_height="25.0dip"
+                android:layout_height="30.0dip"
                 android:layout_alignBaseline="@+id/alertsLabel"
                 android:layout_marginLeft="6.0dip"
                 android:layout_marginRight="10.0dip"
@@ -160,7 +161,7 @@
                 android:ellipsize="end"
                 android:singleLine="true"
                 android:textColor="#ff000000"
-                android:textSize="10.0sp" />
+                android:textSize="12.0sp" />
 
             <TextView
                 android:id="@+id/systemLabel"
