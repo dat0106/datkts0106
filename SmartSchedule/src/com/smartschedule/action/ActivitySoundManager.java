@@ -36,6 +36,8 @@ import android.widget.ToggleButton;
 
 public class ActivitySoundManager extends Activity {
 
+    private int event_id;
+    private ContentValues contentValues;
     private int mRingerMode = -1;
     private RadioButton radioNormal;
     private RadioButton radioVibrate;
@@ -80,6 +82,10 @@ public class ActivitySoundManager extends Activity {
 
         am = (AudioManager) getSystemService(ActivitySoundManager.this.AUDIO_SERVICE);
 
+        Intent intent = getIntent();
+        this.event_id =  intent.getExtras().getInt(SmartSchedulerDatabase.COLUMN_EVENT_ID);
+
+        // TODO se lay du lieu o day
         setContentView(R.layout.activity_sound_manager);
 
         // final SeekBar textView = (SeekBar) View
@@ -494,13 +500,19 @@ public class ActivitySoundManager extends Activity {
         case android.R.id.home:
             // Navigate "up" the demo structure to the launchpad activity.
             // for more.
-            NavUtils.navigateUpTo(this, new Intent(this, MainActivity.class));
-            return true;
-        case R.id.done_scheduler:
 
             finish();
             return true;
-        case R.id.cancel_scheduler:
+        case R.id.done:
+            Intent intent = new Intent(this, EventActivity.class);
+            intent.putExtra(
+                    SmartSchedulerDatabase.COLUMN_EVENT_ID,
+                    event_id);
+
+            setResult(RESULT_OK, intent);
+            finish();
+            return true;
+        case R.id.cancel:
             // schedule.cancelSchedule(this, 1);
             // do nothing
             finish();

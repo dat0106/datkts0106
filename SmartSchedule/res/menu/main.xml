@@ -5,11 +5,11 @@
         android:orderInCategory="100"
         android:showAsAction="never"
         android:title="@string/action_settings"/> -->
-    <item android:id="@+id/cancel_scheduler"
+    <item android:id="@+id/cancel"
         android:showAsAction="ifRoom|withText"
-        android:title="@string/cancel_scheduler" />
-    <item android:id="@+id/done_scheduler"
+        android:title="@string/cancel" />
+    <item android:id="@+id/done"
         android:showAsAction="ifRoom|withText"
-        android:title="@string/done_scheduler" />
+        android:title="@string/done" />
 
 </menu>

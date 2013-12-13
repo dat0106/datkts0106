@@ -61,7 +61,7 @@
             android:name="com.smartschedule.action.ActivitySoundManager"
             android:enabled="true" >
             <intent-filter>
-                <action android:name="android.media.RINGER_MODE_CHANGED" />
+                <!-- <action android:name="android.media.RINGER_MODE_CHANGED" /> -->
                 <!-- <action android:name="android.media.VOLUME_CHANGED_ACTION" /> -->
             </intent-filter>
         </receiver>

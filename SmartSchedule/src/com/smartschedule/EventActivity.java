@@ -5,6 +5,7 @@ import java.util.Calendar;
 import com.smartschedule.action.ActivitySoundManager;
 import com.smartschedule.action.DialogSoundManager;
 import com.smartschedule.database.SmartSchedulerDatabase;
+import com.smartschedule.util.Constant;
 import com.smartschedule.util.Util;
 
 import android.os.Bundle;
@@ -26,7 +27,8 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 public class EventActivity extends Activity {
-    private SmartSchedulerDatabase smartScheduleDb = new SmartSchedulerDatabase(this);
+    private SmartSchedulerDatabase smartScheduleDb = new SmartSchedulerDatabase(
+            this);
     ScheduleServiceReceiver schedule = new ScheduleServiceReceiver();
     Button btn1;
     Button btn2;
@@ -51,7 +53,6 @@ public class EventActivity extends Activity {
                 SmartSchedulerDatabase.COLUMN_EVENT_ID));
 
         btn1 = (Button) findViewById(R.id.button1);
-
 
         start_time = (Button) findViewById(R.id.start_time);
         start_time
@@ -203,13 +204,19 @@ public class EventActivity extends Activity {
             @Override
             public void onClick(View arg0) {
 
-//                AlertDialog.Builder builder = new DialogSoundManager(EventActivity.this);
-//
-//                final AlertDialog dialog = builder.create();
-//                dialog.show();
+                // AlertDialog.Builder builder = new
+                // DialogSoundManager(EventActivity.this);
+                //
+                // final AlertDialog dialog = builder.create();
+                // dialog.show();
 
-                Intent i = new Intent(EventActivity.this, ActivitySoundManager.class);
-                startActivity(i);
+                Intent i = new Intent(EventActivity.this,
+                        ActivitySoundManager.class);
+                i.putExtra(
+                        SmartSchedulerDatabase.COLUMN_EVENT_ID,
+                        contentValues
+                                .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_ID));
+                startActivityForResult(i, Constant.EVENT_ID_REQUEST_CODE);
             }
 
         });
@@ -250,7 +257,7 @@ public class EventActivity extends Activity {
             // for more.
             NavUtils.navigateUpTo(this, new Intent(this, MainActivity.class));
             return true;
-        case R.id.done_scheduler:
+        case R.id.done:
             // update state
             contentValues.put(SmartSchedulerDatabase.COLUMN_EVENT_STATE, 1);
             ContentValues cv = new ContentValues();
@@ -266,9 +273,8 @@ public class EventActivity extends Activity {
             cv.put(SmartSchedulerDatabase.COLUMN_EVENT_TIME_END_MINUTE,
                     contentValues
                             .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_TIME_END_MINUTE));
-            cv.put(SmartSchedulerDatabase.COLUMN_EVENT_STATE,
-                    contentValues
-                            .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_STATE));
+            cv.put(SmartSchedulerDatabase.COLUMN_EVENT_STATE, contentValues
+                    .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_STATE));
 
             smartScheduleDb.open();
             smartScheduleDb.update_event(contentValues, contentValues
@@ -277,16 +283,27 @@ public class EventActivity extends Activity {
             // TODO kiem tra thoi gian set co ton tai ko
             schedule.setSchedule(getApplicationContext(), contentValues);
 
-//            schedule.setAlarm(this);
+            // schedule.setAlarm(this);
             finish();
             return true;
-        case R.id.cancel_scheduler:
+        case R.id.cancel:
             // schedule.cancelSchedule(this, 1);
             // do nothing
             finish();
             return true;
         }
         return false;
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == Constant.EVENT_ID_REQUEST_CODE) {
+
+            if (resultCode == RESULT_OK) {
+                // TODO get id to reload event
+                String result = data.getStringExtra("result");
+            }
+        }
     }
 
     /**
