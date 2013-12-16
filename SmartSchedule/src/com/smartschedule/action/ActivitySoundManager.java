@@ -52,6 +52,7 @@ public class ActivitySoundManager extends Activity {
     private TextView musicProgress;
     private Uri notificationRingtoneUri;
     private Uri phoneRingtoneUri;
+    private Uri alarmRingtoneUri;
     private SeekBar ringer;
     private TextView ringerProgress;
     private SeekBar system;
@@ -62,7 +63,7 @@ public class ActivitySoundManager extends Activity {
 
     private SeekBar alarm;
     private TextView alarmProgress;
-    private Uri alarmRingtoneUri;
+
     private SeekBar alert;
     private TextView alertProgress;
     private AudioManager am;
@@ -79,23 +80,7 @@ public class ActivitySoundManager extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
-
-        am = (AudioManager) getSystemService(ActivitySoundManager.this.AUDIO_SERVICE);
-
-        Intent intent = getIntent();
-        this.event_id =  intent.getExtras().getInt(SmartSchedulerDatabase.COLUMN_EVENT_ID);
-
-        // TODO se lay du lieu o day
         setContentView(R.layout.activity_sound_manager);
-
-        // final SeekBar textView = (SeekBar) View
-        // .findViewById(R.id.dialog_add_event);
-
-        Typeface localTypeface = null;
-        if (Build.VERSION.SDK_INT >= 4) {
-            localTypeface = MiscUtils.CreateTypefaceFromRawResource(
-                    ActivitySoundManager.this, R.raw.digital);
-        }
 
         this.radioNormal = (RadioButton) findViewById(R.id.radio_normal);
 
@@ -118,6 +103,29 @@ public class ActivitySoundManager extends Activity {
         this.ringerProgress = ((TextView) findViewById(R.id.ringerLvl));
         this.systemProgress = ((TextView) findViewById(R.id.systemLvl));
         this.voiceProgress = ((TextView) findViewById(R.id.voiceLvl));
+
+        this.alarmRingtone = ((Button)findViewById(R.id.alarmRingtone));
+        this.phoneRingtone = ((Button)findViewById(R.id.phoneRingtone));
+        this.notificationRingtone = ((Button)findViewById(R.id.notificationRingtone));
+        am = (AudioManager) getSystemService(ActivitySoundManager.this.AUDIO_SERVICE);
+
+        Intent intent = getIntent();
+        this.event_id =  intent.getExtras().getInt(SmartSchedulerDatabase.COLUMN_EVENT_ID);
+
+
+        setRingtoneDefault();
+        // TODO se lay du lieu o day
+
+        // final SeekBar textView = (SeekBar) View
+        // .findViewById(R.id.dialog_add_event);
+
+        Typeface localTypeface = null;
+        if (Build.VERSION.SDK_INT >= 4) {
+            localTypeface = MiscUtils.CreateTypefaceFromRawResource(
+                    ActivitySoundManager.this, R.raw.digital);
+        }
+
+
         // this.toggleSilent =
         // ((ToggleButton)findViewById(R.id.toggleSilent));
         // this.mToggleVibe =
@@ -135,9 +143,6 @@ public class ActivitySoundManager extends Activity {
             this.voiceProgress.setTypeface(localTypeface);
         }
 
-        this.alarmRingtone = ((Button)findViewById(R.id.alarmRingtone));
-        this.phoneRingtone = ((Button)findViewById(R.id.phoneRingtone));
-        this.notificationRingtone = ((Button)findViewById(R.id.notificationRingtone));
         this.alarmRingtone.setOnClickListener(new View.OnClickListener()
         {
           public void onClick(View paramAnonymousView)
@@ -225,34 +230,55 @@ public class ActivitySoundManager extends Activity {
 
     }
 
-    protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+    private void setRingtoneDefault() {
+        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+        notificationRingtone.setText(r.getTitle(this));
+
+        Uri alarm = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+        Ringtone r1 = RingtoneManager.getRingtone(getApplicationContext(), alarm);
+        alarmRingtone.setText(r1.getTitle(this));
+
+        Uri ringer = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+        Ringtone r2 = RingtoneManager.getRingtone(getApplicationContext(), ringer);
+        phoneRingtone.setText(r2.getTitle(this));
+	}
+
+	protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
     {
       super.onActivityResult(paramInt1, paramInt2, paramIntent);
       if (paramInt2 == -1)
       {
-        Uri localUri = (Uri)paramIntent.getParcelableExtra("android.intent.extra.ringtone.PICKED_URI");
+        Uri localUri = (Uri)paramIntent.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
 
+
+        // chay ok
+//        Uri ringer = Uri.parse(part);
+//        Ringtone r2 = RingtoneManager.getRingtone(getApplicationContext(), ringer);
+//
+//        RingtoneManager.setActualDefaultRingtoneUri(getApplicationContext(), RingtoneManager.TYPE_NOTIFICATION, ringer);
+//        r2.play();
         switch (paramInt1)
         {
         case 1000:
           this.phoneRingtoneUri = localUri;
-          getTitleForRingtone(1, localUri, this.phoneRingtone);
+          getTitleForRingtone(RingtoneManager.TYPE_RINGTONE, localUri, this.phoneRingtone);
           break;
         case 1001:
           this.notificationRingtoneUri = localUri;
-          getTitleForRingtone(2, localUri, this.notificationRingtone);
+          getTitleForRingtone(RingtoneManager.TYPE_NOTIFICATION, localUri, this.notificationRingtone);
           break;
         case 1002:
           this.alarmRingtoneUri = localUri;
-          getTitleForRingtone(4, localUri, this.alarmRingtone);
+          getTitleForRingtone(RingtoneManager.TYPE_ALARM, localUri, this.alarmRingtone);
         }
       }
     }
 
     private void getTitleForRingtone(int paramInt, Uri paramUri, TextView paramTextView)
     {
-      Object localObject2 ;
-      Object localObject1 = null;
+      String localObject2 ;
+      Ringtone localObject1 = null;
       if (paramUri != null) {}
       for (;;)
       {
@@ -262,8 +288,8 @@ public class ActivitySoundManager extends Activity {
           if (localObject1 == null) {
             continue;
           }
-          localObject1 = ((Ringtone)localObject1).getTitle(this);
-          localObject2 = localObject1;
+
+          localObject2 = localObject1.getTitle(this);
         }
         catch (NullPointerException localNullPointerException)
         {

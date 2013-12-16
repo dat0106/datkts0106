@@ -45,6 +45,16 @@ public class SmartSchedulerDatabase {
     public static final String COLUMN_ACTION_END_ID = "action_end_id";
     public static final String COLUMN_ACTION_STATE = "state";
     public static final String COLUMN_ACTION_NAME = "name";
+	public static final String COLUMN_ACTION_SOUND_MODE = "sound_mode";
+	public static final String COLUMN_ACTION_SOUND_ALARM = "sound_alarm";
+	public static final String COLUMN_ACTION_SOUND_RINGER = "sound_ring";
+	public static final String COLUMN_ACTION_SOUND_MUSIC = "sound_music";
+	public static final String COLUMN_ACTION_SOUND_NOTIFICATION = "sound_notification";
+	public static final String COLUMN_ACTION_SOUND_SYSTEM = "sound_system";
+	public static final String COLUMN_ACTION_SOUND_VOICE_CALL = "sound_voice_call";
+	public static final String COLUMN_ACTION_SOUND_RINGTONE_ALARM = "ringtone_alarm";
+	public static final String COLUMN_ACTION_SOUND_RINGTONE_RINGER = "rimgtome_ringer";
+	public static final String COLUMN_ACTION_SOUND_RINGTONE_NOTIFICATION = "ringtone_notification";
 
     private static Context context;
     private SQLiteDatabase db;
@@ -229,6 +239,18 @@ public class SmartSchedulerDatabase {
                     + COLUMN_ACTION_START_ID + " INTEGER DEFAULT NULL, "
                     + COLUMN_ACTION_END_ID + " INTEGER DEFAULT NULL, "
                     + COLUMN_ACTION_STATE + " INTEGER NOT NULL, "
+                    + COLUMN_ACTION_SOUND_MODE + " INTEGER DEFAULT NULL, "
+                    + COLUMN_ACTION_SOUND_RINGTONE_ALARM + " INTEGER DEFAULT NULL, "
+                    + COLUMN_ACTION_SOUND_RINGTONE_RINGER + " INTEGER DEFAULT NULL, "
+                    + COLUMN_ACTION_SOUND_RINGTONE_NOTIFICATION + " INTEGER DEFAULT NULL, "
+                    + COLUMN_ACTION_SOUND_MODE + " INTEGER DEFAULT NULL, "
+                    + COLUMN_ACTION_SOUND_MODE + " INTEGER DEFAULT NULL, "
+                    + COLUMN_ACTION_SOUND_ALARM + " INTEGER DEFAULT NULL, "
+                    + COLUMN_ACTION_SOUND_MUSIC + " INTEGER DEFAULT NULL, "
+                    + COLUMN_ACTION_SOUND_RINGER + " INTEGER DEFAULT NULL, "
+                    + COLUMN_ACTION_SOUND_NOTIFICATION + " INTEGER DEFAULT NULL, "
+                    + COLUMN_ACTION_SOUND_SYSTEM + " INTEGER DEFAULT NULL, "
+                    + COLUMN_ACTION_SOUND_VOICE_CALL + " INTEGER DEFAULT NULL, "
                     + COLUMN_ACTION_NAME + " TEXT " + ");");
         }
 
