@@ -31,6 +31,7 @@ public class SmartSchedulerDatabase {
 
     public static final String TABLE_SCHEDULE = "SCHEDULE";
     public static final String COLUMN_SCHEDULE_ID = "_id";
+    public static final String COLUMN_SCHEDULE_EVENT_ID = "event_id";
     public static final String COLUMN_SCHEDULE_MON = "mon";
     public static final String COLUMN_SCHEDULE_TUE = "tue";
     public static final String COLUMN_SCHEDULE_WED = "wed";
@@ -45,16 +46,17 @@ public class SmartSchedulerDatabase {
     public static final String COLUMN_ACTION_END_ID = "action_end_id";
     public static final String COLUMN_ACTION_STATE = "state";
     public static final String COLUMN_ACTION_NAME = "name";
-	public static final String COLUMN_ACTION_SOUND_MODE = "sound_mode";
-	public static final String COLUMN_ACTION_SOUND_ALARM = "sound_alarm";
-	public static final String COLUMN_ACTION_SOUND_RINGER = "sound_ring";
-	public static final String COLUMN_ACTION_SOUND_MUSIC = "sound_music";
-	public static final String COLUMN_ACTION_SOUND_NOTIFICATION = "sound_notification";
-	public static final String COLUMN_ACTION_SOUND_SYSTEM = "sound_system";
-	public static final String COLUMN_ACTION_SOUND_VOICE_CALL = "sound_voice_call";
-	public static final String COLUMN_ACTION_SOUND_RINGTONE_ALARM = "ringtone_alarm";
-	public static final String COLUMN_ACTION_SOUND_RINGTONE_RINGER = "rimgtome_ringer";
-	public static final String COLUMN_ACTION_SOUND_RINGTONE_NOTIFICATION = "ringtone_notification";
+    public static final String COLUMN_ACTION_SOUND_MODE = "sound_mode";
+    public static final String COLUMN_ACTION_SOUND_ALARM = "sound_alarm";
+    public static final String COLUMN_ACTION_SOUND_RINGER = "sound_ring";
+    public static final String COLUMN_ACTION_SOUND_MUSIC = "sound_music";
+    public static final String COLUMN_ACTION_SOUND_NOTIFICATION = "sound_notification";
+    public static final String COLUMN_ACTION_SOUND_SYSTEM = "sound_system";
+    public static final String COLUMN_ACTION_SOUND_VOICE_CALL = "sound_voice_call";
+    public static final String COLUMN_ACTION_SOUND_RINGTONE_ALARM = "ringtone_alarm";
+    public static final String COLUMN_ACTION_SOUND_RINGTONE_RINGER = "rimgtome_ringer";
+    public static final String COLUMN_ACTION_SOUND_RINGTONE_NOTIFICATION = "ringtone_notification";
+
 
     private static Context context;
     private SQLiteDatabase db;
@@ -85,17 +87,60 @@ public class SmartSchedulerDatabase {
         event.put(COLUMN_EVENT_NAME, name);
         event.put(COLUMN_EVENT_IMAGE, image);
         event.put(COLUMN_EVENT_CATEGORY, category);
-
-        Cursor mCount = db
-                .rawQuery("select count(*) from " + TABLE_EVENT, null);
-        mCount.moveToFirst();
-        int count = mCount.getInt(0);
-        mCount.close();
-        event.put(COLUMN_EVENT_SCHEDULE, count + 1);
-        event.put(COLUMN_EVENT_ACTION_START, count + 1);
-        event.put(COLUMN_EVENT_ACTION_END, count + 1);
         event.put(COLUMN_EVENT_STATE, state);
-        return db.insert(TABLE_EVENT, null, event);
+
+//        Cursor mCount = db
+//                .rawQuery("select max("+ COLUMN_EVENT_ID + ") from " + TABLE_EVENT, null);
+//        mCount.moveToFirst();
+//        int count = mCount.getInt(0);
+//        mCount.close();
+
+        long event_id = 0;
+        try {
+            event_id = db.insert(TABLE_EVENT, null, event);
+        } catch (Exception e) {
+            Log.e(this.toString(), e.getMessage());
+        }
+
+        ContentValues update = new ContentValues();
+        update.put(COLUMN_EVENT_SCHEDULE, event_id);
+        update.put(COLUMN_EVENT_ACTION_START, event_id);
+        update.put(COLUMN_EVENT_ACTION_END, event_id);
+
+
+        update_event(update, event_id);
+
+        ContentValues schedule = new ContentValues();
+        schedule.put(COLUMN_SCHEDULE_EVENT_ID, event_id);
+
+        long schedule_id = 0;
+        try {
+            schedule_id = db.insert(TABLE_SCHEDULE, null, schedule);
+        } catch (Exception e) {
+            Log.e(this.toString(), e.getMessage());
+        }
+
+        ContentValues action1 = new ContentValues();
+        action1.put(COLUMN_ACTION_START_ID, event_id);
+
+        long action_id1 = 0;
+        try {
+            action_id1 = db.insert(TABLE_ACTION, null, action1);
+        } catch (Exception e) {
+            Log.e(this.toString(), e.getMessage());
+        }
+
+        ContentValues action2 = new ContentValues();
+        action2.put(COLUMN_ACTION_END_ID, event_id);
+
+        long action_id2 = 0;
+        try {
+            action_id2 = db.insert(TABLE_ACTION, null, action2);
+        } catch (Exception e) {
+            Log.e(this.toString(), e.getMessage());
+        }
+
+        return event_id;
 
     }
 
@@ -194,7 +239,7 @@ public class SmartSchedulerDatabase {
         }
     }
 
-    public int update_event(ContentValues contentValues, int event_id) {
+    public int update_event(ContentValues contentValues, long event_id) {
         return db.update(TABLE_EVENT, contentValues, COLUMN_EVENT_ID + "="
                 + event_id, null);
     }
@@ -219,14 +264,15 @@ public class SmartSchedulerDatabase {
                     + " INT DEFAULT NULL, " + COLUMN_EVENT_TIME_END_HOUR
                     + " INT DEFAULT NULL, " + COLUMN_EVENT_TIME_END_MINUTE
                     + " INT DEFAULT NULL, " + COLUMN_EVENT_SCHEDULE
-                    + " INT NOT NULL UNIQUE, " + COLUMN_EVENT_CATEGORY
-                    + " INT NOT NULL, " + COLUMN_EVENT_ACTION_START
-                    + " INT NOT NULL UNIQUE, " + COLUMN_EVENT_ACTION_END
-                    + " INT NOT NULL UNIQUE, " + COLUMN_EVENT_STATE
+                    + " INT DEFAULT NULL UNIQUE, " + COLUMN_EVENT_CATEGORY
+                    + " INT NOT NULL NULL, " + COLUMN_EVENT_ACTION_START
+                    + " INT DEFAULT NULL UNIQUE, " + COLUMN_EVENT_ACTION_END
+                    + " INT DEFAULT NULL UNIQUE, " + COLUMN_EVENT_STATE
                     + " INT NOT NULL" + ");");
             arg0.execSQL("CREATE TABLE " + TABLE_SCHEDULE + " ("
                     + COLUMN_SCHEDULE_ID
                     + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                    + COLUMN_SCHEDULE_EVENT_ID + " INTEGER DEFAULT NULL, "
                     + COLUMN_SCHEDULE_MON + " BOOLEAN DEFAULT FALSE, "
                     + COLUMN_SCHEDULE_TUE + " BOOLEAN DEFAULT FALSE, "
                     + COLUMN_SCHEDULE_WED + " BOOLEAN DEFAULT FALSE, "
@@ -238,13 +284,11 @@ public class SmartSchedulerDatabase {
                     + COLUMN_ACTION_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + COLUMN_ACTION_START_ID + " INTEGER DEFAULT NULL, "
                     + COLUMN_ACTION_END_ID + " INTEGER DEFAULT NULL, "
-                    + COLUMN_ACTION_STATE + " INTEGER NOT NULL, "
+                    + COLUMN_ACTION_STATE + " INTEGER DEFAULT NULL, "
                     + COLUMN_ACTION_SOUND_MODE + " INTEGER DEFAULT NULL, "
                     + COLUMN_ACTION_SOUND_RINGTONE_ALARM + " INTEGER DEFAULT NULL, "
                     + COLUMN_ACTION_SOUND_RINGTONE_RINGER + " INTEGER DEFAULT NULL, "
                     + COLUMN_ACTION_SOUND_RINGTONE_NOTIFICATION + " INTEGER DEFAULT NULL, "
-                    + COLUMN_ACTION_SOUND_MODE + " INTEGER DEFAULT NULL, "
-                    + COLUMN_ACTION_SOUND_MODE + " INTEGER DEFAULT NULL, "
                     + COLUMN_ACTION_SOUND_ALARM + " INTEGER DEFAULT NULL, "
                     + COLUMN_ACTION_SOUND_MUSIC + " INTEGER DEFAULT NULL, "
                     + COLUMN_ACTION_SOUND_RINGER + " INTEGER DEFAULT NULL, "

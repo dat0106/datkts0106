@@ -242,9 +242,9 @@ public class ActivitySoundManager extends Activity {
         Uri ringer = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
         Ringtone r2 = RingtoneManager.getRingtone(getApplicationContext(), ringer);
         phoneRingtone.setText(r2.getTitle(this));
-	}
+    }
 
-	protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+    protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
     {
       super.onActivityResult(paramInt1, paramInt2, paramIntent);
       if (paramInt2 == -1)
