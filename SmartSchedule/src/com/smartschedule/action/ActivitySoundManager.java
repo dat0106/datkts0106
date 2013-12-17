@@ -26,6 +26,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -47,6 +48,7 @@ public class ActivitySoundManager extends Activity {
     private Button phoneRingtone;
     private Button notificationRingtone;
 
+    private ToggleButton advancedSound;
 
     private SeekBar music;
     private TextView musicProgress;
@@ -68,17 +70,16 @@ public class ActivitySoundManager extends Activity {
     private TextView alertProgress;
     private AudioManager am;
 
-
-    int musicNum ;
-    int notificationNum ;
-    int alarmNum ;
+    int musicNum;
+    int notificationNum;
+    int alarmNum;
     int systemNum;
-    int voiceCallNum ;
+    int voiceCallNum;
     int ringNum;
+    protected boolean checkAdvancedSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sound_manager);
 
@@ -89,6 +90,7 @@ public class ActivitySoundManager extends Activity {
         this.alarmRingtone = ((Button) findViewById(R.id.alarmRingtone));
         this.phoneRingtone = ((Button) findViewById(R.id.phoneRingtone));
         this.notificationRingtone = ((Button) findViewById(R.id.notificationRingtone));
+        this.advancedSound = (ToggleButton) findViewById(R.id.advanced_sound);
         this.alarm = ((SeekBar) findViewById(R.id.alarm));
         this.music = ((SeekBar) findViewById(R.id.music));
         this.alert = ((SeekBar) findViewById(R.id.alerts));
@@ -104,14 +106,14 @@ public class ActivitySoundManager extends Activity {
         this.systemProgress = ((TextView) findViewById(R.id.systemLvl));
         this.voiceProgress = ((TextView) findViewById(R.id.voiceLvl));
 
-        this.alarmRingtone = ((Button)findViewById(R.id.alarmRingtone));
-        this.phoneRingtone = ((Button)findViewById(R.id.phoneRingtone));
-        this.notificationRingtone = ((Button)findViewById(R.id.notificationRingtone));
+        this.alarmRingtone = ((Button) findViewById(R.id.alarmRingtone));
+        this.phoneRingtone = ((Button) findViewById(R.id.phoneRingtone));
+        this.notificationRingtone = ((Button) findViewById(R.id.notificationRingtone));
         am = (AudioManager) getSystemService(ActivitySoundManager.this.AUDIO_SERVICE);
 
         Intent intent = getIntent();
-        this.event_id =  intent.getExtras().getInt(SmartSchedulerDatabase.COLUMN_EVENT_ID);
-
+        this.event_id = intent.getExtras().getInt(
+                SmartSchedulerDatabase.COLUMN_EVENT_ID);
 
         setRingtoneDefault();
         // TODO se lay du lieu o day
@@ -124,7 +126,6 @@ public class ActivitySoundManager extends Activity {
             localTypeface = MiscUtils.CreateTypefaceFromRawResource(
                     ActivitySoundManager.this, R.raw.digital);
         }
-
 
         // this.toggleSilent =
         // ((ToggleButton)findViewById(R.id.toggleSilent));
@@ -143,49 +144,91 @@ public class ActivitySoundManager extends Activity {
             this.voiceProgress.setTypeface(localTypeface);
         }
 
-        this.alarmRingtone.setOnClickListener(new View.OnClickListener()
-        {
-          public void onClick(View paramAnonymousView)
-          {
+        this.advancedSound.setOnClickListener(new View.OnClickListener() {
 
-            Intent localIntent = new Intent("android.intent.action.RINGTONE_PICKER");
-//            localIntent.putExtra("android.intent.extra.ringtone.TITLE", ActivitySoundManager.this.getText(R.string.alarm_ringtone));
-            localIntent.putExtra("android.intent.extra.ringtone.SHOW_SILENT", true);
-            localIntent.putExtra("android.intent.extra.ringtone.SHOW_DEFAULT", true);
-            localIntent.putExtra("android.intent.extra.ringtone.DEFAULT_URI", Settings.System.DEFAULT_ALARM_ALERT_URI);
-            localIntent.putExtra("android.intent.extra.ringtone.EXISTING_URI", ActivitySoundManager.this.alarmRingtoneUri);
-            localIntent.putExtra("android.intent.extra.ringtone.TYPE", 4);
-            ActivitySoundManager.this.startActivityForResult(localIntent, 1002);
-          }
+            @Override
+            public void onClick(View v) {
+                if (advancedSound.isChecked()) {
+                    checkAdvancedSound = true;
+                    disable_or_enable_advanced_sound(checkAdvancedSound);
+
+                } else {
+                    checkAdvancedSound = false;
+                    disable_or_enable_advanced_sound(checkAdvancedSound);
+                }
+            }
+
         });
-        this.phoneRingtone.setOnClickListener(new View.OnClickListener()
-        {
-          public void onClick(View paramAnonymousView)
-          {
-            Intent localIntent = new Intent("android.intent.action.RINGTONE_PICKER");
-//            localIntent.putExtra("android.intent.extra.ringtone.TITLE", ActivitySoundManager.this.getText(R.string.phone_ringtone));
-            localIntent.putExtra("android.intent.extra.ringtone.SHOW_SILENT", true);
-            localIntent.putExtra("android.intent.extra.ringtone.SHOW_DEFAULT", true);
-            localIntent.putExtra("android.intent.extra.ringtone.DEFAULT_URI", Settings.System.DEFAULT_RINGTONE_URI);
-            localIntent.putExtra("android.intent.extra.ringtone.EXISTING_URI", ActivitySoundManager.this.phoneRingtoneUri);
-            localIntent.putExtra("android.intent.extra.ringtone.TYPE", 1);
-            ActivitySoundManager.this.startActivityForResult(localIntent, 1000);
-          }
+
+        this.alarmRingtone.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View paramAnonymousView) {
+
+                Intent localIntent = new Intent(
+                        "android.intent.action.RINGTONE_PICKER");
+                // localIntent.putExtra("android.intent.extra.ringtone.TITLE",
+                // ActivitySoundManager.this.getText(R.string.alarm_ringtone));
+                localIntent.putExtra(
+                        "android.intent.extra.ringtone.SHOW_SILENT", true);
+                localIntent.putExtra(
+                        "android.intent.extra.ringtone.SHOW_DEFAULT", true);
+                localIntent.putExtra(
+                        "android.intent.extra.ringtone.DEFAULT_URI",
+                        Settings.System.DEFAULT_ALARM_ALERT_URI);
+                localIntent.putExtra(
+                        "android.intent.extra.ringtone.EXISTING_URI",
+                        ActivitySoundManager.this.alarmRingtoneUri);
+                localIntent.putExtra("android.intent.extra.ringtone.TYPE", 4);
+                ActivitySoundManager.this.startActivityForResult(localIntent,
+                        1002);
+            }
         });
-        this.notificationRingtone.setOnClickListener(new View.OnClickListener()
-        {
-          public void onClick(View paramAnonymousView)
-          {
-            Intent localIntent = new Intent("android.intent.action.RINGTONE_PICKER");
-//            localIntent.putExtra("android.intent.extra.ringtone.TITLE", ActivitySoundManager.this.getText(R.string.notification_ringtone));
-            localIntent.putExtra("android.intent.extra.ringtone.SHOW_SILENT", true);
-            localIntent.putExtra("android.intent.extra.ringtone.SHOW_DEFAULT", true);
-            localIntent.putExtra("android.intent.extra.ringtone.DEFAULT_URI", Settings.System.DEFAULT_NOTIFICATION_URI);
-            localIntent.putExtra("android.intent.extra.ringtone.EXISTING_URI", ActivitySoundManager.this.notificationRingtoneUri);
-            localIntent.putExtra("android.intent.extra.ringtone.TYPE", 2);
-            ActivitySoundManager.this.startActivityForResult(localIntent, 1001);
-          }
+        this.phoneRingtone.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View paramAnonymousView) {
+                Intent localIntent = new Intent(
+                        "android.intent.action.RINGTONE_PICKER");
+                // localIntent.putExtra("android.intent.extra.ringtone.TITLE",
+                // ActivitySoundManager.this.getText(R.string.phone_ringtone));
+                localIntent.putExtra(
+                        "android.intent.extra.ringtone.SHOW_SILENT", true);
+                localIntent.putExtra(
+                        "android.intent.extra.ringtone.SHOW_DEFAULT", true);
+                localIntent.putExtra(
+                        "android.intent.extra.ringtone.DEFAULT_URI",
+                        Settings.System.DEFAULT_RINGTONE_URI);
+                localIntent.putExtra(
+                        "android.intent.extra.ringtone.EXISTING_URI",
+                        ActivitySoundManager.this.phoneRingtoneUri);
+                localIntent.putExtra("android.intent.extra.ringtone.TYPE", 1);
+                ActivitySoundManager.this.startActivityForResult(localIntent,
+                        1000);
+            }
         });
+        this.notificationRingtone
+                .setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View paramAnonymousView) {
+                        Intent localIntent = new Intent(
+                                "android.intent.action.RINGTONE_PICKER");
+                        // localIntent.putExtra("android.intent.extra.ringtone.TITLE",
+                        // ActivitySoundManager.this.getText(R.string.notification_ringtone));
+                        localIntent.putExtra(
+                                "android.intent.extra.ringtone.SHOW_SILENT",
+                                true);
+                        localIntent.putExtra(
+                                "android.intent.extra.ringtone.SHOW_DEFAULT",
+                                true);
+                        localIntent.putExtra(
+                                "android.intent.extra.ringtone.DEFAULT_URI",
+                                Settings.System.DEFAULT_NOTIFICATION_URI);
+                        localIntent
+                                .putExtra(
+                                        "android.intent.extra.ringtone.EXISTING_URI",
+                                        ActivitySoundManager.this.notificationRingtoneUri);
+                        localIntent.putExtra(
+                                "android.intent.extra.ringtone.TYPE", 2);
+                        ActivitySoundManager.this.startActivityForResult(
+                                localIntent, 1001);
+                    }
+                });
 
         this.music
                 .setMax(this.am.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
@@ -231,78 +274,82 @@ public class ActivitySoundManager extends Activity {
     }
 
     private void setRingtoneDefault() {
-        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+        Uri notification = RingtoneManager
+                .getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        Ringtone r = RingtoneManager.getRingtone(getApplicationContext(),
+                notification);
         notificationRingtone.setText(r.getTitle(this));
 
         Uri alarm = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
-        Ringtone r1 = RingtoneManager.getRingtone(getApplicationContext(), alarm);
+        Ringtone r1 = RingtoneManager.getRingtone(getApplicationContext(),
+                alarm);
         alarmRingtone.setText(r1.getTitle(this));
 
-        Uri ringer = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
-        Ringtone r2 = RingtoneManager.getRingtone(getApplicationContext(), ringer);
+        Uri ringer = RingtoneManager
+                .getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+        Ringtone r2 = RingtoneManager.getRingtone(getApplicationContext(),
+                ringer);
         phoneRingtone.setText(r2.getTitle(this));
     }
 
-    protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
-    {
-      super.onActivityResult(paramInt1, paramInt2, paramIntent);
-      if (paramInt2 == -1)
-      {
-        Uri localUri = (Uri)paramIntent.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
+    protected void onActivityResult(int paramInt1, int paramInt2,
+            Intent paramIntent) {
+        super.onActivityResult(paramInt1, paramInt2, paramIntent);
+        if (paramInt2 == -1) {
+            Uri localUri = (Uri) paramIntent
+                    .getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
 
-
-        // chay ok
-//        Uri ringer = Uri.parse(part);
-//        Ringtone r2 = RingtoneManager.getRingtone(getApplicationContext(), ringer);
-//
-//        RingtoneManager.setActualDefaultRingtoneUri(getApplicationContext(), RingtoneManager.TYPE_NOTIFICATION, ringer);
-//        r2.play();
-        switch (paramInt1)
-        {
-        case 1000:
-          this.phoneRingtoneUri = localUri;
-          getTitleForRingtone(RingtoneManager.TYPE_RINGTONE, localUri, this.phoneRingtone);
-          break;
-        case 1001:
-          this.notificationRingtoneUri = localUri;
-          getTitleForRingtone(RingtoneManager.TYPE_NOTIFICATION, localUri, this.notificationRingtone);
-          break;
-        case 1002:
-          this.alarmRingtoneUri = localUri;
-          getTitleForRingtone(RingtoneManager.TYPE_ALARM, localUri, this.alarmRingtone);
+            // chay ok
+            // Uri ringer = Uri.parse(part);
+            // Ringtone r2 =
+            // RingtoneManager.getRingtone(getApplicationContext(), ringer);
+            //
+            // RingtoneManager.setActualDefaultRingtoneUri(getApplicationContext(),
+            // RingtoneManager.TYPE_NOTIFICATION, ringer);
+            // r2.play();
+            switch (paramInt1) {
+            case 1000:
+                this.phoneRingtoneUri = localUri;
+                getTitleForRingtone(RingtoneManager.TYPE_RINGTONE, localUri,
+                        this.phoneRingtone);
+                break;
+            case 1001:
+                this.notificationRingtoneUri = localUri;
+                getTitleForRingtone(RingtoneManager.TYPE_NOTIFICATION,
+                        localUri, this.notificationRingtone);
+                break;
+            case 1002:
+                this.alarmRingtoneUri = localUri;
+                getTitleForRingtone(RingtoneManager.TYPE_ALARM, localUri,
+                        this.alarmRingtone);
+            }
         }
-      }
     }
 
-    private void getTitleForRingtone(int paramInt, Uri paramUri, TextView paramTextView)
-    {
-      String localObject2 ;
-      Ringtone localObject1 = null;
-      if (paramUri != null) {}
-      for (;;)
-      {
-        try
-        {
-          localObject1 = RingtoneManager.getRingtone(this, paramUri);
-          if (localObject1 == null) {
-            continue;
-          }
-
-          localObject2 = localObject1.getTitle(this);
+    private void getTitleForRingtone(int paramInt, Uri paramUri,
+            TextView paramTextView) {
+        String localObject2;
+        Ringtone localObject1 = null;
+        if (paramUri != null) {
         }
-        catch (NullPointerException localNullPointerException)
-        {
-          continue;
+        for (;;) {
+            try {
+                localObject1 = RingtoneManager.getRingtone(this, paramUri);
+                if (localObject1 == null) {
+                    continue;
+                }
+
+                localObject2 = localObject1.getTitle(this);
+            } catch (NullPointerException localNullPointerException) {
+                continue;
+            }
+
+            Log.v(ActivitySoundManager.this.toString(), (String) localObject2);
+            paramTextView.setText((CharSequence) localObject2);
+            return;
+
         }
-
-        Log.v(ActivitySoundManager.this.toString(), (String)localObject2);
-        paramTextView.setText((CharSequence)localObject2);
-        return;
-
-      }
     }
-
 
     public void onRadioButtonClicked(View view) {
         // Is the button now checked?
@@ -420,48 +467,47 @@ public class ActivitySoundManager extends Activity {
         public void onProgressChanged(SeekBar paramSeekBar, int paramInt,
                 boolean paramBoolean) {
             switch (stream) {
-                case AudioManager.STREAM_RING:
-                    if(checkMode){
-                        ringNum = paramInt;
-                        if (paramInt == 0) {
-                            ActivitySoundManager.this.radioVibrate.setChecked(true);
-                            mRingerMode = 1;
-                            updateVibrateOrSilent();
-                        } else {
-                            ActivitySoundManager.this.radioNormal.setChecked(true);
-                            mRingerMode = 2;
-                            updateNormal(notificationNum, ringNum, systemNum);
-                        }
+            case AudioManager.STREAM_RING:
+                if (checkMode) {
+                    ringNum = paramInt;
+                    if (paramInt == 0) {
+                        ActivitySoundManager.this.radioVibrate.setChecked(true);
+                        mRingerMode = AudioManager.RINGER_MODE_VIBRATE;
+                        updateVibrateOrSilent();
+                    } else {
+                        ActivitySoundManager.this.radioNormal.setChecked(true);
+                        mRingerMode = AudioManager.RINGER_MODE_NORMAL;
+                        updateNormal(notificationNum, ringNum, systemNum);
                     }
+                }
 
+                break;
+            case AudioManager.STREAM_NOTIFICATION:
+                if (checkMode) {
+                    notificationNum = paramInt;
+                }
 
-                    break;
-                case AudioManager.STREAM_NOTIFICATION:
-                    if(checkMode){
-                        notificationNum = paramInt;
-                    }
+                break;
+            case AudioManager.STREAM_SYSTEM:
+                if (checkMode) {
+                    systemNum = paramInt;
+                }
 
-                    break;
-                case AudioManager.STREAM_SYSTEM:
-                    if(checkMode){
-                        systemNum = paramInt;
-                    }
+                break;
+            case AudioManager.STREAM_ALARM:
+                alarmNum = paramInt;
 
-                    break;
-                case AudioManager.STREAM_ALARM:
-                    alarmNum = paramInt;
+                break;
+            case AudioManager.STREAM_MUSIC:
+                musicNum = paramInt;
 
-                    break;
-                case AudioManager.STREAM_MUSIC:
-                    musicNum = paramInt;
+                break;
+            case AudioManager.STREAM_VOICE_CALL:
+                voiceCallNum = paramInt;
 
-                    break;
-                case AudioManager.STREAM_VOICE_CALL:
-                    voiceCallNum = paramInt;
-
-                    break;
-                default:
-                    break;
+                break;
+            default:
+                break;
             }
 
             this.progressTextView.setText(paramInt
@@ -496,8 +542,11 @@ public class ActivitySoundManager extends Activity {
     }
 
     private void updateNormal(int notification, int paramInt2, int paramInt3) {
-        this.alert.setEnabled(true);
-        this.system.setEnabled(true);
+        // check if togglebutton disable wil dont set enable alert and system;
+        if (checkAdvancedSound == true) {
+            this.alert.setEnabled(true);
+            this.system.setEnabled(true);
+        }
         this.alert.setProgress(notification);
         this.system.setProgress(paramInt3);
         this.alertProgress.setText("" + notification + "/" + ""
@@ -511,6 +560,26 @@ public class ActivitySoundManager extends Activity {
 
     }
 
+    private void disable_or_enable_advanced_sound(boolean check) {
+        // TODO Auto-generated method stub
+        alarm.setEnabled(check);
+
+        music.setEnabled(check);
+        ringer.setEnabled(check);
+
+        // check ring mode if normal -> enable
+        if (check == true && mRingerMode == AudioManager.RINGER_MODE_NORMAL) {
+            alert.setEnabled(check);
+            system.setEnabled(check);
+        } else {
+            alert.setEnabled(false);
+            system.setEnabled(false);
+        }
+        voice.setEnabled(check);
+        notificationRingtone.setEnabled(check);
+        phoneRingtone.setEnabled(check);
+        alarmRingtone.setEnabled(check);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -530,10 +599,58 @@ public class ActivitySoundManager extends Activity {
             finish();
             return true;
         case R.id.done:
-            Intent intent = new Intent(this, EventActivity.class);
-            intent.putExtra(
-                    SmartSchedulerDatabase.COLUMN_EVENT_ID,
+            // get data to update database
+            ContentValues contentValue = new ContentValues();
+            contentValue.put(SmartSchedulerDatabase.COLUMN_ACTION_SOUND_MODE,
+                    mRingerMode);
+            // TODO hardcode start id can chuyen tu event activity
+            contentValue.put(SmartSchedulerDatabase.COLUMN_ACTION_START_ID,
                     event_id);
+            contentValue.put(
+                    SmartSchedulerDatabase.COLUMN_ACTION_SOUND_RINGTONE_ALARM,
+                    alarmRingtoneUri.toString());
+            contentValue
+                    .put(SmartSchedulerDatabase.COLUMN_ACTION_SOUND_RINGTONE_NOTIFICATION,
+                            notificationRingtoneUri.toString());
+            contentValue.put(
+                    SmartSchedulerDatabase.COLUMN_ACTION_SOUND_RINGTONE_RINGER,
+                    phoneRingtoneUri.toString());
+
+            if(checkAdvancedSound == true){
+                contentValue.put(
+                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_ALARM,
+                        alarm.getProgress());
+                contentValue.put(
+                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_MUSIC,
+                        music.getProgress());
+                contentValue.put(
+                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_RINGER,
+                        ringer.getProgress());
+                contentValue.put(
+                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_NOTIFICATION,
+                        alert.getProgress());
+                contentValue.put(
+                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_SYSTEM,
+                        system.getProgress());
+                contentValue.put(
+                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_VOICE_CALL,
+                        voice.getProgress());
+            }else{
+                contentValue.putNull(
+                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_ALARM);
+                contentValue.putNull(
+                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_MUSIC);
+                contentValue.putNull(
+                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_RINGER);
+                contentValue.putNull(
+                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_NOTIFICATION);
+                contentValue.putNull(
+                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_SYSTEM);
+                contentValue.putNull(
+                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_VOICE_CALL);
+            }
+            Intent intent = new Intent(this, EventActivity.class);
+            intent.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, event_id);
 
             setResult(RESULT_OK, intent);
             finish();

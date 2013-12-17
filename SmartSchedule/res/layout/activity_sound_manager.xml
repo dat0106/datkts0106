@@ -11,15 +11,13 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingLeft="8.0dip"
-        android:paddingRight="8.0dip" >
+        android:orientation="horizontal" >
 
         <RadioGroup
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dip"
             android:layout_marginTop="10dip"
-            android:layout_marginBottom="10dip"
             android:gravity="center"
             android:orientation="horizontal" >
 
@@ -45,9 +43,24 @@
                 android:layout_marginRight="25dip"
                 android:onClick="onRadioButtonClicked"
                 android:text="@string/silent" />
-
-
         </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout1"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <ToggleButton
+            android:id="@+id/advanced_sound"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="20dp"
+            android:textOff="@string/advance_sound_off"
+            android:textOn="@string/advance_sound_on" />
     </LinearLayout>
 
     <ScrollView
@@ -56,12 +69,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/linearLayout1" >
+
+        android:layout_below="@+id/linearLayout2" >
 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dip"
+            android:paddingBottom="10dip"
             android:orientation="vertical" >
 
             <TextView

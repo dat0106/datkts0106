@@ -25,5 +25,7 @@
     <string name="normal">Sound</string>
     <string name="vibrate">Vibrate</string>
     <string name="silent">Silent</string>
+    <string name="advance_sound_off">Disable advanced sound</string>
+    <string name="advance_sound_on">Enable advanced sound</string>
 
 </resources>
