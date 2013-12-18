@@ -9,6 +9,7 @@ import android.database.DatabaseUtils;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.sax.StartElementListener;
 import android.util.Log;
 
 public class SmartSchedulerDatabase {
@@ -242,6 +243,33 @@ public class SmartSchedulerDatabase {
     public int update_event(ContentValues contentValues, long event_id) {
         return db.update(TABLE_EVENT, contentValues, COLUMN_EVENT_ID + "="
                 + event_id, null);
+    }
+
+    public int update_action(ContentValues contentValues, long event_id, String start_or_end) {
+        int result  = 0;
+        if(start_or_end == COLUMN_ACTION_START_ID){
+            try {
+               result =  db.update(TABLE_ACTION, contentValues, COLUMN_ACTION_START_ID + "="
+                    + event_id, null);
+
+            } catch (Exception e) {
+                Log.e(SmartSchedulerDatabase.this.toString(), e.getMessage());
+            }
+        }
+        if(start_or_end == COLUMN_ACTION_END_ID){
+            try {
+               result =  db.update(TABLE_ACTION, contentValues, COLUMN_ACTION_END_ID + "="
+                    + event_id, null);
+
+            } catch (Exception e) {
+                Log.e(SmartSchedulerDatabase.this.toString(), e.getMessage());
+            }
+        }
+
+        if(result != 1){
+            throw new Error("error update 2 row in database");
+        }
+        return result;
     }
 
     public int delete(int id) {

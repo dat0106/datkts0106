@@ -216,7 +216,9 @@ public class EventActivity extends Activity {
                         SmartSchedulerDatabase.COLUMN_EVENT_ID,
                         contentValues
                                 .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_ID));
-                startActivityForResult(i, Constant.EVENT_ID_REQUEST_CODE);
+                i.putExtra(
+                        Constant.START_OR_END, SmartSchedulerDatabase.COLUMN_ACTION_START_ID);
+                startActivityForResult(i, Constant.SOUND_MANAGER_REQUEST_CODE);
             }
 
         });
@@ -297,13 +299,20 @@ public class EventActivity extends Activity {
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if (requestCode == Constant.EVENT_ID_REQUEST_CODE) {
 
             if (resultCode == RESULT_OK) {
-                // TODO get id to reload event
-                String result = data.getStringExtra("result");
+                switch (resultCode) {
+                case Constant.SOUND_MANAGER_REQUEST_CODE:
+                    // TODO get id to reload event
+                    String result = data.getStringExtra("result");
+                    break;
+
+                default:
+                    break;
+                }
+
             }
-        }
+
     }
 
     /**

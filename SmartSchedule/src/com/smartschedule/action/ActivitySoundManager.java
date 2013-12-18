@@ -4,6 +4,7 @@ import com.smartschedule.EventActivity;
 import com.smartschedule.MainActivity;
 import com.smartschedule.R;
 import com.smartschedule.database.SmartSchedulerDatabase;
+import com.smartschedule.util.Constant;
 import com.smartschedule.util.MiscUtils;
 
 import android.app.Activity;
@@ -37,7 +38,11 @@ import android.widget.ToggleButton;
 
 public class ActivitySoundManager extends Activity {
 
+    private SmartSchedulerDatabase smartScheduleDb = new SmartSchedulerDatabase(
+            getApplicationContext());
+
     private int event_id;
+    private String start_or_end;
     private ContentValues contentValues;
     private int mRingerMode = -1;
     private RadioButton radioNormal;
@@ -114,6 +119,9 @@ public class ActivitySoundManager extends Activity {
         Intent intent = getIntent();
         this.event_id = intent.getExtras().getInt(
                 SmartSchedulerDatabase.COLUMN_EVENT_ID);
+
+        this.start_or_end = intent.getExtras().getString(
+                Constant.START_OR_END);
 
         setRingtoneDefault();
         // TODO se lay du lieu o day
@@ -416,17 +424,7 @@ public class ActivitySoundManager extends Activity {
                             + ""
                             + this.am
                                     .getStreamMaxVolume(AudioManager.STREAM_VOICE_CALL));
-            // this.phoneRingtoneUri = this.mProfile.getPhoneRingtoneUri();
-            // this.notificationRingtoneUri = this.mProfile
-            // .getNotificationRingtoneUri();
-            // this.alarmRingtoneUri = this.mProfile.getAlarmRingtoneUri();
-            // getTitleForRingtone(1, this.mProfile.getPhoneRingtoneUri(),
-            // this.phoneRingtone);
-            // getTitleForRingtone(2,
-            // this.mProfile.getNotificationRingtoneUri(),
-            // this.notificationRingtone);
-            // getTitleForRingtone(4, this.mProfile.getAlarmRingtoneUri(),
-            // this.alarmRingtone);
+
         }
         if (this.mRingerMode != 2) {
             updateVibrateOrSilent();
@@ -603,9 +601,7 @@ public class ActivitySoundManager extends Activity {
             ContentValues contentValue = new ContentValues();
             contentValue.put(SmartSchedulerDatabase.COLUMN_ACTION_SOUND_MODE,
                     mRingerMode);
-            // TODO hardcode start id can chuyen tu event activity
-            contentValue.put(SmartSchedulerDatabase.COLUMN_ACTION_START_ID,
-                    event_id);
+
             contentValue.put(
                     SmartSchedulerDatabase.COLUMN_ACTION_SOUND_RINGTONE_ALARM,
                     alarmRingtoneUri.toString());
@@ -649,6 +645,11 @@ public class ActivitySoundManager extends Activity {
                 contentValue.putNull(
                         SmartSchedulerDatabase.COLUMN_ACTION_SOUND_VOICE_CALL);
             }
+
+            smartScheduleDb.open();
+            // TODO hardcode start id can chuyen tu event activity
+            smartScheduleDb.update_action(contentValue, event_id, SmartSchedulerDatabase.COLUMN_ACTION_START_ID);
+            smartScheduleDb.close();
             Intent intent = new Intent(this, EventActivity.class);
             intent.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, event_id);
 
