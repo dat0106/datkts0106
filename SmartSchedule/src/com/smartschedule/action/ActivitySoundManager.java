@@ -39,7 +39,7 @@ import android.widget.ToggleButton;
 public class ActivitySoundManager extends Activity {
 
     private SmartSchedulerDatabase smartScheduleDb = new SmartSchedulerDatabase(
-            getApplicationContext());
+            this);
 
     private int event_id;
     private String start_or_end;
