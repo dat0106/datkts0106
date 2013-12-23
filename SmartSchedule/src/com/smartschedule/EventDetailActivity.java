@@ -7,6 +7,7 @@ import com.smartschedule.database.SmartSchedulerDatabase;
 import android.app.ExpandableListActivity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ExpandableListView;
@@ -29,7 +30,7 @@ public class EventDetailActivity extends ExpandableListActivity implements
         setGroupData();
         setChildGroupData();
 
-        NewAdapter mNewAdapter = new NewAdapter(groupItem, childItem);
+        EventDetailAdapter mNewAdapter = new EventDetailAdapter(groupItem, childItem);
         mNewAdapter
                 .setInflater(
                         (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE),
@@ -39,6 +40,10 @@ public class EventDetailActivity extends ExpandableListActivity implements
 
         getExpandableListView().setDivider(null);
         getExpandableListView().setDividerHeight(0);
+
+        for (int i = 0; i < groupItem.size(); i++) {
+            getExpandableListView().expandGroup(i);
+        }
     }
 
     public void setGroupData() {
