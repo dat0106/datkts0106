@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/list_item_icon" android:src="@drawable/default_action_icon_selector" style="@style/ASFListItemIcon.full" />
-    <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <TextView android:textAppearance="?android:textAppearanceMedium" android:id="@id/list_item_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-        <TextView android:textAppearance="?android:textAppearanceSmall" android:id="@id/list_item_description" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <ImageView
+        android:id="@id/list_item_icon"
+        style="@style/ASFListItemIcon.full"
+        android:src="@drawable/default_action_icon_selector" />
+
+    <LinearLayout
+        android:layout_width="0.0dip"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1.0"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@id/list_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textAppearance="?android:textAppearanceMedium" />
+
+        <TextView
+            android:id="@id/list_item_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:visibility="gone" />
     </LinearLayout>
+
 </merge>

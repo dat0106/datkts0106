@@ -73,9 +73,15 @@ public class EventActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                smartScheduleDb.open();
-                smartScheduleDb.createData("sample", "image", 1, 1);
-                smartScheduleDb.close();
+                Intent i = new Intent(EventActivity.this,
+                        EventDetailActivity.class);
+                i.putExtra(
+                        SmartSchedulerDatabase.COLUMN_EVENT_ID,
+                        contentValues
+                                .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_ID));
+                i.putExtra(
+                        Constant.START_OR_END, SmartSchedulerDatabase.COLUMN_ACTION_START_ID);
+                startActivity(i);
 
             }
         });

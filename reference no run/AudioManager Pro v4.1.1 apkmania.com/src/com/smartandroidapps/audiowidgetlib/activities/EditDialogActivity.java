@@ -106,7 +106,7 @@ public class EditDialogActivity
   private SeekBar voice;
   private TextView voiceProgress;
   private boolean volumizer;
-  
+
   private boolean areRingtonesAvailable()
   {
     boolean bool;
@@ -117,7 +117,7 @@ public class EditDialogActivity
     }
     return bool;
   }
-  
+
   private int getCallsVibrateSetting()
   {
     int i = 1;
@@ -141,7 +141,7 @@ public class EditDialogActivity
     }
     return i;
   }
-  
+
   private void getTitleForRingtone(int paramInt, Uri paramUri, TextView paramTextView)
   {
     Object localObject2 = getString(R.string.profile_none_applied);
@@ -170,7 +170,7 @@ public class EditDialogActivity
       localObject2 = localObject1;
     }
   }
-  
+
   private boolean getVibeInSilent()
   {
     boolean bool = false;
@@ -184,7 +184,7 @@ public class EditDialogActivity
     }
     return bool;
   }
-  
+
   private void setLayoutTheme()
   {
     String str = new SettingsManager(this).getTheme();
@@ -258,12 +258,12 @@ public class EditDialogActivity
       setTheme(R.style.Theme_AudioManager_Dark_Blue_DialogWhenLarge);
     }
   }
-  
+
   private void setPhoneVibrateSettingValue(int paramInt)
   {
     this.mVibeMode = paramInt;
   }
-  
+
   private void setSeekBarListeners()
   {
     this.voice.setOnSeekBarChangeListener(new OnAudioSeekBarListener(0, this.voiceProgress));
@@ -275,7 +275,7 @@ public class EditDialogActivity
     this.alarm.setOnSeekBarChangeListener(new OnAudioSeekBarListener(4, this.alarmProgress));
     this.alert.setOnSeekBarChangeListener(new OnAudioSeekBarListener(5, this.alertProgress));
   }
-  
+
   private void setupUI()
   {
     this.settings = new SettingsManager(this);
@@ -434,16 +434,16 @@ public class EditDialogActivity
           });
           switch (EditDialogActivity.this.getPhoneVibrateSettingValue())
           {
-          case 0: 
+          case 0:
             localActionItem3.setIcon(localEditDialogActivity.getResources().getDrawable(R.drawable.btn_radio_on_holo_dark));
             break;
-          case 1: 
+          case 1:
             localActionItem1.setIcon(localEditDialogActivity.getResources().getDrawable(R.drawable.btn_radio_on_holo_dark));
             break;
-          case 2: 
+          case 2:
             localActionItem4.setIcon(localEditDialogActivity.getResources().getDrawable(R.drawable.btn_radio_on_holo_dark));
             break;
-          case 3: 
+          case 3:
             localActionItem2.setIcon(localEditDialogActivity.getResources().getDrawable(R.drawable.btn_radio_on_holo_dark));
           }
           localQuickAction.addActionItem(localActionItem3);
@@ -473,7 +473,7 @@ public class EditDialogActivity
     this.system.setMax(this.am.getStreamMaxVolume(1));
     this.voice.setMax(this.am.getStreamMaxVolume(0));
   }
-  
+
   private void togglePhoneMode()
   {
     if (this.mRingerMode != 2)
@@ -491,7 +491,7 @@ public class EditDialogActivity
     }
     updateUI(false);
   }
-  
+
   private void toggleVibeForJellyBean()
   {
     if (getPhoneVibrateSettingValue() == 1) {
@@ -501,7 +501,7 @@ public class EditDialogActivity
     }
     updateUI(false);
   }
-  
+
   private void updateNormal(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     this.alert.setProgress(paramInt1);
@@ -519,7 +519,7 @@ public class EditDialogActivity
       this.ringer.setProgress(paramInt2);
     }
   }
-  
+
   private void updateProfile()
   {
     Hashtable localHashtable = new Hashtable();
@@ -533,7 +533,7 @@ public class EditDialogActivity
     this.mProfile.setAllValues(this.mRingerMode, i, i, getVibeInSilent(), localHashtable);
     this.mProfile.setRingtones(this.phoneRingtoneUri, this.notificationRingtoneUri, this.alarmRingtoneUri);
   }
-  
+
   private void updateUI(boolean paramBoolean)
   {
     int k = this.mProfile.getStreamValue(3);
@@ -617,7 +617,7 @@ public class EditDialogActivity
     }
     setPressedStates();
   }
-  
+
   private void updateVibrateOrSilent()
   {
     this.alert.setProgress(0);
@@ -635,7 +635,7 @@ public class EditDialogActivity
       this.ringerProgress.setText("0/" + this.am.getStreamMaxVolume(2));
     }
   }
-  
+
   int getPhoneVibrateSettingValue()
   {
     int i;
@@ -698,7 +698,7 @@ public class EditDialogActivity
     }
     return i;
   }
-  
+
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
@@ -710,21 +710,21 @@ public class EditDialogActivity
       }
       switch (paramInt1)
       {
-      case 1000: 
+      case 1000:
         this.phoneRingtoneUri = localUri;
         getTitleForRingtone(1, localUri, this.phoneRingtone);
         break;
-      case 1001: 
+      case 1001:
         this.notificationRingtoneUri = localUri;
         getTitleForRingtone(2, localUri, this.notificationRingtone);
         break;
-      case 1002: 
+      case 1002:
         this.alarmRingtoneUri = localUri;
         getTitleForRingtone(4, localUri, this.alarmRingtone);
       }
     }
   }
-  
+
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
@@ -738,7 +738,7 @@ public class EditDialogActivity
     setFeatureDrawableResource(3, R.drawable.edit);
     setupUI();
   }
-  
+
   public void onStart()
   {
     int i = getIntent().getIntExtra("editProfileId", -1);
@@ -750,13 +750,13 @@ public class EditDialogActivity
     updateUI(true);
     super.onStart();
   }
-  
+
   protected void onStop()
   {
     super.onStop();
     finish();
   }
-  
+
   public void playBeepingTone(int paramInt)
   {
     if ((this.alarm.isPressed()) || (this.music.isPressed()) || (this.alert.isPressed()) || (this.ringer.isPressed()) || (this.system.isPressed()) || (this.voice.isPressed())) {}
@@ -775,7 +775,7 @@ public class EditDialogActivity
       }
     }
   }
-  
+
   public void setPressedStates()
   {
     if (this.mRingerMode != 2) {
@@ -789,19 +789,19 @@ public class EditDialogActivity
       this.mToggleVibe.setChecked(true);
     }
   }
-  
+
   private class OnAudioSeekBarListener
     implements SeekBar.OnSeekBarChangeListener
   {
     private TextView progressTextView;
     private int stream;
-    
+
     public OnAudioSeekBarListener(int paramInt, TextView paramTextView)
     {
       this.stream = paramInt;
       this.progressTextView = paramTextView;
     }
-    
+
     public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
     {
       this.progressTextView.setText(paramInt + "/" + EditDialogActivity.this.am.getStreamMaxVolume(this.stream));
@@ -819,9 +819,9 @@ public class EditDialogActivity
         }
       }
     }
-    
+
     public void onStartTrackingTouch(SeekBar paramSeekBar) {}
-    
+
     public void onStopTrackingTouch(SeekBar paramSeekBar) {}
   }
 }
