@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.CheckedTextView;
+import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +33,7 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return null;
+        return childPosition;
     }
 
     @Override
@@ -44,16 +45,18 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, final int childPosition,
             boolean isLastChild, View convertView, ViewGroup parent) {
         tempChild = (ArrayList<String>) Childtem.get(groupPosition);
+
+        final String Child =  tempChild.get(childPosition);
         TextView text = null;
         if (convertView == null) {
             convertView = minflater.inflate(R.layout.childrow, null);
         }
         text = (TextView) convertView.findViewById(R.id.textView1);
-        text.setText(tempChild.get(childPosition));
+        text.setText(Child);
         convertView.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Toast.makeText(activity, tempChild.get(childPosition),
+            public void onClick(View view) {
+                Toast.makeText(activity, Child,
                         Toast.LENGTH_SHORT).show();
             }
         });
@@ -87,7 +90,7 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
 
     @Override
     public long getGroupId(int groupPosition) {
-        return 0;
+        return groupPosition;
     }
 
     @Override
@@ -108,7 +111,10 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
 
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
+    	Toast.makeText(activity, tempChild.get(childPosition),
+                Toast.LENGTH_SHORT).show();
         return false;
     }
+
 
 }

@@ -18,14 +18,14 @@
         <corners />
     -->
 
-    <solid android:color="#bfbfbf" />
+    <solid />
 
    <!--  <stroke
         android:width="10dp"
         android:color="#bfbfbf" /> -->
 
     <padding
-        android:bottom="-10dp"
+        android:bottom="0dp"
         android:left="0dp"
         android:right="0dp"
         android:top="0dp" />

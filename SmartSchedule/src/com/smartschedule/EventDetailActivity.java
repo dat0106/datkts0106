@@ -35,16 +35,16 @@ public class EventDetailActivity extends ExpandableListActivity implements
                 .setInflater(
                         (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE),
                         this);
-        getExpandableListView().setAdapter(mNewAdapter);
-        expandbleLis.setOnChildClickListener(this);
-
-        getExpandableListView().setDivider(null);
-        getExpandableListView().setDividerHeight(0);
+        expandbleLis.setAdapter(mNewAdapter);
+        expandbleLis.setDivider(null);
+        expandbleLis.setDividerHeight(0);
 
         for (int i = 0; i < groupItem.size(); i++) {
-            getExpandableListView().expandGroup(i);
+        	expandbleLis.expandGroup(i);
         }
+
     }
+
 
     public void setGroupData() {
         groupItem.add("Condition");
@@ -86,11 +86,4 @@ public class EventDetailActivity extends ExpandableListActivity implements
         childItem.add(child);
     }
 
-    @Override
-    public boolean onChildClick(ExpandableListView parent, View v,
-            int groupPosition, int childPosition, long id) {
-        Toast.makeText(EventDetailActivity.this, "Clicked On Child",
-                Toast.LENGTH_SHORT).show();
-        return true;
-    }
 }
