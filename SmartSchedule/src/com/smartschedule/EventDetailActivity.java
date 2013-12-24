@@ -3,12 +3,17 @@ package com.smartschedule;
 import java.util.ArrayList;
 
 import com.smartschedule.database.SmartSchedulerDatabase;
+import com.smartschedule.util.Constant;
 
 import android.app.ExpandableListActivity;
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
@@ -19,9 +24,24 @@ public class EventDetailActivity extends ExpandableListActivity implements
 
     private SmartSchedulerDatabase smartScheduleDb = new SmartSchedulerDatabase(
             this);
+    private int event_id;
+    private ContentValues eventDetail;
+    private ContentValues actionStart;
+    private ContentValues actionEnd;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
+
+        this.event_id =  intent.getExtras().getInt(
+                SmartSchedulerDatabase.COLUMN_EVENT_ID);
+        smartScheduleDb.openRead();
+        eventDetail = smartScheduleDb.getData(event_id);
+        actionStart = smartScheduleDb.getDataAction(event_id, Constant.ACTION_START_ID_KEY);
+        actionEnd = smartScheduleDb.getDataAction(event_id, Constant.ACTION_END_ID_KEY);
+        smartScheduleDb.close();
+
         ExpandableListView expandbleLis = getExpandableListView();
         expandbleLis.setDividerHeight(2);
         expandbleLis.setGroupIndicator(null);
@@ -40,13 +60,29 @@ public class EventDetailActivity extends ExpandableListActivity implements
         expandbleLis.setDividerHeight(0);
 
         for (int i = 0; i < groupItem.size(); i++) {
-        	expandbleLis.expandGroup(i);
+            expandbleLis.expandGroup(i);
         }
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        // when the user click start schedule
+        case android.R.id.home:
+            // Navigate "up" the demo structure to the launchpad activity.
+            // for more.
+            NavUtils.navigateUpTo(this, new Intent(this, MainActivity.class));
+
+            return true;
+
+        }
+        return false;
+
+    }
 
     public void setGroupData() {
+        // TODO String chuyen da ngon ngu
         groupItem.add("Condition");
         groupItem.add("Start Event");
         groupItem.add("End Event");

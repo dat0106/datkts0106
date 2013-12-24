@@ -101,13 +101,14 @@ public class MainActivity extends ListActivity {
     }
 
     protected void startEventActivity() {
-        Intent intent = new Intent(MainActivity.this, EventActivity.class);
+        Intent intent = new Intent(MainActivity.this, EventDetailActivity.class);
         intent.putExtra(
                 SmartSchedulerDatabase.COLUMN_EVENT_ID,
                 contentValues.get(selectedItem).getAsInteger(
                         SmartSchedulerDatabase.COLUMN_EVENT_ID));
 
         MainActivity.this.startActivity(intent);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
     @Override

@@ -2,6 +2,8 @@ package com.smartschedule.database;
 
 import java.util.ArrayList;
 
+import com.smartschedule.util.Constant;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -58,7 +60,6 @@ public class SmartSchedulerDatabase {
     public static final String COLUMN_ACTION_SOUND_RINGTONE_RINGER = "rimgtome_ringer";
     public static final String COLUMN_ACTION_SOUND_RINGTONE_NOTIFICATION = "ringtone_notification";
 
-
     private static Context context;
     private SQLiteDatabase db;
     private OpenHelper openHelper;
@@ -90,11 +91,12 @@ public class SmartSchedulerDatabase {
         event.put(COLUMN_EVENT_CATEGORY, category);
         event.put(COLUMN_EVENT_STATE, state);
 
-//        Cursor mCount = db
-//                .rawQuery("select max("+ COLUMN_EVENT_ID + ") from " + TABLE_EVENT, null);
-//        mCount.moveToFirst();
-//        int count = mCount.getInt(0);
-//        mCount.close();
+        // Cursor mCount = db
+        // .rawQuery("select max("+ COLUMN_EVENT_ID + ") from " + TABLE_EVENT,
+        // null);
+        // mCount.moveToFirst();
+        // int count = mCount.getInt(0);
+        // mCount.close();
 
         long event_id = 0;
         try {
@@ -107,7 +109,6 @@ public class SmartSchedulerDatabase {
         update.put(COLUMN_EVENT_SCHEDULE, event_id);
         update.put(COLUMN_EVENT_ACTION_START, event_id);
         update.put(COLUMN_EVENT_ACTION_END, event_id);
-
 
         update_event(update, event_id);
 
@@ -217,27 +218,131 @@ public class SmartSchedulerDatabase {
             Log.e(SmartSchedulerDatabase.this.toString(), e.getMessage());
         }
 
+        ContentValues result = new ContentValues();
 
-        ArrayList<ContentValues> result = new ArrayList<ContentValues>();
-
-        // int iId = c.getColumnIndex(COLUMN_EVENT_ID);
-        // int iName = c.getColumnIndex(COLUMN_EVENT_NAME);
-        // int iTimeStart = c.getColumnIndex(COLUMN_EVENT_TIME_START);
-        // int iTimeEnd = c.getColumnIndex(COLUMN_EVENT_TIME_END);
-
-        for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
-            ContentValues cv = new ContentValues();
-
-            DatabaseUtils.cursorRowToContentValues(c, cv);
-
-            result.add(cv);
+        if (c.getCount() == 1) {
+            c.moveToFirst();
+            DatabaseUtils.cursorRowToContentValues(c, result);
+        } else {
+            Log.e(SmartSchedulerDatabase.this.toString(),
+                    "error when getdata follow id can not get event or more 2 event");
+            throw new Error(
+                    "error when getdata follow id can not get event or more 2 event");
         }
-        if(result.size() == 1){
-            return  result.get(0);
-        }else {
-            Log.e(SmartSchedulerDatabase.this.toString(), "error when getdata follow id");
-            return new ContentValues();
+
+        // get action
+        String[] columnsAction = new String[] { COLUMN_ACTION_ID,
+                COLUMN_ACTION_START_ID, COLUMN_ACTION_END_ID,
+
+                COLUMN_ACTION_SOUND_MODE, COLUMN_ACTION_SOUND_RINGTONE_ALARM,
+                COLUMN_ACTION_SOUND_RINGTONE_NOTIFICATION,
+                COLUMN_ACTION_SOUND_RINGTONE_RINGER, COLUMN_ACTION_SOUND_ALARM,
+                COLUMN_ACTION_SOUND_MUSIC, COLUMN_ACTION_SOUND_RINGER,
+                COLUMN_ACTION_SOUND_SYSTEM, COLUMN_ACTION_SOUND_NOTIFICATION,
+                COLUMN_ACTION_SOUND_VOICE_CALL };
+
+        // get start action
+        Cursor cActionStart = null;
+        try {
+            cActionStart = db.query(TABLE_ACTION, columnsAction,
+                    COLUMN_ACTION_START_ID + "=" + id, null, null, null, null);
+        } catch (Exception e) {
+            Log.e(SmartSchedulerDatabase.this.toString(), e.getMessage());
         }
+
+        ContentValues actionStart = new ContentValues();
+
+        if (cActionStart.getCount() == 1) {
+            cActionStart.moveToFirst();
+            DatabaseUtils.cursorRowToContentValues(cActionStart, actionStart);
+        } else {
+            Log.e(SmartSchedulerDatabase.this.toString(),
+                    "error when getdata follow id action Start error");
+            throw new Error("error when getdata follow id action Start error");
+        }
+
+        // get end action
+        Cursor cActionEnd = null;
+
+        try {
+            cActionEnd = db.query(TABLE_ACTION, columnsAction,
+                    COLUMN_ACTION_END_ID + "=" + id, null, null, null, null);
+        } catch (Exception e) {
+            Log.e(SmartSchedulerDatabase.this.toString(), e.getMessage());
+        }
+
+        ContentValues actionEnd = new ContentValues();
+
+        if (cActionEnd.getCount() == 1) {
+            cActionEnd.moveToFirst();
+            DatabaseUtils.cursorRowToContentValues(cActionEnd, actionEnd);
+        } else {
+            Log.e(SmartSchedulerDatabase.this.toString(),
+                    "error when getdata follow id action end error");
+            throw new Error("error when getdata follow id action end error");
+        }
+
+        return result;
+    }
+
+    public ContentValues getDataAction(int id, String key) {
+
+        // get action
+        String[] columnsAction = new String[] { COLUMN_ACTION_ID,
+                COLUMN_ACTION_START_ID, COLUMN_ACTION_END_ID,
+
+                COLUMN_ACTION_SOUND_MODE, COLUMN_ACTION_SOUND_RINGTONE_ALARM,
+                COLUMN_ACTION_SOUND_RINGTONE_NOTIFICATION,
+                COLUMN_ACTION_SOUND_RINGTONE_RINGER, COLUMN_ACTION_SOUND_ALARM,
+                COLUMN_ACTION_SOUND_MUSIC, COLUMN_ACTION_SOUND_RINGER,
+                COLUMN_ACTION_SOUND_SYSTEM, COLUMN_ACTION_SOUND_NOTIFICATION,
+                COLUMN_ACTION_SOUND_VOICE_CALL };
+
+        ContentValues action = new ContentValues();
+
+        if (key == Constant.ACTION_START_ID_KEY) {
+            // get start action
+            Cursor cActionStart = null;
+            try {
+                cActionStart = db.query(TABLE_ACTION, columnsAction,
+                        COLUMN_ACTION_START_ID + "=" + id, null, null, null,
+                        null);
+            } catch (Exception e) {
+                Log.e(SmartSchedulerDatabase.this.toString(), e.getMessage());
+            }
+            if (cActionStart.getCount() == 1) {
+                cActionStart.moveToFirst();
+                DatabaseUtils.cursorRowToContentValues(cActionStart, action);
+            } else {
+                Log.e(SmartSchedulerDatabase.this.toString(),
+                        "error when getdata follow id action Start error");
+                throw new Error(
+                        "error when getdata follow id action Start error");
+            }
+        } else if (key == Constant.ACTION_END_ID_KEY) {
+            // get end action
+            Cursor cActionEnd = null;
+
+            try {
+                cActionEnd = db
+                        .query(TABLE_ACTION, columnsAction,
+                                COLUMN_ACTION_END_ID + "=" + id, null, null,
+                                null, null);
+            } catch (Exception e) {
+                Log.e(SmartSchedulerDatabase.this.toString(), e.getMessage());
+            }
+
+            if (cActionEnd.getCount() == 1) {
+                cActionEnd.moveToFirst();
+                DatabaseUtils.cursorRowToContentValues(cActionEnd, action);
+            } else {
+                Log.e(SmartSchedulerDatabase.this.toString(),
+                        "error when getdata follow id action end error");
+                throw new Error("error when getdata follow id action end error");
+            }
+        }
+
+        return action;
     }
 
     public int update_event(ContentValues contentValues, long event_id) {
@@ -245,28 +350,29 @@ public class SmartSchedulerDatabase {
                 + event_id, null);
     }
 
-    public int update_action(ContentValues contentValues, long event_id, String start_or_end) {
-        int result  = 0;
-        if(start_or_end == COLUMN_ACTION_START_ID){
+    public int update_action(ContentValues contentValues, long event_id,
+            String start_or_end) {
+        int result = 0;
+        if (start_or_end == COLUMN_ACTION_START_ID) {
             try {
-               result =  db.update(TABLE_ACTION, contentValues, COLUMN_ACTION_START_ID + "="
-                    + event_id, null);
+                result = db.update(TABLE_ACTION, contentValues,
+                        COLUMN_ACTION_START_ID + "=" + event_id, null);
 
             } catch (Exception e) {
                 Log.e(SmartSchedulerDatabase.this.toString(), e.getMessage());
             }
         }
-        if(start_or_end == COLUMN_ACTION_END_ID){
+        if (start_or_end == COLUMN_ACTION_END_ID) {
             try {
-               result =  db.update(TABLE_ACTION, contentValues, COLUMN_ACTION_END_ID + "="
-                    + event_id, null);
+                result = db.update(TABLE_ACTION, contentValues,
+                        COLUMN_ACTION_END_ID + "=" + event_id, null);
 
             } catch (Exception e) {
                 Log.e(SmartSchedulerDatabase.this.toString(), e.getMessage());
             }
         }
 
-        if(result != 1){
+        if (result != 1) {
             throw new Error("error update 2 row in database");
         }
         return result;
@@ -314,16 +420,21 @@ public class SmartSchedulerDatabase {
                     + COLUMN_ACTION_END_ID + " INTEGER DEFAULT NULL, "
                     + COLUMN_ACTION_STATE + " INTEGER DEFAULT NULL, "
                     + COLUMN_ACTION_SOUND_MODE + " INTEGER DEFAULT NULL, "
-                    + COLUMN_ACTION_SOUND_RINGTONE_ALARM + " INTEGER DEFAULT NULL, "
-                    + COLUMN_ACTION_SOUND_RINGTONE_RINGER + " INTEGER DEFAULT NULL, "
-                    + COLUMN_ACTION_SOUND_RINGTONE_NOTIFICATION + " INTEGER DEFAULT NULL, "
-                    + COLUMN_ACTION_SOUND_ALARM + " INTEGER DEFAULT NULL, "
-                    + COLUMN_ACTION_SOUND_MUSIC + " INTEGER DEFAULT NULL, "
-                    + COLUMN_ACTION_SOUND_RINGER + " INTEGER DEFAULT NULL, "
-                    + COLUMN_ACTION_SOUND_NOTIFICATION + " INTEGER DEFAULT NULL, "
-                    + COLUMN_ACTION_SOUND_SYSTEM + " INTEGER DEFAULT NULL, "
-                    + COLUMN_ACTION_SOUND_VOICE_CALL + " INTEGER DEFAULT NULL, "
-                    + COLUMN_ACTION_NAME + " TEXT " + ");");
+                    + COLUMN_ACTION_SOUND_RINGTONE_ALARM
+                    + " TEXT DEFAULT NULL, "
+                    + COLUMN_ACTION_SOUND_RINGTONE_RINGER
+                    + " TEXT DEFAULT NULL, "
+                    + COLUMN_ACTION_SOUND_RINGTONE_NOTIFICATION
+                    + " TEXT DEFAULT NULL, " + COLUMN_ACTION_SOUND_ALARM
+                    + " INTEGER DEFAULT NULL, " + COLUMN_ACTION_SOUND_MUSIC
+                    + " INTEGER DEFAULT NULL, " + COLUMN_ACTION_SOUND_RINGER
+                    + " INTEGER DEFAULT NULL, "
+                    + COLUMN_ACTION_SOUND_NOTIFICATION
+                    + " INTEGER DEFAULT NULL, " + COLUMN_ACTION_SOUND_SYSTEM
+                    + " INTEGER DEFAULT NULL, "
+                    + COLUMN_ACTION_SOUND_VOICE_CALL
+                    + " INTEGER DEFAULT NULL, " + COLUMN_ACTION_NAME + " TEXT "
+                    + ");");
         }
 
         @Override
