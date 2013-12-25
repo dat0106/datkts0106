@@ -69,6 +69,7 @@
         </receiver>
         <receiver android:name="com.smartschedule.ScheduleServiceReceiver" >
         </receiver>
+
         <receiver
             android:name="com.smartschedule.action.ActivitySoundManager"
             android:enabled="true" >
