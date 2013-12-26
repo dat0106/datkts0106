@@ -2,6 +2,10 @@ package com.smartschedule;
 
 import java.util.ArrayList;
 
+import org.json.JSONException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.smartschedule.database.SmartSchedulerDatabase;
 import com.smartschedule.util.Constant;
 
@@ -33,6 +37,27 @@ public class EventDetailActivity extends ExpandableListActivity implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
+
+
+        String jString = "{\"ringtone_alarm\": \"primal\", \"rimgtome_ringer\": \"Hi, I am Primal\"}  ";
+
+
+        GsonBuilder gsonb = new GsonBuilder();
+        Gson gson = gsonb.create();
+        DrawAction pst = null;
+
+        pst = gson.fromJson(jString,  DrawAction.class);
+
+        Intent cv =  new Intent();
+
+        cv.putExtra("fuck", pst);
+
+        DrawAction pst1 =  cv.getExtras().getParcelable("fuck");
+
+        Log.d("TAggeD", pst1.ringtone_alarm + pst1.rimgtome_ringer);
+
+        Log.d("TAGGED", gson.toJson(pst1));
+
 
         this.event_id =  intent.getExtras().getInt(
                 SmartSchedulerDatabase.COLUMN_EVENT_ID);

@@ -419,21 +419,8 @@ public class SmartSchedulerDatabase {
                     + COLUMN_ACTION_START_ID + " INTEGER DEFAULT NULL, "
                     + COLUMN_ACTION_END_ID + " INTEGER DEFAULT NULL, "
                     + COLUMN_ACTION_STATE + " INTEGER DEFAULT NULL, "
-                    + COLUMN_ACTION_SOUND_MODE + " INTEGER DEFAULT NULL, "
-                    + COLUMN_ACTION_SOUND_RINGTONE_ALARM
-                    + " TEXT DEFAULT NULL, "
-                    + COLUMN_ACTION_SOUND_RINGTONE_RINGER
-                    + " TEXT DEFAULT NULL, "
-                    + COLUMN_ACTION_SOUND_RINGTONE_NOTIFICATION
-                    + " TEXT DEFAULT NULL, " + COLUMN_ACTION_SOUND_ALARM
-                    + " INTEGER DEFAULT NULL, " + COLUMN_ACTION_SOUND_MUSIC
-                    + " INTEGER DEFAULT NULL, " + COLUMN_ACTION_SOUND_RINGER
-                    + " INTEGER DEFAULT NULL, "
-                    + COLUMN_ACTION_SOUND_NOTIFICATION
-                    + " INTEGER DEFAULT NULL, " + COLUMN_ACTION_SOUND_SYSTEM
-                    + " INTEGER DEFAULT NULL, "
-                    + COLUMN_ACTION_SOUND_VOICE_CALL
-                    + " INTEGER DEFAULT NULL, " + COLUMN_ACTION_NAME + " TEXT "
+                    + COLUMN_ACTION_DRAW + " TEXT DEFAULT NULL, "
+                    + COLUMN_ACTION_NAME + " TEXT "
                     + ");");
         }
 
