@@ -49,16 +49,7 @@ public class SmartSchedulerDatabase {
     public static final String COLUMN_ACTION_END_ID = "action_end_id";
     public static final String COLUMN_ACTION_STATE = "state";
     public static final String COLUMN_ACTION_NAME = "name";
-    public static final String COLUMN_ACTION_SOUND_MODE = "sound_mode";
-    public static final String COLUMN_ACTION_SOUND_ALARM = "sound_alarm";
-    public static final String COLUMN_ACTION_SOUND_RINGER = "sound_ring";
-    public static final String COLUMN_ACTION_SOUND_MUSIC = "sound_music";
-    public static final String COLUMN_ACTION_SOUND_NOTIFICATION = "sound_notification";
-    public static final String COLUMN_ACTION_SOUND_SYSTEM = "sound_system";
-    public static final String COLUMN_ACTION_SOUND_VOICE_CALL = "sound_voice_call";
-    public static final String COLUMN_ACTION_SOUND_RINGTONE_ALARM = "ringtone_alarm";
-    public static final String COLUMN_ACTION_SOUND_RINGTONE_RINGER = "rimgtome_ringer";
-    public static final String COLUMN_ACTION_SOUND_RINGTONE_NOTIFICATION = "ringtone_notification";
+	public static final String COLUMN_ACTION_DRAW = "draw_action";
 
     private static Context context;
     private SQLiteDatabase db;
@@ -228,58 +219,6 @@ public class SmartSchedulerDatabase {
                     "error when getdata follow id can not get event or more 2 event");
             throw new Error(
                     "error when getdata follow id can not get event or more 2 event");
-        }
-
-        // get action
-        String[] columnsAction = new String[] { COLUMN_ACTION_ID,
-                COLUMN_ACTION_START_ID, COLUMN_ACTION_END_ID,
-
-                COLUMN_ACTION_SOUND_MODE, COLUMN_ACTION_SOUND_RINGTONE_ALARM,
-                COLUMN_ACTION_SOUND_RINGTONE_NOTIFICATION,
-                COLUMN_ACTION_SOUND_RINGTONE_RINGER, COLUMN_ACTION_SOUND_ALARM,
-                COLUMN_ACTION_SOUND_MUSIC, COLUMN_ACTION_SOUND_RINGER,
-                COLUMN_ACTION_SOUND_SYSTEM, COLUMN_ACTION_SOUND_NOTIFICATION,
-                COLUMN_ACTION_SOUND_VOICE_CALL };
-
-        // get start action
-        Cursor cActionStart = null;
-        try {
-            cActionStart = db.query(TABLE_ACTION, columnsAction,
-                    COLUMN_ACTION_START_ID + "=" + id, null, null, null, null);
-        } catch (Exception e) {
-            Log.e(SmartSchedulerDatabase.this.toString(), e.getMessage());
-        }
-
-        ContentValues actionStart = new ContentValues();
-
-        if (cActionStart.getCount() == 1) {
-            cActionStart.moveToFirst();
-            DatabaseUtils.cursorRowToContentValues(cActionStart, actionStart);
-        } else {
-            Log.e(SmartSchedulerDatabase.this.toString(),
-                    "error when getdata follow id action Start error");
-            throw new Error("error when getdata follow id action Start error");
-        }
-
-        // get end action
-        Cursor cActionEnd = null;
-
-        try {
-            cActionEnd = db.query(TABLE_ACTION, columnsAction,
-                    COLUMN_ACTION_END_ID + "=" + id, null, null, null, null);
-        } catch (Exception e) {
-            Log.e(SmartSchedulerDatabase.this.toString(), e.getMessage());
-        }
-
-        ContentValues actionEnd = new ContentValues();
-
-        if (cActionEnd.getCount() == 1) {
-            cActionEnd.moveToFirst();
-            DatabaseUtils.cursorRowToContentValues(cActionEnd, actionEnd);
-        } else {
-            Log.e(SmartSchedulerDatabase.this.toString(),
-                    "error when getdata follow id action end error");
-            throw new Error("error when getdata follow id action end error");
         }
 
         return result;
