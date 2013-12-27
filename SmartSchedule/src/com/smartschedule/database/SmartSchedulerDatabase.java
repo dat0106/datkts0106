@@ -49,7 +49,7 @@ public class SmartSchedulerDatabase {
     public static final String COLUMN_ACTION_END_ID = "action_end_id";
     public static final String COLUMN_ACTION_STATE = "state";
     public static final String COLUMN_ACTION_NAME = "name";
-	public static final String COLUMN_ACTION_DRAW = "draw_action";
+    public static final String COLUMN_ACTION_DRAW = "draw_action";
 
     private static Context context;
     private SQLiteDatabase db;
@@ -229,13 +229,7 @@ public class SmartSchedulerDatabase {
         // get action
         String[] columnsAction = new String[] { COLUMN_ACTION_ID,
                 COLUMN_ACTION_START_ID, COLUMN_ACTION_END_ID,
-
-                COLUMN_ACTION_SOUND_MODE, COLUMN_ACTION_SOUND_RINGTONE_ALARM,
-                COLUMN_ACTION_SOUND_RINGTONE_NOTIFICATION,
-                COLUMN_ACTION_SOUND_RINGTONE_RINGER, COLUMN_ACTION_SOUND_ALARM,
-                COLUMN_ACTION_SOUND_MUSIC, COLUMN_ACTION_SOUND_RINGER,
-                COLUMN_ACTION_SOUND_SYSTEM, COLUMN_ACTION_SOUND_NOTIFICATION,
-                COLUMN_ACTION_SOUND_VOICE_CALL };
+                COLUMN_ACTION_DRAW, COLUMN_ACTION_STATE };
 
         ContentValues action = new ContentValues();
 
