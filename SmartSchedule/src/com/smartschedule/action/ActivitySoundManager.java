@@ -599,52 +599,52 @@ public class ActivitySoundManager extends Activity {
         case R.id.done:
             // get data to update database
             ContentValues contentValue = new ContentValues();
-            contentValue.put(SmartSchedulerDatabase.COLUMN_ACTION_SOUND_MODE,
-                    mRingerMode);
-
-            contentValue.put(
-                    SmartSchedulerDatabase.COLUMN_ACTION_SOUND_RINGTONE_ALARM,
-                    alarmRingtoneUri.toString());
-            contentValue
-                    .put(SmartSchedulerDatabase.COLUMN_ACTION_SOUND_RINGTONE_NOTIFICATION,
-                            notificationRingtoneUri.toString());
-            contentValue.put(
-                    SmartSchedulerDatabase.COLUMN_ACTION_SOUND_RINGTONE_RINGER,
-                    phoneRingtoneUri.toString());
-
-            if(checkAdvancedSound == true){
-                contentValue.put(
-                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_ALARM,
-                        alarm.getProgress());
-                contentValue.put(
-                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_MUSIC,
-                        music.getProgress());
-                contentValue.put(
-                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_RINGER,
-                        ringer.getProgress());
-                contentValue.put(
-                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_NOTIFICATION,
-                        alert.getProgress());
-                contentValue.put(
-                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_SYSTEM,
-                        system.getProgress());
-                contentValue.put(
-                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_VOICE_CALL,
-                        voice.getProgress());
-            }else{
-                contentValue.putNull(
-                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_ALARM);
-                contentValue.putNull(
-                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_MUSIC);
-                contentValue.putNull(
-                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_RINGER);
-                contentValue.putNull(
-                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_NOTIFICATION);
-                contentValue.putNull(
-                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_SYSTEM);
-                contentValue.putNull(
-                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_VOICE_CALL);
-            }
+//            contentValue.put(SmartSchedulerDatabase.COLUMN_ACTION_SOUND_MODE,
+//                    mRingerMode);
+//
+//            contentValue.put(
+//                    SmartSchedulerDatabase.COLUMN_ACTION_SOUND_RINGTONE_ALARM,
+//                    alarmRingtoneUri.toString());
+//            contentValue
+//                    .put(SmartSchedulerDatabase.COLUMN_ACTION_SOUND_RINGTONE_NOTIFICATION,
+//                            notificationRingtoneUri.toString());
+//            contentValue.put(
+//                    SmartSchedulerDatabase.COLUMN_ACTION_SOUND_RINGTONE_RINGER,
+//                    phoneRingtoneUri.toString());
+//
+//            if(checkAdvancedSound == true){
+//                contentValue.put(
+//                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_ALARM,
+//                        alarm.getProgress());
+//                contentValue.put(
+//                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_MUSIC,
+//                        music.getProgress());
+//                contentValue.put(
+//                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_RINGER,
+//                        ringer.getProgress());
+//                contentValue.put(
+//                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_NOTIFICATION,
+//                        alert.getProgress());
+//                contentValue.put(
+//                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_SYSTEM,
+//                        system.getProgress());
+//                contentValue.put(
+//                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_VOICE_CALL,
+//                        voice.getProgress());
+//            }else{
+//                contentValue.putNull(
+//                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_ALARM);
+//                contentValue.putNull(
+//                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_MUSIC);
+//                contentValue.putNull(
+//                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_RINGER);
+//                contentValue.putNull(
+//                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_NOTIFICATION);
+//                contentValue.putNull(
+//                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_SYSTEM);
+//                contentValue.putNull(
+//                        SmartSchedulerDatabase.COLUMN_ACTION_SOUND_VOICE_CALL);
+//            }
 
             smartScheduleDb.open();
             // TODO hardcode start id can chuyen tu event activity

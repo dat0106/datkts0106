@@ -306,7 +306,7 @@ public class SmartSchedulerDatabase {
         }
 
         if (result != 1) {
-            throw new Error("error update 2 row in database");
+            throw new Error("error update action row in database");
         }
         return result;
     }

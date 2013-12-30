@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
@@ -99,8 +100,19 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             convertView = minflater.inflate(R.layout.grouprow, null);
         }
-        ((CheckedTextView) convertView).setText(groupItem.get(groupPosition));
-        ((CheckedTextView) convertView).setChecked(isExpanded);
+        ((TextView) convertView.findViewById(R.id.group_row)).setText(groupItem.get(groupPosition));
+        ((Button) convertView.findViewById(R.id.add_action)).setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO bat vao trang  lay lay setting
+                Toast.makeText(activity, "add action", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        if(groupPosition == 0) {
+            ((Button) convertView.findViewById(R.id.add_action)).setVisibility(View.INVISIBLE);
+        }
         return convertView;
     }
 
@@ -111,7 +123,7 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
 
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
-    	Toast.makeText(activity, tempChild.get(childPosition),
+        Toast.makeText(activity, tempChild.get(childPosition),
                 Toast.LENGTH_SHORT).show();
         return false;
     }
