@@ -2,7 +2,10 @@ package com.smartschedule;
 
 import java.util.ArrayList;
 
+import com.smartschedule.database.SmartSchedulerDatabase;
+
 import android.app.Activity;
+import android.content.ContentValues;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,17 +17,19 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-@SuppressWarnings("unchecked")
 public class EventDetailAdapter extends BaseExpandableListAdapter {
 
-    public ArrayList<String> groupItem, tempChild;
+    public ArrayList<String> groupItem;
+    public ArrayList<ContentValues> tempChild;
     public ArrayList<Object> Childtem = new ArrayList<Object>();
     public LayoutInflater minflater;
     public Activity activity;
+    public int event_id;
 
-    public EventDetailAdapter(ArrayList<String> grList, ArrayList<Object> childItem) {
+    public EventDetailAdapter(ArrayList<String> grList, ArrayList<Object> childItem, int event_id) {
         groupItem = grList;
         this.Childtem = childItem;
+        this.event_id = event_id;
     }
 
     public void setInflater(LayoutInflater mInflater, Activity act) {
@@ -45,19 +50,23 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int groupPosition, final int childPosition,
             boolean isLastChild, View convertView, ViewGroup parent) {
-        tempChild = (ArrayList<String>) Childtem.get(groupPosition);
+        tempChild = (ArrayList<ContentValues>) Childtem.get(groupPosition);
 
-        final String Child =  tempChild.get(childPosition);
+        final ContentValues Child =  tempChild.get(childPosition);
         TextView text = null;
         if (convertView == null) {
             convertView = minflater.inflate(R.layout.childrow, null);
         }
-        text = (TextView) convertView.findViewById(R.id.textView1);
-        text.setText(Child);
+        text = (TextView) convertView.findViewById(R.id.childName);
+        text.setText(Child.getAsString(SmartSchedulerDatabase.COLUMN_ACTION_NAME));
+        TextView textDetail = (TextView) convertView.findViewById(R.id.childDetail);
+        textDetail.setText(Child.getAsString(SmartSchedulerDatabase.COLUMN_ACTION_DRAW));
         convertView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(activity, Child,
+            	
+            	
+                Toast.makeText(activity, Child.getAsString(SmartSchedulerDatabase.COLUMN_ACTION_NAME),
                         Toast.LENGTH_SHORT).show();
             }
         });
@@ -97,6 +106,8 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded,
             View convertView, ViewGroup parent) {
+
+        final int StartOrEnd =  groupPosition;
         if (convertView == null) {
             convertView = minflater.inflate(R.layout.grouprow, null);
         }
@@ -106,6 +117,20 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
             @Override
             public void onClick(View v) {
                 // TODO bat vao trang  lay lay setting
+                SmartSchedulerDatabase smartScheduleDb = new SmartSchedulerDatabase(
+                        activity.getBaseContext());
+                ContentValues contentValues = new ContentValues();
+                if(StartOrEnd == 1){
+                    contentValues.put(SmartSchedulerDatabase.COLUMN_ACTION_START_ID, event_id);
+                }else {
+                    contentValues.put(SmartSchedulerDatabase.COLUMN_ACTION_END_ID, event_id);
+                }
+                contentValues.put(SmartSchedulerDatabase.COLUMN_ACTION_STATE, 1);
+                contentValues.put(SmartSchedulerDatabase.COLUMN_ACTION_NAME, "demo");
+                contentValues.put(SmartSchedulerDatabase.COLUMN_ACTION_DRAW, "demdrow");
+                smartScheduleDb.open();
+                smartScheduleDb.insert_action(contentValues);
+                smartScheduleDb.close();
                 Toast.makeText(activity, "add action", Toast.LENGTH_LONG).show();
             }
         });
@@ -123,8 +148,8 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
 
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
-        Toast.makeText(activity, tempChild.get(childPosition),
-                Toast.LENGTH_SHORT).show();
+//        Toast.makeText(activity, tempChild.get(childPosition),
+//                Toast.LENGTH_SHORT).show();
         return false;
     }
 

@@ -38,34 +38,26 @@ public class EventDetailActivity extends ExpandableListActivity implements
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
 
-
         String jString = "{\"ringtone_alarm\": \"primal\", \"rimgtome_ringer\": \"Hi, I am Primal\"}  ";
-
 
         GsonBuilder gsonb = new GsonBuilder();
         Gson gson = gsonb.create();
         DrawAction pst = null;
 
-        pst = gson.fromJson(jString,  DrawAction.class);
+        pst = gson.fromJson(jString, DrawAction.class);
 
-        Intent cv =  new Intent();
+        Intent cv = new Intent();
 
         cv.putExtra("fuck", pst);
 
-        DrawAction pst1 =  cv.getExtras().getParcelable("fuck");
+        DrawAction pst1 = cv.getExtras().getParcelable("fuck");
 
         Log.d("TAggeD", pst1.ringtone_alarm + pst1.rimgtome_ringer);
 
         Log.d("TAGGED", gson.toJson(pst1));
 
-
-        this.event_id =  intent.getExtras().getInt(
+        this.event_id = intent.getExtras().getInt(
                 SmartSchedulerDatabase.COLUMN_EVENT_ID);
-        smartScheduleDb.openRead();
-        eventDetail = smartScheduleDb.getData(event_id);
-        actionStart = smartScheduleDb.getDataAction(event_id, Constant.ACTION_START_ID_KEY);
-        actionEnd = smartScheduleDb.getDataAction(event_id, Constant.ACTION_END_ID_KEY);
-        smartScheduleDb.close();
 
         ExpandableListView expandbleLis = getExpandableListView();
         expandbleLis.setDividerHeight(2);
@@ -75,7 +67,8 @@ public class EventDetailActivity extends ExpandableListActivity implements
         setGroupData();
         setChildGroupData();
 
-        EventDetailAdapter mNewAdapter = new EventDetailAdapter(groupItem, childItem);
+        EventDetailAdapter mNewAdapter = new EventDetailAdapter(groupItem,
+                childItem, event_id);
         mNewAdapter
                 .setInflater(
                         (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE),
@@ -120,31 +113,24 @@ public class EventDetailActivity extends ExpandableListActivity implements
         /**
          * Add Data For TecthNology
          */
-        ArrayList<String> child = new ArrayList<String>();
-        child.add("Java");
-        child.add("Drupal");
-        child.add(".Net Framework");
-        child.add("PHP");
+        ArrayList<ContentValues> child = new ArrayList<ContentValues>();
+        smartScheduleDb.openRead();
+        ContentValues cv = smartScheduleDb.getData(event_id);
+
+        child.add(cv);
         childItem.add(child);
 
         /**
-         * Add Data For Mobile
+         * Add Data For start
          */
-        child = new ArrayList<String>();
-        child.add("Android");
-        child.add("Window Mobile");
-        child.add("iPHone");
-        child.add("Blackberry");
+        child = smartScheduleDb.getDataAction(event_id, Constant.ACTION_START_ID_KEY);
         childItem.add(child);
         /**
-         * Add Data For Manufacture
+         * Add Data For end
          */
-        child = new ArrayList<String>();
-        child.add("HTC");
-        child.add("Apple");
-        child.add("Samsung");
-        child.add("Nokia");
+        child = smartScheduleDb.getDataAction(event_id, Constant.ACTION_END_ID_KEY);
         childItem.add(child);
+        smartScheduleDb.close();
     }
 
 }

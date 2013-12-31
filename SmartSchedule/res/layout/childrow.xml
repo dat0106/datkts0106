@@ -76,7 +76,7 @@
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/childName"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:layout_marginLeft="5dp"
@@ -87,7 +87,7 @@
                 android:textStyle="normal" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/childDetail"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:layout_marginBottom="5dp"

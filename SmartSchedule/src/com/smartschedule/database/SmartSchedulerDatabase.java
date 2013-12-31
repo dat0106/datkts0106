@@ -103,35 +103,35 @@ public class SmartSchedulerDatabase {
 
         update_event(update, event_id);
 
-        ContentValues schedule = new ContentValues();
-        schedule.put(COLUMN_SCHEDULE_EVENT_ID, event_id);
+         ContentValues schedule = new ContentValues();
+         schedule.put(COLUMN_SCHEDULE_EVENT_ID, event_id);
 
-        long schedule_id = 0;
-        try {
-            schedule_id = db.insert(TABLE_SCHEDULE, null, schedule);
-        } catch (Exception e) {
-            Log.e(this.toString(), e.getMessage());
-        }
+         long schedule_id = 0;
+         try {
+         schedule_id = db.insert(TABLE_SCHEDULE, null, schedule);
+         } catch (Exception e) {
+         Log.e(this.toString(), e.getMessage());
+         }
 
-        ContentValues action1 = new ContentValues();
-        action1.put(COLUMN_ACTION_START_ID, event_id);
-
-        long action_id1 = 0;
-        try {
-            action_id1 = db.insert(TABLE_ACTION, null, action1);
-        } catch (Exception e) {
-            Log.e(this.toString(), e.getMessage());
-        }
-
-        ContentValues action2 = new ContentValues();
-        action2.put(COLUMN_ACTION_END_ID, event_id);
-
-        long action_id2 = 0;
-        try {
-            action_id2 = db.insert(TABLE_ACTION, null, action2);
-        } catch (Exception e) {
-            Log.e(this.toString(), e.getMessage());
-        }
+        // ContentValues action1 = new ContentValues();
+        // action1.put(COLUMN_ACTION_START_ID, event_id);
+        //
+        // long action_id1 = 0;
+        // try {
+        // action_id1 = db.insert(TABLE_ACTION, null, action1);
+        // } catch (Exception e) {
+        // Log.e(this.toString(), e.getMessage());
+        // }
+        //
+        // ContentValues action2 = new ContentValues();
+        // action2.put(COLUMN_ACTION_END_ID, event_id);
+        //
+        // long action_id2 = 0;
+        // try {
+        // action_id2 = db.insert(TABLE_ACTION, null, action2);
+        // } catch (Exception e) {
+        // Log.e(this.toString(), e.getMessage());
+        // }
 
         return event_id;
 
@@ -224,14 +224,14 @@ public class SmartSchedulerDatabase {
         return result;
     }
 
-    public ContentValues getDataAction(int id, String key) {
+    public ArrayList<ContentValues> getDataAction(int id, String key) {
 
         // get action
         String[] columnsAction = new String[] { COLUMN_ACTION_ID,
                 COLUMN_ACTION_START_ID, COLUMN_ACTION_END_ID,
-                COLUMN_ACTION_DRAW, COLUMN_ACTION_STATE };
+                COLUMN_ACTION_DRAW, COLUMN_ACTION_STATE, COLUMN_ACTION_NAME };
 
-        ContentValues action = new ContentValues();
+        ArrayList<ContentValues> result = new ArrayList<ContentValues>();
 
         if (key == Constant.ACTION_START_ID_KEY) {
             // get start action
@@ -243,14 +243,14 @@ public class SmartSchedulerDatabase {
             } catch (Exception e) {
                 Log.e(SmartSchedulerDatabase.this.toString(), e.getMessage());
             }
-            if (cActionStart.getCount() == 1) {
-                cActionStart.moveToFirst();
-                DatabaseUtils.cursorRowToContentValues(cActionStart, action);
-            } else {
-                Log.e(SmartSchedulerDatabase.this.toString(),
-                        "error when getdata follow id action Start error");
-                throw new Error(
-                        "error when getdata follow id action Start error");
+
+            for (cActionStart.moveToFirst(); !cActionStart.isAfterLast(); cActionStart
+                    .moveToNext()) {
+                ContentValues cv = new ContentValues();
+
+                DatabaseUtils.cursorRowToContentValues(cActionStart, cv);
+
+                result.add(cv);
             }
         } else if (key == Constant.ACTION_END_ID_KEY) {
             // get end action
@@ -265,17 +265,17 @@ public class SmartSchedulerDatabase {
                 Log.e(SmartSchedulerDatabase.this.toString(), e.getMessage());
             }
 
-            if (cActionEnd.getCount() == 1) {
-                cActionEnd.moveToFirst();
-                DatabaseUtils.cursorRowToContentValues(cActionEnd, action);
-            } else {
-                Log.e(SmartSchedulerDatabase.this.toString(),
-                        "error when getdata follow id action end error");
-                throw new Error("error when getdata follow id action end error");
+            for (cActionEnd.moveToFirst(); !cActionEnd.isAfterLast(); cActionEnd
+                    .moveToNext()) {
+                ContentValues cv = new ContentValues();
+
+                DatabaseUtils.cursorRowToContentValues(cActionEnd, cv);
+
+                result.add(cv);
             }
         }
 
-        return action;
+        return result;
     }
 
     public int update_event(ContentValues contentValues, long event_id) {
@@ -309,6 +309,16 @@ public class SmartSchedulerDatabase {
             throw new Error("error update action row in database");
         }
         return result;
+    }
+
+    public long insert_action(ContentValues contentValues) {
+        // TODO nen kiem tra dieu kien truoc khi insert
+        try {
+            return db.insert(TABLE_ACTION, null, contentValues);
+        } catch (Exception e) {
+            Log.e(this.toString(), e.getMessage());
+        }
+        return 0;
     }
 
     public int delete(int id) {
@@ -353,8 +363,7 @@ public class SmartSchedulerDatabase {
                     + COLUMN_ACTION_END_ID + " INTEGER DEFAULT NULL, "
                     + COLUMN_ACTION_STATE + " INTEGER DEFAULT NULL, "
                     + COLUMN_ACTION_DRAW + " TEXT DEFAULT NULL, "
-                    + COLUMN_ACTION_NAME + " TEXT "
-                    + ");");
+                    + COLUMN_ACTION_NAME + " TEXT " + ");");
         }
 
         @Override
