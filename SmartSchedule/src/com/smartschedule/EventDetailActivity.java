@@ -6,6 +6,7 @@ import org.json.JSONException;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.smartschedule.database.Action;
 import com.smartschedule.database.SmartSchedulerDatabase;
 import com.smartschedule.util.Constant;
 
@@ -123,13 +124,14 @@ public class EventDetailActivity extends ExpandableListActivity implements
         /**
          * Add Data For start
          */
-        child = smartScheduleDb.getDataAction(event_id, Constant.ACTION_START_ID_KEY);
-        childItem.add(child);
+        ArrayList<Action> childAction = new ArrayList<Action>();
+        childAction = smartScheduleDb.getDataAction(event_id, Constant.ACTION_START_ID_KEY);
+        childItem.add(childAction);
         /**
          * Add Data For end
          */
-        child = smartScheduleDb.getDataAction(event_id, Constant.ACTION_END_ID_KEY);
-        childItem.add(child);
+        childAction = smartScheduleDb.getDataAction(event_id, Constant.ACTION_END_ID_KEY);
+        childItem.add(childAction);
         smartScheduleDb.close();
     }
 

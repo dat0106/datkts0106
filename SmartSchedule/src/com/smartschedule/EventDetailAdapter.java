@@ -2,6 +2,7 @@ package com.smartschedule;
 
 import java.util.ArrayList;
 
+import com.smartschedule.database.Action;
 import com.smartschedule.database.SmartSchedulerDatabase;
 import com.smartschedule.util.Util;
 
@@ -21,7 +22,6 @@ import android.widget.Toast;
 public class EventDetailAdapter extends BaseExpandableListAdapter {
 
     public ArrayList<String> groupItem;
-    public ArrayList<ContentValues> tempChild;
     public ArrayList<Object> Childtem = new ArrayList<Object>();
     public LayoutInflater minflater;
     public Activity activity;
@@ -51,26 +51,46 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int groupPosition, final int childPosition,
             boolean isLastChild, View convertView, ViewGroup parent) {
-        tempChild = (ArrayList<ContentValues>) Childtem.get(groupPosition);
-
-        final ContentValues Child =  tempChild.get(childPosition);
-        TextView text = null;
         if (convertView == null) {
             convertView = minflater.inflate(R.layout.childrow, null);
         }
-        text = (TextView) convertView.findViewById(R.id.childName);
-        text.setText(Child.getAsString(SmartSchedulerDatabase.COLUMN_ACTION_NAME));
+        TextView text = (TextView) convertView.findViewById(R.id.childName);
         TextView textDetail = (TextView) convertView.findViewById(R.id.childDetail);
-        textDetail.setText(Child.getAsString(SmartSchedulerDatabase.COLUMN_ACTION_DRAW));
-        convertView.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            	Util.router(Child, activity);
-            	
-                Toast.makeText(activity, Child.getAsString(SmartSchedulerDatabase.COLUMN_ACTION_NAME),
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+        if(groupPosition == 0){
+            ArrayList<ContentValues> tempChild = (ArrayList<ContentValues>) Childtem.get(groupPosition);
+
+
+            final ContentValues Child =  tempChild.get(childPosition);
+
+            text.setText(Child.getAsString(SmartSchedulerDatabase.COLUMN_EVENT_NAME));
+
+            convertView.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Toast.makeText(activity, "timer",
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
+        }else{
+            ArrayList<Action> tempChild = (ArrayList<Action>) Childtem.get(groupPosition);
+
+
+            final Action Child =  tempChild.get(childPosition);
+
+            text.setText(Child.getName());
+
+            textDetail.setText(Child.getDrawAction());
+            convertView.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Util.router(event_id, Child, activity);
+
+                    Toast.makeText(activity, Child.getName(),
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
         return convertView;
     }
 
