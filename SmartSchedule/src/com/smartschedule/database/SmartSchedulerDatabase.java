@@ -103,15 +103,15 @@ public class SmartSchedulerDatabase {
 
         update_event(update, event_id);
 
-         ContentValues schedule = new ContentValues();
-         schedule.put(COLUMN_SCHEDULE_EVENT_ID, event_id);
+        ContentValues schedule = new ContentValues();
+        schedule.put(COLUMN_SCHEDULE_EVENT_ID, event_id);
 
-         long schedule_id = 0;
-         try {
-         schedule_id = db.insert(TABLE_SCHEDULE, null, schedule);
-         } catch (Exception e) {
-         Log.e(this.toString(), e.getMessage());
-         }
+        long schedule_id = 0;
+        try {
+            schedule_id = db.insert(TABLE_SCHEDULE, null, schedule);
+        } catch (Exception e) {
+            Log.e(this.toString(), e.getMessage());
+        }
 
         // ContentValues action1 = new ContentValues();
         // action1.put(COLUMN_ACTION_START_ID, event_id);
@@ -224,14 +224,14 @@ public class SmartSchedulerDatabase {
         return result;
     }
 
-    public ArrayList<ContentValues> getDataAction(int id, String key) {
+    public ArrayList<Action> getDataAction(int id, String key) {
 
         // get action
         String[] columnsAction = new String[] { COLUMN_ACTION_ID,
                 COLUMN_ACTION_START_ID, COLUMN_ACTION_END_ID,
                 COLUMN_ACTION_DRAW, COLUMN_ACTION_STATE, COLUMN_ACTION_NAME };
 
-        ArrayList<ContentValues> result = new ArrayList<ContentValues>();
+        ArrayList<Action> result = new ArrayList<Action>();
 
         if (key == Constant.ACTION_START_ID_KEY) {
             // get start action
@@ -246,11 +246,21 @@ public class SmartSchedulerDatabase {
 
             for (cActionStart.moveToFirst(); !cActionStart.isAfterLast(); cActionStart
                     .moveToNext()) {
-                ContentValues cv = new ContentValues();
+                Action action = new Action();
 
-                DatabaseUtils.cursorRowToContentValues(cActionStart, cv);
-
-                result.add(cv);
+                action.setId(cActionStart.getInt(cActionStart
+                        .getColumnIndex(COLUMN_ACTION_ID)));
+                action.setActionStartId(cActionStart.getInt(cActionStart
+                        .getColumnIndex(COLUMN_ACTION_START_ID)));
+                action.setActionEndId(cActionStart.getInt(cActionStart
+                        .getColumnIndex(COLUMN_ACTION_END_ID)));
+                action.setState(cActionStart.getInt(cActionStart
+                        .getColumnIndex(COLUMN_ACTION_STATE)));
+                action.setName(cActionStart.getString(cActionStart
+                        .getColumnIndex(COLUMN_ACTION_NAME)));
+                action.setDrawAction(cActionStart.getString(cActionStart
+                        .getColumnIndex(COLUMN_ACTION_DRAW)));
+                result.add(action);
             }
         } else if (key == Constant.ACTION_END_ID_KEY) {
             // get end action
@@ -267,11 +277,23 @@ public class SmartSchedulerDatabase {
 
             for (cActionEnd.moveToFirst(); !cActionEnd.isAfterLast(); cActionEnd
                     .moveToNext()) {
-                ContentValues cv = new ContentValues();
+                Action action = new Action();
 
-                DatabaseUtils.cursorRowToContentValues(cActionEnd, cv);
+                action.setId(cActionEnd.getInt(cActionEnd
+                        .getColumnIndex(COLUMN_ACTION_ID)));
+                action.setActionStartId(cActionEnd.getInt(cActionEnd
+                        .getColumnIndex(COLUMN_ACTION_START_ID)));
+                action.setActionEndId(cActionEnd.getInt(cActionEnd
+                        .getColumnIndex(COLUMN_ACTION_END_ID)));
+                action.setState(cActionEnd.getInt(cActionEnd
+                        .getColumnIndex(COLUMN_ACTION_STATE)));
+                action.setName(cActionEnd.getString(cActionEnd
+                        .getColumnIndex(COLUMN_ACTION_NAME)));
+                action.setDrawAction(cActionEnd.getString(cActionEnd
+                        .getColumnIndex(COLUMN_ACTION_DRAW)));
+                // DatabaseUtils.cursorRowToContentValues(cActionEnd, cv);
 
-                result.add(cv);
+                result.add(action);
             }
         }
 

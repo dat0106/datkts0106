@@ -1,8 +1,13 @@
 package com.smartschedule.util;
 
+import com.smartschedule.action.ActivitySoundManager;
+import com.smartschedule.database.Action;
+import com.smartschedule.database.SmartSchedulerDatabase;
+
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.util.Log;
 
 public class Util {
     public static String convertTime(Integer time){
@@ -31,12 +36,23 @@ public class Util {
         return false;
     }
 
-	public static void router(ContentValues contentValuesAction, Activity activity) {
-		Intent intent = new Intent();
-		
-		
-	}
-    
-    
+    public static void router(Integer event_id, Action childAction, Activity activity) {
+        Intent intent = new Intent();
+        intent.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, event_id);
+
+        intent.putExtra(Constant.ACTION_PARAMS, childAction);
+
+        switch (childAction.getState()) {
+        case 1:
+            intent.setClass(activity, ActivitySoundManager.class);
+            activity.startActivity(intent);
+            break;
+
+        default:
+            break;
+        }
+    }
+
+
 
 }
