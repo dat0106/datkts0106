@@ -3,6 +3,7 @@ package com.smartschedule;
 import java.util.ArrayList;
 
 import com.smartschedule.database.SmartSchedulerDatabase;
+import com.smartschedule.util.Util;
 
 import android.app.Activity;
 import android.content.ContentValues;
@@ -64,7 +65,7 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
         convertView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-            	
+            	Util.router(Child, activity);
             	
                 Toast.makeText(activity, Child.getAsString(SmartSchedulerDatabase.COLUMN_ACTION_NAME),
                         Toast.LENGTH_SHORT).show();

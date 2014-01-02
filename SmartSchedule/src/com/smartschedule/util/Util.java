@@ -1,5 +1,9 @@
 package com.smartschedule.util;
 
+import android.app.Activity;
+import android.content.ContentValues;
+import android.content.Intent;
+
 public class Util {
     public static String convertTime(Integer time){
         if(time == null) {
@@ -26,5 +30,13 @@ public class Util {
         }
         return false;
     }
+
+	public static void router(ContentValues contentValuesAction, Activity activity) {
+		Intent intent = new Intent();
+		
+		
+	}
+    
+    
 
 }
