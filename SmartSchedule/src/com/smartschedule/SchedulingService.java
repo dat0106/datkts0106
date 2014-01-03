@@ -2,6 +2,7 @@ package com.smartschedule;
 
 import java.util.jar.Attributes.Name;
 
+import com.smartschedule.database.Event;
 import com.smartschedule.database.SmartSchedulerDatabase;
 
 import android.app.IntentService;
@@ -19,7 +20,7 @@ import android.util.Log;
 public class SchedulingService extends IntentService {
     private NotificationManager mNotificationManager;
     private SmartSchedulerDatabase database = new SmartSchedulerDatabase(this);
-    private ContentValues contentValue;
+    private Event contentValue;
 
     public SchedulingService() {
         super("SchedulingService");
@@ -45,8 +46,7 @@ public class SchedulingService extends IntentService {
         contentValue = database.getData(event_id);
         database.close();
 
-        String name = contentValue
-                .getAsString(SmartSchedulerDatabase.COLUMN_EVENT_NAME);
+        String name = contentValue.getName();
         sendNotification("lập lịch làm việc " + name + ": " + check_start_end
                 + "id", event_id);
 

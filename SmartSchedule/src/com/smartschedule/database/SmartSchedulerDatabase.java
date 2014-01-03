@@ -28,8 +28,6 @@ public class SmartSchedulerDatabase {
     public static final String COLUMN_EVENT_TIME_END_MINUTE = "time_end_minute";
     public static final String COLUMN_EVENT_SCHEDULE = "schedule";
     public static final String COLUMN_EVENT_CATEGORY = "category";
-    public static final String COLUMN_EVENT_ACTION_START = "action_start";
-    public static final String COLUMN_EVENT_ACTION_END = "action_end";
     public static final String COLUMN_EVENT_STATE = "state";
 
     public static final String TABLE_SCHEDULE = "SCHEDULE";
@@ -98,8 +96,6 @@ public class SmartSchedulerDatabase {
 
         ContentValues update = new ContentValues();
         update.put(COLUMN_EVENT_SCHEDULE, event_id);
-        update.put(COLUMN_EVENT_ACTION_START, event_id);
-        update.put(COLUMN_EVENT_ACTION_END, event_id);
 
         update_event(update, event_id);
 
@@ -142,8 +138,7 @@ public class SmartSchedulerDatabase {
                 COLUMN_EVENT_IMAGE, COLUMN_EVENT_TIME_START_HOUR,
                 COLUMN_EVENT_TIME_START_MINUTE, COLUMN_EVENT_TIME_END_HOUR,
                 COLUMN_EVENT_TIME_END_MINUTE, COLUMN_EVENT_SCHEDULE,
-                COLUMN_EVENT_CATEGORY, COLUMN_EVENT_ACTION_START,
-                COLUMN_EVENT_ACTION_END, COLUMN_EVENT_STATE };
+                COLUMN_EVENT_CATEGORY, COLUMN_EVENT_STATE };
         Cursor c = db.query(TABLE_EVENT, columns, null, null, null, null, null);
 
         String result = "";
@@ -159,14 +154,13 @@ public class SmartSchedulerDatabase {
         return result;
     }
 
-    public ArrayList<ContentValues> getData() {
+    public ArrayList<Event> getData() {
 
         String[] columns = new String[] { COLUMN_EVENT_ID, COLUMN_EVENT_NAME,
                 COLUMN_EVENT_IMAGE, COLUMN_EVENT_TIME_START_HOUR,
                 COLUMN_EVENT_TIME_START_MINUTE, COLUMN_EVENT_TIME_END_HOUR,
                 COLUMN_EVENT_TIME_END_MINUTE, COLUMN_EVENT_SCHEDULE,
-                COLUMN_EVENT_CATEGORY, COLUMN_EVENT_ACTION_START,
-                COLUMN_EVENT_ACTION_END, COLUMN_EVENT_STATE };
+                COLUMN_EVENT_CATEGORY, COLUMN_EVENT_STATE };
         Cursor c = null;
 
         try {
@@ -176,30 +170,54 @@ public class SmartSchedulerDatabase {
             Log.e(SmartSchedulerDatabase.this.toString(), e.getMessage());
         }
 
-        ArrayList<ContentValues> result = new ArrayList<ContentValues>();
-
-        // int iId = c.getColumnIndex(COLUMN_EVENT_ID);
-        // int iName = c.getColumnIndex(COLUMN_EVENT_NAME);
-        // int iTimeStart = c.getColumnIndex(COLUMN_EVENT_TIME_START);
-        // int iTimeEnd = c.getColumnIndex(COLUMN_EVENT_TIME_END);
+        ArrayList<Event> result = new ArrayList<Event>();
 
         for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
-            ContentValues cv = new ContentValues();
+            Event event = new Event();
+            event.setId(c.getInt(c.getColumnIndex(COLUMN_EVENT_ID)));
+            if (c.isNull(c.getColumnIndex(COLUMN_EVENT_TIME_START_HOUR))) {
+                event.setTimeStartHour(null);
+            } else {
+                event.setTimeStartHour(c.getInt(c
+                        .getColumnIndex(COLUMN_EVENT_TIME_START_HOUR)));
+            }
 
-            DatabaseUtils.cursorRowToContentValues(c, cv);
+            if (c.isNull(c.getColumnIndex(COLUMN_EVENT_TIME_START_MINUTE))) {
+                event.setTimeStartMinute(null);
+            } else {
+                event.setTimeStartMinute(c.getInt(c
+                        .getColumnIndex(COLUMN_EVENT_TIME_START_MINUTE)));
+            }
 
-            result.add(cv);
+            if (c.isNull(c.getColumnIndex(COLUMN_EVENT_TIME_END_HOUR))) {
+                event.setTimeEndHour(null);
+            } else {
+                event.setTimeEndHour(c.getInt(c
+                        .getColumnIndex(COLUMN_EVENT_TIME_END_HOUR)));
+            }
+
+            if (c.isNull(c.getColumnIndex(COLUMN_EVENT_TIME_END_MINUTE))) {
+                event.setTimeEndMinute(null);
+            } else {
+                event.setTimeEndMinute(c.getInt(c
+                        .getColumnIndex(COLUMN_EVENT_TIME_END_MINUTE)));
+            }
+            event.setSchedule(c.getInt(c.getColumnIndex(COLUMN_EVENT_SCHEDULE)));
+            event.setCategory(c.getInt(c.getColumnIndex(COLUMN_EVENT_ID)));
+            event.setState(c.getInt(c.getColumnIndex(COLUMN_EVENT_STATE)));
+            event.setImage(c.getString(c.getColumnIndex(COLUMN_EVENT_IMAGE)));
+            event.setName(c.getString(c.getColumnIndex(COLUMN_EVENT_NAME)));
+            result.add(event);
         }
         return result;
     }
 
-    public ContentValues getData(int id) {
+    public Event getData(int id) {
         String[] columns = new String[] { COLUMN_EVENT_ID, COLUMN_EVENT_NAME,
                 COLUMN_EVENT_IMAGE, COLUMN_EVENT_TIME_START_HOUR,
                 COLUMN_EVENT_TIME_START_MINUTE, COLUMN_EVENT_TIME_END_HOUR,
                 COLUMN_EVENT_TIME_END_MINUTE, COLUMN_EVENT_SCHEDULE,
-                COLUMN_EVENT_CATEGORY, COLUMN_EVENT_ACTION_START,
-                COLUMN_EVENT_ACTION_END, COLUMN_EVENT_STATE };
+                COLUMN_EVENT_CATEGORY, COLUMN_EVENT_STATE };
         Cursor c = null;
 
         try {
@@ -209,11 +227,43 @@ public class SmartSchedulerDatabase {
             Log.e(SmartSchedulerDatabase.this.toString(), e.getMessage());
         }
 
-        ContentValues result = new ContentValues();
+        Event event = new Event();
 
         if (c.getCount() == 1) {
             c.moveToFirst();
-            DatabaseUtils.cursorRowToContentValues(c, result);
+            event.setId(c.getInt(c.getColumnIndex(COLUMN_EVENT_ID)));
+            if (c.isNull(c.getColumnIndex(COLUMN_EVENT_TIME_START_HOUR))) {
+                event.setTimeStartHour(null);
+            } else {
+                event.setTimeStartHour(c.getInt(c
+                        .getColumnIndex(COLUMN_EVENT_TIME_START_HOUR)));
+            }
+
+            if (c.isNull(c.getColumnIndex(COLUMN_EVENT_TIME_START_MINUTE))) {
+                event.setTimeStartMinute(null);
+            } else {
+                event.setTimeStartMinute(c.getInt(c
+                        .getColumnIndex(COLUMN_EVENT_TIME_START_MINUTE)));
+            }
+
+            if (c.isNull(c.getColumnIndex(COLUMN_EVENT_TIME_END_HOUR))) {
+                event.setTimeEndHour(null);
+            } else {
+                event.setTimeEndHour(c.getInt(c
+                        .getColumnIndex(COLUMN_EVENT_TIME_END_HOUR)));
+            }
+
+            if (c.isNull(c.getColumnIndex(COLUMN_EVENT_TIME_END_MINUTE))) {
+                event.setTimeEndMinute(null);
+            } else {
+                event.setTimeEndMinute(c.getInt(c
+                        .getColumnIndex(COLUMN_EVENT_TIME_END_MINUTE)));
+            }
+            event.setSchedule(c.getInt(c.getColumnIndex(COLUMN_EVENT_SCHEDULE)));
+            event.setCategory(c.getInt(c.getColumnIndex(COLUMN_EVENT_ID)));
+            event.setState(c.getInt(c.getColumnIndex(COLUMN_EVENT_STATE)));
+            event.setImage(c.getString(c.getColumnIndex(COLUMN_EVENT_IMAGE)));
+            event.setName(c.getString(c.getColumnIndex(COLUMN_EVENT_NAME)));
         } else {
             Log.e(SmartSchedulerDatabase.this.toString(),
                     "error when getdata follow id can not get event or more 2 event");
@@ -221,7 +271,7 @@ public class SmartSchedulerDatabase {
                     "error when getdata follow id can not get event or more 2 event");
         }
 
-        return result;
+        return event;
     }
 
     public ArrayList<Action> getDataAction(int id, String key) {
@@ -364,8 +414,6 @@ public class SmartSchedulerDatabase {
                     + " INT DEFAULT NULL, " + COLUMN_EVENT_TIME_END_MINUTE
                     + " INT DEFAULT NULL, " + COLUMN_EVENT_SCHEDULE
                     + " INT DEFAULT NULL UNIQUE, " + COLUMN_EVENT_CATEGORY
-                    + " INT NOT NULL NULL, " + COLUMN_EVENT_ACTION_START
-                    + " INT DEFAULT NULL UNIQUE, " + COLUMN_EVENT_ACTION_END
                     + " INT DEFAULT NULL UNIQUE, " + COLUMN_EVENT_STATE
                     + " INT NOT NULL" + ");");
             arg0.execSQL("CREATE TABLE " + TABLE_SCHEDULE + " ("

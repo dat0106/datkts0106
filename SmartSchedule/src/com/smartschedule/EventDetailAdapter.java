@@ -3,7 +3,10 @@ package com.smartschedule;
 import java.util.ArrayList;
 
 import com.smartschedule.database.Action;
+import com.smartschedule.database.Event;
 import com.smartschedule.database.SmartSchedulerDatabase;
+import com.smartschedule.util.Constant;
+import com.smartschedule.util.Router;
 import com.smartschedule.util.Util;
 
 import android.app.Activity;
@@ -57,12 +60,12 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
         TextView text = (TextView) convertView.findViewById(R.id.childName);
         TextView textDetail = (TextView) convertView.findViewById(R.id.childDetail);
         if(groupPosition == 0){
-            ArrayList<ContentValues> tempChild = (ArrayList<ContentValues>) Childtem.get(groupPosition);
+            ArrayList<Event> tempChild = (ArrayList<Event>) Childtem.get(groupPosition);
 
 
-            final ContentValues Child =  tempChild.get(childPosition);
+            final Event Child =  tempChild.get(childPosition);
 
-            text.setText(Child.getAsString(SmartSchedulerDatabase.COLUMN_EVENT_NAME));
+            text.setText(Child.getName());
 
             convertView.setOnClickListener(new OnClickListener() {
                 @Override
@@ -77,8 +80,8 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
 
 
             final Action Child =  tempChild.get(childPosition);
-
-            text.setText(Child.getName());
+            Router router = Constant.router.get(Child.getState());
+            text.setText(activity.getString(router.name));
 
             textDetail.setText(Child.getDrawAction());
             convertView.setOnClickListener(new OnClickListener() {

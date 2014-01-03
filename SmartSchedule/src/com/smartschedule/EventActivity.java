@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 import com.smartschedule.action.ActivitySoundManager;
 import com.smartschedule.action.DialogSoundManager;
+import com.smartschedule.database.Event;
 import com.smartschedule.database.SmartSchedulerDatabase;
 import com.smartschedule.util.Constant;
 import com.smartschedule.util.Util;
@@ -42,7 +43,7 @@ public class EventActivity extends Activity {
     // protected int end_time_hour;
     // protected int end_time_minute;
     // private int event_id;
-    private ContentValues contentValues;
+    private Event contentValues;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,16 +58,13 @@ public class EventActivity extends Activity {
         start_time = (Button) findViewById(R.id.start_time);
         start_time
                 .setText(Util.convertTime(contentValues
-                        .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_HOUR))
+                        .getTimeStartHour())
                         + ":"
-                        + Util.convertTime(contentValues
-                                .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_MINUTE)));
+                        + Util.convertTime(contentValues.getTimeStartMinute()));
         end_time = (Button) findViewById(R.id.end_time);
-        end_time.setText(Util.convertTime(contentValues
-                .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_TIME_END_HOUR))
+        end_time.setText(Util.convertTime(contentValues.getTimeEndHour())
                 + ":"
-                + Util.convertTime(contentValues
-                        .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_TIME_END_MINUTE)));
+                + Util.convertTime(contentValues.getTimeEndMinute()));
         editText1 = (EditText) findViewById(R.id.editText1);
         btn1.setOnClickListener(new OnClickListener() {
 
@@ -77,8 +75,7 @@ public class EventActivity extends Activity {
                         EventDetailActivity.class);
                 i.putExtra(
                         SmartSchedulerDatabase.COLUMN_EVENT_ID,
-                        contentValues
-                                .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_ID));
+                        contentValues.getId());
                 i.putExtra(
                         Constant.START_OR_END, SmartSchedulerDatabase.COLUMN_ACTION_START_ID);
                 startActivity(i);
@@ -116,20 +113,16 @@ public class EventActivity extends Activity {
                 Calendar mcurrentTime = Calendar.getInstance();
 
                 int hour;
-                if (contentValues
-                        .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_HOUR) == null) {
+                if (contentValues.getTimeStartHour() == null) {
                     hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
                 } else {
-                    hour = contentValues
-                            .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_HOUR);
+                    hour = contentValues.getTimeStartHour();
                 }
                 int minute;
-                if (contentValues
-                        .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_MINUTE) == null) {
+                if (contentValues.getTimeStartMinute() == null) {
                     minute = mcurrentTime.get(Calendar.MINUTE);
                 } else {
-                    minute = contentValues
-                            .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_MINUTE);
+                    minute = contentValues.getTimeStartMinute();
                 }
                 TimePickerDialog mTimePicker;
                 mTimePicker = new TimePickerDialog(EventActivity.this,
@@ -138,12 +131,8 @@ public class EventActivity extends Activity {
                             public void onTimeSet(TimePicker timePicker,
                                     int selectedHour, int selectedMinute) {
 
-                                contentValues
-                                        .put(SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_HOUR,
-                                                selectedHour);
-                                contentValues
-                                        .put(SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_MINUTE,
-                                                selectedMinute);
+                                contentValues.setTimeStartHour(selectedHour);
+                                contentValues.setTimeStartMinute(selectedMinute);
 
                                 start_time.setText(Util
                                         .convertTime(selectedHour)
@@ -161,20 +150,16 @@ public class EventActivity extends Activity {
             public void onClick(View arg0) {
                 Calendar mcurrentTime = Calendar.getInstance();
                 int hour;
-                if (contentValues
-                        .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_TIME_END_HOUR) == null) {
+                if (contentValues.getTimeEndHour() == null) {
                     hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
                 } else {
-                    hour = contentValues
-                            .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_TIME_END_HOUR);
+                    hour = contentValues.getTimeEndHour();
                 }
                 int minute;
-                if (contentValues
-                        .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_TIME_END_MINUTE) == null) {
+                if (contentValues.getTimeEndMinute()== null) {
                     minute = mcurrentTime.get(Calendar.MINUTE);
                 } else {
-                    minute = contentValues
-                            .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_TIME_END_MINUTE);
+                    minute = contentValues.getTimeEndMinute();
                 }
                 TimePickerDialog mTimePicker;
                 mTimePicker = new TimePickerDialog(EventActivity.this,
@@ -182,12 +167,8 @@ public class EventActivity extends Activity {
                             @Override
                             public void onTimeSet(TimePicker timePicker,
                                     int selectedHour, int selectedMinute) {
-                                contentValues
-                                        .put(SmartSchedulerDatabase.COLUMN_EVENT_TIME_END_HOUR,
-                                                selectedHour);
-                                contentValues
-                                        .put(SmartSchedulerDatabase.COLUMN_EVENT_TIME_END_MINUTE,
-                                                selectedMinute);
+                                contentValues.setTimeEndHour(selectedHour);
+                                contentValues.setTimeEndMinute(selectedMinute);
 
                                 end_time.setText(Util.convertTime(selectedHour)
                                         + ":"
@@ -220,8 +201,7 @@ public class EventActivity extends Activity {
                         ActivitySoundManager.class);
                 i.putExtra(
                         SmartSchedulerDatabase.COLUMN_EVENT_ID,
-                        contentValues
-                                .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_ID));
+                        contentValues.getId());
                 i.putExtra(
                         Constant.START_OR_END, SmartSchedulerDatabase.COLUMN_ACTION_START_ID);
                 startActivityForResult(i, Constant.SOUND_MANAGER_REQUEST_CODE);
@@ -267,26 +247,20 @@ public class EventActivity extends Activity {
             return true;
         case R.id.done:
             // update state
-            contentValues.put(SmartSchedulerDatabase.COLUMN_EVENT_STATE, 1);
+            contentValues.setState(1);
             ContentValues cv = new ContentValues();
             cv.put(SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_HOUR,
-                    contentValues
-                            .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_HOUR));
+                    contentValues.getTimeStartHour());
             cv.put(SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_MINUTE,
-                    contentValues
-                            .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_MINUTE));
+                    contentValues.getTimeStartMinute());
             cv.put(SmartSchedulerDatabase.COLUMN_EVENT_TIME_END_HOUR,
-                    contentValues
-                            .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_TIME_END_HOUR));
+                    contentValues.getTimeEndHour());
             cv.put(SmartSchedulerDatabase.COLUMN_EVENT_TIME_END_MINUTE,
-                    contentValues
-                            .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_TIME_END_MINUTE));
-            cv.put(SmartSchedulerDatabase.COLUMN_EVENT_STATE, contentValues
-                    .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_STATE));
+                    contentValues.getTimeEndMinute());
+            cv.put(SmartSchedulerDatabase.COLUMN_EVENT_STATE, contentValues.getState());
 
             smartScheduleDb.open();
-            smartScheduleDb.update_event(contentValues, contentValues
-                    .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_ID));
+            smartScheduleDb.update_event(cv, contentValues.getId());
             smartScheduleDb.close();
             // TODO kiem tra thoi gian set co ton tai ko
             schedule.setSchedule(getApplicationContext(), contentValues);

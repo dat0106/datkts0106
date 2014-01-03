@@ -3,6 +3,7 @@ package com.smartschedule;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import com.smartschedule.database.Event;
 import com.smartschedule.database.SmartSchedulerDatabase;
 
 import android.app.AlarmManager;
@@ -108,9 +109,8 @@ public class ScheduleServiceReceiver extends WakefulBroadcastReceiver {
 
     }
 
-    public void setSchedule(Context context, ContentValues contentValues) {
-        int id = contentValues
-                .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_ID);
+    public void setSchedule(Context context, Event event) {
+        int id = event.getId();
         alarmMgrStart = (AlarmManager) context
                 .getSystemService(context.ALARM_SERVICE);
 
@@ -127,12 +127,10 @@ public class ScheduleServiceReceiver extends WakefulBroadcastReceiver {
 
         startTime
                 .set(Calendar.HOUR_OF_DAY,
-                        contentValues
-                                .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_HOUR));
+                        event.getTimeStartHour());
         startTime
                 .set(Calendar.MINUTE,
-                        contentValues
-                                .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_MINUTE));
+                        event.getTimeStartMinute());
         startTime.set(Calendar.SECOND, 0);
 
         // DateUtils.DAY_IN_MILLIS
@@ -149,12 +147,10 @@ public class ScheduleServiceReceiver extends WakefulBroadcastReceiver {
 
         endTime.set(
                 Calendar.HOUR_OF_DAY,
-                contentValues
-                        .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_TIME_END_HOUR));
+                event.getTimeEndHour());
         endTime.set(
                 Calendar.MINUTE,
-                contentValues
-                        .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_TIME_END_MINUTE));
+                event.getTimeEndMinute());
         endTime.set(Calendar.SECOND, 0);
         Log.v(this.toString(), "Time Start : " + startTime.getTime().toString()
                 + "  \nTime End : " + endTime.getTime().toString());
@@ -169,9 +165,8 @@ public class ScheduleServiceReceiver extends WakefulBroadcastReceiver {
                 endTime.getTimeInMillis(), 300000, piEnd);
     }
 
-    public void cancelSchedule(Context context, ContentValues contentValues) {
-        int id = contentValues
-                .getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_ID);
+    public void cancelSchedule(Context context, Event event) {
+        int id = event.getId();
         alarmMgrStart = (AlarmManager) context
                 .getSystemService(context.ALARM_SERVICE);
 
@@ -187,13 +182,11 @@ public class ScheduleServiceReceiver extends WakefulBroadcastReceiver {
             alarmMgrStart.cancel(piStart);
             Log.v(this.toString(),
                     "cancel alarmManager "
-                            + contentValues
-                                    .getAsString(SmartSchedulerDatabase.COLUMN_EVENT_NAME));
+                            + event.getName());
         } catch (Exception e) {
             Log.e(this.toString(),
                     "error alarmManager "
-                            + contentValues
-                                    .getAsString(SmartSchedulerDatabase.COLUMN_EVENT_NAME)
+                            + event.getName()
                             + " " + e.getMessage());
         }
 
@@ -208,18 +201,15 @@ public class ScheduleServiceReceiver extends WakefulBroadcastReceiver {
             Toast.makeText(
                     context,
                     "cancel alarmManager "
-                            + contentValues
-                                    .getAsString(SmartSchedulerDatabase.COLUMN_EVENT_NAME),
+                            + event.getName(),
                     Toast.LENGTH_LONG).show();
             Log.v(this.toString(),
                     "cancel End alarmManager "
-                            + contentValues
-                                    .getAsString(SmartSchedulerDatabase.COLUMN_EVENT_NAME));
+                            + event.getName());
         } catch (Exception e) {
             Log.e(this.toString(),
                     "error alarmManager "
-                            + contentValues
-                                    .getAsString(SmartSchedulerDatabase.COLUMN_EVENT_NAME)
+                            + event.getName()
                             + " " + e.getMessage());
         }
     }

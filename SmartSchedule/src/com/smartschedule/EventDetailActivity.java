@@ -7,6 +7,7 @@ import org.json.JSONException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.smartschedule.database.Action;
+import com.smartschedule.database.Event;
 import com.smartschedule.database.SmartSchedulerDatabase;
 import com.smartschedule.util.Constant;
 
@@ -114,9 +115,9 @@ public class EventDetailActivity extends ExpandableListActivity implements
         /**
          * Add Data For TecthNology
          */
-        ArrayList<ContentValues> child = new ArrayList<ContentValues>();
+        ArrayList<Event> child = new ArrayList<Event>();
         smartScheduleDb.openRead();
-        ContentValues cv = smartScheduleDb.getData(event_id);
+        Event cv = smartScheduleDb.getData(event_id);
 
         child.add(cv);
         childItem.add(child);

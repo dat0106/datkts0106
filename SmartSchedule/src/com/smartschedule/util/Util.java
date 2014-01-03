@@ -20,13 +20,13 @@ public class Util {
         return time.toString();
     }
 
-    public static String getTime(String asString) {
-        if(asString == null){
+    public static String getTime(Integer integer) {
+        if(integer == null){
             return "--";
-        }else if(asString.length() == 1){
-            return "0" + asString;
+        }else if(integer  <=  9){
+            return "0" + integer;
         }
-        return asString;
+        return integer.toString();
     }
 
     public  static boolean intToBool(Integer integer) {

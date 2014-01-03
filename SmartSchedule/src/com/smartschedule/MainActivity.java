@@ -32,6 +32,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.smartschedule.database.Event;
 import com.smartschedule.database.SmartSchedulerDatabase;
 import com.smartschedule.util.Util;
 
@@ -41,7 +42,7 @@ public class MainActivity extends ListActivity {
             this);
     ScheduleServiceReceiver schedule = new ScheduleServiceReceiver();
     private EventAdapter mAdapter;
-    private ArrayList<ContentValues> contentValues;
+    private ArrayList<Event> contentValues;
 
     private int selectedItem = -1;
     protected Object mActionMode;
@@ -104,8 +105,7 @@ public class MainActivity extends ListActivity {
         Intent intent = new Intent(MainActivity.this, EventDetailActivity.class);
         intent.putExtra(
                 SmartSchedulerDatabase.COLUMN_EVENT_ID,
-                contentValues.get(selectedItem).getAsInteger(
-                        SmartSchedulerDatabase.COLUMN_EVENT_ID));
+                contentValues.get(selectedItem).getId());
 
         MainActivity.this.startActivity(intent);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
@@ -232,8 +232,7 @@ public class MainActivity extends ListActivity {
 
                 smartScheduleDb.open();
                 int logDelete = smartScheduleDb.delete(contentValues.get(
-                        selectedItem).getAsInteger(
-                        SmartSchedulerDatabase.COLUMN_EVENT_ID));
+                        selectedItem).getId());
 
                 if (logDelete != 1) {
                     Log.e(MainActivity.this.toString(), "error delete event");
@@ -300,12 +299,10 @@ public class MainActivity extends ListActivity {
             Switch event_item_enable_switch = (Switch) row
                     .findViewById(R.id.event_item_enable_switch);
 
-            event_item_name.setText(contentValues.get(selectedItem).getAsString(
-                    SmartSchedulerDatabase.COLUMN_EVENT_NAME));
+            event_item_name.setText(contentValues.get(selectedItem).getName());
             // TODO Chu y bien convert int sang boolean
 
-            int status = contentValues.get(selectedItem).getAsInteger(
-                    SmartSchedulerDatabase.COLUMN_ACTION_STATE);
+            int status = contentValues.get(selectedItem).getState();
 
             if (status >= 2) {
                 event_item_enable_switch.setEnabled(false);
@@ -324,8 +321,7 @@ public class MainActivity extends ListActivity {
                                 // update data
                                 contentValues
                                         .get(selectedItem)
-                                        .put(SmartSchedulerDatabase.COLUMN_EVENT_STATE,
-                                                1);
+                                        .setState(1);
                                 update(contentValues.get(selectedItem));
                                 schedule.setSchedule(getApplicationContext(),
                                         contentValues.get(selectedItem));
@@ -333,8 +329,7 @@ public class MainActivity extends ListActivity {
                                 // update data
                                 contentValues
                                         .get(selectedItem)
-                                        .put(SmartSchedulerDatabase.COLUMN_EVENT_STATE,
-                                                0);
+                                        .setState(0);
                                 update(contentValues.get(selectedItem));
                                 schedule.cancelSchedule(
                                         getApplicationContext(),
@@ -346,22 +341,18 @@ public class MainActivity extends ListActivity {
             String timer = Util
                     .getTime(contentValues
                             .get(selectedItem)
-                            .getAsString(
-                                    SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_HOUR))
+                            .getTimeStartHour())
 
                     + ":"
                     + Util.getTime(contentValues
                             .get(selectedItem)
-                            .getAsString(
-                                    SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_MINUTE))
+                            .getTimeStartMinute())
                     + " ~ "
-                    + Util.getTime(contentValues.get(position).getAsString(
-                            SmartSchedulerDatabase.COLUMN_EVENT_TIME_END_HOUR))
+                    + Util.getTime(contentValues.get(selectedItem).getTimeEndHour())
                     + ":"
                     + Util.getTime(contentValues
                             .get(selectedItem)
-                            .getAsString(
-                                    SmartSchedulerDatabase.COLUMN_EVENT_TIME_END_MINUTE));
+                            .getTimeEndMinute());
             event_item_initiator_time_hours.setText(timer);
             return row;
         }
@@ -373,29 +364,29 @@ public class MainActivity extends ListActivity {
      * @return
      * @doc get content values in database
      */
-    private ArrayList<ContentValues> getData() {
+    private ArrayList<Event> getData() {
         smartScheduleDb.openRead();
-        ArrayList<ContentValues> cV = smartScheduleDb.getData();
+        ArrayList<Event> cV = smartScheduleDb.getData();
         smartScheduleDb.close();
         return cV;
     }
 
-    private ContentValues getData(int Id) {
+    private Event getData(int Id) {
         smartScheduleDb.openRead();
-        ContentValues cV = smartScheduleDb.getData(Id);
+        Event cV = smartScheduleDb.getData(Id);
         smartScheduleDb.close();
         return cV;
     }
 
-    private int update(ContentValues cV) {
+    private int update(Event cV) {
         ContentValues cv = new ContentValues();
 
         cv.put(SmartSchedulerDatabase.COLUMN_EVENT_STATE,
-                cV.getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_STATE));
+                cV.getState());
 
         smartScheduleDb.open();
-        int result = smartScheduleDb.update_event(cV,
-                cV.getAsInteger(SmartSchedulerDatabase.COLUMN_EVENT_ID));
+        int result = smartScheduleDb.update_event(cv,
+                cV.getId());
         smartScheduleDb.close();
         return result;
     }

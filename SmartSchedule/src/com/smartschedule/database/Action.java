@@ -13,7 +13,6 @@ public class Action implements Parcelable{
     private String drawAction;
 
     public Action(Parcel in) {
-        // TODO Auto-generated constructor stub
         id =  in.readInt();
         actionStartId =  in.readInt();
         actionEndId =  in.readInt();
