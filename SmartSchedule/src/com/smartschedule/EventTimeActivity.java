@@ -27,7 +27,7 @@ import android.widget.SeekBar;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-public class EventActivity extends Activity {
+public class EventTimeActivity extends Activity {
     private SmartSchedulerDatabase smartScheduleDb = new SmartSchedulerDatabase(
             this);
     ScheduleServiceReceiver schedule = new ScheduleServiceReceiver();
@@ -71,7 +71,7 @@ public class EventActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(EventActivity.this,
+                Intent i = new Intent(EventTimeActivity.this,
                         EventDetailActivity.class);
                 i.putExtra(
                         SmartSchedulerDatabase.COLUMN_EVENT_ID,
@@ -125,7 +125,7 @@ public class EventActivity extends Activity {
                     minute = contentValues.getTimeStartMinute();
                 }
                 TimePickerDialog mTimePicker;
-                mTimePicker = new TimePickerDialog(EventActivity.this,
+                mTimePicker = new TimePickerDialog(EventTimeActivity.this,
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker timePicker,
@@ -162,7 +162,7 @@ public class EventActivity extends Activity {
                     minute = contentValues.getTimeEndMinute();
                 }
                 TimePickerDialog mTimePicker;
-                mTimePicker = new TimePickerDialog(EventActivity.this,
+                mTimePicker = new TimePickerDialog(EventTimeActivity.this,
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker timePicker,
@@ -197,7 +197,7 @@ public class EventActivity extends Activity {
                 // final AlertDialog dialog = builder.create();
                 // dialog.show();
 
-                Intent i = new Intent(EventActivity.this,
+                Intent i = new Intent(EventTimeActivity.this,
                         ActivitySoundManager.class);
                 i.putExtra(
                         SmartSchedulerDatabase.COLUMN_EVENT_ID,

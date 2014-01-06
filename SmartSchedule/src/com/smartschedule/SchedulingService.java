@@ -168,7 +168,7 @@ public class SchedulingService extends IntentService {
                 .getSystemService(Context.NOTIFICATION_SERVICE);
 
         // TODO make again event activity
-        Intent intent = new Intent(this, EventActivity.class);
+        Intent intent = new Intent(this, EventTimeActivity.class);
         intent.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, event_id);
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
                 intent, PendingIntent.FLAG_ONE_SHOT);

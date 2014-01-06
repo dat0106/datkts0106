@@ -11,6 +11,7 @@ import com.smartschedule.util.Util;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -71,8 +72,9 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
                 @Override
                 public void onClick(View view) {
 
-                    Toast.makeText(activity, "timer",
-                            Toast.LENGTH_SHORT).show();
+                	Intent intent = new Intent(activity, EventTimeActivity.class);
+                	intent.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, event_id);
+                	activity.startActivity(intent);
                 }
             });
         }else{

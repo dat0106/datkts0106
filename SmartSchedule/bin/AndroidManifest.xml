@@ -35,7 +35,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.smartschedule.EventActivity"
+            android:name="com.smartschedule.EventTimeActivity"
             android:label="@string/app_name"
             android:parentActivityName=".MainActivity"
             android:theme="@android:style/Theme.Holo.Light"
@@ -57,7 +57,7 @@
         <activity
             android:name="com.smartschedule.action.ActivitySoundManager"
             android:label="@string/app_name"
-            android:parentActivityName=".EventActivity"
+            android:parentActivityName=".EventTimeActivity"
             android:theme="@android:style/Theme.Holo.Light"
             android:uiOptions="splitActionBarWhenNarrow" >
             <meta-data

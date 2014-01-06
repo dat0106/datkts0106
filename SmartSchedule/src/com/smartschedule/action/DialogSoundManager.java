@@ -1,6 +1,6 @@
 package com.smartschedule.action;
 
-import com.smartschedule.EventActivity;
+import com.smartschedule.EventTimeActivity;
 import com.smartschedule.R;
 import com.smartschedule.util.MiscUtils;
 
