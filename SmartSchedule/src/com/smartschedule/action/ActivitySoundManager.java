@@ -1,5 +1,8 @@
 package com.smartschedule.action;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.smartschedule.DrawAction;
 import com.smartschedule.EventTimeActivity;
 import com.smartschedule.MainActivity;
 import com.smartschedule.R;
@@ -252,11 +255,25 @@ public class ActivitySoundManager extends Activity {
 				.setMax(this.am.getStreamMaxVolume(AudioManager.STREAM_RING));
 		setSeekBarListeners();
 
-		// update bt
-		// TODO set up ringermode theo may
-		radioNormal.setChecked(true);
-		mRingerMode = 2;
-		updateUI(true);
+        String jString = action.getDrawAction();
+
+        GsonBuilder gsonb = new GsonBuilder();
+        Gson gson = gsonb.create();
+        DrawAction pst = null;
+
+        pst = gson.fromJson(jString, DrawAction.class);
+
+        Intent cv = new Intent();
+
+        cv.putExtra("fuck", pst);
+
+        DrawAction pst1 = cv.getExtras().getParcelable("fuck");
+
+        Log.d("TAggeD", pst1.ringtone_alarm + pst1.rimgtome_ringer);
+
+        Log.d("TAGGED", gson.toJson(pst1));
+        
+		updateUI(action);
 		// this.setTitle(R.string.title_dialog_add_event);
 
 		// this.setView(View)
@@ -387,44 +404,34 @@ public class ActivitySoundManager extends Activity {
 		}
 	}
 
-	private void updateUI(boolean paramBoolean) {
+	private void updateUI(Action action) {
+		// update bt
+		// TODO set up ringermode theo may
+		radioNormal.setChecked(true);
+		mRingerMode = 2;
 		musicNum = am.getStreamVolume(AudioManager.STREAM_MUSIC);
 		notificationNum = am.getStreamVolume(AudioManager.STREAM_NOTIFICATION);
 		alarmNum = am.getStreamVolume(AudioManager.STREAM_ALARM);
 		systemNum = am.getStreamVolume(AudioManager.STREAM_SYSTEM);
 		voiceCallNum = am.getStreamVolume(AudioManager.STREAM_VOICE_CALL);
 		ringNum = am.getStreamVolume(AudioManager.STREAM_RING);
-		;
-		boolean bool = true;
 
-		if (paramBoolean) {
-			this.music.setProgress(musicNum);
-			this.alert.setProgress(notificationNum);
-			this.alarm.setProgress(alarmNum);
-			this.system.setProgress(systemNum);
-			this.voice.setProgress(voiceCallNum);
-			this.musicProgress.setText("" + musicNum + "/" + ""
-					+ this.am.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
-			this.alertProgress
-					.setText(""
-							+ notificationNum
-							+ "/"
-							+ ""
-							+ this.am
-									.getStreamMaxVolume(AudioManager.STREAM_NOTIFICATION));
-			this.systemProgress.setText("" + alarmNum + "/" + ""
-					+ this.am.getStreamMaxVolume(AudioManager.STREAM_ALARM));
-			this.alarmProgress.setText("" + systemNum + "/" + ""
-					+ this.am.getStreamMaxVolume(AudioManager.STREAM_SYSTEM));
-			this.voiceProgress
-					.setText(""
-							+ voiceCallNum
-							+ "/"
-							+ ""
-							+ this.am
-									.getStreamMaxVolume(AudioManager.STREAM_VOICE_CALL));
+		this.music.setProgress(musicNum);
+		this.alert.setProgress(notificationNum);
+		this.alarm.setProgress(alarmNum);
+		this.system.setProgress(systemNum);
+		this.voice.setProgress(voiceCallNum);
+		this.musicProgress.setText("" + musicNum + "/" + ""
+				+ this.am.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
+		this.alertProgress.setText("" + notificationNum + "/" + ""
+				+ this.am.getStreamMaxVolume(AudioManager.STREAM_NOTIFICATION));
+		this.systemProgress.setText("" + alarmNum + "/" + ""
+				+ this.am.getStreamMaxVolume(AudioManager.STREAM_ALARM));
+		this.alarmProgress.setText("" + systemNum + "/" + ""
+				+ this.am.getStreamMaxVolume(AudioManager.STREAM_SYSTEM));
+		this.voiceProgress.setText("" + voiceCallNum + "/" + ""
+				+ this.am.getStreamMaxVolume(AudioManager.STREAM_VOICE_CALL));
 
-		}
 		if (this.mRingerMode != 2) {
 			updateVibrateOrSilent();
 		} else {

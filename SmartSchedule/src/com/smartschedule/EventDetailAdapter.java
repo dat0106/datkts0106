@@ -153,7 +153,7 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
                 }
                 contentValues.put(SmartSchedulerDatabase.COLUMN_ACTION_STATE, 1);
                 contentValues.put(SmartSchedulerDatabase.COLUMN_ACTION_NAME, "demo");
-                contentValues.put(SmartSchedulerDatabase.COLUMN_ACTION_DRAW, "demdrow");
+                contentValues.put(SmartSchedulerDatabase.COLUMN_ACTION_DRAW, "{}");
                 smartScheduleDb.open();
                 smartScheduleDb.insert_action(contentValues);
                 smartScheduleDb.close();
