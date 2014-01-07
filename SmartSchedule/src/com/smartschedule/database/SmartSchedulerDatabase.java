@@ -355,26 +355,15 @@ public class SmartSchedulerDatabase {
                 + event_id, null);
     }
 
-    public int update_action(ContentValues contentValues, long event_id,
-            String start_or_end) {
+    public int update_action(ContentValues contentValues, long id) {
+        Log.v(this.toString(), contentValues.getAsString(COLUMN_ACTION_DRAW));
         int result = 0;
-        if (start_or_end == COLUMN_ACTION_START_ID) {
-            try {
-                result = db.update(TABLE_ACTION, contentValues,
-                        COLUMN_ACTION_START_ID + "=" + event_id, null);
+        try {
+            result = db.update(TABLE_ACTION, contentValues, COLUMN_ACTION_ID
+                    + "=" + id, null);
 
-            } catch (Exception e) {
-                Log.e(SmartSchedulerDatabase.this.toString(), e.getMessage());
-            }
-        }
-        if (start_or_end == COLUMN_ACTION_END_ID) {
-            try {
-                result = db.update(TABLE_ACTION, contentValues,
-                        COLUMN_ACTION_END_ID + "=" + event_id, null);
-
-            } catch (Exception e) {
-                Log.e(SmartSchedulerDatabase.this.toString(), e.getMessage());
-            }
+        } catch (Exception e) {
+            Log.e(SmartSchedulerDatabase.this.toString(), e.getMessage());
         }
 
         if (result != 1) {

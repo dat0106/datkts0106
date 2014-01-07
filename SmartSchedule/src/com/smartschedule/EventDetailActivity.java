@@ -47,16 +47,16 @@ public class EventDetailActivity extends ExpandableListActivity implements
         DrawAction pst = null;
 
         pst = gson.fromJson(jString, DrawAction.class);
-
-        Intent cv = new Intent();
-
-        cv.putExtra("fuck", pst);
-
-        DrawAction pst1 = cv.getExtras().getParcelable("fuck");
-
-        Log.d("TAggeD", pst1.ringtone_alarm + pst1.rimgtome_ringer);
-
-        Log.d("TAGGED", gson.toJson(pst1));
+//
+//        Intent cv = new Intent();
+//
+//        cv.putExtra("fuck", pst);
+//
+//        DrawAction pst1 = cv.getExtras().getParcelable("fuck");
+//
+//        Log.d("TAggeD", pst1.ringtone_alarm + pst1.rimgtome_ringer);
+//
+//        Log.d("TAGGED", gson.toJson(pst1));
 
         this.event_id = intent.getExtras().getInt(
                 SmartSchedulerDatabase.COLUMN_EVENT_ID);
