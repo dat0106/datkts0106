@@ -34,6 +34,7 @@ public class EventDetailActivity extends ExpandableListActivity implements
     private ContentValues eventDetail;
     private ContentValues actionStart;
     private ContentValues actionEnd;
+    EventDetailAdapter mNewAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,7 +70,7 @@ public class EventDetailActivity extends ExpandableListActivity implements
         setGroupData();
         setChildGroupData();
 
-        EventDetailAdapter mNewAdapter = new EventDetailAdapter(groupItem,
+        mNewAdapter = new EventDetailAdapter(groupItem,
                 childItem, event_id);
         mNewAdapter
                 .setInflater(
@@ -85,6 +86,15 @@ public class EventDetailActivity extends ExpandableListActivity implements
 
     }
 
+    @Override
+    protected void onStart() {
+        // TODO Auto-generated method stub
+        super.onStart();
+        setGroupData();
+        setChildGroupData();
+        mNewAdapter.UpdateDataChange(groupItem, childItem, event_id);
+        mNewAdapter.notifyDataSetChanged();
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -103,6 +113,7 @@ public class EventDetailActivity extends ExpandableListActivity implements
 
     public void setGroupData() {
         // TODO String chuyen da ngon ngu
+        groupItem.clear();
         groupItem.add("Condition");
         groupItem.add("Start Event");
         groupItem.add("End Event");
@@ -115,6 +126,7 @@ public class EventDetailActivity extends ExpandableListActivity implements
         /**
          * Add Data For TecthNology
          */
+        childItem.clear();
         ArrayList<Event> child = new ArrayList<Event>();
         smartScheduleDb.openRead();
         Event cv = smartScheduleDb.getData(event_id);
@@ -133,6 +145,7 @@ public class EventDetailActivity extends ExpandableListActivity implements
          */
         childAction = smartScheduleDb.getDataAction(event_id, Constant.ACTION_END_ID_KEY);
         childItem.add(childAction);
+
         smartScheduleDb.close();
     }
 

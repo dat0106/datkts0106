@@ -6,6 +6,7 @@ import com.smartschedule.database.Action;
 import com.smartschedule.database.Event;
 import com.smartschedule.database.SmartSchedulerDatabase;
 import com.smartschedule.util.Constant;
+import com.smartschedule.util.DetailActionViewer;
 import com.smartschedule.util.Router;
 import com.smartschedule.util.Util;
 
@@ -32,6 +33,12 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
     public int event_id;
 
     public EventDetailAdapter(ArrayList<String> grList, ArrayList<Object> childItem, int event_id) {
+        groupItem = grList;
+        this.Childtem = childItem;
+        this.event_id = event_id;
+    }
+
+    public void UpdateDataChange(ArrayList<String> grList, ArrayList<Object> childItem, int event_id) {
         groupItem = grList;
         this.Childtem = childItem;
         this.event_id = event_id;
@@ -72,9 +79,9 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
                 @Override
                 public void onClick(View view) {
 
-                	Intent intent = new Intent(activity, EventTimeActivity.class);
-                	intent.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, event_id);
-                	activity.startActivity(intent);
+                    Intent intent = new Intent(activity, EventTimeActivity.class);
+                    intent.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, event_id);
+                    activity.startActivity(intent);
                 }
             });
         }else{
@@ -82,14 +89,14 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
 
 
             final Action Child =  tempChild.get(childPosition);
-            Router router = Constant.router.get(Child.getState());
+            DetailActionViewer router = Router.routerUri.get(Child.getState());
             text.setText(activity.getString(router.name));
 
             textDetail.setText(Child.getDrawAction());
             convertView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Util.router(event_id, Child, activity);
+                    Router.routerActivity(event_id, Child, activity);
 
                     Toast.makeText(activity, Child.getName(),
                             Toast.LENGTH_SHORT).show();
