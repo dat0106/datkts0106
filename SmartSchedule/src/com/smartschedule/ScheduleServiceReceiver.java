@@ -5,6 +5,7 @@ import java.util.Calendar;
 
 import com.smartschedule.database.Event;
 import com.smartschedule.database.SmartSchedulerDatabase;
+import com.smartschedule.util.Constant;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -34,10 +35,10 @@ public class ScheduleServiceReceiver extends WakefulBroadcastReceiver {
         Intent service = new Intent(context, SchedulingService.class);
 
         int i = extras.getInt(SmartSchedulerDatabase.COLUMN_EVENT_ID);
-        int i2 = extras.getInt("check_start_end");
+        int i2 = extras.getInt(Constant.START_OR_END);
         Log.v(this.toString(), "COLUMN_EVENT_ID" + i + " check_start_end" + i2);
 //        service.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, 10);
-//        service.putExtra("check_start_end", 1);
+//        service.putExtra(Constant.START_OR_END, 1);
         startWakefulService(context, intent);
 
 
@@ -118,7 +119,7 @@ public class ScheduleServiceReceiver extends WakefulBroadcastReceiver {
                 .getSystemService(context.ALARM_SERVICE);
         Intent intentStart = new Intent(context, ScheduleServiceReceiver.class);
         intentStart.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, id);
-        intentStart.putExtra("check_start_end", 1);
+        intentStart.putExtra(Constant.START_OR_END, Constant.START);
 
         PendingIntent piStart = PendingIntent.getBroadcast(context, id * 2,
                 intentStart, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -139,7 +140,7 @@ public class ScheduleServiceReceiver extends WakefulBroadcastReceiver {
 
         Intent intentEnd = new Intent(context, ScheduleServiceReceiver.class);
         intentEnd.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, id);
-        intentEnd.putExtra("check_start_end", 0);
+        intentEnd.putExtra(Constant.START_OR_END, Constant.END);
         PendingIntent piEnd = PendingIntent.getBroadcast(context, id * 2 + 1,
                 intentEnd, PendingIntent.FLAG_UPDATE_CURRENT);
 
@@ -174,7 +175,7 @@ public class ScheduleServiceReceiver extends WakefulBroadcastReceiver {
                 .getSystemService(context.ALARM_SERVICE);
         Intent intentStart = new Intent(context, ScheduleServiceReceiver.class);
         intentStart.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, id);
-        intentStart.putExtra("check_start_end", 1);
+        intentStart.putExtra(Constant.START_OR_END, Constant.START);
 
         PendingIntent piStart = PendingIntent.getBroadcast(context, id * 2,
                 intentStart, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -192,7 +193,7 @@ public class ScheduleServiceReceiver extends WakefulBroadcastReceiver {
 
         Intent intentEnd = new Intent(context, ScheduleServiceReceiver.class);
         intentEnd.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, id);
-        intentEnd.putExtra("check_start_end", 0);
+        intentEnd.putExtra(Constant.START_OR_END, Constant.END);
         PendingIntent piEnd = PendingIntent.getBroadcast(context, id * 2 + 1,
                 intentEnd, PendingIntent.FLAG_UPDATE_CURRENT);
         try {

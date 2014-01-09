@@ -4,6 +4,7 @@ import java.util.jar.Attributes.Name;
 
 import com.smartschedule.database.Event;
 import com.smartschedule.database.SmartSchedulerDatabase;
+import com.smartschedule.util.Constant;
 
 import android.app.IntentService;
 import android.app.NotificationManager;
@@ -40,7 +41,7 @@ public class SchedulingService extends IntentService {
         int event_id = intent.getExtras().getInt(
                 SmartSchedulerDatabase.COLUMN_EVENT_ID);
 
-        int check_start_end = intent.getExtras().getInt("check_start_end");
+        String check_start_end = intent.getExtras().getString(Constant.START_OR_END);
 
         database.open();
         contentValue = database.getData(event_id);
@@ -59,10 +60,10 @@ public class SchedulingService extends IntentService {
 
     }
 
-    private void doingWifi(int check_start_end) {
+    private void doingWifi(String check_start_end) {
 
         WifiManager mainWifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
-        if (check_start_end == 1) {
+        if (check_start_end == Constant.START) {
             mainWifi.setWifiEnabled(true);
         } else {
             mainWifi.setWifiEnabled(false);
