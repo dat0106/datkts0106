@@ -1,7 +1,10 @@
 package com.smartschedule;
 
-import java.util.jar.Attributes.Name;
+import java.util.ArrayList;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.smartschedule.database.Action;
 import com.smartschedule.database.Event;
 import com.smartschedule.database.SmartSchedulerDatabase;
 import com.smartschedule.util.Constant;
@@ -9,7 +12,6 @@ import com.smartschedule.util.Constant;
 import android.app.IntentService;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.os.SystemClock;
@@ -21,7 +23,8 @@ import android.util.Log;
 public class SchedulingService extends IntentService {
     private NotificationManager mNotificationManager;
     private SmartSchedulerDatabase database = new SmartSchedulerDatabase(this);
-    private Event contentValue;
+    private Event event;
+    private ArrayList<Action> actions;
 
     public SchedulingService() {
         super("SchedulingService");
@@ -41,19 +44,30 @@ public class SchedulingService extends IntentService {
         int event_id = intent.getExtras().getInt(
                 SmartSchedulerDatabase.COLUMN_EVENT_ID);
 
-        String check_start_end = intent.getExtras().getString(Constant.START_OR_END);
+        String check_start_end = intent.getExtras().getString(
+                Constant.START_OR_END);
 
         database.open();
-        contentValue = database.getData(event_id);
-        database.close();
+        event = database.getData(event_id);
+        actions = database.getDataAction(event_id, check_start_end);
 
-        String name = contentValue.getName();
+        for (int i = 0; i < actions.size(); i++) {
+            switch (actions.get(i).getState()) {
+            case 1:
+                doingVolume(actions.get(i));
+                break;
+
+            default:
+                break;
+            }
+        }
+
+        database.close();
+        doingWifi(check_start_end);
+
+        String name = event.getName();
         sendNotification("lập lịch làm việc " + name + ": " + check_start_end
                 + "id", event_id);
-
-        doingWifi(check_start_end);
-        doingVolume();
-
         Log.i(this.toString(),
                 "Completed service @ " + SystemClock.elapsedRealtime());
         ScheduleServiceReceiver.completeWakefulIntent(intent);
@@ -70,7 +84,13 @@ public class SchedulingService extends IntentService {
         }
     }
 
-    private void doingVolume() {
+    private void doingVolume(Action action) {
+
+        String draw = action.getDrawAction();
+
+        GsonBuilder gsonb = new GsonBuilder();
+        Gson gson = gsonb.create();
+        DrawAction drawAction = gson.fromJson(draw, DrawAction.class);
         AudioManager audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         int currentVolumeRing = audio.getStreamVolume(AudioManager.STREAM_RING);
         int currentVolumeMusic = audio
@@ -97,22 +117,34 @@ public class SchedulingService extends IntentService {
         );
 
         // TODO Chu y neu kiem tra co can thiet phai show toast ko. anh huong
-        // TODO kiem tra Android setStreamVolume for STREAM_RING doesn't always work while RINGING
+        // TODO kiem tra Android setStreamVolume for STREAM_RING doesn't always
+        // work while RINGING
         // den app khac ko
-//        audio.setStreamVolume(AudioManager.STREAM_RING, 1,
-//                AudioManager.FLAG_SHOW_UI);
-        audio.setStreamVolume(AudioManager.STREAM_MUSIC, 3,
-                AudioManager.FLAG_SHOW_UI);
-        audio.setStreamVolume(AudioManager.STREAM_ALARM, 3,
-                AudioManager.FLAG_SHOW_UI);
-        audio.setStreamVolume(AudioManager.STREAM_NOTIFICATION, 3,
-                AudioManager.FLAG_SHOW_UI);
-        audio.setStreamVolume(AudioManager.STREAM_SYSTEM, 3,
-                AudioManager.FLAG_SHOW_UI);
-        audio.setStreamVolume(AudioManager.STREAM_VOICE_CALL, 3,
-                AudioManager.FLAG_SHOW_UI);
-        audio.setStreamVolume(AudioManager.STREAM_DTMF, 3,
-                AudioManager.FLAG_SHOW_UI);
+
+        audio.setMode(Integer.parseInt(drawAction.sound_mode));
+
+        if (drawAction.sound_ring != null) {
+            audio.setStreamVolume(AudioManager.STREAM_RING,
+                    Integer.parseInt(drawAction.sound_ring),
+                    AudioManager.FLAG_SHOW_UI);
+            audio.setStreamVolume(AudioManager.STREAM_MUSIC,
+                    Integer.parseInt(drawAction.sound_music),
+                    AudioManager.FLAG_SHOW_UI);
+            audio.setStreamVolume(AudioManager.STREAM_ALARM,
+                    Integer.parseInt(drawAction.sound_alarm),
+                    AudioManager.FLAG_SHOW_UI);
+            audio.setStreamVolume(AudioManager.STREAM_NOTIFICATION,
+                    Integer.parseInt(drawAction.sound_notification),
+                    AudioManager.FLAG_SHOW_UI);
+            audio.setStreamVolume(AudioManager.STREAM_SYSTEM,
+                    Integer.parseInt(drawAction.sound_system),
+                    AudioManager.FLAG_SHOW_UI);
+            audio.setStreamVolume(AudioManager.STREAM_VOICE_CALL,
+                    Integer.parseInt(drawAction.sound_voice_call),
+                    AudioManager.FLAG_SHOW_UI);
+        }
+        // audio.setStreamVolume(AudioManager.STREAM_DTMF, 3,
+        // AudioManager.FLAG_SHOW_UI);
 
         currentVolumeRing = audio.getStreamVolume(AudioManager.STREAM_RING);
         currentVolumeMusic = audio.getStreamVolume(AudioManager.STREAM_MUSIC);
@@ -136,11 +168,14 @@ public class SchedulingService extends IntentService {
         );
 
         currentVolumeRing = audio.getStreamMaxVolume(AudioManager.STREAM_RING);
-        currentVolumeMusic = audio.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-        currentVolumeAlarm = audio.getStreamMaxVolume(AudioManager.STREAM_ALARM);
+        currentVolumeMusic = audio
+                .getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+        currentVolumeAlarm = audio
+                .getStreamMaxVolume(AudioManager.STREAM_ALARM);
         currentVolumeNotification = audio
                 .getStreamMaxVolume(AudioManager.STREAM_NOTIFICATION);
-        currentVolumeSystem = audio.getStreamMaxVolume(AudioManager.STREAM_SYSTEM);
+        currentVolumeSystem = audio
+                .getStreamMaxVolume(AudioManager.STREAM_SYSTEM);
         currentVolumeVoiceCall = audio
                 .getStreamMaxVolume(AudioManager.STREAM_VOICE_CALL);
         currentVolumeDTMF = audio.getStreamMaxVolume(AudioManager.STREAM_DTMF);

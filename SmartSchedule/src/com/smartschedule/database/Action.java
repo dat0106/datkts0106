@@ -11,7 +11,7 @@ public class Action implements Parcelable{
     private Integer state;
     private String name;
     private String drawAction;
-
+    private String status;
     public Action(Parcel in) {
         id =  in.readInt();
         actionStartId =  in.readInt();
@@ -19,6 +19,7 @@ public class Action implements Parcelable{
         state =  in.readInt();
         name =  in.readString();
         drawAction =  in.readString();
+        status =  in.readString();
 
     }
 
@@ -38,6 +39,7 @@ public class Action implements Parcelable{
         parcel.writeInt(state);
         parcel.writeString(name);
         parcel.writeString(drawAction);
+        parcel.writeString(status);
     }
 
     public static final Parcelable.Creator<Action> CREATOR
@@ -98,6 +100,14 @@ public class Action implements Parcelable{
 
     public void setDrawAction(String drawAction) {
         this.drawAction = drawAction;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
 }

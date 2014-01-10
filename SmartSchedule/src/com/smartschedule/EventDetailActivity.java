@@ -138,12 +138,12 @@ public class EventDetailActivity extends ExpandableListActivity implements
          * Add Data For start
          */
         ArrayList<Action> childAction = new ArrayList<Action>();
-        childAction = smartScheduleDb.getDataAction(event_id, Constant.ACTION_START_ID_KEY);
+        childAction = smartScheduleDb.getDataAction(event_id, Constant.START);
         childItem.add(childAction);
         /**
          * Add Data For end
          */
-        childAction = smartScheduleDb.getDataAction(event_id, Constant.ACTION_END_ID_KEY);
+        childAction = smartScheduleDb.getDataAction(event_id, Constant.END);
         childItem.add(childAction);
 
         smartScheduleDb.close();

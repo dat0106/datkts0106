@@ -35,7 +35,7 @@ public class ScheduleServiceReceiver extends WakefulBroadcastReceiver {
         Intent service = new Intent(context, SchedulingService.class);
 
         int i = extras.getInt(SmartSchedulerDatabase.COLUMN_EVENT_ID);
-        int i2 = extras.getInt(Constant.START_OR_END);
+        String i2 = extras.getString(Constant.START_OR_END);
         Log.v(this.toString(), "COLUMN_EVENT_ID" + i + " check_start_end" + i2);
 //        service.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, 10);
 //        service.putExtra(Constant.START_OR_END, 1);

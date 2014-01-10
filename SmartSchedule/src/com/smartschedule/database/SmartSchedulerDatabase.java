@@ -48,6 +48,7 @@ public class SmartSchedulerDatabase {
     public static final String COLUMN_ACTION_STATE = "state";
     public static final String COLUMN_ACTION_NAME = "name";
     public static final String COLUMN_ACTION_DRAW = "draw_action";
+    public static final String COLUMN_ACTION_STATUS = "status";
 
     private static Context context;
     private SQLiteDatabase db;
@@ -278,12 +279,12 @@ public class SmartSchedulerDatabase {
 
         // get action
         String[] columnsAction = new String[] { COLUMN_ACTION_ID,
-                COLUMN_ACTION_START_ID, COLUMN_ACTION_END_ID,
+                COLUMN_ACTION_START_ID, COLUMN_ACTION_END_ID, COLUMN_ACTION_STATUS,
                 COLUMN_ACTION_DRAW, COLUMN_ACTION_STATE, COLUMN_ACTION_NAME };
 
         ArrayList<Action> result = new ArrayList<Action>();
 
-        if (key == Constant.ACTION_START_ID_KEY) {
+        if (Constant.START.equals(key)) {
             // get start action
             Cursor cActionStart = null;
             try {
@@ -308,11 +309,13 @@ public class SmartSchedulerDatabase {
                         .getColumnIndex(COLUMN_ACTION_STATE)));
                 action.setName(cActionStart.getString(cActionStart
                         .getColumnIndex(COLUMN_ACTION_NAME)));
+                action.setStatus(cActionStart.getString(cActionStart
+                        .getColumnIndex(COLUMN_ACTION_STATUS)));
                 action.setDrawAction(cActionStart.getString(cActionStart
                         .getColumnIndex(COLUMN_ACTION_DRAW)));
                 result.add(action);
             }
-        } else if (key == Constant.ACTION_END_ID_KEY) {
+        } else if (Constant.END.equals(key)) {
             // get end action
             Cursor cActionEnd = null;
 
@@ -339,9 +342,10 @@ public class SmartSchedulerDatabase {
                         .getColumnIndex(COLUMN_ACTION_STATE)));
                 action.setName(cActionEnd.getString(cActionEnd
                         .getColumnIndex(COLUMN_ACTION_NAME)));
+                action.setStatus(cActionEnd.getString(cActionEnd
+                        .getColumnIndex(COLUMN_ACTION_STATUS)));
                 action.setDrawAction(cActionEnd.getString(cActionEnd
                         .getColumnIndex(COLUMN_ACTION_DRAW)));
-                // DatabaseUtils.cursorRowToContentValues(cActionEnd, cv);
 
                 result.add(action);
             }
@@ -422,6 +426,7 @@ public class SmartSchedulerDatabase {
                     + COLUMN_ACTION_END_ID + " INTEGER DEFAULT NULL, "
                     + COLUMN_ACTION_STATE + " INTEGER DEFAULT NULL, "
                     + COLUMN_ACTION_DRAW + " TEXT DEFAULT NULL, "
+                    + COLUMN_ACTION_STATUS + " TEXT DEFAULT NULL, "
                     + COLUMN_ACTION_NAME + " TEXT " + ");");
         }
 

@@ -92,7 +92,7 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
             DetailActionViewer router = Router.routerUri.get(Child.getState());
             text.setText(activity.getString(router.name));
 
-            textDetail.setText(Child.getDrawAction());
+            textDetail.setText(Child.getStatus());
             convertView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -161,6 +161,7 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
                 contentValues.put(SmartSchedulerDatabase.COLUMN_ACTION_STATE, 1);
                 contentValues.put(SmartSchedulerDatabase.COLUMN_ACTION_NAME, "demo");
                 contentValues.put(SmartSchedulerDatabase.COLUMN_ACTION_DRAW, "{}");
+                contentValues.put(SmartSchedulerDatabase.COLUMN_ACTION_STATUS, "demoStatus");
                 smartScheduleDb.open();
                 smartScheduleDb.insert_action(contentValues);
                 smartScheduleDb.close();
