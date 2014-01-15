@@ -68,7 +68,6 @@ public class SettingAdapter extends BaseExpandableListAdapter {
             convertView = minflater.inflate(R.layout.setting_child, null);
         }
         TextView text = (TextView) convertView.findViewById(R.id.childNameSetting);
-        TextView textDetail = (TextView) convertView.findViewById(R.id.childDetailSetting);
         if(groupPosition == 0){
             ArrayList<Event> tempChild = (ArrayList<Event>) Childtem.get(groupPosition);
 
@@ -84,7 +83,6 @@ public class SettingAdapter extends BaseExpandableListAdapter {
                     + Util.getTime(Child.getTimeEndHour())
                     + ":"
                     + Util.getTime(Child.getTimeEndMinute());
-            textDetail.setText(timer);
             convertView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -102,7 +100,6 @@ public class SettingAdapter extends BaseExpandableListAdapter {
             DetailActionViewer router = Router.routerUri.get(Child.getState());
             text.setText(activity.getString(router.name));
 
-            textDetail.setText(Child.getStatus());
             convertView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {

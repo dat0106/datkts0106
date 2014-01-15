@@ -43,13 +43,6 @@ public class SettingActivity extends ExpandableListActivity implements
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
 
-        String jString = "{\"ringtone_alarm\": \"primal\", \"rimgtome_ringer\": \"Hi, I am Primal\"}  ";
-
-        GsonBuilder gsonb = new GsonBuilder();
-        Gson gson = gsonb.create();
-        DrawAction pst = null;
-
-        pst = gson.fromJson(jString, DrawAction.class);
 //
 //        Intent cv = new Intent();
 //

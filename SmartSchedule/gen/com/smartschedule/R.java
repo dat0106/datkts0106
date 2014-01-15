@@ -56,7 +56,7 @@ public final class R {
     }
     public static final class id {
         public static final int add_action=0x7f09002a;
-        public static final int add_menu=0x7f090038;
+        public static final int add_menu=0x7f09003b;
         public static final int advanced_sound=0x7f09000e;
         public static final int alarm=0x7f09001f;
         public static final int alarmLabel=0x7f090010;
@@ -70,12 +70,14 @@ public final class R {
         public static final int button3=0x7f090003;
         public static final int button4=0x7f090007;
         public static final int button_test=0x7f09000a;
-        public static final int cancel=0x7f090039;
+        public static final int cancel=0x7f09003c;
         public static final int childDetail=0x7f090028;
         public static final int childImage=0x7f090026;
+        public static final int childImageSetting=0x7f090038;
         public static final int childName=0x7f090027;
+        public static final int childNameSetting=0x7f090039;
         public static final int dialog_add_event=0x7f090025;
-        public static final int done=0x7f09003a;
+        public static final int done=0x7f09003d;
         public static final int editText1=0x7f090002;
         public static final int end_time=0x7f090008;
         public static final int event_item_enable_switch=0x7f09002d;
@@ -92,10 +94,11 @@ public final class R {
         public static final int event_list=0x7f090036;
         public static final int event_list_empty=0x7f090037;
         public static final int group_row=0x7f090029;
+        public static final int group_setting=0x7f09003a;
         public static final int linearLayout1=0x7f090000;
         public static final int linearLayout2=0x7f090004;
-        public static final int menuitem1_show=0x7f09003b;
-        public static final int menuitem2_delete=0x7f09003c;
+        public static final int menuitem1_show=0x7f09003e;
+        public static final int menuitem2_delete=0x7f09003f;
         public static final int music=0x7f090020;
         public static final int musicLabel=0x7f090012;
         public static final int musicLvl=0x7f09001a;
@@ -126,6 +129,8 @@ public final class R {
         public static final int event_detail_group=0x7f030005;
         public static final int event_item=0x7f030006;
         public static final int event_list=0x7f030007;
+        public static final int setting_child=0x7f030008;
+        public static final int setting_group=0x7f030009;
     }
     public static final class menu {
         public static final int add_menu=0x7f080000;

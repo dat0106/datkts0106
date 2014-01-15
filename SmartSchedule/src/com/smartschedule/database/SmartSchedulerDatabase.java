@@ -406,8 +406,8 @@ public class SmartSchedulerDatabase {
                     + " INT DEFAULT NULL, " + COLUMN_EVENT_TIME_END_HOUR
                     + " INT DEFAULT NULL, " + COLUMN_EVENT_TIME_END_MINUTE
                     + " INT DEFAULT NULL, " + COLUMN_EVENT_SCHEDULE
-                    + " INT DEFAULT NULL UNIQUE, " + COLUMN_EVENT_CATEGORY
-                    + " INT DEFAULT NULL UNIQUE, " + COLUMN_EVENT_STATE
+                    + " INT DEFAULT NULL, " + COLUMN_EVENT_CATEGORY
+                    + " INT DEFAULT NULL, " + COLUMN_EVENT_STATE
                     + " INT NOT NULL" + ");");
             arg0.execSQL("CREATE TABLE " + TABLE_SCHEDULE + " ("
                     + COLUMN_SCHEDULE_ID
