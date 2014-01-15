@@ -63,7 +63,7 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, final int childPosition,
             boolean isLastChild, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = minflater.inflate(R.layout.childrow, null);
+            convertView = minflater.inflate(R.layout.event_detail_child, null);
         }
         TextView text = (TextView) convertView.findViewById(R.id.childName);
         TextView textDetail = (TextView) convertView.findViewById(R.id.childDetail);
@@ -142,7 +142,7 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
 
         final int StartOrEnd =  groupPosition;
         if (convertView == null) {
-            convertView = minflater.inflate(R.layout.grouprow, null);
+            convertView = minflater.inflate(R.layout.event_detail_group, null);
         }
         ((TextView) convertView.findViewById(R.id.group_row)).setText(groupItem.get(groupPosition));
         ((Button) convertView.findViewById(R.id.add_action)).setOnClickListener(new OnClickListener() {

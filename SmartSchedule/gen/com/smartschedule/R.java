@@ -55,7 +55,7 @@ public final class R {
         public static final int voice_icon=0x7f020015;
     }
     public static final class id {
-        public static final int add_action=0x7f090037;
+        public static final int add_action=0x7f09002a;
         public static final int add_menu=0x7f090038;
         public static final int advanced_sound=0x7f09000e;
         public static final int alarm=0x7f09001f;
@@ -71,27 +71,27 @@ public final class R {
         public static final int button4=0x7f090007;
         public static final int button_test=0x7f09000a;
         public static final int cancel=0x7f090039;
-        public static final int childDetail=0x7f090027;
-        public static final int childImage=0x7f090025;
-        public static final int childName=0x7f090026;
-        public static final int dialog_add_event=0x7f090028;
+        public static final int childDetail=0x7f090028;
+        public static final int childImage=0x7f090026;
+        public static final int childName=0x7f090027;
+        public static final int dialog_add_event=0x7f090025;
         public static final int done=0x7f09003a;
         public static final int editText1=0x7f090002;
         public static final int end_time=0x7f090008;
-        public static final int event_item_enable_switch=0x7f09002b;
-        public static final int event_item_initiator_device=0x7f09002f;
-        public static final int event_item_initiator_device_icon=0x7f09002e;
-        public static final int event_item_initiator_device_layout=0x7f09002d;
-        public static final int event_item_initiator_time=0x7f090030;
-        public static final int event_item_initiator_time_hours=0x7f090032;
-        public static final int event_item_initiator_time_icon=0x7f090031;
-        public static final int event_item_initiator_time_weekdays=0x7f090033;
-        public static final int event_item_initiators=0x7f09002c;
-        public static final int event_item_name=0x7f09002a;
-        public static final int event_item_name_row=0x7f090029;
-        public static final int event_list=0x7f090034;
-        public static final int event_list_empty=0x7f090035;
-        public static final int group_row=0x7f090036;
+        public static final int event_item_enable_switch=0x7f09002d;
+        public static final int event_item_initiator_device=0x7f090031;
+        public static final int event_item_initiator_device_icon=0x7f090030;
+        public static final int event_item_initiator_device_layout=0x7f09002f;
+        public static final int event_item_initiator_time=0x7f090032;
+        public static final int event_item_initiator_time_hours=0x7f090034;
+        public static final int event_item_initiator_time_icon=0x7f090033;
+        public static final int event_item_initiator_time_weekdays=0x7f090035;
+        public static final int event_item_initiators=0x7f09002e;
+        public static final int event_item_name=0x7f09002c;
+        public static final int event_item_name_row=0x7f09002b;
+        public static final int event_list=0x7f090036;
+        public static final int event_list_empty=0x7f090037;
+        public static final int group_row=0x7f090029;
         public static final int linearLayout1=0x7f090000;
         public static final int linearLayout2=0x7f090004;
         public static final int menuitem1_show=0x7f09003b;
@@ -120,12 +120,12 @@ public final class R {
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int activity_sound_manager=0x7f030001;
-        public static final int childrow=0x7f030002;
-        public static final int dialog_add_event=0x7f030003;
-        public static final int dialog_sound_manager=0x7f030004;
-        public static final int event_item=0x7f030005;
-        public static final int event_list=0x7f030006;
-        public static final int grouprow=0x7f030007;
+        public static final int dialog_add_event=0x7f030002;
+        public static final int dialog_sound_manager=0x7f030003;
+        public static final int event_detail_child=0x7f030004;
+        public static final int event_detail_group=0x7f030005;
+        public static final int event_item=0x7f030006;
+        public static final int event_list=0x7f030007;
     }
     public static final class menu {
         public static final int add_menu=0x7f080000;
