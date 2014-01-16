@@ -678,6 +678,25 @@ public class ActivitySoundManager extends Activity {
 
             contentValue.put(SmartSchedulerDatabase.COLUMN_ACTION_DRAW,
                     gson.toJson(pst));
+            
+            String status = null;
+			switch (mRingerMode) {
+			case AudioManager.RINGER_MODE_SILENT:
+				status = getString(R.string.silent);
+				break;
+			case AudioManager.RINGER_MODE_VIBRATE:
+				status = getString(R.string.vibrate);
+				break;	
+			case AudioManager.RINGER_MODE_NORMAL:
+				status = getString(R.string.normal);
+				break;		
+			default:
+				break;
+			}
+            contentValue.put(SmartSchedulerDatabase.COLUMN_ACTION_DRAW,
+                    gson.toJson(pst));
+            contentValue.put(SmartSchedulerDatabase.COLUMN_ACTION_STATUS,
+            		status);
             smartScheduleDb.open();
             smartScheduleDb.update_action(contentValue, action.getId());
             smartScheduleDb.close();

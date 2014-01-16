@@ -286,7 +286,7 @@ public class MainActivity extends ListActivity {
         public View getView(int position, View convertView, ViewGroup parent) {
 
             // set selectedItem
-            selectedItem = position;
+            final int selected = position;
 
             LayoutInflater inflater = (LayoutInflater) mContext
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -299,10 +299,10 @@ public class MainActivity extends ListActivity {
             Switch event_item_enable_switch = (Switch) row
                     .findViewById(R.id.event_item_enable_switch);
 
-            event_item_name.setText(contentValues.get(selectedItem).getName());
+            event_item_name.setText(contentValues.get(selected).getName());
             // TODO Chu y bien convert int sang boolean
 
-            int status = contentValues.get(selectedItem).getState();
+            int status = contentValues.get(selected).getState();
 
             if (status >= 2) {
                 event_item_enable_switch.setEnabled(false);
@@ -320,38 +320,38 @@ public class MainActivity extends ListActivity {
                             if (isChecked) {
                                 // update data
                                 contentValues
-                                        .get(selectedItem)
+                                        .get(selected)
                                         .setState(1);
-                                update(contentValues.get(selectedItem));
+                                update(contentValues.get(selected));
                                 schedule.setSchedule(getApplicationContext(),
-                                        contentValues.get(selectedItem));
+                                        contentValues.get(selected));
                             } else {
                                 // update data
                                 contentValues
-                                        .get(selectedItem)
+                                        .get(selected)
                                         .setState(0);
-                                update(contentValues.get(selectedItem));
+                                update(contentValues.get(selected));
                                 schedule.cancelSchedule(
                                         getApplicationContext(),
-                                        contentValues.get(selectedItem));
+                                        contentValues.get(selected));
                             }
                         }
                     });
 
             String timer = Util
                     .getTime(contentValues
-                            .get(selectedItem)
+                            .get(selected)
                             .getTimeStartHour())
 
                     + ":"
                     + Util.getTime(contentValues
-                            .get(selectedItem)
+                            .get(selected)
                             .getTimeStartMinute())
                     + " ~ "
-                    + Util.getTime(contentValues.get(selectedItem).getTimeEndHour())
+                    + Util.getTime(contentValues.get(selected).getTimeEndHour())
                     + ":"
                     + Util.getTime(contentValues
-                            .get(selectedItem)
+                            .get(selected)
                             .getTimeEndMinute());
             event_item_initiator_time_hours.setText(timer);
             return row;
