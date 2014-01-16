@@ -1,6 +1,8 @@
 package com.smartschedule.setting;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import org.json.JSONException;
 
@@ -12,6 +14,8 @@ import com.smartschedule.database.Action;
 import com.smartschedule.database.Event;
 import com.smartschedule.database.SmartSchedulerDatabase;
 import com.smartschedule.util.Constant;
+import com.smartschedule.util.DetailActionViewer;
+import com.smartschedule.util.Router;
 
 import android.app.ExpandableListActivity;
 import android.content.ContentValues;
@@ -42,17 +46,6 @@ public class SettingActivity extends ExpandableListActivity implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
-
-//
-//        Intent cv = new Intent();
-//
-//        cv.putExtra("fuck", pst);
-//
-//        DrawAction pst1 = cv.getExtras().getParcelable("fuck");
-//
-//        Log.d("TAggeD", pst1.ringtone_alarm + pst1.rimgtome_ringer);
-//
-//        Log.d("TAGGED", gson.toJson(pst1));
 
         this.event_id = intent.getExtras().getInt(
                 SmartSchedulerDatabase.COLUMN_EVENT_ID);
@@ -108,39 +101,93 @@ public class SettingActivity extends ExpandableListActivity implements
     public void setGroupData() {
         // TODO String chuyen da ngon ngu
         groupItem.clear();
-        groupItem.add("APPLICATIONs");
+        groupItem.add("APPLICATIONS");
+        groupItem.add("MEDIA");
         groupItem.add("SOUND");
         groupItem.add("COMMUNICATION");
+        groupItem.add("WIRELESS & NETWORK");
+        groupItem.add("DISPLAY");
+        groupItem.add("TEXT TO SPEECH");
     }
 
     ArrayList<String> groupItem = new ArrayList<String>();
     ArrayList<Object> childItem = new ArrayList<Object>();
 
     public void setChildGroupData() {
-        /**
-         * Add Data For TecthNology
-         */
-        childItem.clear();
-        ArrayList<Event> child = new ArrayList<Event>();
-        smartScheduleDb.openRead();
-        Event cv = smartScheduleDb.getData(event_id);
+        HashMap<Integer,DetailActionViewer>  routerUri = Router.routerUri;
 
-        child.add(cv);
-        childItem.add(child);
-
-        /**
-         * Add Data For start
-         */
         ArrayList<Action> childAction = new ArrayList<Action>();
         childAction = smartScheduleDb.getDataAction(event_id, Constant.START);
-        childItem.add(childAction);
-        /**
-         * Add Data For end
-         */
-        childAction = smartScheduleDb.getDataAction(event_id, Constant.END);
-        childItem.add(childAction);
 
         smartScheduleDb.close();
+
+        ArrayList<DetailActionViewer> applications = new ArrayList<DetailActionViewer>();
+        ArrayList<DetailActionViewer> media = new ArrayList<DetailActionViewer>();
+        ArrayList<DetailActionViewer> sound = new ArrayList<DetailActionViewer>();
+        ArrayList<DetailActionViewer> communication = new ArrayList<DetailActionViewer>();
+        ArrayList<DetailActionViewer> wirelessAndNetwork = new ArrayList<DetailActionViewer>();
+        ArrayList<DetailActionViewer> display = new ArrayList<DetailActionViewer>();
+        ArrayList<DetailActionViewer> textToSpeech = new ArrayList<DetailActionViewer>();
+
+        List<DetailActionViewer> list = new ArrayList<DetailActionViewer>(routerUri.values());
+
+        for (DetailActionViewer detailActionViewer : list) {
+            switch (detailActionViewer.category) {
+            case Constant.CATEGORY_APPLICATIONS:
+                applications.add(detailActionViewer);
+                break;
+            case Constant.CATEGORY_MEDIA:
+                media.add(detailActionViewer);
+                break;
+            case Constant.CATEGORY_SOUND:
+                sound.add(detailActionViewer);
+            case Constant.CATEGORY_COMMUNICATION:
+                communication.add(detailActionViewer);
+            case Constant.CATEGORY_WIRELESS_NETWORK:
+                wirelessAndNetwork.add(detailActionViewer);
+            case Constant.CATEGORY_DISPLAY:
+                display.add(detailActionViewer);
+            case Constant.CATEGORY_TEXT_TO_SPEECH:
+                textToSpeech.add(detailActionViewer);
+                break;
+            default:
+                break;
+            }
+        }
+
+        childItem.clear();
+
+
+        /**
+         * Add Data For APPLICATIONS
+         */
+        childItem.add(applications);
+        /**
+         * Add Data For MEDIA
+         */
+        childItem.add(media);
+
+        /**
+         * Add Data For sound
+         */
+        childItem.add(sound);
+        /**
+         * Add Data For communication
+         */
+        childItem.add(communication);
+        /**
+         * Add Data For wirelessAndNetwork
+         */
+        childItem.add(wirelessAndNetwork);
+        /**
+         * Add Data For DISPLAY
+         */
+        childItem.add(display);
+        /**
+         * Add Data For textToSpeech
+         */
+        childItem.add(textToSpeech);
+
     }
 
 }

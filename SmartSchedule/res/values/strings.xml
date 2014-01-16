@@ -28,4 +28,11 @@
     <string name="advance_sound_off">Disable advanced sound</string>
     <string name="advance_sound_on">Enable advanced sound</string>
 
+
+
+    <!-- action name -->
+    <string name="name_sound_manager">Sound</string>
+    <string name="name_wifi">Wifi</string>
+    <string name="name_bluetooth">BlueTooth</string>
+
 </resources>

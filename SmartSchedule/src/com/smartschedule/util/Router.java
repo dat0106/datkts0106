@@ -20,12 +20,26 @@ public class Router {
         HashMap<Integer,DetailActionViewer> router =new HashMap<Integer, DetailActionViewer>();
 
         DetailActionViewer r = new DetailActionViewer();
-        r.id = 1;
+        r.id = Constant.ROUTER_SOUND_MANAGER;
         r.name = R.string.app_name;
         r.iconURI =  R.drawable.ic_launcher;
-        r.category = 1;
+        r.category = Constant.CATEGORY_SOUND;
 
-        router.put(1, r);
+        router.put(Constant.ROUTER_SOUND_MANAGER, r);
+
+        r.id = Constant.ROUTER_WIFI;
+        r.name = R.string.app_name;
+        r.iconURI =  R.drawable.ic_launcher;
+        r.category = Constant.CATEGORY_WIRELESS_NETWORK;
+
+        router.put(Constant.ROUTER_WIFI, r);
+
+        r.id = Constant.ROUTER_BLUETOOTH;
+        r.name = R.string.app_name;
+        r.iconURI =  R.drawable.ic_launcher;
+        r.category = Constant.CATEGORY_SOUND;
+
+        router.put(Constant.ROUTER_BLUETOOTH, r);
         return router;
     }
 

@@ -159,6 +159,11 @@ public final class R {
         public static final int hello_world=0x7f060002;
         public static final int hint_dialog_add_event=0x7f06000b;
         public static final int musicLabel=0x7f060010;
+        public static final int name_bluetooth=0x7f06001c;
+        /**  action name 
+         */
+        public static final int name_sound_manager=0x7f06001a;
+        public static final int name_wifi=0x7f06001b;
         public static final int normal=0x7f060015;
         public static final int ringerLabel=0x7f060011;
         public static final int silent=0x7f060017;
