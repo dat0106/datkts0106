@@ -272,6 +272,15 @@ public class SmartSchedulerDatabase {
                     "error when getdata follow id can not get event or more 2 event");
         }
 
+        Log.v(this.toString(),"getData : " + "\n" + "id : " +  event.getId() + "\n"
+                + "name : " +  event.getName() + "\n"
+                + "category : " +  event.getCategory() + "\n"
+                + "Schedule : " +  event.getSchedule() + "\n"
+                + "State : " +  event.getState() + "\n"
+                + "starthour : " +  event.getTimeStartHour() + "\n"
+                + "startminute : " +  event.getTimeStartMinute() + "\n"
+                + "endhour : " +  event.getTimeEndHour() + "\n"
+                + "endminute : " +  event.getTimeEndMinute());
         return event;
     }
 
@@ -355,6 +364,7 @@ public class SmartSchedulerDatabase {
     }
 
     public int update_event(ContentValues contentValues, long event_id) {
+        Log.v(this.toString(),"update_event : " + contentValues.toString());
         return db.update(TABLE_EVENT, contentValues, COLUMN_EVENT_ID + "="
                 + event_id, null);
     }

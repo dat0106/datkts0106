@@ -248,7 +248,9 @@ public class EventTimeActivity extends Activity {
         case R.id.done:
             // update state
             contentValues.setState(1);
+
             ContentValues cv = new ContentValues();
+            cv.put(SmartSchedulerDatabase.COLUMN_EVENT_STATE, contentValues.getState());
             cv.put(SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_HOUR,
                     contentValues.getTimeStartHour());
             cv.put(SmartSchedulerDatabase.COLUMN_EVENT_TIME_START_MINUTE,
@@ -257,7 +259,7 @@ public class EventTimeActivity extends Activity {
                     contentValues.getTimeEndHour());
             cv.put(SmartSchedulerDatabase.COLUMN_EVENT_TIME_END_MINUTE,
                     contentValues.getTimeEndMinute());
-            cv.put(SmartSchedulerDatabase.COLUMN_EVENT_STATE, contentValues.getState());
+
 
             smartScheduleDb.open();
             smartScheduleDb.update_event(cv, contentValues.getId());

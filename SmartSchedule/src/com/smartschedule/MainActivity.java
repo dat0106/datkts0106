@@ -93,8 +93,8 @@ public class MainActivity extends ListActivity {
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    protected void onResume() {
+        super.onResume();
         // reload list view
         contentValues = getData();
         mAdapter.notifyDataSetChanged();

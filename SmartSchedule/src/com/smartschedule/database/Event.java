@@ -132,6 +132,7 @@ public class Event implements Parcelable {
         this.name = name;
     }
 
+    
     public static final Parcelable.Creator<Event> CREATOR
     = new Parcelable.Creator<Event>() {
         public Event createFromParcel(Parcel in) {

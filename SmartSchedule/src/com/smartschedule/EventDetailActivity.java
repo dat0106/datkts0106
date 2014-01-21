@@ -87,9 +87,9 @@ public class EventDetailActivity extends ExpandableListActivity implements
     }
 
     @Override
-    protected void onStart() {
+    protected void onResume() {
         // TODO Auto-generated method stub
-        super.onStart();
+        super.onResume();
         setGroupData();
         setChildGroupData();
         mNewAdapter.UpdateDataChange(groupItem, childItem, event_id);
