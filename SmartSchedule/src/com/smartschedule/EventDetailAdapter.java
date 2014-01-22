@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.smartschedule.database.Action;
 import com.smartschedule.database.Event;
 import com.smartschedule.database.SmartSchedulerDatabase;
+import com.smartschedule.setting.SettingActivity;
 import com.smartschedule.util.Constant;
 import com.smartschedule.util.DetailActionViewer;
 import com.smartschedule.util.Router;
@@ -164,32 +165,43 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
                     @Override
                     public void onClick(View v) {
                         // TODO bat vao trang lay lay setting
-                        SmartSchedulerDatabase smartScheduleDb = new SmartSchedulerDatabase(
-                                activity.getBaseContext());
-                        ContentValues contentValues = new ContentValues();
+//                        SmartSchedulerDatabase smartScheduleDb = new SmartSchedulerDatabase(
+//                                activity.getBaseContext());
+//                        ContentValues contentValues = new ContentValues();
+//                        if (StartOrEnd == 1) {
+//                            contentValues
+//                                    .put(SmartSchedulerDatabase.COLUMN_ACTION_START_ID,
+//                                            event_id);
+//                        } else {
+//                            contentValues
+//                                    .put(SmartSchedulerDatabase.COLUMN_ACTION_END_ID,
+//                                            event_id);
+//                        }
+//                        contentValues.put(
+//                                SmartSchedulerDatabase.COLUMN_ACTION_STATE, 1);
+//                        contentValues.put(
+//                                SmartSchedulerDatabase.COLUMN_ACTION_NAME,
+//                                "demo");
+//                        contentValues
+//                                .put(SmartSchedulerDatabase.COLUMN_ACTION_DRAW,
+//                                        "{}");
+//                        contentValues.put(
+//                                SmartSchedulerDatabase.COLUMN_ACTION_STATUS,
+//                                "demoStatus");
+//                        smartScheduleDb.open();
+//                        smartScheduleDb.insert_action(contentValues);
+//                        smartScheduleDb.close();
+
+                        Intent intent = new Intent(activity, SettingActivity.class);
+
+                        intent.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, event_id);
                         if (StartOrEnd == 1) {
-                            contentValues
-                                    .put(SmartSchedulerDatabase.COLUMN_ACTION_START_ID,
-                                            event_id);
+                            intent.putExtra(Constant.START_OR_END, Constant.START);
                         } else {
-                            contentValues
-                                    .put(SmartSchedulerDatabase.COLUMN_ACTION_END_ID,
-                                            event_id);
+                            intent.putExtra(Constant.START_OR_END, Constant.END);
                         }
-                        contentValues.put(
-                                SmartSchedulerDatabase.COLUMN_ACTION_STATE, 1);
-                        contentValues.put(
-                                SmartSchedulerDatabase.COLUMN_ACTION_NAME,
-                                "demo");
-                        contentValues
-                                .put(SmartSchedulerDatabase.COLUMN_ACTION_DRAW,
-                                        "{}");
-                        contentValues.put(
-                                SmartSchedulerDatabase.COLUMN_ACTION_STATUS,
-                                "demoStatus");
-                        smartScheduleDb.open();
-                        smartScheduleDb.insert_action(contentValues);
-                        smartScheduleDb.close();
+
+                        activity.startActivity(intent);
                         Toast.makeText(activity, "add action",
                                 Toast.LENGTH_LONG).show();
                     }

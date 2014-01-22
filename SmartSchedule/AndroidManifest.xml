@@ -55,6 +55,16 @@
                 android:value=".MainActivity" />
         </activity>
         <activity
+            android:name="com.smartschedule.setting.SettingActivity"
+            android:label="@string/app_name"
+            android:parentActivityName=".EventDetailActivity"
+            android:theme="@android:style/Theme.Holo.Light"
+            android:uiOptions="splitActionBarWhenNarrow" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".EventDetailActivity" />
+        </activity>
+        <activity
             android:name="com.smartschedule.action.ActivitySoundManager"
             android:label="@string/app_name"
             android:parentActivityName=".EventTimeActivity"
@@ -69,7 +79,6 @@
         </receiver>
         <receiver android:name="com.smartschedule.ScheduleServiceReceiver" >
         </receiver>
-
         <receiver
             android:name="com.smartschedule.action.ActivitySoundManager"
             android:enabled="true" >

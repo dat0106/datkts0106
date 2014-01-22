@@ -75,8 +75,8 @@ public class SettingActivity extends ExpandableListActivity implements
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    protected void onResume() {
+        super.onResume();
         setGroupData();
         setChildGroupData();
         mNewAdapter.UpdateDataChange(groupItem, childItem, event_id);
@@ -116,6 +116,7 @@ public class SettingActivity extends ExpandableListActivity implements
     public void setChildGroupData() {
         HashMap<Integer,DetailActionViewer>  routerUri = Router.routerUri;
 
+        smartScheduleDb.openRead();
         ArrayList<Action> childAction = new ArrayList<Action>();
         childAction = smartScheduleDb.getDataAction(event_id, Constant.START);
 
