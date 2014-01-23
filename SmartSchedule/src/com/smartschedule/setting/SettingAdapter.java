@@ -68,48 +68,23 @@ public class SettingAdapter extends BaseExpandableListAdapter {
             convertView = minflater.inflate(R.layout.setting_child, null);
         }
         TextView text = (TextView) convertView.findViewById(R.id.childNameSetting);
-        if(groupPosition == 0){
-            ArrayList<Event> tempChild = (ArrayList<Event>) Childtem.get(groupPosition);
 
-            final Event Child =  tempChild.get(childPosition);
-
-            text.setText(Child.getName());
-
-            String timer = Util
-                    .getTime(Child.getTimeStartHour())
-                    + ":"
-                    + Util.getTime(Child.getTimeStartMinute())
-                    + " ~ "
-                    + Util.getTime(Child.getTimeEndHour())
-                    + ":"
-                    + Util.getTime(Child.getTimeEndMinute());
-            convertView.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    Intent intent = new Intent(activity, EventTimeActivity.class);
-                    intent.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, event_id);
-                    activity.startActivity(intent);
-                }
-            });
-        }else{
-            ArrayList<Action> tempChild = (ArrayList<Action>) Childtem.get(groupPosition);
+        ArrayList<DetailActionViewer> tempChild = (ArrayList<DetailActionViewer>) Childtem.get(groupPosition);
 
 
-            final Action Child =  tempChild.get(childPosition);
-            DetailActionViewer router = Router.routerUri.get(Child.getState());
-            text.setText(activity.getString(router.name));
+        final DetailActionViewer Child =  tempChild.get(childPosition);
+        text.setText(activity.getString(Child.name));
 
-            convertView.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Router.routerActivity(event_id, Child, activity);
+        convertView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Router.routerActivity(event_id, Child, activity);
 
-                    Toast.makeText(activity, Child.getName(),
-                            Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
+                Toast.makeText(activity, Child.getName(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
         return convertView;
     }
 
@@ -152,33 +127,7 @@ public class SettingAdapter extends BaseExpandableListAdapter {
             convertView = minflater.inflate(R.layout.setting_group, null);
         }
         ((TextView) convertView.findViewById(R.id.group_setting)).setText(groupItem.get(groupPosition));
-        ((Button) convertView.findViewById(R.id.add_action)).setOnClickListener(new OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                // TODO bat vao trang  lay lay setting
-                SmartSchedulerDatabase smartScheduleDb = new SmartSchedulerDatabase(
-                        activity.getBaseContext());
-                ContentValues contentValues = new ContentValues();
-                if(StartOrEnd == 1){
-                    contentValues.put(SmartSchedulerDatabase.COLUMN_ACTION_START_ID, event_id);
-                }else {
-                    contentValues.put(SmartSchedulerDatabase.COLUMN_ACTION_END_ID, event_id);
-                }
-                contentValues.put(SmartSchedulerDatabase.COLUMN_ACTION_STATE, 1);
-                contentValues.put(SmartSchedulerDatabase.COLUMN_ACTION_NAME, "demo");
-                contentValues.put(SmartSchedulerDatabase.COLUMN_ACTION_DRAW, "{}");
-                contentValues.put(SmartSchedulerDatabase.COLUMN_ACTION_STATUS, "demoStatus");
-                smartScheduleDb.open();
-                smartScheduleDb.insert_action(contentValues);
-                smartScheduleDb.close();
-                Toast.makeText(activity, "add action", Toast.LENGTH_LONG).show();
-            }
-        });
-
-        if(groupPosition == 0) {
-            ((Button) convertView.findViewById(R.id.add_action)).setVisibility(View.INVISIBLE);
-        }
         return convertView;
     }
 
