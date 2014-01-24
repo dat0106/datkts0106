@@ -51,7 +51,7 @@ public class Router {
         intent.putExtra(Constant.ACTION_PARAMS, childAction);
 
         switch (childAction.getState()) {
-        case 1:
+        case Constant.ROUTER_SOUND_MANAGER:
             intent.setClass(activity, ActivitySoundManager.class);
             activity.startActivity(intent);
             break;
@@ -61,4 +61,39 @@ public class Router {
         }
     }
 
+    public static void routerSetting(Integer event_id, DetailActionViewer childAction, Activity activity) {
+        Intent intent = new Intent();
+        intent.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, event_id);
+
+        intent.putExtra(Constant.ACTION_PARAMS, childAction);
+
+        SmartSchedulerDatabase smartScheduleDb = new SmartSchedulerDatabase(
+                activity.getBaseContext());
+        ContentValues contentValues = new ContentValues();
+        if (StartOrEnd == 1) {
+            contentValues.put(SmartSchedulerDatabase.COLUMN_ACTION_START_ID,
+                    event_id);
+        } else {
+            contentValues.put(SmartSchedulerDatabase.COLUMN_ACTION_END_ID,
+                    event_id);
+        }
+        contentValues.put(SmartSchedulerDatabase.COLUMN_ACTION_STATE, 1);
+        contentValues.put(SmartSchedulerDatabase.COLUMN_ACTION_NAME, "demo");
+        contentValues.put(SmartSchedulerDatabase.COLUMN_ACTION_DRAW, "{}");
+        contentValues.put(SmartSchedulerDatabase.COLUMN_ACTION_STATUS,
+                "demoStatus");
+        smartScheduleDb.open();
+        smartScheduleDb.insert_action(contentValues);
+        smartScheduleDb.close();
+
+        switch (childAction.getState()) {
+        case Constant.ROUTER_SOUND_MANAGER:
+            intent.setClass(activity, ActivitySoundManager.class);
+            activity.startActivity(intent);
+            break;
+
+        default:
+            break;
+        }
+    }
 }

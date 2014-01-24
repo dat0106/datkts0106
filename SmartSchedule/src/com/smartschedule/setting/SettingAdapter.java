@@ -78,10 +78,8 @@ public class SettingAdapter extends BaseExpandableListAdapter {
         convertView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Router.routerActivity(event_id, Child, activity);
+                Router.routerSetting(event_id, Child, activity);
 
-                Toast.makeText(activity, Child.getName(),
-                        Toast.LENGTH_SHORT).show();
             }
         });
 
