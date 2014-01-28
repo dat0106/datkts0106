@@ -142,12 +142,16 @@ public class SettingActivity extends ExpandableListActivity implements
                 break;
             case Constant.CATEGORY_SOUND:
                 sound.add(detailActionViewer);
+                break;
             case Constant.CATEGORY_COMMUNICATION:
                 communication.add(detailActionViewer);
+                break;
             case Constant.CATEGORY_WIRELESS_NETWORK:
                 wirelessAndNetwork.add(detailActionViewer);
+                break;
             case Constant.CATEGORY_DISPLAY:
                 display.add(detailActionViewer);
+                break;
             case Constant.CATEGORY_TEXT_TO_SPEECH:
                 textToSpeech.add(detailActionViewer);
                 break;

@@ -109,7 +109,7 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
             convertView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Router.routerActivity(event_id, Child, activity);
+                    Router.routerActivity(event_id, Child.getState(), Child, activity);
 
                     Toast.makeText(activity, Child.getName(),
                             Toast.LENGTH_SHORT).show();

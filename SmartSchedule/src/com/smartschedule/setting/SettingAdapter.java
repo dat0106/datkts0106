@@ -78,7 +78,7 @@ public class SettingAdapter extends BaseExpandableListAdapter {
         convertView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Router.routerSetting(event_id, Child, activity);
+                Router.routerActivity(event_id, Child.id, null, activity);
 
             }
         });
