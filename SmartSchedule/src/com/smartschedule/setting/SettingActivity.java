@@ -37,6 +37,7 @@ public class SettingActivity extends ExpandableListActivity implements
     private SmartSchedulerDatabase smartScheduleDb = new SmartSchedulerDatabase(
             this);
     private int event_id;
+    private String start_or_end;
     private ContentValues eventDetail;
     private ContentValues actionStart;
     private ContentValues actionEnd;
@@ -50,6 +51,7 @@ public class SettingActivity extends ExpandableListActivity implements
         this.event_id = intent.getExtras().getInt(
                 SmartSchedulerDatabase.COLUMN_EVENT_ID);
 
+        this.start_or_end = intent.getExtras().getString(Constant.START_OR_END);
         ExpandableListView expandbleLis = getExpandableListView();
         expandbleLis.setDividerHeight(2);
         expandbleLis.setGroupIndicator(null);
@@ -59,7 +61,7 @@ public class SettingActivity extends ExpandableListActivity implements
         setChildGroupData();
 
         mNewAdapter = new SettingAdapter(groupItem,
-                childItem, event_id);
+                childItem, event_id, start_or_end);
         mNewAdapter
                 .setInflater(
                         (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE),
@@ -79,7 +81,7 @@ public class SettingActivity extends ExpandableListActivity implements
         super.onResume();
         setGroupData();
         setChildGroupData();
-        mNewAdapter.UpdateDataChange(groupItem, childItem, event_id);
+        mNewAdapter.UpdateDataChange(groupItem, childItem, event_id, start_or_end);
         mNewAdapter.notifyDataSetChanged();
     }
     @Override

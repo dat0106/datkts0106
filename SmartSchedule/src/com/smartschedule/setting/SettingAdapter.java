@@ -33,17 +33,22 @@ public class SettingAdapter extends BaseExpandableListAdapter {
     public LayoutInflater minflater;
     public Activity activity;
     public int event_id;
+    private String start_or_end;
 
-    public SettingAdapter(ArrayList<String> grList, ArrayList<Object> childItem, int event_id) {
+    public SettingAdapter(ArrayList<String> grList,
+            ArrayList<Object> childItem, int event_id, String start_or_end) {
         groupItem = grList;
         this.Childtem = childItem;
         this.event_id = event_id;
+        this.start_or_end = start_or_end;
     }
 
-    public void UpdateDataChange(ArrayList<String> grList, ArrayList<Object> childItem, int event_id) {
+    public void UpdateDataChange(ArrayList<String> grList,
+            ArrayList<Object> childItem, int event_id, String start_or_end) {
         groupItem = grList;
         this.Childtem = childItem;
         this.event_id = event_id;
+        this.start_or_end = start_or_end;
     }
 
     public void setInflater(LayoutInflater mInflater, Activity act) {
@@ -67,18 +72,19 @@ public class SettingAdapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             convertView = minflater.inflate(R.layout.setting_child, null);
         }
-        TextView text = (TextView) convertView.findViewById(R.id.childNameSetting);
+        TextView text = (TextView) convertView
+                .findViewById(R.id.childNameSetting);
 
-        ArrayList<DetailActionViewer> tempChild = (ArrayList<DetailActionViewer>) Childtem.get(groupPosition);
+        ArrayList<DetailActionViewer> tempChild = (ArrayList<DetailActionViewer>) Childtem
+                .get(groupPosition);
 
-
-        final DetailActionViewer Child =  tempChild.get(childPosition);
+        final DetailActionViewer Child = tempChild.get(childPosition);
         text.setText(activity.getString(Child.name));
 
         convertView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Router.routerActivity(event_id, Child.id, null, activity);
+                Router.routerSetting(event_id, Child.id, start_or_end,  activity);
 
             }
         });
@@ -120,11 +126,12 @@ public class SettingAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int groupPosition, boolean isExpanded,
             View convertView, ViewGroup parent) {
 
-        final int StartOrEnd =  groupPosition;
+        final int StartOrEnd = groupPosition;
         if (convertView == null) {
             convertView = minflater.inflate(R.layout.setting_group, null);
         }
-        ((TextView) convertView.findViewById(R.id.group_setting)).setText(groupItem.get(groupPosition));
+        ((TextView) convertView.findViewById(R.id.group_setting))
+                .setText(groupItem.get(groupPosition));
 
         return convertView;
     }
@@ -138,6 +145,5 @@ public class SettingAdapter extends BaseExpandableListAdapter {
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return false;
     }
-
 
 }
