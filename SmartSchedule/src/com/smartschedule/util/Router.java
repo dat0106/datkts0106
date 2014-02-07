@@ -21,7 +21,7 @@ public class Router {
 
         DetailActionViewer r = new DetailActionViewer();
         r.id = Constant.ROUTER_SOUND_MANAGER;
-        r.name = R.string.app_name;
+        r.name = R.string.name_sound_manager;
         r.iconURI =  R.drawable.ic_launcher;
         r.category = Constant.CATEGORY_SOUND;
 
@@ -29,7 +29,7 @@ public class Router {
 
         DetailActionViewer r1 = new DetailActionViewer();
         r1.id = Constant.ROUTER_WIFI;
-        r1.name = R.string.app_name;
+        r1.name = R.string.name_wifi;
         r1.iconURI =  R.drawable.ic_launcher;
         r1.category = Constant.CATEGORY_WIRELESS_NETWORK;
 
@@ -37,7 +37,7 @@ public class Router {
 
         DetailActionViewer r2 = new DetailActionViewer();
         r2.id = Constant.ROUTER_BLUETOOTH;
-        r2.name = R.string.app_name;
+        r2.name = R.string.name_bluetooth;
         r2.iconURI =  R.drawable.ic_launcher;
         r2.category = Constant.CATEGORY_SOUND;
 
