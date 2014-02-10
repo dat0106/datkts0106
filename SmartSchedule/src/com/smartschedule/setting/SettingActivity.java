@@ -91,7 +91,7 @@ public class SettingActivity extends ExpandableListActivity implements
         case android.R.id.home:
             // Navigate "up" the demo structure to the launchpad activity.
             // for more.
-            NavUtils.navigateUpTo(this, new Intent(this, EventDetailActivity.class));
+            finish();
 
             return true;
 
@@ -120,7 +120,7 @@ public class SettingActivity extends ExpandableListActivity implements
 
         smartScheduleDb.openRead();
         ArrayList<Action> childAction = new ArrayList<Action>();
-        childAction = smartScheduleDb.getDataAction(event_id, Constant.START);
+        childAction = smartScheduleDb.getDataAction(event_id, start_or_end);
 
         smartScheduleDb.close();
 

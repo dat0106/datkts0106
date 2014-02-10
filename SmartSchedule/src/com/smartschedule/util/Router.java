@@ -64,6 +64,9 @@ public class Router {
         if (childAction != null) {
             intent.putExtra(Constant.ACTION_PARAMS, childAction);
         }
+        if (start_or_end != null) {
+            intent.putExtra(Constant.START_OR_END, start_or_end);
+        }
 
         switch (router) {
         case Constant.ROUTER_SOUND_MANAGER:
