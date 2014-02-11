@@ -116,13 +116,17 @@ public class SettingActivity extends ExpandableListActivity implements
     ArrayList<Object> childItem = new ArrayList<Object>();
 
     public void setChildGroupData() {
-        HashMap<Integer,DetailActionViewer>  routerUri = Router.routerUri;
+        HashMap<Integer,DetailActionViewer>  routerUri = Router.routerUri();
+
 
         smartScheduleDb.openRead();
         ArrayList<Action> childAction = new ArrayList<Action>();
         childAction = smartScheduleDb.getDataAction(event_id, start_or_end);
-
         smartScheduleDb.close();
+
+        for(Action action : childAction){
+            routerUri.remove(action.getState());
+        }
 
         ArrayList<DetailActionViewer> applications = new ArrayList<DetailActionViewer>();
         ArrayList<DetailActionViewer> media = new ArrayList<DetailActionViewer>();
@@ -133,6 +137,7 @@ public class SettingActivity extends ExpandableListActivity implements
         ArrayList<DetailActionViewer> textToSpeech = new ArrayList<DetailActionViewer>();
 
         List<DetailActionViewer> list = new ArrayList<DetailActionViewer>(routerUri.values());
+
 
         for (DetailActionViewer detailActionViewer : list) {
             switch (detailActionViewer.category) {

@@ -397,7 +397,20 @@ public class SmartSchedulerDatabase {
     }
 
     public int delete(int id) {
+        int startAction  = db.delete(TABLE_ACTION, COLUMN_ACTION_START_ID + "=" + id, null);
+        int endAction  = db.delete(TABLE_ACTION, COLUMN_ACTION_END_ID + "=" + id, null);
+        int schedule = db.delete(TABLE_SCHEDULE, COLUMN_SCHEDULE_EVENT_ID + "=" + id, null);
+
+        Log.v(this.toString(),
+            "delete start action : " + startAction + "\n"+
+            "delete end action : " + endAction + "\n"+
+            "delete schedule : " + schedule + "\n"
+        );
         return db.delete(TABLE_EVENT, COLUMN_EVENT_ID + "=" + id, null);
+    }
+
+    public int delete_action(int id) {
+        return db.delete(TABLE_ACTION, COLUMN_ACTION_ID + "=" + id, null);
     }
 
     // ---------------- class OpenHelper ------------------

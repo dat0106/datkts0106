@@ -121,7 +121,7 @@ public class SchedulingService extends IntentService {
         // work while RINGING
         // den app khac ko
 
-        audio.setMode(Integer.parseInt(drawAction.sound_mode));
+        audio.setRingerMode(Integer.parseInt(drawAction.sound_mode));
 
         if (drawAction.sound_ring != null) {
             audio.setStreamVolume(AudioManager.STREAM_RING,

@@ -12,9 +12,7 @@ import com.smartschedule.database.SmartSchedulerDatabase;
 
 public class Router {
 
-    public static final HashMap<Integer, DetailActionViewer> routerUri = routerURI();
-
-    private static HashMap<Integer, DetailActionViewer> routerURI() {
+    public static HashMap<Integer, DetailActionViewer> routerUri() {
         HashMap<Integer, DetailActionViewer> router = new HashMap<Integer, DetailActionViewer>();
 
         DetailActionViewer r = new DetailActionViewer();

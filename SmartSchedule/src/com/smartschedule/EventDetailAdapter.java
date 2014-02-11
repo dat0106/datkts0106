@@ -102,7 +102,7 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
                     .get(groupPosition);
 
             final Action Child = tempChild.get(childPosition);
-            DetailActionViewer router = Router.routerUri.get(Child.getState());
+            DetailActionViewer router = Router.routerUri().get(Child.getState());
             text.setText(activity.getString(router.name));
 
             textDetail.setText(Child.getStatus());
