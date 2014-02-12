@@ -13,7 +13,7 @@ public class DrawAction
     public String sound_system;
     public String sound_voice_call;
     public String ringtone_alarm;
-    public String rimgtome_ringer;
+    public String rimgtone_ringer;
     public String ringtone_notification;
 
 }

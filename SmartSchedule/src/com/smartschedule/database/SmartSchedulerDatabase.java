@@ -48,6 +48,7 @@ public class SmartSchedulerDatabase {
     public static final String COLUMN_ACTION_STATE = "state";
     public static final String COLUMN_ACTION_NAME = "name";
     public static final String COLUMN_ACTION_DRAW = "draw_action";
+    public static final String COLUMN_ACTION_DRAW_CURRENT = "draw_current_action";
     public static final String COLUMN_ACTION_STATUS = "status";
 
     private static Context context;
@@ -289,7 +290,7 @@ public class SmartSchedulerDatabase {
         // get action
         String[] columnsAction = new String[] { COLUMN_ACTION_ID,
                 COLUMN_ACTION_START_ID, COLUMN_ACTION_END_ID, COLUMN_ACTION_STATUS,
-                COLUMN_ACTION_DRAW, COLUMN_ACTION_STATE, COLUMN_ACTION_NAME };
+                COLUMN_ACTION_DRAW, COLUMN_ACTION_DRAW_CURRENT,COLUMN_ACTION_STATE, COLUMN_ACTION_NAME };
 
         ArrayList<Action> result = new ArrayList<Action>();
 
@@ -322,6 +323,8 @@ public class SmartSchedulerDatabase {
                         .getColumnIndex(COLUMN_ACTION_STATUS)));
                 action.setDrawAction(cActionStart.getString(cActionStart
                         .getColumnIndex(COLUMN_ACTION_DRAW)));
+                action.setDrawCurrentAction(cActionStart.getString(cActionStart
+                        .getColumnIndex(COLUMN_ACTION_DRAW_CURRENT)));
                 result.add(action);
             }
         } else if (Constant.END.equals(key)) {
@@ -355,7 +358,8 @@ public class SmartSchedulerDatabase {
                         .getColumnIndex(COLUMN_ACTION_STATUS)));
                 action.setDrawAction(cActionEnd.getString(cActionEnd
                         .getColumnIndex(COLUMN_ACTION_DRAW)));
-
+                action.setDrawCurrentAction(cActionEnd.getString(cActionEnd
+                        .getColumnIndex(COLUMN_ACTION_DRAW_CURRENT)));
                 result.add(action);
             }
         }
@@ -449,6 +453,7 @@ public class SmartSchedulerDatabase {
                     + COLUMN_ACTION_END_ID + " INTEGER DEFAULT NULL, "
                     + COLUMN_ACTION_STATE + " INTEGER DEFAULT NULL, "
                     + COLUMN_ACTION_DRAW + " TEXT DEFAULT NULL, "
+                    + COLUMN_ACTION_DRAW_CURRENT + " TEXT DEFAULT NULL, "
                     + COLUMN_ACTION_STATUS + " TEXT DEFAULT NULL, "
                     + COLUMN_ACTION_NAME + " TEXT " + ");");
         }

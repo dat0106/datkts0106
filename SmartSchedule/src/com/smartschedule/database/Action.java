@@ -11,6 +11,7 @@ public class Action implements Parcelable{
     private Integer state;
     private String name;
     private String drawAction;
+    private String drawCurrentAction;
     private String status;
     public Action(Parcel in) {
         id =  in.readInt();
@@ -108,6 +109,15 @@ public class Action implements Parcelable{
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getDrawCurrentAction() {
+        return drawCurrentAction;
+    }
+
+    public void setDrawCurrentAction(String drawCurrentAction) {
+        this.drawCurrentAction = drawCurrentAction;
+
     }
 
 }
