@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 public class DrawAction
 {
+    // activity sound manager
     public String sound_mode;
     public String sound_alarm;
     public String sound_ring;
@@ -16,4 +17,6 @@ public class DrawAction
     public String rimgtone_ringer;
     public String ringtone_notification;
 
+    // dialog wifi manager
+    public String wifi_mode;
 }

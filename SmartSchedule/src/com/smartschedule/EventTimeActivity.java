@@ -89,9 +89,23 @@ public class EventTimeActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                smartScheduleDb.open();
-                String data1 = smartScheduleDb.getAllData();
-                smartScheduleDb.close();
+                AlertDialog.Builder builder = new AlertDialog.Builder(EventTimeActivity.this);
+                // Add the buttons
+                builder.setPositiveButton(R.string.done, new DialogInterface.OnClickListener() {
+                           public void onClick(DialogInterface dialog, int id) {
+                               // User clicked OK button
+                           }
+                       });
+                builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                           public void onClick(DialogInterface dialog, int id) {
+                               // User cancelled the dialog
+                           }
+                       });
+                // Set other dialog properties
+
+                // Create the AlertDialog
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
 

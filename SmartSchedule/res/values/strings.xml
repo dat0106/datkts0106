@@ -22,7 +22,7 @@
     <string name="alertsLabel">Notification</string>
     <string name="systemLabel">System</string>
     <string name="voicecallLabel">Voice Call</string>
-    <string name="normal">Sound</string>
+    <string name="normal">Normal</string>
     <string name="vibrate">Vibrate</string>
     <string name="silent">Silent</string>
     <string name="advance_sound_off">Disable advanced sound</string>
@@ -31,8 +31,11 @@
 
 
     <!-- action name -->
-    <string name="name_sound_manager">Sound</string>
+    <string name="name_sound_manager">Sound &amp; Volume</string>
     <string name="name_wifi">Wifi</string>
     <string name="name_bluetooth">BlueTooth</string>
 
+    <!-- setting name -->
+    <string name="on">On</string>
+    <string name="off">Off</string>
 </resources>

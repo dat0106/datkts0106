@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="dialog_wifi">
+        <item>On</item>
+        <item>Off</item>
+    </array>
+
+</resources>

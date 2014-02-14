@@ -3,10 +3,13 @@ package com.smartschedule.util;
 import java.util.HashMap;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 
 import com.smartschedule.R;
 import com.smartschedule.action.ActivitySoundManager;
+import com.smartschedule.action.DialogWifiManager;
 import com.smartschedule.database.Action;
 import com.smartschedule.database.SmartSchedulerDatabase;
 
@@ -43,14 +46,12 @@ public class Router {
 
     public static void routerActivity(Integer event_id, Integer router,
             Action childAction, Activity activity) {
-        router(event_id, router, null,
-                childAction, activity);
+        router(event_id, router, null, childAction, activity);
     }
 
     public static void routerSetting(Integer event_id, Integer router,
             String start_or_end, Activity activity) {
-        router(event_id, router, start_or_end,
-                null, activity);
+        router(event_id, router, start_or_end, null, activity);
 
     }
 
@@ -71,7 +72,12 @@ public class Router {
             intent.setClass(activity, ActivitySoundManager.class);
             activity.startActivity(intent);
             break;
+        case Constant.ROUTER_WIFI:
 
+            DialogWifiManager builder = new DialogWifiManager(activity, intent);
+            AlertDialog dialog = builder.create();
+            dialog.show();
+            break;
         default:
             break;
         }
