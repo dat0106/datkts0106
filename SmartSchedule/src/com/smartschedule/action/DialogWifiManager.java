@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.smartschedule.DrawAction;
+import com.smartschedule.EventDetailActivity;
 import com.smartschedule.R;
 import com.smartschedule.database.Action;
 import com.smartschedule.database.Event;
@@ -18,8 +19,11 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.net.wifi.WifiManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,18 +37,24 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 
 public class DialogWifiManager extends AlertDialog.Builder {
 
-    private static Context context;
+    private Activity context;
     private int event_id;
     private Action action;
     private String start_or_end;
     private DrawAction pst;
-    private int currentItem;
+    private Boolean statusWifi;
     private WifiManager wifiManager;
+    private Gson gson;
+    private SmartSchedulerDatabase smartScheduleDb;
 
-    public DialogWifiManager(Context context, Intent intent) {
+    public DialogWifiManager(final Activity context, Intent intent) {
         super(context);
         this.context = context;
 
+        smartScheduleDb = new SmartSchedulerDatabase(
+                context);
+        wifiManager =  (WifiManager) context
+                .getSystemService(Context.WIFI_SERVICE);
         this.event_id = intent.getExtras().getInt(
                 SmartSchedulerDatabase.COLUMN_EVENT_ID);
         action = intent.getExtras().getParcelable(Constant.ACTION_PARAMS);
@@ -56,25 +66,14 @@ public class DialogWifiManager extends AlertDialog.Builder {
         }
 
         GsonBuilder gsonb = new GsonBuilder();
-        Gson gson = gsonb.create();
+        gson = gsonb.create();
         pst = gson.fromJson(jString, DrawAction.class);
 
-        // currentItem maping dialog_wifi
-        switch (Integer.parseInt(pst.wifi_mode)) {
-        case 0:
-            currentItem = 1;
-            break;
-        case 1:
-            currentItem = 0;
-            break;
-
-        default:
-            if(wifiManager.isWifiEnabled()){
-                currentItem = 1;
-            }else {
-                currentItem = 0;
-            }
-            break;
+        // statusWifi maping dialog_wifi and
+        if(pst.wifi_mode == null){
+            statusWifi = wifiManager.isWifiEnabled();
+        }else {
+            statusWifi = Boolean.parseBoolean(pst.wifi_mode);
         }
 
         start_or_end = intent.getExtras().getString(Constant.START_OR_END);
@@ -84,35 +83,80 @@ public class DialogWifiManager extends AlertDialog.Builder {
         // default (null for none),
         // and the listener through which to receive callbacks when
         // items are selected
-                .setSingleChoiceItems(R.array.dialog_wifi, currentItem,
+                .setSingleChoiceItems(R.array.dialog_wifi, (statusWifi)? 0 : 1,
                         new DialogInterface.OnClickListener() {
 
                             @Override
                             public void onClick(DialogInterface dialog,
                                     int which) {
-                                // TODO Auto-generated method stub
-                                Toast.makeText(DialogWifiManager.context, "choise item " + which, Toast.LENGTH_LONG).show();
+                                statusWifi = fix_inteface(which);
+
                             }
                         })
-                // Set the action buttons
-                .setPositiveButton(R.string.done, new OnClickListener() {
+                .setPositiveButton(R.string.done, new DialogInterface.OnClickListener() {
+                           public void onClick(DialogInterface dialog, int id) {
+                               Resources res = context.getResources();
+                               String[] array   = res.getStringArray(R.array.dialog_wifi);
+                               String status =  array[(statusWifi)? 0 : 1];
+                               // get data to update database
+                               ContentValues contentValue = new ContentValues();
+                               pst.wifi_mode = String.valueOf(statusWifi);
+                               contentValue.put(SmartSchedulerDatabase.COLUMN_ACTION_DRAW,
+                                       gson.toJson(pst));
+                               contentValue.put(SmartSchedulerDatabase.COLUMN_ACTION_STATUS,
+                                       status);
+                               smartScheduleDb.open();
+                               if (action == null) {
+                                   if (Constant.START.equals(start_or_end)) {
+                                       contentValue.put(
+                                               SmartSchedulerDatabase.COLUMN_ACTION_START_ID,
+                                               event_id);
+                                   } else if (Constant.END.equals(start_or_end)) {
+                                       contentValue.put(
+                                               SmartSchedulerDatabase.COLUMN_ACTION_END_ID,
+                                               event_id);
+                                   } else {
+                                       Log.e(this.toString(),
+                                               "error when insert soundmanager, we can not check start or end");
+                                       throw new Error(
+                                               "error when insert soundmanager, we can not check start or end");
+                                   }
+                                   contentValue.put(SmartSchedulerDatabase.COLUMN_ACTION_STATE,
+                                           Constant.ROUTER_WIFI);
+                                   contentValue.put(SmartSchedulerDatabase.COLUMN_ACTION_NAME,
+                                           R.string.name_wifi);
+                                   smartScheduleDb.insert_action(contentValue);
+                               } else {
+                                   smartScheduleDb.update_action(contentValue, action.getId());
+                               }
+                               Intent intent = new Intent(context, EventDetailActivity.class);
+                               intent.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, event_id);
 
-                    @Override
-                    public void onClick(android.content.DialogInterface arg0,
-                            int arg1) {
-                        // TODO Auto-generated method stub
-
-                    }
-                }).setNegativeButton(R.string.cancel, new OnClickListener() {
+                               context.startActivity(intent);
+                               dialog.dismiss();
+                           }
+                       })
+                .setNegativeButton(R.string.cancel, new OnClickListener() {
 
                     @Override
                     public void onClick(android.content.DialogInterface dialog,
                             int which) {
-                        // TODO Auto-generated method stub
+                         dialog.cancel();
 
                     }
                 });
 
+    }
+
+    private Boolean fix_inteface(int which2) {
+        switch (which2) {
+        case 0:
+            return true;
+        case 1:
+            return false;
+        default:
+            return false;
+        }
     }
 
 }

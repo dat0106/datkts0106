@@ -53,17 +53,18 @@ public class SchedulingService extends IntentService {
 
         for (int i = 0; i < actions.size(); i++) {
             switch (actions.get(i).getState()) {
-            case 1:
+            case Constant.ROUTER_SOUND_MANAGER:
                 doingVolume(actions.get(i));
                 break;
-
+            case Constant.ROUTER_WIFI:
+                doingWifi(actions.get(i));
+                break;
             default:
                 break;
             }
         }
 
         database.close();
-        doingWifi(check_start_end);
 
         String name = event.getName();
         sendNotification("lập lịch làm việc " + name + ": " + check_start_end
@@ -74,14 +75,16 @@ public class SchedulingService extends IntentService {
 
     }
 
-    private void doingWifi(String check_start_end) {
+    private void doingWifi(Action action) {
+
+        String draw = action.getDrawAction();
+
+        GsonBuilder gsonb = new GsonBuilder();
+        Gson gson = gsonb.create();
+        DrawAction drawAction = gson.fromJson(draw, DrawAction.class);
 
         WifiManager mainWifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
-        if (check_start_end == Constant.START) {
-            mainWifi.setWifiEnabled(true);
-        } else {
-            mainWifi.setWifiEnabled(false);
-        }
+        mainWifi.setWifiEnabled(Boolean.valueOf(drawAction.wifi_mode));
     }
 
     private void doingVolume(Action action) {
