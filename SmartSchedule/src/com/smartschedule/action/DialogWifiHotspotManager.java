@@ -43,7 +43,7 @@ public class DialogWifiHotspotManager extends AlertDialog.Builder {
     private Action action;
     private String start_or_end;
     private DrawAction pst;
-    private Boolean statusWifi;
+    private Boolean statusWifiHotspot;
     private WifiApManager wifiApManager;
     private Gson gson;
     private SmartSchedulerDatabase smartScheduleDb;
@@ -51,7 +51,7 @@ public class DialogWifiHotspotManager extends AlertDialog.Builder {
     public DialogWifiHotspotManager(final Activity context, Intent intent) {
         super(context);
         this.context = context;
-
+        wifiApManager =  new WifiApManager(context);
         smartScheduleDb = new SmartSchedulerDatabase(
                 context);
         this.event_id = intent.getExtras().getInt(
@@ -69,26 +69,22 @@ public class DialogWifiHotspotManager extends AlertDialog.Builder {
         pst = gson.fromJson(jString, DrawAction.class);
 
         // statusWifi maping dialog_wifi and
-        if(pst.wifi_mode == null){
-            statusWifi = wifiManager.isWifiEnabled();
+        if(pst.wifi_hotspot_mode == null){
+            statusWifiHotspot = wifiApManager.isWifiApEnabled();
         }else {
-            statusWifi = Boolean.parseBoolean(pst.wifi_mode);
+            statusWifiHotspot = Boolean.parseBoolean(pst.wifi_hotspot_mode);
         }
 
         start_or_end = intent.getExtras().getString(Constant.START_OR_END);
         // Set the dialog title
-        this.setTitle(R.string.name_wifi)
-        // Specify the list array, the items to be selected by
-        // default (null for none),
-        // and the listener through which to receive callbacks when
-        // items are selected
-                .setSingleChoiceItems(R.array.dialog_wifi, (statusWifi)? 0 : 1,
+        this.setTitle(R.string.name_wifi_hotspot)
+                .setSingleChoiceItems(R.array.dialog_wifi, (statusWifiHotspot)? 0 : 1,
                         new DialogInterface.OnClickListener() {
 
                             @Override
                             public void onClick(DialogInterface dialog,
                                     int which) {
-                                statusWifi = fix_inteface(which);
+                                statusWifiHotspot = fix_inteface(which);
 
                             }
                         })
@@ -96,10 +92,10 @@ public class DialogWifiHotspotManager extends AlertDialog.Builder {
                            public void onClick(DialogInterface dialog, int id) {
                                Resources res = context.getResources();
                                String[] array   = res.getStringArray(R.array.dialog_wifi);
-                               String status =  array[(statusWifi)? 0 : 1];
+                               String status =  array[(statusWifiHotspot)? 0 : 1];
                                // get data to update database
                                ContentValues contentValue = new ContentValues();
-                               pst.wifi_mode = String.valueOf(statusWifi);
+                               pst.wifi_hotspot_mode = String.valueOf(statusWifiHotspot);
                                contentValue.put(SmartSchedulerDatabase.COLUMN_ACTION_DRAW,
                                        gson.toJson(pst));
                                contentValue.put(SmartSchedulerDatabase.COLUMN_ACTION_STATUS,
@@ -116,14 +112,14 @@ public class DialogWifiHotspotManager extends AlertDialog.Builder {
                                                event_id);
                                    } else {
                                        Log.e(this.toString(),
-                                               "error when insert soundmanager, we can not check start or end");
+                                               "we can not check start or end ");
                                        throw new Error(
-                                               "error when insert soundmanager, we can not check start or end");
+                                               "we can not check start or end");
                                    }
                                    contentValue.put(SmartSchedulerDatabase.COLUMN_ACTION_STATE,
-                                           Constant.ROUTER_WIFI);
+                                           Constant.ROUTER_WIFI_HOTSPOT);
                                    contentValue.put(SmartSchedulerDatabase.COLUMN_ACTION_NAME,
-                                           R.string.name_wifi);
+                                           R.string.name_wifi_hotspot);
                                    smartScheduleDb.insert_action(contentValue);
                                } else {
                                    smartScheduleDb.update_action(contentValue, action.getId());

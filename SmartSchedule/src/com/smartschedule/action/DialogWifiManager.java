@@ -117,9 +117,9 @@ public class DialogWifiManager extends AlertDialog.Builder {
                                                event_id);
                                    } else {
                                        Log.e(this.toString(),
-                                               "error when insert soundmanager, we can not check start or end");
+                                               "we can not check start or end");
                                        throw new Error(
-                                               "error when insert soundmanager, we can not check start or end");
+                                               "we can not check start or end");
                                    }
                                    contentValue.put(SmartSchedulerDatabase.COLUMN_ACTION_STATE,
                                            Constant.ROUTER_WIFI);

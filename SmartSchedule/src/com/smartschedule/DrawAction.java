@@ -19,4 +19,7 @@ public class DrawAction
 
     // dialog wifi manager
     public String wifi_mode;
+
+    // dialog wifi hotspot manager
+    public String wifi_hotspot_mode;
 }

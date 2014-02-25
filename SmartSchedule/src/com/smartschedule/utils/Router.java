@@ -9,6 +9,7 @@ import android.content.Intent;
 
 import com.smartschedule.R;
 import com.smartschedule.action.ActivitySoundManager;
+import com.smartschedule.action.DialogWifiHotspotManager;
 import com.smartschedule.action.DialogWifiManager;
 import com.smartschedule.database.Action;
 import com.smartschedule.database.SmartSchedulerDatabase;
@@ -75,6 +76,7 @@ public class Router {
             intent.putExtra(Constant.START_OR_END, start_or_end);
         }
 
+        AlertDialog dialog;
         switch (router) {
         case Constant.ROUTER_SOUND_MANAGER:
             intent.setClass(activity, ActivitySoundManager.class);
@@ -83,7 +85,13 @@ public class Router {
         case Constant.ROUTER_WIFI:
 
             DialogWifiManager builder = new DialogWifiManager(activity, intent);
-            AlertDialog dialog = builder.create();
+            dialog = builder.create();
+            dialog.show();
+            break;
+        case Constant.ROUTER_WIFI_HOTSPOT:
+
+            DialogWifiHotspotManager builderWifiHotspot = new DialogWifiHotspotManager(activity, intent);
+            dialog = builderWifiHotspot.create();
             dialog.show();
             break;
         default:

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.smartschedule.action.wifihotspotutils.WifiApManager;
 import com.smartschedule.database.Action;
 import com.smartschedule.database.Event;
 import com.smartschedule.database.SmartSchedulerDatabase;
@@ -61,6 +62,9 @@ public class SchedulingService extends IntentService {
             case Constant.ROUTER_WIFI:
                 doingWifi(actions.get(i));
                 break;
+            case Constant.ROUTER_WIFI_HOTSPOT:
+                doingWifiHotspot(actions.get(i));
+                break;
             default:
                 break;
             }
@@ -77,6 +81,19 @@ public class SchedulingService extends IntentService {
 
     }
 
+    private void doingWifiHotspot(Action action) {
+
+        String draw = action.getDrawAction();
+
+        GsonBuilder gsonb = new GsonBuilder();
+        Gson gson = gsonb.create();
+        DrawAction drawAction = gson.fromJson(draw, DrawAction.class);
+
+        WifiApManager wifiApManager = new WifiApManager(this);
+        wifiApManager.setWifiApEnabled(null, Boolean.valueOf(drawAction.wifi_hotspot_mode));
+
+    }
+
     private void doingWifi(Action action) {
 
         String draw = action.getDrawAction();
@@ -88,8 +105,6 @@ public class SchedulingService extends IntentService {
         WifiManager mainWifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         mainWifi.setWifiEnabled(Boolean.valueOf(drawAction.wifi_mode));
 
-        WifiConfiguration config = null;
-        mainWifi.updateNetwork(config);
     }
 
     private void doingVolume(Action action) {
