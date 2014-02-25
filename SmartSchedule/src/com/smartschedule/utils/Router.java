@@ -1,4 +1,4 @@
-package com.smartschedule.util;
+package com.smartschedule.utils;
 
 import java.util.HashMap;
 
@@ -41,6 +41,14 @@ public class Router {
         r2.category = Constant.CATEGORY_SOUND;
 
         router.put(Constant.ROUTER_BLUETOOTH, r2);
+
+        DetailActionViewer r3 = new DetailActionViewer();
+        r3.id = Constant.ROUTER_WIFI_HOTSPOT;
+        r3.name = R.string.name_wifi_hotspot;
+        r3.iconURI = R.drawable.ic_launcher;
+        r3.category = Constant.CATEGORY_WIRELESS_NETWORK;
+
+        router.put(Constant.ROUTER_WIFI_HOTSPOT, r3);
         return router;
     }
 

@@ -6,10 +6,10 @@ import com.smartschedule.database.Action;
 import com.smartschedule.database.Event;
 import com.smartschedule.database.SmartSchedulerDatabase;
 import com.smartschedule.setting.SettingActivity;
-import com.smartschedule.util.Constant;
-import com.smartschedule.util.DetailActionViewer;
-import com.smartschedule.util.Router;
-import com.smartschedule.util.Util;
+import com.smartschedule.utils.Constant;
+import com.smartschedule.utils.DetailActionViewer;
+import com.smartschedule.utils.Router;
+import com.smartschedule.utils.Util;
 
 import android.app.Activity;
 import android.content.ContentValues;

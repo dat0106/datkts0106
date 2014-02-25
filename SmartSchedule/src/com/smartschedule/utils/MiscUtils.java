@@ -1,4 +1,4 @@
-package com.smartschedule.util;
+package com.smartschedule.utils;
 
 import java.io.File;
 import java.io.FileOutputStream;

@@ -1,4 +1,4 @@
-package com.smartschedule.util;
+package com.smartschedule.utils;
 
 public class DetailActionViewer {
     public int id;

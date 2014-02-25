@@ -34,7 +34,7 @@ import android.widget.Toast;
 
 import com.smartschedule.database.Event;
 import com.smartschedule.database.SmartSchedulerDatabase;
-import com.smartschedule.util.Util;
+import com.smartschedule.utils.Util;
 
 public class MainActivity extends ListActivity {
 

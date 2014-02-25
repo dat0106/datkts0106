@@ -33,6 +33,7 @@
     <!-- action name -->
     <string name="name_sound_manager">Sound &amp; Volume</string>
     <string name="name_wifi">Wifi</string>
+    <string name="name_wifi_hotspot">Wifi Hotspot</string>
     <string name="name_bluetooth">BlueTooth</string>
 
     <!-- setting name -->

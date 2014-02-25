@@ -7,6 +7,7 @@ import com.google.gson.GsonBuilder;
 import com.smartschedule.DrawAction;
 import com.smartschedule.EventDetailActivity;
 import com.smartschedule.R;
+import com.smartschedule.action.wifihotspotutils.WifiApManager;
 import com.smartschedule.database.Action;
 import com.smartschedule.database.Event;
 import com.smartschedule.database.SmartSchedulerDatabase;
@@ -35,7 +36,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class DialogWifiManager extends AlertDialog.Builder {
+public class DialogWifiHotspotManager extends AlertDialog.Builder {
 
     private Activity context;
     private int event_id;
@@ -43,18 +44,16 @@ public class DialogWifiManager extends AlertDialog.Builder {
     private String start_or_end;
     private DrawAction pst;
     private Boolean statusWifi;
-    private WifiManager wifiManager;
+    private WifiApManager wifiApManager;
     private Gson gson;
     private SmartSchedulerDatabase smartScheduleDb;
 
-    public DialogWifiManager(final Activity context, Intent intent) {
+    public DialogWifiHotspotManager(final Activity context, Intent intent) {
         super(context);
         this.context = context;
 
         smartScheduleDb = new SmartSchedulerDatabase(
                 context);
-        wifiManager =  (WifiManager) context
-                .getSystemService(Context.WIFI_SERVICE);
         this.event_id = intent.getExtras().getInt(
                 SmartSchedulerDatabase.COLUMN_EVENT_ID);
         action = intent.getExtras().getParcelable(Constant.ACTION_PARAMS);

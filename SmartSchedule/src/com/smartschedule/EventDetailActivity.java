@@ -9,7 +9,7 @@ import com.google.gson.GsonBuilder;
 import com.smartschedule.database.Action;
 import com.smartschedule.database.Event;
 import com.smartschedule.database.SmartSchedulerDatabase;
-import com.smartschedule.util.Constant;
+import com.smartschedule.utils.Constant;
 
 import android.app.ExpandableListActivity;
 import android.content.ContentValues;

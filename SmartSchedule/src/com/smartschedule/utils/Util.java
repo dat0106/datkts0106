@@ -1,4 +1,4 @@
-package com.smartschedule.util;
+package com.smartschedule.utils;
 
 import com.smartschedule.action.ActivitySoundManager;
 import com.smartschedule.database.Action;

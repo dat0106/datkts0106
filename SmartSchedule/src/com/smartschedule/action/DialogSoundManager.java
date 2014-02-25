@@ -2,7 +2,7 @@ package com.smartschedule.action;
 
 import com.smartschedule.EventTimeActivity;
 import com.smartschedule.R;
-import com.smartschedule.util.MiscUtils;
+import com.smartschedule.utils.MiscUtils;
 
 import android.app.Activity;
 import android.app.AlertDialog;

@@ -1,5 +1,6 @@
 package com.smartschedule;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import com.google.gson.Gson;
@@ -7,7 +8,7 @@ import com.google.gson.GsonBuilder;
 import com.smartschedule.database.Action;
 import com.smartschedule.database.Event;
 import com.smartschedule.database.SmartSchedulerDatabase;
-import com.smartschedule.util.Constant;
+import com.smartschedule.utils.Constant;
 
 import android.app.IntentService;
 import android.app.NotificationManager;
@@ -16,6 +17,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.SystemClock;
 import android.media.AudioManager;
+import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
@@ -85,6 +87,9 @@ public class SchedulingService extends IntentService {
 
         WifiManager mainWifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         mainWifi.setWifiEnabled(Boolean.valueOf(drawAction.wifi_mode));
+
+        WifiConfiguration config = null;
+        mainWifi.updateNetwork(config);
     }
 
     private void doingVolume(Action action) {

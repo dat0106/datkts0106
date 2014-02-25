@@ -13,9 +13,9 @@ import com.smartschedule.EventDetailActivity;
 import com.smartschedule.database.Action;
 import com.smartschedule.database.Event;
 import com.smartschedule.database.SmartSchedulerDatabase;
-import com.smartschedule.util.Constant;
-import com.smartschedule.util.DetailActionViewer;
-import com.smartschedule.util.Router;
+import com.smartschedule.utils.Constant;
+import com.smartschedule.utils.DetailActionViewer;
+import com.smartschedule.utils.Router;
 
 import android.app.ExpandableListActivity;
 import android.content.ContentValues;

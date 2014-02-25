@@ -6,8 +6,8 @@ import com.smartschedule.action.ActivitySoundManager;
 import com.smartschedule.action.DialogSoundManager;
 import com.smartschedule.database.Event;
 import com.smartschedule.database.SmartSchedulerDatabase;
-import com.smartschedule.util.Constant;
-import com.smartschedule.util.Util;
+import com.smartschedule.utils.Constant;
+import com.smartschedule.utils.Util;
 
 import android.os.Bundle;
 import android.app.Activity;

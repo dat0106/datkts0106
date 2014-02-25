@@ -1,4 +1,4 @@
-package com.smartschedule.util;
+package com.smartschedule.utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,6 +14,7 @@ public class Constant {
     public static final int ROUTER_SOUND_MANAGER=  1;
     public static final int ROUTER_WIFI=  2;
     public static final int ROUTER_BLUETOOTH=  3;
+    public static final int ROUTER_WIFI_HOTSPOT=  4;
 
     // KEY GROUP IN SettingActivity tuong ung
     public static final int CATEGORY_APPLICATIONS=  0;

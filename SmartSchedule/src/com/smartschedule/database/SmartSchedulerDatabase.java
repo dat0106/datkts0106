@@ -2,7 +2,7 @@ package com.smartschedule.database;
 
 import java.util.ArrayList;
 
-import com.smartschedule.util.Constant;
+import com.smartschedule.utils.Constant;
 
 import android.content.ContentValues;
 import android.content.Context;
