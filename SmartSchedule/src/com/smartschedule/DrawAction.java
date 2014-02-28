@@ -22,4 +22,7 @@ public class DrawAction
 
     // dialog wifi hotspot manager
     public String wifi_hotspot_mode;
+
+    // dialog bluetooth manager
+    public String bluetooth_mode;
 }

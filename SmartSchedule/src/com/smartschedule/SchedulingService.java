@@ -14,6 +14,7 @@ import com.smartschedule.utils.Constant;
 import android.app.IntentService;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.SystemClock;
@@ -65,6 +66,10 @@ public class SchedulingService extends IntentService {
             case Constant.ROUTER_WIFI_HOTSPOT:
                 doingWifiHotspot(actions.get(i));
                 break;
+
+            case Constant.ROUTER_BLUETOOTH:
+                doingBlueTooth(actions.get(i));
+                break;
             default:
                 break;
             }
@@ -79,6 +84,22 @@ public class SchedulingService extends IntentService {
                 "Completed service @ " + SystemClock.elapsedRealtime());
         ScheduleServiceReceiver.completeWakefulIntent(intent);
 
+    }
+
+    private void doingBlueTooth(Action action) {
+
+        String draw = action.getDrawAction();
+
+        GsonBuilder gsonb = new GsonBuilder();
+        Gson gson = gsonb.create();
+        DrawAction drawAction = gson.fromJson(draw, DrawAction.class);
+
+        BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
+        if(Boolean.valueOf(drawAction.bluetooth_mode)) {
+            adapter.enable();
+        } else{
+            adapter.disable();
+        }
     }
 
     private void doingWifiHotspot(Action action) {

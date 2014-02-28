@@ -9,6 +9,7 @@ import android.content.Intent;
 
 import com.smartschedule.R;
 import com.smartschedule.action.ActivitySoundManager;
+import com.smartschedule.action.DialogBluetoothManager;
 import com.smartschedule.action.DialogWifiHotspotManager;
 import com.smartschedule.action.DialogWifiManager;
 import com.smartschedule.database.Action;
@@ -81,6 +82,13 @@ public class Router {
         case Constant.ROUTER_SOUND_MANAGER:
             intent.setClass(activity, ActivitySoundManager.class);
             activity.startActivity(intent);
+            break;
+
+        case Constant.ROUTER_BLUETOOTH:
+
+            DialogBluetoothManager builderBluetooth = new DialogBluetoothManager(activity, intent);
+            dialog = builderBluetooth.create();
+            dialog.show();
             break;
         case Constant.ROUTER_WIFI:
 

@@ -78,7 +78,7 @@ public class DialogWifiHotspotManager extends AlertDialog.Builder {
         start_or_end = intent.getExtras().getString(Constant.START_OR_END);
         // Set the dialog title
         this.setTitle(R.string.name_wifi_hotspot)
-                .setSingleChoiceItems(R.array.dialog_wifi, (statusWifiHotspot)? 0 : 1,
+                .setSingleChoiceItems(R.array.dialog_on_off, (statusWifiHotspot)? 0 : 1,
                         new DialogInterface.OnClickListener() {
 
                             @Override
@@ -91,7 +91,7 @@ public class DialogWifiHotspotManager extends AlertDialog.Builder {
                 .setPositiveButton(R.string.done, new DialogInterface.OnClickListener() {
                            public void onClick(DialogInterface dialog, int id) {
                                Resources res = context.getResources();
-                               String[] array   = res.getStringArray(R.array.dialog_wifi);
+                               String[] array   = res.getStringArray(R.array.dialog_on_off);
                                String status =  array[(statusWifiHotspot)? 0 : 1];
                                // get data to update database
                                ContentValues contentValue = new ContentValues();

@@ -9,7 +9,7 @@ package com.smartschedule;
 
 public final class R {
     public static final class array {
-        public static final int dialog_wifi=0x7f050000;
+        public static final int dialog_on_off=0x7f050000;
     }
     public static final class attr {
     }

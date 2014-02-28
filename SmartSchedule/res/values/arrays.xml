@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <array name="dialog_wifi">
+    <array name="dialog_on_off">
         <item>On</item>
         <item>Off</item>
     </array>
