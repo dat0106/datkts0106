@@ -8,8 +8,8 @@ import com.smartschedule.MainActivity;
 import com.smartschedule.R;
 import com.smartschedule.database.Action;
 import com.smartschedule.database.SmartSchedulerDatabase;
-import com.smartschedule.util.Constant;
-import com.smartschedule.util.MiscUtils;
+import com.smartschedule.utils.Constant;
+import com.smartschedule.utils.MiscUtils;
 
 import android.app.Activity;
 import android.content.ContentValues;
@@ -299,11 +299,11 @@ public class ActivitySoundManager extends Activity {
         getTitleForRingtone(RingtoneManager.TYPE_ALARM, alarmRingtoneUri,
                 alarmRingtone);
 
-        if (pst.rimgtome_ringer == null) {
+        if (pst.rimgtone_ringer == null) {
             phoneRingtoneUri = RingtoneManager
                     .getDefaultUri(RingtoneManager.TYPE_RINGTONE);
         } else {
-            phoneRingtoneUri = Uri.parse(pst.rimgtome_ringer);
+            phoneRingtoneUri = Uri.parse(pst.rimgtone_ringer);
         }
 
         getTitleForRingtone(RingtoneManager.TYPE_RINGTONE, phoneRingtoneUri,
@@ -654,7 +654,7 @@ public class ActivitySoundManager extends Activity {
                             .toString();
                 }
                 if (phoneRingtoneUri != null) {
-                    pst.rimgtome_ringer = phoneRingtoneUri.toString();
+                    pst.rimgtone_ringer = phoneRingtoneUri.toString();
                 }
 
                 pst.sound_alarm = String.valueOf(alarm.getProgress());
@@ -666,7 +666,7 @@ public class ActivitySoundManager extends Activity {
             }else{
                 pst.ringtone_alarm = null;
                 pst.ringtone_notification = null;
-                pst.rimgtome_ringer = null;
+                pst.rimgtone_ringer = null;
 
                 pst.sound_alarm = null;
                 pst.sound_music = null;
