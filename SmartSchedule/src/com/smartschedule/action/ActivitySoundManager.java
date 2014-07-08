@@ -1,44 +1,30 @@
 package com.smartschedule.action;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.smartschedule.DrawAction;
-import com.smartschedule.EventTimeActivity;
-import com.smartschedule.MainActivity;
-import com.smartschedule.R;
-import com.smartschedule.database.Action;
-import com.smartschedule.database.SmartSchedulerDatabase;
-import com.smartschedule.utils.Constant;
-import com.smartschedule.utils.MiscUtils;
-
 import android.app.Activity;
 import android.content.ContentValues;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
-import android.media.ToneGenerator;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Vibrator;
 import android.provider.Settings;
-import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.RadioButton;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import android.widget.ToggleButton;
+import android.widget.*;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.smartschedule.DrawAction;
+import com.smartschedule.EventTimeActivity;
+import com.smartschedule.R;
+import com.smartschedule.database.Action;
+import com.smartschedule.database.SmartSchedulerDatabase;
+import com.smartschedule.utils.Constant;
+import com.smartschedule.utils.MiscUtils;
 
 public class ActivitySoundManager extends Activity {
 
@@ -88,6 +74,7 @@ public class ActivitySoundManager extends Activity {
     protected boolean checkAdvancedSound;
     Gson gson;
     DrawAction pst;
+    private String start_or_end;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,6 +113,7 @@ public class ActivitySoundManager extends Activity {
         this.event_id = intent.getExtras().getInt(
                 SmartSchedulerDatabase.COLUMN_EVENT_ID);
         action = intent.getExtras().getParcelable(Constant.ACTION_PARAMS);
+        start_or_end = intent.getExtras().getString(Constant.START_OR_END);
 
         // final SeekBar textView = (SeekBar) View
         // .findViewById(R.id.dialog_add_event);
@@ -259,11 +247,14 @@ public class ActivitySoundManager extends Activity {
                 .setMax(this.am.getStreamMaxVolume(AudioManager.STREAM_RING));
         setSeekBarListeners();
 
-        String jString = action.getDrawAction();
-
         GsonBuilder gsonb = new GsonBuilder();
         gson = gsonb.create();
-        pst = gson.fromJson(jString, DrawAction.class);
+        if(action == null) {
+            pst = gson.fromJson("{}", DrawAction.class);
+        } else {
+            pst = gson.fromJson(action.getDrawAction(), DrawAction.class);
+        }
+
         // Intent cv = new Intent();
         //
         // cv.putExtra("fuck", pst);
@@ -698,7 +689,29 @@ public class ActivitySoundManager extends Activity {
             contentValue.put(SmartSchedulerDatabase.COLUMN_ACTION_STATUS,
             		status);
             smartScheduleDb.open();
-            smartScheduleDb.update_action(contentValue, action.getId());
+            if (action == null) {
+                if (Constant.START.equals(start_or_end)) {
+                    contentValue.put(
+                            SmartSchedulerDatabase.COLUMN_ACTION_START_ID,
+                            event_id);
+                } else if (Constant.END.equals(start_or_end)) {
+                    contentValue.put(
+                            SmartSchedulerDatabase.COLUMN_ACTION_END_ID,
+                            event_id);
+                } else {
+                    Log.d(((Object) this).toString(),
+                            "we can not check start or end ");
+                    throw new Error(
+                            "we can not check start or end");
+                }
+                contentValue.put(SmartSchedulerDatabase.COLUMN_ACTION_STATE,
+                        Constant.ROUTER_SOUND_MANAGER);
+                contentValue.put(SmartSchedulerDatabase.COLUMN_ACTION_NAME,
+                        R.string.name_sound_manager);
+                smartScheduleDb.insert_action(contentValue);
+            } else {
+                smartScheduleDb.update_action(contentValue, action.getId());
+            }
             smartScheduleDb.close();
             Intent intent = new Intent(this, EventTimeActivity.class);
             intent.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, event_id);

@@ -111,7 +111,7 @@ public class DialogWifiHotspotManager extends AlertDialog.Builder {
                                                SmartSchedulerDatabase.COLUMN_ACTION_END_ID,
                                                event_id);
                                    } else {
-                                       Log.e(this.toString(),
+                                       Log.d(((Object) this).toString(),
                                                "we can not check start or end ");
                                        throw new Error(
                                                "we can not check start or end");
