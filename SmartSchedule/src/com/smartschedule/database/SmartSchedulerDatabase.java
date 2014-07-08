@@ -393,6 +393,7 @@ public class SmartSchedulerDatabase {
     public long insert_action(ContentValues contentValues) {
         // TODO nen kiem tra dieu kien truoc khi insert
         try {
+            Log.e(this.toString(), "insert_action : " + contentValues.getAsString(COLUMN_ACTION_DRAW));
             return db.insert(TABLE_ACTION, null, contentValues);
         } catch (Exception e) {
             Log.e(this.toString(), e.getMessage());

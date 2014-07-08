@@ -115,6 +115,14 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
                             Toast.LENGTH_SHORT).show();
                 }
             });
+            convertView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    Toast.makeText(activity, "delete",
+                            Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+            });
         }
         return convertView;
     }
@@ -213,6 +221,7 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
         }
         return convertView;
     }
+
 
     @Override
     public boolean hasStableIds() {
