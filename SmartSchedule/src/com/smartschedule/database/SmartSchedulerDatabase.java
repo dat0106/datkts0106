@@ -325,6 +325,16 @@ public class SmartSchedulerDatabase {
                         .getColumnIndex(COLUMN_ACTION_DRAW)));
                 action.setDrawCurrentAction(cActionStart.getString(cActionStart
                         .getColumnIndex(COLUMN_ACTION_DRAW_CURRENT)));
+                Log.v(this.toString(),"getDataAction : "+ key +  "\n"
+                                + "_id : "+ action.getId() + "\n"
+                                + "action_start_id : "+ action.getActionStartId() + "\n"
+                                + "action_end_id : "+ action.getActionEndId() + "\n"
+                                + "name : "+ action.getName() + "\n"
+                                + "status : "+ action.getStatus() + "\n"
+                                + "state : "+ action.getState() + "\n"
+                                + "draw_action : "+ action.getDrawAction() + "\n"
+                                + "draw_action_current : "+ action.getDrawCurrentAction() + "\n"
+                );
                 result.add(action);
             }
         } else if (Constant.END.equals(key)) {
@@ -360,9 +370,20 @@ public class SmartSchedulerDatabase {
                         .getColumnIndex(COLUMN_ACTION_DRAW)));
                 action.setDrawCurrentAction(cActionEnd.getString(cActionEnd
                         .getColumnIndex(COLUMN_ACTION_DRAW_CURRENT)));
+                Log.v(this.toString(),"getDataAction : "+ key +  "\n"
+                                + "_id : "+ action.getId() + "\n"
+                                + "action_start_id : "+ action.getActionStartId() + "\n"
+                                + "action_end_id : "+ action.getActionEndId() + "\n"
+                                + "name : "+ action.getName() + "\n"
+                                + "status : "+ action.getStatus() + "\n"
+                                + "state : "+ action.getState() + "\n"
+                                + "draw_action : "+ action.getDrawAction() + "\n"
+                                + "draw_action_current : "+ action.getDrawCurrentAction() + "\n"
+                );
                 result.add(action);
             }
         }
+
 
         return result;
     }

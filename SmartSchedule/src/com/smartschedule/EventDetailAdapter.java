@@ -158,7 +158,7 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
                     mode.finish();
                     return true;
                 case R.id.menuitem2_delete:
-
+                    Router.routerDelete(event_id, ActionTemp.getState(),  ActionTemp, activity);
 //                    smartScheduleDb.open();
 //                    int logDelete = smartScheduleDb.delete(contentValues.get(
 //                            selectedItem).getId());

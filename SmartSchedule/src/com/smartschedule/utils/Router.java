@@ -59,6 +59,10 @@ public class Router {
         router(event_id, router, null, childAction, activity);
     }
 
+    public static void routerDelete(Integer event_id, Integer router, Action actionTemp, Activity activity) {
+
+    }
+
     public static void routerSetting(Integer event_id, Integer router,
             String start_or_end, Activity activity) {
         router(event_id, router, start_or_end, null, activity);
@@ -106,4 +110,6 @@ public class Router {
             break;
         }
     }
+
+
 }
