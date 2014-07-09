@@ -2,6 +2,8 @@ package com.smartschedule;
 
 import java.util.ArrayList;
 
+import android.util.Log;
+import android.view.*;
 import com.smartschedule.database.Action;
 import com.smartschedule.database.Event;
 import com.smartschedule.database.SmartSchedulerDatabase;
@@ -14,10 +16,7 @@ import com.smartschedule.utils.Util;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
 import android.widget.CheckedTextView;
@@ -32,6 +31,7 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
     public LayoutInflater minflater;
     public Activity activity;
     public int event_id;
+    protected Action ActionTemp;
 
     public EventDetailAdapter(ArrayList<String> grList,
             ArrayList<Object> childItem, int event_id) {
@@ -120,12 +120,69 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
                 public boolean onLongClick(View v) {
                     Toast.makeText(activity, "delete",
                             Toast.LENGTH_SHORT).show();
+                    ActionTemp =  Child;
+                    activity.startActionMode(mActionModeCallback);
+                    v.setSelected(true);
                     return true;
                 }
             });
         }
         return convertView;
     }
+
+    private ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
+
+        // Called when the action mode is created; startActionMode() was called
+        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+            // Inflate a menu resource providing context menu items
+            MenuInflater inflater = mode.getMenuInflater();
+            // Assumes that you have "contexual.xml" menu resources
+            inflater.inflate(R.menu.rowselection, menu);
+            return true;
+        }
+
+        // Called each time the action mode is shown. Always called after
+        // onCreateActionMode, but
+        // may be called multiple times if the mode is invalidated.
+        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+            return false; // Return false if nothing is done
+        }
+
+        // Called when the user selects a contextual menu item
+        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.menuitem1_show:
+//                    show();
+//                    startEventActivity();
+                    Router.routerActivity(event_id, ActionTemp.getState(),  ActionTemp, activity);
+                    mode.finish();
+                    return true;
+                case R.id.menuitem2_delete:
+
+//                    smartScheduleDb.open();
+//                    int logDelete = smartScheduleDb.delete(contentValues.get(
+//                            selectedItem).getId());
+//
+//                    if (logDelete != 1) {
+//                        Log.e(MainActivity.this.toString(), "error delete event");
+//                    }
+//                    smartScheduleDb.close();
+//
+//                    contentValues = getData();
+//                    mAdapter.notifyDataSetChanged();
+                    mode.finish();
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
+        // Called when the user exits the action mode
+        public void onDestroyActionMode(ActionMode mode) {
+//            mActionMode = null;
+//            selectedItem = -1;
+        }
+    };
 
     @Override
     public int getChildrenCount(int groupPosition) {
