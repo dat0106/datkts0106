@@ -48,7 +48,7 @@
             android:launchMode="singleTask"
             android:parentActivityName=".MainActivity"
             android:theme="@android:style/Theme.Holo.Light"
-            android:uiOptions="splitActionBarWhenNarrow" >
+            android:uiOptions="none" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
@@ -77,15 +77,6 @@
         <receiver android:name="com.smartschedule.SampleAlarmReceiver" >
         </receiver>
         <receiver android:name="com.smartschedule.ScheduleServiceReceiver" >
-        </receiver>
-        <receiver
-            android:name="com.smartschedule.action.ActivitySoundManager"
-            android:enabled="true" >
-            <intent-filter>
-
-                <!-- <action android:name="android.media.RINGER_MODE_CHANGED" /> -->
-                <!-- <action android:name="android.media.VOLUME_CHANGED_ACTION" /> -->
-            </intent-filter>
         </receiver>
         <receiver
             android:name="com.smartschedule.SampleBootReceiver"

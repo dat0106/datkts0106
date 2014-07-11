@@ -29,9 +29,10 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
     public ArrayList<String> groupItem;
     public ArrayList<Object> Childtem = new ArrayList<Object>();
     public LayoutInflater minflater;
-    public Activity activity;
+    public EventDetailActivity activity;
     public int event_id;
     protected Action ActionTemp;
+
 
     public EventDetailAdapter(ArrayList<String> grList,
             ArrayList<Object> childItem, int event_id) {
@@ -47,7 +48,7 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
         this.event_id = event_id;
     }
 
-    public void setInflater(LayoutInflater mInflater, Activity act) {
+    public void setInflater(LayoutInflater mInflater, EventDetailActivity act) {
         this.minflater = mInflater;
         activity = act;
     }
@@ -130,6 +131,7 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
         return convertView;
     }
 
+
     private ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
 
         // Called when the action mode is created; startActionMode() was called
@@ -152,24 +154,24 @@ public class EventDetailAdapter extends BaseExpandableListAdapter {
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.menuitem1_show:
-//                    show();
-//                    startEventActivity();
+
                     Router.routerActivity(event_id, ActionTemp.getState(),  ActionTemp, activity);
                     mode.finish();
                     return true;
                 case R.id.menuitem2_delete:
-                    Router.routerDelete(event_id, ActionTemp.getState(),  ActionTemp, activity);
-//                    smartScheduleDb.open();
-//                    int logDelete = smartScheduleDb.delete(contentValues.get(
-//                            selectedItem).getId());
-//
-//                    if (logDelete != 1) {
-//                        Log.e(MainActivity.this.toString(), "error delete event");
-//                    }
-//                    smartScheduleDb.close();
-//
-//                    contentValues = getData();
-//                    mAdapter.notifyDataSetChanged();
+
+                    // remove action
+                    SmartSchedulerDatabase smartScheduleDb = new SmartSchedulerDatabase(activity);
+                    smartScheduleDb.open();
+                    int logDelete = smartScheduleDb.delete_action(ActionTemp.getId());
+
+                    if (logDelete != 1) {
+                        Log.e(((Object)this).toString(), "error delete action ");
+                    }
+                    smartScheduleDb.close();
+
+                    Childtem = activity.setChildGroupData();
+                    notifyDataSetChanged();
                     mode.finish();
                     return true;
                 default:

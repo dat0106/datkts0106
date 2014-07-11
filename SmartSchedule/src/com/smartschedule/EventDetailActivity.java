@@ -122,7 +122,7 @@ public class EventDetailActivity extends ExpandableListActivity implements
     ArrayList<String> groupItem = new ArrayList<String>();
     ArrayList<Object> childItem = new ArrayList<Object>();
 
-    public void setChildGroupData() {
+    public  ArrayList<Object> setChildGroupData() {
         /**
          * Add Data For TecthNology
          */
@@ -147,6 +147,8 @@ public class EventDetailActivity extends ExpandableListActivity implements
         childItem.add(childAction);
 
         smartScheduleDb.close();
+
+        return childItem;
     }
 
 }
