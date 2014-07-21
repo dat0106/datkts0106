@@ -2,7 +2,15 @@ package com.smartschedule;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
+import android.content.ActivityNotFoundException;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.os.IBinder;
+import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.smartschedule.action.wifihotspotutils.WifiApManager;
@@ -29,6 +37,7 @@ public class SchedulingService extends IntentService {
     private SmartSchedulerDatabase database = new SmartSchedulerDatabase(this);
     private Event event;
     private ArrayList<Action> actions;
+    private PackageManager packageManager;
 
     public SchedulingService() {
         super("SchedulingService");
@@ -69,6 +78,7 @@ public class SchedulingService extends IntentService {
 
             case Constant.ROUTER_BLUETOOTH:
                 doingBlueTooth(actions.get(i));
+                doingManagerPlayer(actions.get(i));
                 break;
             default:
                 break;
@@ -237,6 +247,81 @@ public class SchedulingService extends IntentService {
 
     }
 
+    Context my_service = this;
+
+    private TimerTask my_TimerTask = new TimerTask() {
+        public void run() {
+            Log.w("hello", "my name is Nicolas" + String.valueOf( SystemClock.uptimeMillis() ) );
+            packageManager = my_service.getPackageManager();
+            Log.w("hello", "my name is Nicolas" + String.valueOf(packageManager));
+        }
+    };
+
+
+    int i = 0;
+
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        Timer my_timer = new Timer("automated launchemy loop",true);
+        if(i==0){
+            i=1;
+            my_timer.schedule(my_TimerTask, 0, 5000);
+        }
+        return super.onStartCommand(intent,flags,startId);
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+    private void doingManagerPlayer(Action action) {
+
+
+        Log.v(this.toString(), "vaoday");
+        List<ApplicationInfo> applist = checkForLaunchIntent(
+                packageManager.getInstalledApplications(PackageManager.GET_META_DATA));
+        ApplicationInfo app = applist.get(1);
+
+        Log.v(this.toString(), app.loadLabel(packageManager) + " (" + app.packageName + ")");
+//        iconview.setImageDrawable(data.loadIcon(packageManager));
+        try
+        {
+            Intent intent = packageManager.getLaunchIntentForPackage(app.packageName);
+
+            if(null != intent)
+            {
+                startActivity(intent);
+            }
+        }
+        catch (ActivityNotFoundException e)
+        {
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+        catch (Exception e)
+        {
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private List<ApplicationInfo> checkForLaunchIntent(List<ApplicationInfo> list)
+    {
+        ArrayList<ApplicationInfo> applist = new ArrayList<ApplicationInfo>();
+
+        for(ApplicationInfo info: list)
+        {
+            try {
+                if(null != packageManager.getLaunchIntentForPackage(info.packageName))
+                {
+                    applist.add(info);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return applist;
+    }
     private void sendNotification(String msg, int event_id) {
         // database.open();
         // String[] ds = database.getCountData();
