@@ -1,0 +1,9 @@
+proguard-project.txt
+project.properties
+gen/*
+bin/*
+lint.xml
+.DS_Store
+./*/.DS_Store
+./*/*.DS_Store
+.settings/
