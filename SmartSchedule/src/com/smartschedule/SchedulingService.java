@@ -9,7 +9,9 @@ import java.util.TimerTask;
 import android.content.ActivityNotFoundException;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.IBinder;
+import android.provider.MediaStore;
 import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -37,7 +39,7 @@ public class SchedulingService extends IntentService {
     private SmartSchedulerDatabase database = new SmartSchedulerDatabase(this);
     private Event event;
     private ArrayList<Action> actions;
-    private PackageManager packageManager;
+
 
     public SchedulingService() {
         super("SchedulingService");
@@ -247,37 +249,43 @@ public class SchedulingService extends IntentService {
 
     }
 
-    Context my_service = this;
-
-    private TimerTask my_TimerTask = new TimerTask() {
-        public void run() {
-            Log.w("hello", "my name is Nicolas" + String.valueOf( SystemClock.uptimeMillis() ) );
-            packageManager = my_service.getPackageManager();
-            Log.w("hello", "my name is Nicolas" + String.valueOf(packageManager));
-        }
-    };
-
-
-    int i = 0;
-
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        Timer my_timer = new Timer("automated launchemy loop",true);
-        if(i==0){
-            i=1;
-            my_timer.schedule(my_TimerTask, 0, 5000);
-        }
-        return super.onStartCommand(intent,flags,startId);
-    }
-
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
-    }
+//    Context my_service = this;
+//
+//    private TimerTask my_TimerTask = new TimerTask() {
+//        public void run() {
+//            Log.w("hello", "my name is Nicolas" + String.valueOf( SystemClock.uptimeMillis() ) );
+//            packageManager = my_service.getPackageManager();
+//            Log.w("hello", "my name is Nicolas" + String.valueOf(packageManager));
+//        }
+//    };
+//
+//
+//    int i = 0;
+//
+//
+//    @Override
+//    public int onStartCommand(Intent intent, int flags, int startId) {
+//        Timer my_timer = new Timer("automated launchemy loop",true);
+//        if(i==0){
+//            i=1;
+//            my_timer.schedule(my_TimerTask, 0, 5000);
+//        }
+//        return super.onStartCommand(intent,flags,startId);
+//    }
+//
+//    @Override
+//    public IBinder onBind(Intent intent) {
+//        return null;
+//    }
     private void doingManagerPlayer(Action action) {
 
 
+        PackageManager packageManager = SmartScheduleApplication.getAppContext().getPackageManager();
+
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Uri u = Uri.withAppendedPath(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,"1");
+        SmartScheduleApplication.getAppContext().startActivity(i);
         Log.v(this.toString(), "vaoday");
         List<ApplicationInfo> applist = checkForLaunchIntent(
                 packageManager.getInstalledApplications(PackageManager.GET_META_DATA));
@@ -291,7 +299,7 @@ public class SchedulingService extends IntentService {
 
             if(null != intent)
             {
-                startActivity(intent);
+//                startActivity(intent);
             }
         }
         catch (ActivityNotFoundException e)
@@ -311,7 +319,7 @@ public class SchedulingService extends IntentService {
         for(ApplicationInfo info: list)
         {
             try {
-                if(null != packageManager.getLaunchIntentForPackage(info.packageName))
+                if(null != SmartScheduleApplication.getAppContext().getPackageManager().getLaunchIntentForPackage(info.packageName))
                 {
                     applist.add(info);
                 }
