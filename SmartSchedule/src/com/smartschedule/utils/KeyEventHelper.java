@@ -36,7 +36,7 @@ import android.view.KeyEvent;
  * @author Constantin Laurent
  * 
  */
-public class StopHelper {
+public class KeyEventHelper {
 	/**
 	 * Create and send a KeyEvent through the AudioService, failback to a simple
 	 * intent broadcast if necessary.On KitKat, the event should be send by the
@@ -123,19 +123,19 @@ public class StopHelper {
 			return false;
 
 		case 1: // Stop
-			StopHelper.sendStopKey(c);
+			KeyEventHelper.sendStopKey(c);
 			break;
 		case 2: // Play pause
-			StopHelper.sendPlayPauseKey(c);
+			KeyEventHelper.sendPlayPauseKey(c);
 			break;
 		case 3: // plugin and plugout
-			StopHelper.headsetPlugAndUnplug(c);
+			KeyEventHelper.headsetPlugAndUnplug(c);
 			break;
 		case 4: // plugout and plugin
-			StopHelper.headsetUnPlugAndPlug(c);
+			KeyEventHelper.headsetUnPlugAndPlug(c);
 			break;
 		case 5: // Getting Noisy
-			StopHelper.audioBecomingNoisy(c);
+			KeyEventHelper.audioBecomingNoisy(c);
 			break;
 		case 6: // Mute
 			VolumeHelper.setMediaVolume(c, 0);
@@ -148,18 +148,18 @@ public class StopHelper {
 	 * Simulation of a handset plug-out and plug-in Useful for songbird
 	 */
 	public static void headsetUnPlugAndPlug(Context c) {
-		StopHelper.changeHeadSetState(c, "Simulated-Headset", false);
+		KeyEventHelper.changeHeadSetState(c, "Simulated-Headset", false);
 
-		StopHelper.changeHeadSetState(c, "Simulated-Headset", true);
+		KeyEventHelper.changeHeadSetState(c, "Simulated-Headset", true);
 	}
 
 	/**
 	 * Simulation of a handset plug-in and plug-out Useful for songbird
 	 */
 	public static void headsetPlugAndUnplug(Context c) {
-		StopHelper.changeHeadSetState(c, "Simulated-Headset", true);
+		KeyEventHelper.changeHeadSetState(c, "Simulated-Headset", true);
 
-		StopHelper.changeHeadSetState(c, "Simulated-Headset", false);
+		KeyEventHelper.changeHeadSetState(c, "Simulated-Headset", false);
 	}
 
 	/**

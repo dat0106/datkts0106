@@ -1,17 +1,11 @@
 package com.smartschedule;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import android.content.ActivityNotFoundException;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.IBinder;
-import android.provider.MediaStore;
 import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -29,10 +23,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.SystemClock;
 import android.media.AudioManager;
-import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import com.smartschedule.utils.KeyEventHelper;
 
 public class SchedulingService extends IntentService {
     private NotificationManager mNotificationManager;
@@ -282,11 +276,10 @@ public class SchedulingService extends IntentService {
 
         PackageManager packageManager = SmartScheduleApplication.getAppContext().getPackageManager();
 
-        Intent i = new Intent(Intent.ACTION_VIEW);
-        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        Uri u = Uri.withAppendedPath(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,"1");
-        SmartScheduleApplication.getAppContext().startActivity(i);
-        Log.v(this.toString(), "vaoday");
+        if(!KeyEventHelper.stopMusic(getApplicationContext(), 2)){
+            Log.e(this.toString(), " ERROR Unknow Stop method");
+        }
+
         List<ApplicationInfo> applist = checkForLaunchIntent(
                 packageManager.getInstalledApplications(PackageManager.GET_META_DATA));
         ApplicationInfo app = applist.get(1);
