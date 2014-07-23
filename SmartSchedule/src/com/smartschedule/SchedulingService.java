@@ -276,7 +276,7 @@ public class SchedulingService extends IntentService {
 
         PackageManager packageManager = SmartScheduleApplication.getAppContext().getPackageManager();
 
-        if(!KeyEventHelper.stopMusic(getApplicationContext(), 2)){
+        if(!KeyEventHelper.keyEventHelper(getApplicationContext(), 2)){
             Log.e(this.toString(), " ERROR Unknow Stop method");
         }
 

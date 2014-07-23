@@ -109,7 +109,7 @@ public class KeyEventHelper {
 	}
 
 	/**
-	 * Stop the music with the selected method
+	 * keyEventHelper
 	 * 
 	 * @param c
 	 *            Context
@@ -117,7 +117,7 @@ public class KeyEventHelper {
 	 *            The selected method (see array.xml)
 	 * @return True if the method is known, false otherwise
 	 */
-	public static boolean stopMusic(Context c, int method) {
+	public static boolean keyEventHelper(Context c, int method) {
 		switch (method) {
 		default:
 			return false;
