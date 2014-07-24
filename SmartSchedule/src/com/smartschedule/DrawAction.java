@@ -25,4 +25,8 @@ public class DrawAction
 
     // dialog bluetooth manager
     public String bluetooth_mode;
+
+    // activity start application
+
+    public String package_name_application;
 }

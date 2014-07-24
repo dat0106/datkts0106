@@ -8,10 +8,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 
 import com.smartschedule.R;
-import com.smartschedule.action.ActivitySoundManager;
-import com.smartschedule.action.DialogBluetoothManager;
-import com.smartschedule.action.DialogWifiHotspotManager;
-import com.smartschedule.action.DialogWifiManager;
+import com.smartschedule.action.*;
 import com.smartschedule.database.Action;
 import com.smartschedule.database.SmartSchedulerDatabase;
 
@@ -51,16 +48,20 @@ public class Router {
         r3.category = Constant.CATEGORY_WIRELESS_NETWORK;
 
         router.put(Constant.ROUTER_WIFI_HOTSPOT, r3);
+
+        DetailActionViewer r4 = new DetailActionViewer();
+        r4.id = Constant.ROUTER_START_APPLICATION;
+        r4.name = R.string.name_start_application;
+        r4.iconURI = R.drawable.ic_launcher;
+        r4.category = Constant.CATEGORY_APPLICATIONS;
+
+        router.put(Constant.ROUTER_START_APPLICATION, r4);
         return router;
     }
 
     public static void routerActivity(Integer event_id, Integer router,
             Action childAction, Activity activity) {
         router(event_id, router, null, childAction, activity);
-    }
-
-    public static void routerDelete(Integer event_id, Integer router, Action actionTemp, Activity activity) {
-
     }
 
     public static void routerSetting(Integer event_id, Integer router,
@@ -105,6 +106,11 @@ public class Router {
             DialogWifiHotspotManager builderWifiHotspot = new DialogWifiHotspotManager(activity, intent);
             dialog = builderWifiHotspot.create();
             dialog.show();
+            break;
+
+        case Constant.ROUTER_START_APPLICATION:
+            intent.setClass(activity, ActivityStartApplication.class);
+            activity.startActivity(intent);
             break;
         default:
             break;

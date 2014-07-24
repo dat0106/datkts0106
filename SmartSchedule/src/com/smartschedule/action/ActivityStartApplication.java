@@ -2,18 +2,29 @@ package com.smartschedule.action;
 
 import android.app.Activity;
 import android.app.ListActivity;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.view.*;
+import android.widget.*;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.smartschedule.DrawAction;
+import com.smartschedule.EventDetailActivity;
 import com.smartschedule.R;
 import com.smartschedule.SmartScheduleApplication;
+import com.smartschedule.database.SmartSchedulerDatabase;
+import com.smartschedule.utils.Constant;
+import com.smartschedule.database.Action;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.smartschedule.database.SmartSchedulerDatabase.COLUMN_ACTION_NAME;
 
 /**
  * Created by ledat on 7/23/14.
@@ -23,6 +34,14 @@ import java.util.List;
 public class ActivityStartApplication extends ListActivity {
     private StartApplicationAdapter mAdapter;
     private PackageManager packageManager;
+    private List<ApplicationInfo> applist;
+    private String packageManagerChoise;
+    private int event_id;
+    private SmartSchedulerDatabase smartScheduleDb;
+    private Action action;
+    private String start_or_end;
+    private Gson gson;
+    private DrawAction drawAction;
 
     /**
      * Called when the activity is starting.  This is where most initialization
@@ -55,14 +74,94 @@ public class ActivityStartApplication extends ListActivity {
         setContentView(R.layout.icon_text_checkbox_listview);
 
 
-        List<ApplicationInfo> applist = checkForLaunchIntent(
-                packageManager.getInstalledApplications(PackageManager.GET_META_DATA));
-        ApplicationInfo app = applist.get(1);
+        smartScheduleDb = new SmartSchedulerDatabase(this);
 
-        Log.v(this.toString(), app.loadLabel(packageManager) + " (" + app.packageName + ")");
-//        iconview.setImageDrawable(data.loadIcon(packageManager));
-        mAdapter = new StartApplicationAdapter(this);
+        // xu ly intent
+        Intent intent = getIntent();
+
+        this.event_id = intent.getExtras().getInt(
+                SmartSchedulerDatabase.COLUMN_EVENT_ID);
+
+        action = intent.getExtras().getParcelable(Constant.ACTION_PARAMS);
+        start_or_end = intent.getExtras().getString(Constant.START_OR_END);
+        GsonBuilder gsonb = new GsonBuilder();
+        gson = gsonb.create();
+        if(action == null) {
+            drawAction = gson.fromJson("{}", DrawAction.class);
+        } else {
+            drawAction = gson.fromJson(action.getDrawAction(), DrawAction.class);
+        }
+
+        packageManagerChoise = drawAction.package_name_application;
+
+        packageManager = SmartScheduleApplication.getAppContext().getPackageManager();
+        applist = checkForLaunchIntent(
+                packageManager.getInstalledApplications(PackageManager.GET_META_DATA));
+
+        mAdapter = new StartApplicationAdapter(this, applist, packageManagerChoise);
         setListAdapter(mAdapter);
+
+    }
+
+    /**
+     * This method will be called when an item in the list is selected.
+     * Subclasses should override. Subclasses can call
+     * getListView().getItemAtPosition(position) if they need to access the
+     * data associated with the selected item.
+     *
+     * @param l        The ListView where the click happened
+     * @param v        The view that was clicked within the ListView
+     * @param position The position of the view in the list
+     * @param id       The row id of the item that was clicked
+     */
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+
+
+        packageManagerChoise =  (String) applist.get(position).loadLabel(packageManager);
+                // get data to update database
+        ContentValues contentValue = new ContentValues();
+
+        drawAction.package_name_application = packageManagerChoise;
+
+        contentValue.put(SmartSchedulerDatabase.COLUMN_ACTION_DRAW,
+                gson.toJson(drawAction));
+        contentValue.put(SmartSchedulerDatabase.COLUMN_ACTION_STATUS,
+               packageManagerChoise);
+        contentValue.put(SmartSchedulerDatabase.COLUMN_ACTION_STATE,
+                Constant.ROUTER_START_APPLICATION);
+        contentValue.put(COLUMN_ACTION_NAME,
+                R.string.name_bluetooth);
+
+        smartScheduleDb.open();
+        if (action == null) {
+            if (Constant.START.equals(start_or_end)) {
+                contentValue.put(
+                        SmartSchedulerDatabase.COLUMN_ACTION_START_ID,
+                        event_id);
+            } else if (Constant.END.equals(start_or_end)) {
+                contentValue.put(
+                        SmartSchedulerDatabase.COLUMN_ACTION_END_ID,
+                        event_id);
+            } else {
+                Log.e(((Object) this).toString(),
+                        "we can not check start or end");
+                throw new Error(
+                        "we can not check start or end");
+            }
+
+            smartScheduleDb.insert_action(contentValue);
+        } else {
+            smartScheduleDb.update_action(contentValue, action.getId());
+        }
+        Intent intent = new Intent(this, EventDetailActivity.class);
+        intent.putExtra(SmartSchedulerDatabase.COLUMN_EVENT_ID, event_id);
+
+        this.startActivity(intent);
+
+        finish();
+
     }
 
     private List<ApplicationInfo> checkForLaunchIntent(List<ApplicationInfo> list)
@@ -85,9 +184,13 @@ public class ActivityStartApplication extends ListActivity {
     }
     private class StartApplicationAdapter extends BaseAdapter{
         private final Activity mContext;
+        private final List<ApplicationInfo> mApplist;
+        private final String mPackageManagerChoise;
 
-        public StartApplicationAdapter(Activity context) {
+        public StartApplicationAdapter(Activity context, List<ApplicationInfo> applist, String packageManagerChoise) {
             mContext = context;
+            mApplist = applist;
+            mPackageManagerChoise =  packageManagerChoise;
         }
 
         /**
@@ -97,7 +200,7 @@ public class ActivityStartApplication extends ListActivity {
          */
         @Override
         public int getCount() {
-            return 0;
+            return mApplist.size();
         }
 
         /**
@@ -109,7 +212,7 @@ public class ActivityStartApplication extends ListActivity {
          */
         @Override
         public Object getItem(int position) {
-            return null;
+            return mApplist.get(position);
         }
 
         /**
@@ -120,7 +223,7 @@ public class ActivityStartApplication extends ListActivity {
          */
         @Override
         public long getItemId(int position) {
-            return 0;
+            return position;
         }
 
         /**
@@ -144,10 +247,84 @@ public class ActivityStartApplication extends ListActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 
+            View view = convertView;
+            LayoutInflater inflater =  (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            return null;
+            view = inflater.inflate(R.layout.icon_text_checkbox_itemview, parent, false);
+
+            ApplicationInfo data = mApplist.get(position);
+
+            if(null != data)
+            {
+                TextView textName = (TextView)view.findViewById(R.id.applicationName);
+                ImageView iconview = (ImageView)view.findViewById(R.id.applicationImageIcon);
+                RadioButton radioButton = (RadioButton)view.findViewById(R.id.applicationRadioButton);
+
+                textName.setText(data.loadLabel(packageManager) );
+                iconview.setImageDrawable(data.loadIcon(packageManager));
+
+                if(mPackageManagerChoise.equals(data.packageName)) {
+                    radioButton.setChecked(true);
+                }else{
+                    radioButton.setChecked(false);
+                }
+            }
+
+            return view;
+
         }
     }
 
 
+    /**
+     * Initialize the contents of the Activity's standard options menu.  You
+     * should place your menu items in to <var>menu</var>.
+     * <p/>
+     * <p>This is only called once, the first time the options menu is
+     * displayed.  To update the menu every time it is displayed, see
+     * {@link #onPrepareOptionsMenu}.
+     * <p/>
+     * <p>The default implementation populates the menu with standard system
+     * menu items.  These are placed in the {@link android.view.Menu#CATEGORY_SYSTEM} group so that
+     * they will be correctly ordered with application-defined menu items.
+     * Deriving classes should always call through to the base implementation.
+     * <p/>
+     * <p>You can safely hold on to <var>menu</var> (and any items created
+     * from it), making modifications to it as desired, until the next
+     * time onCreateOptionsMenu() is called.
+     * <p/>
+     * <p>When you add items to the menu, you can implement the Activity's
+     * {@link #onOptionsItemSelected} method to handle them there.
+     *
+     * @param menu The options menu in which you place your items.
+     * @return You must return true for the menu to be displayed;
+     * if you return false it will not be shown.
+     * @see #onPrepareOptionsMenu
+     * @see #onOptionsItemSelected
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.cancel, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // when the user click start schedule
+            case android.R.id.home:
+                // Navigate "up" the demo structure to the launchpad activity.
+                // for more.
+
+                finish();
+                return true;
+            case R.id.cancel:
+                // schedule.cancelSchedule(this, 1);
+                // do nothing
+                finish();
+                return true;
+        }
+        return false;
+    }
 }

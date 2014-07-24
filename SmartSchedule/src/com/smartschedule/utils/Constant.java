@@ -15,6 +15,7 @@ public class Constant {
     public static final int ROUTER_WIFI=  2;
     public static final int ROUTER_BLUETOOTH=  3;
     public static final int ROUTER_WIFI_HOTSPOT=  4;
+    public static final int ROUTER_START_APPLICATION = 5;
 
     // KEY GROUP IN SettingActivity tuong ung
     public static final int CATEGORY_APPLICATIONS=  0;
@@ -24,10 +25,12 @@ public class Constant {
     public static final int CATEGORY_WIRELESS_NETWORK=  4;
     public static final int CATEGORY_DISPLAY=  5;
     public static final int CATEGORY_TEXT_TO_SPEECH=  6;
+
     // KEY
     public static final String START_OR_END = "start_or_end";
     public static final String START = "start";
     public static final String END = "end";
     public static final String ACTION_PARAMS = "action_params";
+
 
 }

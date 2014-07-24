@@ -74,6 +74,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".EventActivity" />
         </activity>
+        <activity
+                android:name="com.smartschedule.action.ActivityStartApplication"
+                android:label="@string/app_name"
+                android:parentActivityName=".EventTimeActivity"
+                android:theme="@android:style/Theme.Holo.Light"
+                android:uiOptions="splitActionBarWhenNarrow" >
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".EventActivity" />
+        </activity>
 
         <receiver android:name="com.smartschedule.SampleAlarmReceiver" >
         </receiver>
