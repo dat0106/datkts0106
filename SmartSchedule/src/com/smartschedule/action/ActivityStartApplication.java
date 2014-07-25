@@ -101,6 +101,16 @@ public class ActivityStartApplication extends ListActivity {
         mAdapter = new StartApplicationAdapter(this, applist, packageManagerChoise);
         setListAdapter(mAdapter);
 
+        for(ApplicationInfo item : applist){
+            String temp = (String)item.loadLabel(packageManager);
+            if(temp.equals(packageManagerChoise)){
+                this.setSelection(applist.indexOf(item));
+            }else{
+                this.setSelection(0);
+            }
+        }
+
+
     }
 
     /**
@@ -259,11 +269,11 @@ public class ActivityStartApplication extends ListActivity {
                 TextView textName = (TextView)view.findViewById(R.id.applicationName);
                 ImageView iconview = (ImageView)view.findViewById(R.id.applicationImageIcon);
                 RadioButton radioButton = (RadioButton)view.findViewById(R.id.applicationRadioButton);
-
-                textName.setText(data.loadLabel(packageManager) );
+                String lable = (String)data.loadLabel(packageManager);
+                textName.setText(lable);
                 iconview.setImageDrawable(data.loadIcon(packageManager));
 
-                if(mPackageManagerChoise.equals(data.packageName)) {
+                if(lable.equals(mPackageManagerChoise)) {
                     radioButton.setChecked(true);
                 }else{
                     radioButton.setChecked(false);
