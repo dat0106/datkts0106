@@ -35,7 +35,8 @@ public class ActivityStartApplication extends ListActivity {
     private StartApplicationAdapter mAdapter;
     private PackageManager packageManager;
     private List<ApplicationInfo> applist;
-    private String packageManagerChoise;
+    private String packageLabelChoise;
+    private String packageNameChoise;
     private int event_id;
     private SmartSchedulerDatabase smartScheduleDb;
     private Action action;
@@ -92,24 +93,24 @@ public class ActivityStartApplication extends ListActivity {
             drawAction = gson.fromJson(action.getDrawAction(), DrawAction.class);
         }
 
-        packageManagerChoise = drawAction.package_name_application;
+        packageLabelChoise = drawAction.package_label_application;
+        packageNameChoise =  drawAction.package_name_application;
 
         packageManager = SmartScheduleApplication.getAppContext().getPackageManager();
         applist = checkForLaunchIntent(
                 packageManager.getInstalledApplications(PackageManager.GET_META_DATA));
 
-        mAdapter = new StartApplicationAdapter(this, applist, packageManagerChoise);
+        mAdapter = new StartApplicationAdapter(this, applist);
         setListAdapter(mAdapter);
 
         for(ApplicationInfo item : applist){
-            String temp = (String)item.loadLabel(packageManager);
-            if(temp.equals(packageManagerChoise)){
+            String label = (String)item.loadLabel(packageManager);
+            String name = item.packageName;
+            if(label.equals(packageLabelChoise) && name.equals(packageNameChoise)){
                 this.setSelection(applist.indexOf(item));
-            }else{
-                this.setSelection(0);
+                break;
             }
         }
-
 
     }
 
@@ -129,16 +130,18 @@ public class ActivityStartApplication extends ListActivity {
         super.onListItemClick(l, v, position, id);
 
 
-        packageManagerChoise =  (String) applist.get(position).loadLabel(packageManager);
+        packageLabelChoise =  (String) applist.get(position).loadLabel(packageManager);
+        packageNameChoise =  applist.get(position).packageName;
                 // get data to update database
         ContentValues contentValue = new ContentValues();
 
-        drawAction.package_name_application = packageManagerChoise;
+        drawAction.package_name_application = packageNameChoise;
+        drawAction.package_label_application = packageLabelChoise;
 
         contentValue.put(SmartSchedulerDatabase.COLUMN_ACTION_DRAW,
                 gson.toJson(drawAction));
         contentValue.put(SmartSchedulerDatabase.COLUMN_ACTION_STATUS,
-               packageManagerChoise);
+               packageLabelChoise);
         contentValue.put(SmartSchedulerDatabase.COLUMN_ACTION_STATE,
                 Constant.ROUTER_START_APPLICATION);
         contentValue.put(COLUMN_ACTION_NAME,
@@ -195,12 +198,9 @@ public class ActivityStartApplication extends ListActivity {
     private class StartApplicationAdapter extends BaseAdapter{
         private final Activity mContext;
         private final List<ApplicationInfo> mApplist;
-        private final String mPackageManagerChoise;
-
-        public StartApplicationAdapter(Activity context, List<ApplicationInfo> applist, String packageManagerChoise) {
+        public StartApplicationAdapter(Activity context, List<ApplicationInfo> applist) {
             mContext = context;
             mApplist = applist;
-            mPackageManagerChoise =  packageManagerChoise;
         }
 
         /**
@@ -269,11 +269,12 @@ public class ActivityStartApplication extends ListActivity {
                 TextView textName = (TextView)view.findViewById(R.id.applicationName);
                 ImageView iconview = (ImageView)view.findViewById(R.id.applicationImageIcon);
                 RadioButton radioButton = (RadioButton)view.findViewById(R.id.applicationRadioButton);
-                String lable = (String)data.loadLabel(packageManager);
-                textName.setText(lable);
+                String label = (String)data.loadLabel(packageManager);
+                String pName =  data.packageName;
+                textName.setText(label);
                 iconview.setImageDrawable(data.loadIcon(packageManager));
 
-                if(lable.equals(mPackageManagerChoise)) {
+                if(label.equals(packageLabelChoise) && pName.equals(packageNameChoise)) {
                     radioButton.setChecked(true);
                 }else{
                     radioButton.setChecked(false);

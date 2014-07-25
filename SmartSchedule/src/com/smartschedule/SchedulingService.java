@@ -74,7 +74,9 @@ public class SchedulingService extends IntentService {
 
             case Constant.ROUTER_BLUETOOTH:
                 doingBlueTooth(actions.get(i));
-                doingManagerPlayer(actions.get(i));
+                break;
+            case Constant.ROUTER_START_APPLICATION:
+                doingStartAppication(actions.get(i));
                 break;
             default:
                 break;
@@ -91,6 +93,7 @@ public class SchedulingService extends IntentService {
         ScheduleServiceReceiver.completeWakefulIntent(intent);
 
     }
+
 
     private void doingBlueTooth(Action action) {
 
@@ -243,34 +246,45 @@ public class SchedulingService extends IntentService {
 
     }
 
-//    Context my_service = this;
-//
-//    private TimerTask my_TimerTask = new TimerTask() {
-//        public void run() {
-//            Log.w("hello", "my name is Nicolas" + String.valueOf( SystemClock.uptimeMillis() ) );
-//            packageManager = my_service.getPackageManager();
-//            Log.w("hello", "my name is Nicolas" + String.valueOf(packageManager));
-//        }
-//    };
-//
-//
-//    int i = 0;
-//
-//
-//    @Override
-//    public int onStartCommand(Intent intent, int flags, int startId) {
-//        Timer my_timer = new Timer("automated launchemy loop",true);
-//        if(i==0){
-//            i=1;
-//            my_timer.schedule(my_TimerTask, 0, 5000);
-//        }
-//        return super.onStartCommand(intent,flags,startId);
-//    }
-//
-//    @Override
-//    public IBinder onBind(Intent intent) {
-//        return null;
-//    }
+    private void doingStartAppication(Action action) {
+        String draw = action.getDrawAction();
+
+        GsonBuilder gsonb = new GsonBuilder();
+        Gson gson = gsonb.create();
+        DrawAction drawAction = gson.fromJson(draw, DrawAction.class);
+
+        PackageManager packageManager = SmartScheduleApplication.getAppContext().getPackageManager();
+
+        List<ApplicationInfo> applist = checkForLaunchIntent(
+                packageManager.getInstalledApplications(PackageManager.GET_META_DATA));
+
+        for(ApplicationInfo item : applist){
+            String label = (String)item.loadLabel(packageManager);
+            String name = item.packageName;
+            if(label.equals(drawAction.package_label_application) && name.equals(drawAction.package_name_application)){
+                try
+                {
+                    Intent intent = packageManager.getLaunchIntentForPackage(item.packageName);
+
+                    if(null != intent)
+                    {
+                        this.startActivity(intent);
+                    }
+                }
+                catch (ActivityNotFoundException e)
+                {
+                    Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+                catch (Exception e)
+                {
+                    Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+                break;
+            }
+        }
+
+    }
+
     private void doingManagerPlayer(Action action) {
 
 

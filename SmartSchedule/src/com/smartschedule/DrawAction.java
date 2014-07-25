@@ -29,4 +29,5 @@ public class DrawAction
     // activity start application
 
     public String package_name_application;
+    public String package_label_application;
 }
