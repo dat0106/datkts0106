@@ -14,6 +14,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.sax.StartElementListener;
 import android.util.Log;
 
+/**
+* @author ledat
+*
+* */
 public class SmartSchedulerDatabase {
 
     public static final int DATABASE_VERSION = 1;
@@ -45,10 +49,12 @@ public class SmartSchedulerDatabase {
     public static final String COLUMN_ACTION_ID = "_id";
     public static final String COLUMN_ACTION_START_ID = "action_start_id";
     public static final String COLUMN_ACTION_END_ID = "action_end_id";
+    //use in Constant java (router action)
     public static final String COLUMN_ACTION_STATE = "state";
     public static final String COLUMN_ACTION_NAME = "name";
     public static final String COLUMN_ACTION_DRAW = "draw_action";
     public static final String COLUMN_ACTION_DRAW_CURRENT = "draw_current_action";
+    // status in event ( description )
     public static final String COLUMN_ACTION_STATUS = "status";
 
     private static Context context;

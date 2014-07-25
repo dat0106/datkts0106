@@ -1,0 +1,74 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="50dp"
+              android:background="@drawable/border"
+              android:clickable="false"
+              android:baselineAligned="false"
+              android:orientation="vertical"
+              android:gravity="center_vertical"
+              android:paddingLeft="20dp"
+              android:paddingRight="20dp"
+              android:weightSum="1"
+              tools:context=".ActivityStartApplication" >
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical" android:weightSum="1">
+
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+            <ImageView
+                    android:id="@+id/applicationImageIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="10dp"
+
+                    android:contentDescription="@string/hello_world" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="left|center"
+                android:orientation="vertical" android:layout_weight="0.95">
+
+            <TextView
+                    android:id="@+id/applicationName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+
+
+                    android:text="@string/add_menu"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical" android:gravity="center">
+
+            <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/applicationRadioButton"
+                    android:focusableInTouchMode="false"
+                    android:clickable="false"
+                    android:focusable="false"
+                    />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

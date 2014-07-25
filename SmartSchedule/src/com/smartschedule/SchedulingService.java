@@ -1,15 +1,11 @@
 package com.smartschedule;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import android.content.ActivityNotFoundException;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.os.IBinder;
 import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -27,17 +23,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.SystemClock;
 import android.media.AudioManager;
-import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import com.smartschedule.utils.KeyEventHelper;
 
 public class SchedulingService extends IntentService {
     private NotificationManager mNotificationManager;
     private SmartSchedulerDatabase database = new SmartSchedulerDatabase(this);
     private Event event;
     private ArrayList<Action> actions;
-    private PackageManager packageManager;
+
 
     public SchedulingService() {
         super("SchedulingService");
@@ -78,7 +74,9 @@ public class SchedulingService extends IntentService {
 
             case Constant.ROUTER_BLUETOOTH:
                 doingBlueTooth(actions.get(i));
-                doingManagerPlayer(actions.get(i));
+                break;
+            case Constant.ROUTER_START_APPLICATION:
+                doingStartAppication(actions.get(i));
                 break;
             default:
                 break;
@@ -95,6 +93,7 @@ public class SchedulingService extends IntentService {
         ScheduleServiceReceiver.completeWakefulIntent(intent);
 
     }
+
 
     private void doingBlueTooth(Action action) {
 
@@ -247,38 +246,54 @@ public class SchedulingService extends IntentService {
 
     }
 
-    Context my_service = this;
+    private void doingStartAppication(Action action) {
+        String draw = action.getDrawAction();
 
-    private TimerTask my_TimerTask = new TimerTask() {
-        public void run() {
-            Log.w("hello", "my name is Nicolas" + String.valueOf( SystemClock.uptimeMillis() ) );
-            packageManager = my_service.getPackageManager();
-            Log.w("hello", "my name is Nicolas" + String.valueOf(packageManager));
+        GsonBuilder gsonb = new GsonBuilder();
+        Gson gson = gsonb.create();
+        DrawAction drawAction = gson.fromJson(draw, DrawAction.class);
+
+        PackageManager packageManager = SmartScheduleApplication.getAppContext().getPackageManager();
+
+        List<ApplicationInfo> applist = checkForLaunchIntent(
+                packageManager.getInstalledApplications(PackageManager.GET_META_DATA));
+
+        for(ApplicationInfo item : applist){
+            String label = (String)item.loadLabel(packageManager);
+            String name = item.packageName;
+            if(label.equals(drawAction.package_label_application) && name.equals(drawAction.package_name_application)){
+                try
+                {
+                    Intent intent = packageManager.getLaunchIntentForPackage(item.packageName);
+
+                    if(null != intent)
+                    {
+                        this.startActivity(intent);
+                    }
+                }
+                catch (ActivityNotFoundException e)
+                {
+                    Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+                catch (Exception e)
+                {
+                    Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+                break;
+            }
         }
-    };
 
-
-    int i = 0;
-
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        Timer my_timer = new Timer("automated launchemy loop",true);
-        if(i==0){
-            i=1;
-            my_timer.schedule(my_TimerTask, 0, 5000);
-        }
-        return super.onStartCommand(intent,flags,startId);
     }
 
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
-    }
     private void doingManagerPlayer(Action action) {
 
 
-        Log.v(this.toString(), "vaoday");
+        PackageManager packageManager = SmartScheduleApplication.getAppContext().getPackageManager();
+
+        if(!KeyEventHelper.keyEventHelper(getApplicationContext(), 2)){
+            Log.e(this.toString(), " ERROR Unknow Stop method");
+        }
+
         List<ApplicationInfo> applist = checkForLaunchIntent(
                 packageManager.getInstalledApplications(PackageManager.GET_META_DATA));
         ApplicationInfo app = applist.get(1);
@@ -291,7 +306,7 @@ public class SchedulingService extends IntentService {
 
             if(null != intent)
             {
-                startActivity(intent);
+//                startActivity(intent);
             }
         }
         catch (ActivityNotFoundException e)
@@ -311,7 +326,7 @@ public class SchedulingService extends IntentService {
         for(ApplicationInfo info: list)
         {
             try {
-                if(null != packageManager.getLaunchIntentForPackage(info.packageName))
+                if(null != SmartScheduleApplication.getAppContext().getPackageManager().getLaunchIntentForPackage(info.packageName))
                 {
                     applist.add(info);
                 }
