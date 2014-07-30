@@ -58,6 +58,7 @@ public class CameraSurface extends SurfaceView implements SurfaceHolder.Callback
 	}
 	
 	public void startTakePicture(){
+
 		camera.autoFocus(new AutoFocusCallback() {
 			@Override
 			public void onAutoFocus(boolean success, Camera camera) {
@@ -136,7 +137,6 @@ public class CameraSurface extends SurfaceView implements SurfaceHolder.Callback
 	public void surfaceCreated(SurfaceHolder holder) {
 		camera = Camera.open();
 
-        SurfaceView dummy=new SurfaceView(context);
 		try {
 			camera.setPreviewDisplay(holder);
 			camera.setPreviewCallback(new Camera.PreviewCallback() {
