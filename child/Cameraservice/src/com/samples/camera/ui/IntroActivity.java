@@ -1,4 +1,4 @@
-package com.varma.samples.camera.ui;
+package com.samples.camera.ui;
 
 import com.varma.samples.camera.R;
 

@@ -1,4 +1,4 @@
-package com.varma.samples.camera.callback;
+package com.samples.camera.callback;
 
 import android.hardware.Camera;
 

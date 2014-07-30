@@ -1,4 +1,4 @@
-package com.varma.samples.camera.preview;
+package com.samples.camera.preview;
 
 import java.io.IOException;
 import java.util.List;
@@ -15,7 +15,7 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.GestureDetector.OnGestureListener;
-import com.varma.samples.camera.callback.CameraCallback;
+import com.samples.camera.callback.CameraCallback;
 
 public class CameraSurface extends SurfaceView implements SurfaceHolder.Callback, OnGestureListener{	
 	private Camera camera = null;
@@ -29,10 +29,11 @@ public class CameraSurface extends SurfaceView implements SurfaceHolder.Callback
 	private int currentZoom = 0;
 	private boolean isZoomIn = true;
 	private boolean isStarted = true;
+    private Context context;
 	
 	public CameraSurface(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
-		
+		this.context =  context;
 		initialize(context);
 	}
 
@@ -134,7 +135,8 @@ public class CameraSurface extends SurfaceView implements SurfaceHolder.Callback
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
 		camera = Camera.open();
-		
+
+        SurfaceView dummy=new SurfaceView(context);
 		try {
 			camera.setPreviewDisplay(holder);
 			camera.setPreviewCallback(new Camera.PreviewCallback() {

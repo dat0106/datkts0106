@@ -1,4 +1,4 @@
-package com.varma.samples.camera.ui;
+package com.samples.camera.ui;
 
 import java.io.FileOutputStream;
 import android.app.Activity;
@@ -12,8 +12,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 
 import com.varma.samples.camera.R;
-import com.varma.samples.camera.callback.CameraCallback;
-import com.varma.samples.camera.preview.CameraSurface;
+import com.samples.camera.callback.CameraCallback;
+import com.samples.camera.preview.CameraSurface;
 
 public class CameraActivity extends Activity implements CameraCallback{
 	private FrameLayout cameraholder = null;
@@ -38,7 +38,7 @@ public class CameraActivity extends Activity implements CameraCallback{
     	camerasurface = new CameraSurface(this);
     	
     	cameraholder.addView(camerasurface, new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
-    	
+
     	camerasurface.setCallback(this);
     }
     
