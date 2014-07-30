@@ -12,14 +12,522 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.varma.samples.camera" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="97d1b0c7-6c02-4e42-b5ca-4a62455b3668" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../gradle/wrapper/gradle-wrapper.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../gradle/wrapper/gradle-wrapper.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../gradlew.bat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../gradlew" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    <list default="true" id="97d1b0c7-6c02-4e42-b5ca-4a62455b3668" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/classes/production/lib/com/skd/androidrecording/video/AdaptiveSurfaceView.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../vogella-master/de.vogella.camera.api/bin/classes/de/vogella/camera/api/AndroidFaceDetector$myView.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../vogella-master/de.vogella.camera.api/bin/classes/de/vogella/camera/api/AndroidFaceDetector.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/ArrayAdapter.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/classes/production/lib/com/skd/androidrecording/visualizer/AudioData.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/classes/production/lib/com/skd/androidrecording/audio/AudioPlaybackManager.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/classes/production/lib/com/skd/androidrecording/audio/AudioRecordingHandler.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/classes/production/lib/com/skd/androidrecording/audio/AudioRecordingThread.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/classes/production/lib/com/skd/androidrecording/visualizer/renderer/BarGraphRenderer.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/BaseAdapterDecorator.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../SmartSchedule/out/production/SmartSchedule/com/smartschedule/BuildConfig.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/BuildConfig.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/classes/production/lib/com/skd/androidrecording/BuildConfig.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/bin/com/varma/samples/camera/BuildConfig.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../vogella-master/de.vogella.camera.api/bin/classes/de/vogella/camera/api/BuildConfig.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/bin/com/varma/samples/camera/callback/CameraCallback.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/bin/CameraDemo.apk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/CameraDemo.apk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/classes/production/lib/com/skd/androidrecording/video/CameraHelper.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/classes/production/lib/com/skd/androidrecording/video/CameraManager.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/bin/com/varma/samples/camera/preview/CameraSurface$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/bin/com/varma/samples/camera/preview/CameraSurface$2.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/bin/com/varma/samples/camera/preview/CameraSurface$3.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/bin/com/varma/samples/camera/preview/CameraSurface$4.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/bin/com/varma/samples/camera/preview/CameraSurface$5.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/bin/com/varma/samples/camera/preview/CameraSurface.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/classes/production/lib/com/skd/androidrecording/fft/Complex.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../vogella-master/de.vogella.camera.api/bin/classes/de/vogella/camera/api/Constants.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/ContextualUndoActivity$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/ContextualUndoActivity$MyDeleteItemCallback.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/ContextualUndoActivity.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/ContextualUndoAdapter$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/ContextualUndoAdapter$DeleteItemCallback.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/ContextualUndoAdapter$RecycleViewListener.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/ContextualUndoAdapter$RemoveViewAnimatorListenerAdapter.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/ContextualUndoAdapter$RemoveViewAnimatorUpdateListener.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/ContextualUndoAdapter$UndoListener.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/ContextualUndoAdapter.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/ContextualUndoListViewTouchListener$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/ContextualUndoListViewTouchListener$2.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/ContextualUndoListViewTouchListener$Callback.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/ContextualUndoListViewTouchListener.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/ContextualUndoView.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/classes/production/lib/com/skd/androidrecording/fft/FFT.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/classes/production/lib/com/skd/androidrecording/visualizer/FFTData.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/bin/com/varma/samples/camera/ui/MainActivity$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/MainActivity.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/bin/com/varma/samples/camera/ui/MainActivity.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../vogella-master/de.vogella.camera.api/bin/classes/de/vogella/camera/api/MakePhotoActivity.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/classes/production/lib/com/skd/androidrecording/video/MediaPlayerManager.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/classes/production/lib/com/skd/androidrecording/video/MediaRecorderManager.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/MyListActivity$MyListAdapter.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/MyListActivity.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../vogella-master/de.vogella.camera.api/bin/classes/de/vogella/camera/api/PhotoHandler.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/classes/production/lib/com/skd/androidrecording/video/PlaybackHandler.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../SmartSchedule/out/production/SmartSchedule/com/smartschedule/R$array.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../SmartSchedule/out/production/SmartSchedule/com/smartschedule/R$attr.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/R$attr.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/classes/production/lib/com/skd/androidrecording/R$attr.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/bin/com/varma/samples/camera/R$attr.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../vogella-master/de.vogella.camera.api/bin/classes/de/vogella/camera/api/R$attr.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../SmartSchedule/out/production/SmartSchedule/com/smartschedule/R$dimen.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/R$dimen.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../SmartSchedule/out/production/SmartSchedule/com/smartschedule/R$drawable.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/R$drawable.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/classes/production/lib/com/skd/androidrecording/R$drawable.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/bin/com/varma/samples/camera/R$drawable.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../vogella-master/de.vogella.camera.api/bin/classes/de/vogella/camera/api/R$drawable.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../SmartSchedule/out/production/SmartSchedule/com/smartschedule/R$id.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/R$id.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/bin/com/varma/samples/camera/R$id.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../vogella-master/de.vogella.camera.api/bin/classes/de/vogella/camera/api/R$id.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../SmartSchedule/out/production/SmartSchedule/com/smartschedule/R$layout.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/R$layout.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/bin/com/varma/samples/camera/R$layout.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../vogella-master/de.vogella.camera.api/bin/classes/de/vogella/camera/api/R$layout.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../SmartSchedule/out/production/SmartSchedule/com/smartschedule/R$menu.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../SmartSchedule/out/production/SmartSchedule/com/smartschedule/R$raw.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../SmartSchedule/out/production/SmartSchedule/com/smartschedule/R$string.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/R$string.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/classes/production/lib/com/skd/androidrecording/R$string.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/bin/com/varma/samples/camera/R$string.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../vogella-master/de.vogella.camera.api/bin/classes/de/vogella/camera/api/R$string.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../SmartSchedule/out/production/SmartSchedule/com/smartschedule/R$style.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/R$style.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/classes/production/lib/com/skd/androidrecording/R$style.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../SmartSchedule/out/production/SmartSchedule/com/smartschedule/R.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/com/example/undo/R.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/classes/production/lib/com/skd/androidrecording/R.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/bin/com/varma/samples/camera/R.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../vogella-master/de.vogella.camera.api/bin/classes/de/vogella/camera/api/R.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/classes/production/lib/com/skd/androidrecording/visualizer/renderer/Renderer.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../SmartSchedule/out/production/SmartSchedule/SmartSchedule.apk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../SmartSchedule/bin/classes/SmartSchedule.unaligned.apk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../vogella-master/de.vogella.camera.api/bin/classes/de/vogella/camera/api/TextureViewActivity.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/Undo.apk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/Undo.apk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undo.rar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes/Undo.unaligned.apk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/classes/production/lib/com/skd/androidrecording/video/VideoPlaybackManager.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/classes/production/lib/com/skd/androidrecording/video/VideoRecordingHandler.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/classes/production/lib/com/skd/androidrecording/video/VideoRecordingManager.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/classes/production/lib/com/skd/androidrecording/visualizer/VisualizerView$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/classes/production/lib/com/skd/androidrecording/visualizer/VisualizerView$2.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/classes/production/lib/com/skd/androidrecording/visualizer/VisualizerView.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable/about.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/dexedLibs/android-support-v4-371dad367e9839eb9ab8bceef0218402.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../SmartSchedule/bin/dexedLibs/android-support-v4-76a39f9198b413a0d18e108d1708295b.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/libs/android-support-v4.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/libs/android-support-v4.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/libs/android-support-v4.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/libs/android-support-v4.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../SmartSchedule/bin/dexedLibs/android-support-v7-appcompat-c041c60a4242eb87f85a66fbb1ef2be5.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListView/libs/annotations.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable/back.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/classes.dex" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable/coloreffect.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../vogella-master/de.vogella.camera.api/bin/classes/de.vogella.camera.api.apk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/drawable-hdpi/drawer_shadow.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/drawable-mdpi/drawer_shadow.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/drawable-xhdpi/drawer_shadow.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListView/src/main/res/drawable-hdpi/elv_ic_action_undo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListView/src/main/res/drawable-ldpi/elv_ic_action_undo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListView/src/main/res/drawable-mdpi/elv_ic_action_undo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListView/src/main/res/drawable-xhdpi/elv_ic_action_undo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListView/src/main/res/drawable-xxhdpi/elv_ic_action_undo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListView/src/main/res/drawable-hdpi/elv_toast_frame.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListView/src/main/res/drawable-ldpi/elv_toast_frame.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListView/src/main/res/drawable-mdpi/elv_toast_frame.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListView/src/main/res/drawable-xhdpi/elv_toast_frame.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListView/src/main/res/drawable-xxhdpi/elv_toast_frame.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/gradle/wrapper/gradle-wrapper.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../SmartSchedule/bin/dexedLibs/gson-2.2.4-291482474d2815f49100580f8e7984b9.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/drawable-hdpi/ic_action_delete.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/drawable-mdpi/ic_action_delete.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/drawable-xhdpi/ic_action_delete.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/drawable-xxhdpi/ic_action_delete.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/drawable-hdpi/ic_action_done.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/drawable-mdpi/ic_action_done.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/drawable-xhdpi/ic_action_done.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/drawable-xxhdpi/ic_action_done.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/res/drawable-hdpi/ic_action_search.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/res/drawable-mdpi/ic_action_search.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/res/drawable-xhdpi/ic_action_search.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/drawable-hdpi/ic_action_settings.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/drawable-mdpi/ic_action_settings.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/drawable-xhdpi/ic_action_settings.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/drawable-xxhdpi/ic_action_settings.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/drawable-hdpi/ic_drawer.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/drawable-mdpi/ic_drawer.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/drawable-xhdpi/ic_drawer.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/ic_launcher-web.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/ic_launcher-web.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/ic_launcher-web.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/drawable-hdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/drawable-mdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/drawable-xhdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/drawable-xxhdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/res/drawable-hdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/res/drawable-mdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/res/drawable-xhdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/res/drawable-xxhdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/res/drawable-hdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/res/drawable-mdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/res/drawable-xhdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/res/drawable-xxhdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/Android-Camera-Example-master/res/drawable-hdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/Android-Camera-Example-master/res/drawable-ldpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/Android-Camera-Example-master/res/drawable-mdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/res/drawable-hdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/res/drawable-mdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/res/drawable-xhdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/res/drawable-hdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/res/drawable-mdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/res/drawable-xhdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/res/drawable-hdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/res/drawable-ldpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/res/drawable-mdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/res/drawable-xhdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/res/drawable-hdpi/ic_switch.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/drawable-hdpi/ic_undo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/drawable-mdpi/ic_undo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/drawable-xhdpi/ic_undo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/drawable-xxhdpi/ic_undo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/res/drawable-hdpi/ic_undo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/res/drawable-mdpi/ic_undo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/res/drawable-xhdpi/ic_undo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/res/drawable-hdpi/ic_undo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/res/drawable-mdpi/ic_undo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/res/drawable-xhdpi/ic_undo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable/icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/dexedLibs/nineoldandroids-2.4.0-dd7bb19d980e29e99e622916321bd57e.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/libs/nineoldandroids-2.4.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/resources.ap_" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable/shutter.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/libs/simplesound-0.1.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable/whitebalance.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../SmartSchedule/document/y tuong.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/.classpath" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/Android-Camera-Example-master/.classpath" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/.classpath" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/.classpath" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/.classpath" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.classpath" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/Android-Camera-Example-master/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../.idea/.name" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../SmartSchedule/.idea/.name" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/.idea/.name" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/Android-Camera-Example-master/.idea/.name" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/.idea/.name" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/.idea/.name" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/.idea/.name" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/.idea/.name" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../vogella-master/de.vogella.camera.api/.idea/.name" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/.project" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/Android-Camera-Example-master/.project" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/.project" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/.project" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/.project" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.project" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/src/com/skd/androidrecording/video/AdaptiveSurfaceView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/AndroidManifest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListView/src/main/AndroidManifest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/AndroidManifest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/AndroidManifest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/Android-Camera-Example-master/AndroidManifest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/AndroidManifest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/AndroidManifest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/AndroidManifest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/AndroidManifest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/AndroidRecording-test.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/src/com/example/undo/ArrayAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/src/com/skd/androidrecording/visualizer/AudioData.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/src/com/skd/androidrecordingtest/AudioPlaybackActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/src/com/skd/androidrecording/audio/AudioPlaybackManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/src/com/skd/androidrecordingtest/AudioRecordingActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/src/com/skd/androidrecording/audio/AudioRecordingHandler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/src/com/skd/androidrecording/audio/AudioRecordingThread.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/src/com/skd/androidrecording/visualizer/renderer/BarGraphRenderer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/src/com/example/undo/BaseAdapterDecorator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/gen/de/timroes/android/listviewdemo/BuildConfig.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/gen/com/example/undo/BuildConfig.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/gen/com/skd/androidrecordingtest/BuildConfig.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/gen/com/skd/androidrecording/BuildConfig.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/varma/samples/camera/BuildConfig.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/gen/com/varma/samples/camera/BuildConfig.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../vogella-master/de.vogella.camera.api/gen/de/vogella/camera/api/BuildConfig.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/Android-Camera-Example-master/CamTestActivity.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/Android-Camera-Example-master/src/com/example/cam/CamTestActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/src/com/example/cameraexample/CameraActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/samples/camera/ui/CameraActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/samples/camera/callback/CameraCallback.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/CameraDemo.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/CameraDemo.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/src/com/skd/androidrecording/video/CameraHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/src/com/skd/androidrecording/video/CameraManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CameraService.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/samples/camera/preview/CameraSurface.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/src/com/example/cameraexample/CameraSurfaceView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/src/com/skd/androidrecording/fft/Complex.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/src/com/example/undo/ContextualUndoActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/src/com/example/undo/ContextualUndoAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/src/com/example/undo/ContextualUndoListViewTouchListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/src/com/example/undo/ContextualUndoView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListView/src/main/java/de/timroes/android/listview/EnhancedListView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/src/com/skd/androidrecording/fft/FFT.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/src/com/skd/androidrecording/visualizer/FFTData.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/samples/camera/ui/IntroActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/java/de/timroes/android/listviewdemo/MainActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/src/com/example/undo/MainActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/src/com/skd/androidrecordingtest/MainActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/gen/de/timroes/android/listviewdemo/Manifest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/gen/com/example/undo/Manifest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/gen/com/skd/androidrecordingtest/Manifest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/gen/com/skd/androidrecording/Manifest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/varma/samples/camera/Manifest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/gen/com/varma/samples/camera/Manifest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../vogella-master/de.vogella.camera.api/gen/de/vogella/camera/api/Manifest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/src/com/skd/androidrecording/video/MediaPlayerManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/src/com/skd/androidrecording/video/MediaRecorderManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/src/com/example/undo/MyListActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/NOTICE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/src/com/skd/androidrecordingtest/utils/NotificationUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/src/com/skd/androidrecording/video/PlaybackHandler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/Android-Camera-Example-master/src/com/example/cam/Preview.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../SmartSchedule/.idea/inspectionProfiles/Project_Default.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/gen/de/timroes/android/listviewdemo/R.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/gen/com/example/undo/R.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/varma/samples/camera/R.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/gen/com/varma/samples/camera/R.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../vogella-master/de.vogella.camera.api/gen/de/vogella/camera/api/R.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/src/com/skd/androidrecording/visualizer/renderer/Renderer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/src/com/skd/androidrecordingtest/SizeAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../SmartSchedule/SmartSchedule.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/src/com/skd/androidrecordingtest/utils/StorageUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/Undo.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/src/com/skd/androidrecordingtest/VideoPlaybackActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/src/com/skd/androidrecording/video/VideoPlaybackManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/src/com/skd/androidrecordingtest/VideoRecordingActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/src/com/skd/androidrecording/video/VideoRecordingHandler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/src/com/skd/androidrecording/video/VideoRecordingManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/src/com/skd/androidrecording/visualizer/VisualizerView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/res/layout/activity_camera.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/res/menu/activity_camera.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/layout/activity_main.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/res/layout/activity_main.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/android-camera-api-example-master.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/.idea/android-camera-api-example-master.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../android_git.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/.idea/libraries/android_support_v4.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/.idea/libraries/android_support_v4.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/res/layout/audio_play.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/res/layout/audio_rec.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../build.gradle" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/build.gradle" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListView/build.gradle" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/build.gradle" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/camera.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/values/colors.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListView/src/main/res/values/colors.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListView/src/main/res/values-v19/colors.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../SmartSchedule/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/Android-Camera-Example-master/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../vogella-master/de.vogella.camera.api/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../vogella-master/de.vogella.camera.api/de.vogella.camera.api.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListView/src/main/res/values/dimens.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/res/values/dimens.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/res/values-sw600dp/dimens.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/res/values-sw720dp-land/dimens.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/res/values/dimens.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/res/values-sw600dp/dimens.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/res/values-sw720dp-land/dimens.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListView/src/main/res/drawable/elv_popup_bg.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListView/src/main/res/anim/elv_popup_hide.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListView/src/main/res/anim/elv_popup_show.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListView/src/main/res/drawable/elv_undo_btn_bg.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListView/src/main/res/drawable/elv_undo_btn_bg_focused.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListView/src/main/res/drawable/elv_undo_btn_bg_pressed.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListView/src/main/res/layout/elv_undo_popup.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListView/src/main/res/layout-v19/elv_undo_popup.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../SmartSchedule/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/Android-Camera-Example-master/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../vogella-master/de.vogella.camera.api/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/gradle/wrapper/gradle-wrapper.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/gradlew.bat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/gradlew" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../SmartSchedule/.idea/libraries/gson_2_2_4.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/intro.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/bin/jarlist.cache" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/lib.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/layout/list_item.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/res/layout/list_row.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/menu/main.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/Android-Camera-Example-master/res/layout/main.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/res/layout/main.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../SmartSchedule/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/Android-Camera-Example-master/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../vogella-master/de.vogella.camera.api/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../SmartSchedule/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/Android-Camera-Example-master/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../vogella-master/de.vogella.camera.api/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/.settings/org.eclipse.jdt.core.prefs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/Android-Camera-Example-master/.settings/org.eclipse.jdt.core.prefs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/.settings/org.eclipse.jdt.core.prefs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/.settings/org.eclipse.jdt.core.prefs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/.settings/org.eclipse.jdt.core.prefs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/values/prefs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../SmartSchedule/.idea/inspectionProfiles/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/.idea/copyright/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/Android-Camera-Example-master/.idea/copyright/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/.idea/copyright/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/.idea/copyright/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/.idea/copyright/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../vogella-master/de.vogella.camera.api/.idea/copyright/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/proguard-project.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/proguard-project.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/proguard-project.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/proguard-project.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/Android-Camera-Example-master/proguard.cfg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/project.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/Android-Camera-Example-master/project.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/project.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/project.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/project.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/project.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/Android-Camera-Example-master/res/drawable/round_button.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/.idea/scopes/scope_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/Android-Camera-Example-master/.idea/scopes/scope_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/.idea/scopes/scope_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/.idea/scopes/scope_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/.idea/scopes/scope_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../vogella-master/de.vogella.camera.api/.idea/scopes/scope_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/drawable/section_header.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../settings.gradle" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/settings.gradle" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/.idea/libraries/simplesound_0_1.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/values/strings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListView/src/main/res/values/strings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/res/values/strings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/Android-Camera-Example-master/res/values/strings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/res/values/strings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/res/values/strings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/res/values/strings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListViewDemo/src/main/res/values/styles.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../EnhancedListView-master/EnhancedListView/src/main/res/values/styles.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/res/values/styles.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/res/values-v11/styles.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/res/values-v14/styles.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/res/values/styles.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/res/values-v11/styles.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/res/values-v14/styles.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/res/values/styles.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/res/values-v11/styles.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/lib/res/values-v14/styles.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/res/values/styles.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/res/values-v11/styles.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/res/values-v14/styles.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/res/layout/undo_row.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../SmartSchedule/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/Android-Camera-Example-master/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../vogella-master/de.vogella.camera.api/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/res/layout/video_play.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/res/layout/video_rec.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Undodeletelistview/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/Android-Camera-Example-master/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/AndroidRecording-master/demo/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../camera/android-camera-api-example-master/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraDemo/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../vogella-master/de.vogella.camera.api/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="E:\android\android-git\datkts0106\Animations.zip" afterPath="" />
+      <change type="DELETED" beforePath="E:\android\android-git\datkts0106\AutoCompleteEditText.zip" afterPath="" />
+      <change type="DELETED" beforePath="E:\android\android-git\datkts0106\BasicSyncAdapter.zip" afterPath="" />
+      <change type="DELETED" beforePath="E:\android\android-git\datkts0106\ContactsList.zip" afterPath="" />
+      <change type="DELETED" beforePath="E:\android\android-git\datkts0106\CustomExpandableList.zip" afterPath="" />
+      <change type="DELETED" beforePath="E:\android\android-git\datkts0106\CustomListView.zip" afterPath="" />
+      <change type="DELETED" beforePath="E:\android\android-git\datkts0106\DemoAndroidDatabase.rar" afterPath="" />
+      <change type="DELETED" beforePath="E:\android\android-git\datkts0106\EffectiveNavigation.zip" afterPath="" />
+      <change type="DELETED" beforePath="E:\android\android-git\datkts0106\ListView1.zip" afterPath="" />
+      <change type="DELETED" beforePath="E:\android\android-git\datkts0106\NavigationDrawer.zip" afterPath="" />
+      <change type="DELETED" beforePath="E:\android\android-git\datkts0106\NetworkUsage.zip" afterPath="" />
+      <change type="DELETED" beforePath="E:\android\android-git\datkts0106\NewsReader.zip" afterPath="" />
+      <change type="DELETED" beforePath="E:\android\android-git\datkts0106\NotifyUser.zip" afterPath="" />
+      <change type="DELETED" beforePath="E:\android\android-git\datkts0106\NsdChat.zip" afterPath="" />
+      <change type="DELETED" beforePath="E:\android\android-git\datkts0106\OpenGLES.zip" afterPath="" />
+      <change type="DELETED" beforePath="E:\android\android-git\datkts0106\SQLiteExample.zip" afterPath="" />
+      <change type="DELETED" beforePath="E:\android\android-git\datkts0106\Scheduler.zip" afterPath="" />
+      <change type="DELETED" beforePath="E:\android\android-git\datkts0106\TabBar.zip" afterPath="" />
+      <change type="DELETED" beforePath="E:\android\android-git\datkts0106\ThreadSample.zip" afterPath="" />
+      <change type="DELETED" beforePath="E:\android\android-git\datkts0106\UploadToServer.zip" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/BuildConfig.class" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/BuildConfig.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/ui/CameraActivity$1.class" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/ui/CameraActivity$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/ui/CameraActivity$2.class" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/ui/CameraActivity$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/ui/CameraActivity$3.class" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/ui/CameraActivity$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/ui/CameraActivity.class" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/ui/CameraActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/callback/CameraCallback.class" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/callback/CameraCallback.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/preview/CameraSurface$1.class" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/preview/CameraSurface$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/preview/CameraSurface$2.class" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/preview/CameraSurface$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/preview/CameraSurface$3.class" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/preview/CameraSurface$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/preview/CameraSurface$4.class" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/preview/CameraSurface$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/preview/CameraSurface$5.class" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/preview/CameraSurface$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/preview/CameraSurface.class" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/preview/CameraSurface.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/ui/IntroActivity$1.class" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/ui/IntroActivity$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/ui/IntroActivity.class" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/ui/IntroActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/R$attr.class" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/R$attr.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/R$drawable.class" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/R$drawable.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/R$id.class" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/R$id.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/R$layout.class" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/R$layout.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/R$string.class" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/R$string.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/R.class" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/bin/classes/com/varma/samples/camera/R.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/gen/com/varma/samples/camera/BuildConfig.java" afterPath="$PROJECT_DIR$/../../krvarma-android-samples/CameraEffectsDemo/gen/com/varma/samples/camera/BuildConfig.java" />
     </list>
     <ignored path="CameraDemo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -73,8 +581,8 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties converted="true" />
     <breakpoint_rules converted="true" />
+    <ui_properties converted="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -95,7 +603,7 @@
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
-    <option name="height" value="1096" />
+    <option name="height" value="812" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -125,7 +633,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -141,12 +648,31 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" />
+              <option name="myItemId" value="Cameraservice" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CameraDemo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cameraservice" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="camera" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -428,14 +954,15 @@
       <workItem from="1406621201156" duration="1150000" />
       <workItem from="1406652096272" duration="260000" />
       <workItem from="1406692870155" duration="1904000" />
+      <workItem from="1406723953722" duration="28000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4496000" />
+    <option name="totallyTimeSpent" value="4524000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="812" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -450,7 +977,7 @@
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32929292" sideWeight="0.50026953" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32937685" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32737276" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32916668" sideWeight="0.49973047" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32929292" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
@@ -496,7 +1023,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="17051" max-vertical-offset="62220">
           <caret line="1003" column="22" selection-start-line="1003" selection-start-column="22" selection-end-line="1003" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -504,7 +1030,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="16275" max-vertical-offset="59568">
           <caret line="1003" column="22" selection-start-line="1003" selection-start-column="22" selection-end-line="1003" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="IdProvider" IDEtalkID="6A308B1DCB015E3963EDAC4D48EE9643" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="Unknown Erlang version at /home/ledat/opt/fermium" project-jdk-type="Erlang SDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
+
