@@ -6,4 +6,23 @@
 <string name="white_balance">White Balance</string>
 <string name="app_desc">Sample camera application from www.androiddevblog.net\nA sample camera applicaiton to demonstrate the use of camera effects.\n\nFor more infromation please visit:\nhttp://www.androiddevblog.net\n</string>
 <string name="start_application">Start camera, action, cut :)</string>
+
+    <string name="audioActivity">Audio Recording</string>
+    <string name="videoActivity">Video Recording</string>
+    <string name="playActivity">Playback</string>
+
+    <string-array name="activities">
+        <item name="audio">@string/audioActivity</item>
+        <item name="video">@string/videoActivity</item>
+    </string-array>
+
+    <string name="recordBtn">Record</string>
+    <string name="stopRecordBtn">Stop</string>
+    <string name="playBtn">Play</string>
+
+    <string name="noExtStorageAvailable">External storage is unavailable</string>
+    <string name="recordingError">Error recording audio</string>
+    <string name="saveRecordError">Error saving audio record</string>
+    <string name="videoRecordingError">Recording video failed</string>
+
 </resources>

@@ -16,6 +16,7 @@ public class IntroActivity extends Activity {
 		setContentView(R.layout.intro);
 		
 		((Button)findViewById(R.id.start_camera)).setOnClickListener(onButtonClick);
+        ((Button)findViewById(R.id.start_camera_video)).setOnClickListener(onButtonClick);
 	}
 	
 	private void startCameraActivity() {
@@ -27,7 +28,15 @@ public class IntroActivity extends Activity {
 		
 		finish();
 	}
-	
+
+    private void startCameraVideoActivity() {
+
+        Intent i = new Intent(IntroActivity.this, VideoRecordingActivity.class);
+        startActivity(i);
+
+
+        finish();
+    }
 	private View.OnClickListener onButtonClick = new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
@@ -39,7 +48,15 @@ public class IntroActivity extends Activity {
 					
 					break;
 				}
+                case R.id.start_camera_video:
+                {
+                    startCameraVideoActivity();
+
+                    break;
+                }
 			}
 		}
-	};
+
+
+    };
 }
