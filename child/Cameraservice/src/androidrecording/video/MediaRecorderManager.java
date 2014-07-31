@@ -44,26 +44,19 @@ public class MediaRecorderManager {
 
 	public MediaRecorderManager() {
 		recorder = new MediaRecorder();
+        isRecording = false;
 	}
 
-    public MediaRecorderManager(Camera camera, AdaptiveSurfaceView videoView) {
-        recorder = new MediaRecorder();
-
-        
-    }
-
-
-
     public boolean startRecording(Camera camera, String fileName, Size sz, int cameraRotationDegree, AdaptiveSurfaceView videoView ) {
-		if (sz == null) {
-			sz = camera.new Size(VIDEO_W_DEFAULT, VIDEO_H_DEFAULT);
-		}
-		
-		try {
-//            camera.lock();
+        recorder = new MediaRecorder();
+        if (sz == null) {
+            sz = camera.new Size(VIDEO_W_DEFAULT, VIDEO_H_DEFAULT);
+        }
+
+        try {
             // Step 1: Unlock and set camera to MediaRecorder
-			camera.unlock();
-			recorder.setCamera(camera);
+            camera.unlock();
+            recorder.setCamera(camera);
 
             // Step 2: Set sources
             recorder.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
@@ -80,45 +73,52 @@ public class MediaRecorderManager {
             // Step 5: Set the preview output
             recorder.setPreviewDisplay(videoView.getHolder().getSurface());
 
-//            recorder.setOrientationHint(cameraRotationDegree);
-//			recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-//			recorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
-//			recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
-//			recorder.setVideoSize(sz.width, sz.height);
-//			recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
-//			recorder.setVideoEncoder(MediaRecorder.VideoEncoder.MPEG_4_SP);
-//			recorder.setOutputFile(fileName);
-			recorder.prepare();
-			recorder.start();
-			isRecording = true;
-		} catch (IllegalStateException e) {
+            //            recorder.setOrientationHint(cameraRotationDegree);
+            //			recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+            //			recorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
+            //			recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
+            //			recorder.setVideoSize(sz.width, sz.height);
+            //			recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
+            //			recorder.setVideoEncoder(MediaRecorder.VideoEncoder.MPEG_4_SP);
+            //			recorder.setOutputFile(fileName);
+            recorder.prepare();
+            recorder.start();
+            isRecording = true;
+        } catch (IllegalStateException e) {
             Log.d(this.toString(), "IllegalStateException preparing MediaRecorder: " + e.getMessage());
-            releaseMediaRecorder(camera);
+            releaseMediaRecorder();
+            camera.lock();
             return false;
-		} catch (IOException e) {
+        } catch (IOException e) {
             Log.d(this.toString(), "IOException preparing MediaRecorder: : " + e.getMessage());
-            releaseMediaRecorder(camera);
+            releaseMediaRecorder();
+            camera.lock();
             return false;
-		}
+        }
 
-		return isRecording;
-	}
+        return isRecording;
+    }
 
 	public boolean stopRecording() {
 		if (isRecording) {
 			isRecording = false;
-			recorder.stop();
-			recorder.reset();
+            try {
+                recorder.stop();
+            } catch (RuntimeException e){
+                Log.d(this.toString(), "CAN NOT STOP recorder: " + e.getMessage());
+            }
 			return true;
 		}
 		return false;
 	}
 
-	public void releaseRecorder() {
-		recorder.release();
-		recorder = null;
-	}
-
+    public void releaseMediaRecorder(){
+        if (recorder != null) {
+            recorder.reset();   // clear recorder configuration
+            recorder.release(); // release the recorder object
+            recorder = null;
+        }
+    }
 	public boolean isRecording() {
 		return isRecording;
 	}
@@ -142,6 +142,8 @@ public class MediaRecorderManager {
             }
         }
 
+
+        Log.v("MediaRecorderManager", "mediaStorageDir.getPath()" +mediaStorageDir.getPath());
         // Create a media file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         File mediaFile;
@@ -158,12 +160,5 @@ public class MediaRecorderManager {
         return mediaFile;
     }
 
-    private void releaseMediaRecorder(Camera camera){
-        if (recorder != null) {
-            recorder.reset();   // clear recorder configuration
-            recorder.release(); // release the recorder object
-            recorder = null;
-            camera.lock();           // lock camera for later use
-        }
-    }
+
 }

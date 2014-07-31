@@ -21,6 +21,7 @@ import java.io.IOException;
 import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
 import android.hardware.Camera.Size;
+import android.util.Log;
 import android.view.SurfaceHolder;
 
 /*
@@ -44,7 +45,14 @@ public class CameraManager {
 		if (camera != null) {
 			releaseCamera();
 		}
-		camera = Camera.open(defaultCameraID);
+
+        try {
+            camera = Camera.open(defaultCameraID); // attempt to get a Camera instance
+        }
+        catch (Exception e){
+            // Camera is not available (in use or does not exist)
+            Log.d(this.toString(), "cant open camera, please reboot device");
+        }
 	}
 	
 	public void releaseCamera() {
@@ -54,8 +62,17 @@ public class CameraManager {
 		}
 	}
 
+    public void lock() {
+        if (camera != null) {
+            camera.lock();
+        }
+    }
 
-
+    public void unlock() {
+        if (camera != null) {
+            camera.unlock();
+        }
+    }
 	
 	public void switchCamera() {
 		stopCameraPreview();
