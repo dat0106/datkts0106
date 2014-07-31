@@ -34,13 +34,13 @@ public class VideoRecordingManager implements SurfaceHolder.Callback {
 		this.videoView = videoView;
 		this.videoView.getHolder().addCallback(this);
 		this.cameraManager = new CameraManager();
-		this.recorderManager = new MediaRecorderManager();
+		this.recorderManager = new MediaRecorderManager(cameraManager.getCamera(), videoView);
 		this.recordingHandler = recordingHandler;
 	}
-	
+
 	public boolean startRecording(String fileName, Size videoSize) {
 		int degree = cameraManager.getCameraDisplayOrientation();
-		return recorderManager.startRecording(cameraManager.getCamera(), fileName, videoSize, degree);
+		return recorderManager.startRecording(cameraManager.getCamera(), fileName, videoSize, degree, videoView);
 	}
 	
 	public boolean stopRecording() {
@@ -88,4 +88,6 @@ public class VideoRecordingManager implements SurfaceHolder.Callback {
 		recorderManager.stopRecording();
 		cameraManager.releaseCamera();
 	}
+
+
 }

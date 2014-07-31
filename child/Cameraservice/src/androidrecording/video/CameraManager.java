@@ -53,6 +53,9 @@ public class CameraManager {
 			camera = null;
 		}
 	}
+
+
+
 	
 	public void switchCamera() {
 		stopCameraPreview();
