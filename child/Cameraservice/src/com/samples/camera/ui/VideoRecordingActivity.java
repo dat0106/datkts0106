@@ -64,7 +64,11 @@ public class VideoRecordingActivity extends Activity {
 		fileName = StorageUtils.getFileName(false);
 		
 		AdaptiveSurfaceView videoView = (AdaptiveSurfaceView) findViewById(R.id.videoView);
-		recordingManager = new VideoRecordingManager(videoView, recordingHandler);
+
+//        AdaptiveSurfaceView videoView = new AdaptiveSurfaceView(this);
+
+
+        recordingManager = new VideoRecordingManager(videoView, recordingHandler);
 		
 		recordBtn = (Button) findViewById(R.id.recordBtn);
 		recordBtn.setOnClickListener(new OnClickListener() {
@@ -94,9 +98,13 @@ public class VideoRecordingActivity extends Activity {
 				play();
 			}
 		});
+//        videoView.setVisibility(View.INVISIBLE);
 	}
-	
-	@Override
+
+    private void addView(AdaptiveSurfaceView videoView, int i) {
+    }
+
+    @Override
 	protected void onDestroy() {
 		recordingManager.dispose();
 		recordingHandler = null;

@@ -49,9 +49,10 @@ public class MediaRecorderManager {
 
     public boolean startRecording(Camera camera, String fileName, Size sz, int cameraRotationDegree, AdaptiveSurfaceView videoView ) {
         recorder = new MediaRecorder();
-        if (sz == null) {
-            sz = camera.new Size(VIDEO_W_DEFAULT, VIDEO_H_DEFAULT);
-        }
+//        if (sz == null) {
+//            sz = camera.new Size(VIDEO_W_DEFAULT, VIDEO_H_DEFAULT);
+//
+//        }
 
         try {
             // Step 1: Unlock and set camera to MediaRecorder
@@ -65,7 +66,11 @@ public class MediaRecorderManager {
             // Step 3: Set a CamcorderProfile (requires API Level 8 or higher)
             recorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_HIGH));
 
-
+//            TODO LeDat  version cu
+//            // Step 3: Set output format and encoding (for versions prior to API Level 8)
+//            recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
+//            recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
+//            recorder.setVideoEncoder(MediaRecorder.VideoEncoder.DEFAULT);
             // Step 4: Set output file
             recorder.setOutputFile(getOutputMediaFile(MEDIA_TYPE_VIDEO).toString());
 
@@ -73,14 +78,12 @@ public class MediaRecorderManager {
             // Step 5: Set the preview output
             recorder.setPreviewDisplay(videoView.getHolder().getSurface());
 
-            //            recorder.setOrientationHint(cameraRotationDegree);
-            //			recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-            //			recorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
-            //			recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
-            //			recorder.setVideoSize(sz.width, sz.height);
-            //			recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
-            //			recorder.setVideoEncoder(MediaRecorder.VideoEncoder.MPEG_4_SP);
-            //			recorder.setOutputFile(fileName);
+            recorder.setOrientationHint(cameraRotationDegree);
+
+
+
+//            recorder.setVideoSize(sz.width, sz.height);
+
             recorder.prepare();
             recorder.start();
             isRecording = true;
