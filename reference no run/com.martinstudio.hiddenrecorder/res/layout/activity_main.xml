@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:ads="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/layout_ad" android:background="#ff454545" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <com.google.android.gms.ads.AdView android:id="@id/adView" android:layout_width="fill_parent" android:layout_height="wrap_content" ads:adSize="BANNER" ads:adUnitId="@string/admob_id_banner" />
+    </FrameLayout>
+    <View android:id="@id/divider" android:background="#ffff4040" android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_above="@id/layout_ad" />
+    <RelativeLayout android:id="@id/layout_bottom" android:background="#cc7f7f7f" android:layout_width="fill_parent" android:layout_height="70.0dip" android:layout_above="@id/divider">
+        <RelativeLayout android:orientation="horizontal" android:id="@id/layout_record" android:layout_width="fill_parent" android:layout_height="70.0dip">
+            <ImageView android:id="@id/StartService" android:layout_width="70.0dip" android:layout_height="70.0dip" android:text="Start Recorder" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="35.0sp" android:textColor="#ffff0000" android:id="@id/txt_rec" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="40.0dip" android:text="REC" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <ListView android:id="@id/lst_thumbnail" android:addStatesFromChildren="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:layout_above="@id/layout_bottom" android:layout_alignParentTop="true" />
+</RelativeLayout>
