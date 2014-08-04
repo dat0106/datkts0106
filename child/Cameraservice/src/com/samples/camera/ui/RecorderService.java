@@ -5,6 +5,7 @@ import android.app.Notification;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.PixelFormat;
 import android.hardware.Camera;
 import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
@@ -17,6 +18,7 @@ import android.view.*;
 import android.view.SurfaceHolder.Callback;
 import android.view.View.OnTouchListener;
 import android.view.WindowManager.LayoutParams;
+import android.widget.Toast;
 import com.samples.camera.utils.Common;
 
 import java.util.Date;
@@ -48,8 +50,12 @@ public class RecorderService
     Log.i("Giang", "Use preivew = " + this.use_preview);
     if (!this.use_preview)
     {
-      this.layoutParams1 = new LayoutParams(1, 1, 2006, 262144, -3);
-      this.layoutParams1.gravity = 51;
+      this.layoutParams1 =
+//        this.layoutParams1 = new LayoutParams(1, 1, 2006, 262144, -3);
+        new WindowManager.LayoutParams(
+                LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        this.layoutParams1.gravity = Gravity.CENTER;
+        Log.i("Dat", "su dung layour moi  = " + this.use_preview);
     }
     else
     {
@@ -103,14 +109,18 @@ public class RecorderService
   @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
+      Log.v("dat", "vaoday");
+
+
+      Toast.makeText(this, "service starting", Toast.LENGTH_SHORT).show();
     this.use_front_camera = paramIntent.getBooleanExtra("use_camera_front", false);
     this.quality_video = Integer.valueOf(paramIntent.getStringExtra("video_quality")).intValue();
     this.use_notificationbar = paramIntent.getBooleanExtra("use_notification", true);
 
 
-    if ((this.use_notificationbar) && (Build.VERSION.SDK_INT >= 16)) {
-        Notification note =   new Notification.Builder(this).setContentTitle("Background Video Recorder").setContentText("").build();
-    }
+//    if ((this.use_notificationbar) && (Build.VERSION.SDK_INT >= 16)) {
+//        Notification note =   new Notification.Builder(this).setContentTitle("Background Video Recorder").setContentText("").build();
+//    }
     return super.onStartCommand(paramIntent, paramInt1, paramInt2);
   }
   
@@ -119,13 +129,15 @@ public class RecorderService
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
     this.mediaRecorder = new MediaRecorder();
-    if ((Camera.getNumberOfCameras() >= 2) && (this.use_front_camera))
-    {
-      this.camera = Camera.open(1);
-      this.mediaRecorder.setOrientationHint(270);
-    }
-    for (;;)
-    {
+//    if ((Camera.getNumberOfCameras() >= 2) && (this.use_front_camera))
+//    {
+//      this.camera = Camera.open(1);
+//      this.mediaRecorder.setOrientationHint(270);
+//    }
+//    for (;;)
+//    {
+        this.camera = Camera.open(1);
+        this.mediaRecorder.setOrientationHint(270);
       this.camera.setDisplayOrientation(90);
       this.camera.unlock();
       this.mediaRecorder.setPreviewDisplay(paramSurfaceHolder.getSurface());
@@ -151,7 +163,7 @@ public class RecorderService
         Log.d(this.toString(), localException.getMessage());
       }
     }
-  }
+//  }
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder) {}
 }

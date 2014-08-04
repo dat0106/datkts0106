@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Camera Setting">
+        <CheckBoxPreference android:title="Recorder by Camera" android:key="use_camera_front" android:summary="ON - Use front camera for recorder" />
+        <CheckBoxPreference android:title="Show display preview" android:key="preview" android:summary="ON - Use preview" android:defaultValue="false" />
+        <ListPreference android:entries="@array/video_quality" android:title="Video Quality" android:key="video_quality" android:summary="Choose the Video Quality" android:defaultValue="0" android:entryValues="@array/video_quality_value" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Enable notification">
+        <CheckBoxPreference android:title="Show icon in Notification bar" android:key="use_notification" android:summary="ON - Show icon camera when recording" android:defaultValue="true" />
+    </PreferenceCategory>
+</PreferenceScreen>

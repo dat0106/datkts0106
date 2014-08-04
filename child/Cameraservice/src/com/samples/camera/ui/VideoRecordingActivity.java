@@ -9,6 +9,7 @@ import android.hardware.Camera.Size;
 import android.media.MediaRecorder;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Message;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.View;
@@ -162,14 +163,21 @@ public class VideoRecordingActivity extends Activity {
 	
 	private void record() {
 		if (mRecordingStatus) {
-           stopMediaRecorder();
+
+            stopServiceRecorder();
+//           stopMediaRecorder();
 			recordBtn.setText(R.string.recordBtn);
-			switchBtn.setEnabled(true);
+		/*	switchBtn.setEnabled(true);
 			playBtn.setEnabled(true);
-			videoSizeSpinner.setEnabled(true);
+			videoSizeSpinner.setEnabled(true);*/
 		}
 		else {
-            starMediaRecording();
+
+            starrServiceRecorder();
+            recordBtn.setText(R.string.stopRecordBtn);
+//            switchBtn.setEnabled(false);
+//            playBtn.setEnabled(false);
+//            videoSizeSpinner.setEnabled(false);
 		}
 	}
 	
@@ -182,9 +190,43 @@ public class VideoRecordingActivity extends Activity {
 			return;
 		}
 		Toast.makeText(this, getString(R.string.videoRecordingError), Toast.LENGTH_LONG).show();
+
 	}
-	
-	private void play() {
+
+//    void startAndStopServiceRecorder()
+//    {
+//        if (!isMyServiceRunning()) {
+//            starrServiceRecorder();
+//        } else {
+//            stopServiceRecorder();
+//        }
+//    }
+
+    void starrServiceRecorder()
+    {
+        Intent localIntent = new Intent(this, RecorderService.class);
+        Log.i("Dat", "use_camera_front" + UserSettingActivity.getInfoWhichCameraForRecorder(this));
+
+        localIntent.putExtra("use_camera_front", true);
+//        localIntent.putExtra("use_camera_front", UserSettingActivity.getInfoWhichCameraForRecorder(this));
+        localIntent.putExtra("preview", UserSettingActivity.getInfoShowPreviewOrNot(this));
+        Log.i("Giang", "check start config" + UserSettingActivity.getInfoShowPreviewOrNot(this));
+        localIntent.putExtra("video_quality", UserSettingActivity.getInfoQualityVideo(this));
+        localIntent.putExtra("use_notification", UserSettingActivity.getInfoEnableNotification(this));
+        startService(localIntent);
+        mRecordingStatus = true;
+    }
+
+    void stopServiceRecorder()
+    {
+        Intent localIntent = new Intent(this, RecorderService.class);
+
+        stopService(localIntent);
+        mRecordingStatus = false;
+    }
+
+
+    private void play() {
 //		Intent i = new Intent(VideoRecordingActivity.this, VideoPlaybackActivity.class);
 //		i.putExtra(VideoPlaybackActivity.FileNameArg, fileName);
 //		startActivityForResult(i, 0);

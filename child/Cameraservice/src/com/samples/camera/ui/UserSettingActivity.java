@@ -5,6 +5,7 @@ import android.app.ActionBar;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.content.pm.ActivityInfo;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.widget.Toast;
+import com.varma.samples.camera.R;
 
 public class UserSettingActivity
   extends PreferenceActivity
@@ -52,10 +54,10 @@ public class UserSettingActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    addPreferencesFromResource(2131034112);
-    setRequestedOrientation(1);
+    addPreferencesFromResource(R.xml.activity_setting);
+    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     ActionBar localActionBar = getActionBar();
-    localActionBar.setBackgroundDrawable(new ColorDrawable(-864059521));
+    localActionBar.setBackgroundDrawable(new ColorDrawable(0xffff0000));
     localActionBar.setDisplayHomeAsUpEnabled(true);
     this.mCheckShowPreview = ((CheckBoxPreference)getPreferenceScreen().findPreference("preview"));
   }
@@ -95,7 +97,7 @@ public class UserSettingActivity
   
   void showToast()
   {
-    Toast.makeText(this, "Show preview  need restart this app for apply", 1).show();
+    Toast.makeText(this, "Show preview  need restart this app for apply", Toast.LENGTH_LONG).show();
   }
 }
 
