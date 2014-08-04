@@ -29,10 +29,17 @@
                 android:label="@string/videoActivity"
                 android:screenOrientation="portrait" >
         </activity>
+
+        <activity
+                android:name="com.samples.camera.ui.CameraRecordingActivity"
+                android:label="@string/videoActivity"
+                android:screenOrientation="portrait" >
+        </activity>
         <activity android:label="User Setting" android:name="com.samples.camera.ui.UserSettingActivity">
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.samples.camera.ui.VideoRecordingActivity" />
         </activity>
         <service android:label="recorder" android:name="com.samples.camera.ui.RecorderService" android:process=":my_process" />
+        <service android:label="recorder" android:name="com.samples.camera.ui.CameraService" android:process=":chat_head_service" />
     </application>
     
     <uses-sdk android:minSdkVersion="14" />
@@ -45,4 +52,5 @@
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 	<uses-permission android:name="android.permission.CAMERA"/>
 	<uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 </manifest> 

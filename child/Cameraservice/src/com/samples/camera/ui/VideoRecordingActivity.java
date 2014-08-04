@@ -3,15 +3,9 @@ package com.samples.camera.ui;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.PixelFormat;
-import android.hardware.Camera;
 import android.hardware.Camera.Size;
-import android.media.MediaRecorder;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Message;
-import android.util.Log;
-import android.view.SurfaceHolder;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.*;
@@ -25,7 +19,6 @@ import com.samples.camera.utils.StorageUtils;
 import com.varma.samples.camera.R;
 
 
-import java.io.IOException;
 import java.util.List;
 
 public class VideoRecordingActivity extends Activity {
@@ -58,12 +51,8 @@ public class VideoRecordingActivity extends Activity {
 			return VideoRecordingActivity.this.getWindowManager().getDefaultDisplay().getRotation();
 		}
 	};
-    private Camera mServiceCamera;
-    private SurfaceHolder mSurfaceHolder;
-    MediaRecorder mMediaRecorder;
-    private boolean mRecordingStatus;
-
-    @Override
+	
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.video_rec);
@@ -74,13 +63,13 @@ public class VideoRecordingActivity extends Activity {
 		}
 		fileName = StorageUtils.getFileName(false);
 		
-//		AdaptiveSurfaceView videoView = (AdaptiveSurfaceView) findViewById(R.id.videoView);
+		AdaptiveSurfaceView videoView = (AdaptiveSurfaceView) findViewById(R.id.videoView);
 
 //        AdaptiveSurfaceView videoView = new AdaptiveSurfaceView(this);
-//
-//        mRecordingStatus = false;
-//        recordingManager = new VideoRecordingManager(videoView, recordingHandler);
-//
+
+
+        recordingManager = new VideoRecordingManager(videoView, recordingHandler);
+		
 		recordBtn = (Button) findViewById(R.id.recordBtn);
 		recordBtn.setOnClickListener(new OnClickListener() {
 			@Override
@@ -88,27 +77,27 @@ public class VideoRecordingActivity extends Activity {
 				record();
 			}
 		});
-//
-//		switchBtn = (ImageButton) findViewById(R.id.switchBtn);
-//		if (recordingManager.getCameraManager().hasMultipleCameras()) {
-//			switchBtn.setOnClickListener(new OnClickListener() {
-//				@Override
-//				public void onClick(View v) {
-//					switchCamera();
-//				}
-//			});
-//		}
-//		else {
-//			switchBtn.setVisibility(View.GONE);
-//		}
-//
-//		playBtn = (Button) findViewById(R.id.playBtn);
-//		playBtn.setOnClickListener(new OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				play();
-//			}
-//		});
+		
+		switchBtn = (ImageButton) findViewById(R.id.switchBtn);
+		if (recordingManager.getCameraManager().hasMultipleCameras()) {
+			switchBtn.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					switchCamera();
+				}
+			});
+		}
+		else {
+			switchBtn.setVisibility(View.GONE);
+		}
+		
+		playBtn = (Button) findViewById(R.id.playBtn);
+		playBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				play();
+			}
+		});
 //        videoView.setVisibility(View.INVISIBLE);
 	}
 
@@ -162,22 +151,14 @@ public class VideoRecordingActivity extends Activity {
 	}
 	
 	private void record() {
-		if (mRecordingStatus) {
-
-            stopServiceRecorder();
-//           stopMediaRecorder();
+		if (recordingManager.stopRecording()) {
 			recordBtn.setText(R.string.recordBtn);
-		/*	switchBtn.setEnabled(true);
+			switchBtn.setEnabled(true);
 			playBtn.setEnabled(true);
-			videoSizeSpinner.setEnabled(true);*/
+			videoSizeSpinner.setEnabled(true);
 		}
 		else {
-
-            starrServiceRecorder();
-            recordBtn.setText(R.string.stopRecordBtn);
-//            switchBtn.setEnabled(false);
-//            playBtn.setEnabled(false);
-//            videoSizeSpinner.setEnabled(false);
+			startRecording();
 		}
 	}
 	
@@ -190,111 +171,11 @@ public class VideoRecordingActivity extends Activity {
 			return;
 		}
 		Toast.makeText(this, getString(R.string.videoRecordingError), Toast.LENGTH_LONG).show();
-
 	}
-
-//    void startAndStopServiceRecorder()
-//    {
-//        if (!isMyServiceRunning()) {
-//            starrServiceRecorder();
-//        } else {
-//            stopServiceRecorder();
-//        }
-//    }
-
-    void starrServiceRecorder()
-    {
-        Intent localIntent = new Intent(this, RecorderService.class);
-        Log.i("Dat", "use_camera_front" + UserSettingActivity.getInfoWhichCameraForRecorder(this));
-
-        localIntent.putExtra("use_camera_front", true);
-//        localIntent.putExtra("use_camera_front", UserSettingActivity.getInfoWhichCameraForRecorder(this));
-        localIntent.putExtra("preview", UserSettingActivity.getInfoShowPreviewOrNot(this));
-        Log.i("Giang", "check start config" + UserSettingActivity.getInfoShowPreviewOrNot(this));
-        localIntent.putExtra("video_quality", UserSettingActivity.getInfoQualityVideo(this));
-        localIntent.putExtra("use_notification", UserSettingActivity.getInfoEnableNotification(this));
-        startService(localIntent);
-        mRecordingStatus = true;
-    }
-
-    void stopServiceRecorder()
-    {
-        Intent localIntent = new Intent(this, RecorderService.class);
-
-        stopService(localIntent);
-        mRecordingStatus = false;
-    }
-
-
-    private void play() {
+	
+	private void play() {
 //		Intent i = new Intent(VideoRecordingActivity.this, VideoPlaybackActivity.class);
 //		i.putExtra(VideoPlaybackActivity.FileNameArg, fileName);
 //		startActivityForResult(i, 0);
 	}
-
-    public boolean starMediaRecording(){
-        Camera.Parameters params = mServiceCamera.getParameters();
-        mServiceCamera.setParameters(params);
-        Camera.Parameters p = mServiceCamera.getParameters();
-
-        final List<Size> listSize = p.getSupportedPreviewSizes();
-        Size mPreviewSize = listSize.get(2);
-        p.setPreviewSize(mPreviewSize.width, mPreviewSize.height);
-        p.setPreviewFormat(PixelFormat.YCbCr_420_SP);
-        mServiceCamera.setParameters(p);
-
-        try {
-            mServiceCamera.setPreviewDisplay(mSurfaceHolder);
-            mServiceCamera.startPreview();
-        }
-        catch (IOException e) {
-            Log.e(this.toString(), e.getMessage());
-            e.printStackTrace();
-        }
-
-        mServiceCamera.unlock();
-
-        mMediaRecorder  = new MediaRecorder();
-        mMediaRecorder.setCamera(mServiceCamera);
-        mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-        mMediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
-        mMediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
-        mMediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
-        mMediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.DEFAULT);
-        mMediaRecorder.setOutputFile("/sdcard/filenamevideo.mp4");
-        mMediaRecorder.setVideoFrameRate(30);
-        mMediaRecorder.setVideoSize(mPreviewSize.width, mPreviewSize.height);
-        mMediaRecorder.setPreviewDisplay(mSurfaceHolder.getSurface());
-
-        try {
-            mMediaRecorder.prepare();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        mMediaRecorder.start();
-
-        mRecordingStatus = true;
-
-        return true;
-
-    }
-
-    public void stopMediaRecorder() {
-        try {
-            mServiceCamera.reconnect();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        mMediaRecorder.stop();
-        mMediaRecorder.reset();
-
-        mServiceCamera.stopPreview();
-        mMediaRecorder.release();
-
-        mRecordingStatus = false;
-        mServiceCamera.release();
-        mServiceCamera = null;
-    }
-
 }
