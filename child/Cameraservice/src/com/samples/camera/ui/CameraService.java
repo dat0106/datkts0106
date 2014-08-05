@@ -17,6 +17,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.samples.camera.preview.CameraPreview;
+import com.samples.camera.utils.CameraHelpers;
 import com.varma.samples.camera.R;
 
 import java.io.File;
@@ -43,6 +44,7 @@ public class CameraService extends Service {
     private CameraPreview mPreview;
 
     RelativeLayout mainView;
+    private boolean checkStopService = false;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -54,6 +56,9 @@ public class CameraService extends Service {
         @Override
         public void onReceive(Context context, Intent intent) {
             Log.v(this.toString(), "vao BroadcastReceiver");
+            if(intent.getAction().equals("com.sample.camera")) {
+                StartRecording();
+            }
         }
     };
     @Override
@@ -66,73 +71,151 @@ public class CameraService extends Service {
                 .getSystemService(this.LAYOUT_INFLATER_SERVICE);
         mainView = (RelativeLayout) layoutInflater.inflate(
                 R.layout.camera_service, null);;
+    }
+
+    /**
+     * Called by the system every time a client explicitly starts the service by calling
+     * {@link android.content.Context#startService}, providing the arguments it supplied and a
+     * unique integer token representing the start request.  Do not call this method directly.
+     * <p/>
+     * <p>For backwards compatibility, the default implementation calls
+     * {@link #onStart} and returns either {@link #START_STICKY}
+     * or {@link #START_STICKY_COMPATIBILITY}.
+     * <p/>
+     * <p>If you need your application to run on platform versions prior to API
+     * level 5, you can use the following model to handle the older {@link #onStart}
+     * callback in that case.  The <code>handleCommand</code> method is implemented by
+     * you as appropriate:
+     * <p/>
+     * {@sample development/samples/ApiDemos/src/com/example/android/apis/app/ForegroundService.java
+     * start_compatibility}
+     * <p/>
+     * <p class="caution">Note that the system calls this on your
+     * service's main thread.  A service's main thread is the same
+     * thread where UI operations take place for Activities running in the
+     * same process.  You should always avoid stalling the main
+     * thread's event loop.  When doing long-running operations,
+     * network calls, or heavy disk I/O, you should kick off a new
+     * thread, or use {@link android.os.AsyncTask}.</p>
+     *
+     * @param intent  The Intent supplied to {@link android.content.Context#startService},
+     *                as given.  This may be null if the service is being restarted after
+     *                its process has gone away, and it had previously returned anything
+     *                except {@link #START_STICKY_COMPATIBILITY}.
+     * @param flags   Additional data about this start request.  Currently either
+     *                0, {@link #START_FLAG_REDELIVERY}, or {@link #START_FLAG_RETRY}.
+     * @param startId A unique integer representing this specific request to
+     *                start.  Use with {@link #stopSelfResult(int)}.
+     * @return The return value indicates what semantics the system should
+     * use for the service's current started state.  It may be one of the
+     * constants associated with the {@link #START_CONTINUATION_MASK} bits.
+     * @see #stopSelfResult(int)
+     */
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
 
         FrameLayout preview = (FrameLayout) mainView.findViewById(R.id.camera_preview);
 
-        params = new WindowManager.LayoutParams(
-                100,
-                100,
-                WindowManager.LayoutParams.TYPE_PHONE,
-                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
-                PixelFormat.TRANSLUCENT);
-
-        params.gravity = Gravity.TOP | Gravity.LEFT;
-        params.x = 0;
-        params.y = 100;
-
-
-        mainView.setOnTouchListener(new View.OnTouchListener() {
-            private int initialX;
-            private int initialY;
-            private float initialTouchX;
-            private float initialTouchY;
-
-            @Override public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        initialX = params.x;
-                        initialY = params.y;
-                        initialTouchX = event.getRawX();
-                        initialTouchY = event.getRawY();
-                        return true;
-                    case MotionEvent.ACTION_UP:
-                        return true;
-                    case MotionEvent.ACTION_MOVE:
-                        params.x = initialX + (int) (event.getRawX() - initialTouchX);
-                        params.y = initialY + (int) (event.getRawY() - initialTouchY);
-                        windowManager.updateViewLayout(mainView, params);
-                        return true;
-                }
-                return false;
-            }
-        });
-
-        mainView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                Log.v(CameraService.this.toString(), "StartRecording");
-                StartRecording();
-
-                return false;
-            }
-        });
         // create camera
-        mServiceCamera = getCameraInstance();
+        int cameraID = intent.getIntExtra("camera_id", Camera.CameraInfo.CAMERA_FACING_BACK);
+        boolean cameraPreview = intent.getBooleanExtra("camera_preview", false);
+        mServiceCamera = getCameraInstance(cameraID);
 
-        mPreview = new CameraPreview(this, mServiceCamera);
+        if(mServiceCamera == null){
+            Log.d(this.toString(), "can not open camera");
+            // TODO LEDAT xem co phai show notify ko
+            checkStopService =  true;
+            stopSelf();
+        }else {
 
-        preview.addView(mPreview);
-        windowManager.addView(mainView, params);
+            if(!cameraPreview) {
+                // no preview
+                params = new WindowManager.LayoutParams(
+                        2,
+                        2,
+                        WindowManager.LayoutParams.TYPE_PHONE,
+                        WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+                        PixelFormat.TRANSLUCENT);
+                params.gravity = Gravity.TOP | Gravity.LEFT;
+                params.x = 0;
+                params.y = 100;
+            }else{
+                // preview
+                params = new WindowManager.LayoutParams(
+                        200,
+                        400,
+                        WindowManager.LayoutParams.TYPE_PHONE,
+                        WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+                        PixelFormat.TRANSLUCENT);
+                params.gravity = Gravity.CENTER;
+//                params.x = 0;
+//                params.y = 100;
+            }
 
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("com.sample.camera");
-        registerReceiver(receiver, intentFilter);
+            //        mainView.setOnTouchListener(new View.OnTouchListener() {
+            //            private int initialX;
+            //            private int initialY;
+            //            private float initialTouchX;
+            //            private float initialTouchY;
+            //
+            //            @Override public boolean onTouch(View v, MotionEvent event) {
+            //                switch (event.getAction()) {
+            //                    case MotionEvent.ACTION_DOWN:
+            //                        initialX = params.x;
+            //                        initialY = params.y;
+            //                        initialTouchX = event.getRawX();
+            //                        initialTouchY = event.getRawY();
+            //                        return true;
+            //                    case MotionEvent.ACTION_UP:
+            //                        return true;
+            //                    case MotionEvent.ACTION_MOVE:
+            //                        params.x = initialX + (int) (event.getRawX() - initialTouchX);
+            //                        params.y = initialY + (int) (event.getRawY() - initialTouchY);
+            //                        windowManager.updateViewLayout(mainView, params);
+            //                        return true;
+            //                }
+            //                return false;
+            //            }
+            //        });
+
+
+            // setCameraDisplayOrientation
+            CameraHelpers.setCameraDisplayOrientation(cameraID, mServiceCamera, Surface.ROTATION_0);
+
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+                if(mServiceCamera.getParameters().getMaxNumDetectedFaces() >0) {
+                    mServiceCamera.setFaceDetectionListener(new Camera.FaceDetectionListener() {
+                        @Override public void onFaceDetection(Camera.Face[] faces, Camera camera) {
+
+                            if(faces.length > 0) {
+                                Log.v("Camera", "FaceDetection");
+                            }
+
+                        }
+                    });
+                    mServiceCamera.startFaceDetection();
+                }
+            }
+
+
+
+            mPreview = new CameraPreview(this, mServiceCamera);
+
+            preview.addView(mPreview);
+            windowManager.addView(mainView, params);
+
+            IntentFilter intentFilter = new IntentFilter();
+            intentFilter.addAction("com.sample.camera");
+            registerReceiver(receiver, intentFilter);
+        }
+
+        return super.onStartCommand(intent, flags, startId);
     }
-
 
     public void StartRecording() {
         if(prepareVideoRecorder()) {
             mMediaRecorder.start();
+            Log.v(this.toString(), "vao StartRecording");
         }else {
             Log.d(CameraService.this.toString(), "start service fail on prepareVideoRecorder");
             releaseMediaRecorder();
@@ -141,30 +224,23 @@ public class CameraService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (mainView != null) windowManager.removeView(mainView);
-        try {
-            mServiceCamera.reconnect();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(!checkStopService) {
+            if (mainView != null) windowManager.removeView(mainView);
+            unregisterReceiver(receiver);
+            if (mMediaRecorder != null) {
+                mMediaRecorder.stop();
+            }
+            releaseMediaRecorder();
+            releaseCamera();
+            Log.v(this.toString(), "stop or destroy recording service");
+        }else {
+            Log.v(this.toString(), "Error stop or destroy recording service");
         }
 
-        unregisterReceiver(receiver);
-        mMediaRecorder.stop();
-        releaseMediaRecorder();
-        mServiceCamera.lock();
-        releaseCamera();
-//        mMediaRecorder.stop();
-//        mMediaRecorder.reset();
-//
-//        mServiceCamera.stopPreview();
-//        mMediaRecorder.release();
-//        mServiceCamera.release();
-//        mServiceCamera = null;
     }
     
     private boolean prepareVideoRecorder(){
 
-        mServiceCamera = getCameraInstance();
         mMediaRecorder = new MediaRecorder();
 
         // Step 1: Unlock and set camera to MediaRecorder
@@ -205,7 +281,9 @@ public class CameraService extends Service {
             mMediaRecorder.reset();   // clear recorder configuration
             mMediaRecorder.release(); // release the recorder object
             mMediaRecorder = null;
-            mServiceCamera.lock();           // lock camera for later use
+            if(mServiceCamera != null) {
+                mServiceCamera.lock();           // lock camera for later use
+            }
         }
     }
 
@@ -216,10 +294,16 @@ public class CameraService extends Service {
         }
     }
     /** A safe way to get an instance of the Camera object. */
-    public static Camera getCameraInstance(){
+    public static Camera getCameraInstance(int cameraId){
         Camera c = null;
         try {
-            c = Camera.open(); // attempt to get a Camera instance
+            if(cameraId == Camera.CameraInfo.CAMERA_FACING_BACK) {
+                c = Camera.open(android.hardware.Camera.CameraInfo.CAMERA_FACING_BACK); // attempt to get a Camera instance
+            }else if(cameraId ==  Camera.CameraInfo.CAMERA_FACING_FRONT){
+                c = Camera.open(android.hardware.Camera.CameraInfo.CAMERA_FACING_FRONT); // attempt to get a Camera instance
+            }else {
+                c = Camera.open();
+            }
         }
         catch (Exception e){
             // Camera is not available (in use or does not exist)

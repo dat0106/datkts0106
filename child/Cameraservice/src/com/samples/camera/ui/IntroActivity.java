@@ -17,48 +17,30 @@ public class IntroActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.intro);
 		
-		((Button)findViewById(R.id.start_camera)).setOnClickListener(onButtonClick);
-        ((Button)findViewById(R.id.start_camera_video)).setOnClickListener(onButtonClick);
-        ((Button)findViewById(R.id.start_camera_recording)).setOnClickListener(onButtonClick);
+//		((Button)findViewById(R.id.start_camera)).setOnClickListener(onButtonClick);
+//        ((Button)findViewById(R.id.start_camera_video)).setOnClickListener(onButtonClick);
+//        ((Button)findViewById(R.id.start_camera_recording)).setOnClickListener(onButtonClick);
         ((Button)findViewById(R.id.camera_service)).setOnClickListener(onButtonClick);
 	}
-	
-	private void startCameraActivity() {
-		Intent intent = new Intent(IntroActivity.this,CameraActivity.class);
-		
-		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		
-		startActivity(intent);
-		
-		finish();
-	}
-
-    private void startCameraVideoActivity() {
-
-        Intent i = new Intent(IntroActivity.this, VideoRecordingActivity.class);
-        startActivity(i);
 
 
-        finish();
-    }
 
-
-    private void startCameraRecordingActivity() {
-
-        Intent i = new Intent(IntroActivity.this, CameraRecordingActivity.class);
-        startActivity(i);
-
-        finish();
-    }
 
     private void startAndStopCameraService() {
         if(!startAndStopCameraService){
             Intent i = new Intent(IntroActivity.this, CameraService.class);
+            i.putExtra("camera_id", 0);
+            i.putExtra("camera_preview", true);
             startService(i);
             Intent mIntent = new Intent("com.sample.camera");
             // cac ban co the truyen 1 so data can thiet va tu bat =
             // receiver
             mIntent.putExtra("data", "My Data");
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             sendBroadcast(mIntent);
             ((Button)findViewById(R.id.camera_service)).setText("camera service stop");
             startAndStopCameraService = true;
@@ -74,24 +56,6 @@ public class IntroActivity extends Activity {
 		public void onClick(View v) {
 			switch(v.getId())
 			{
-				case R.id.start_camera:
-				{
-					startCameraActivity();
-					
-					break;
-				}
-                case R.id.start_camera_video:
-                {
-                    startCameraVideoActivity();
-
-                    break;
-                }
-                case R.id.start_camera_recording:
-                {
-                    startCameraRecordingActivity();
-
-                    break;
-                }
                 case R.id.camera_service:
                 {
                     startAndStopCameraService();
