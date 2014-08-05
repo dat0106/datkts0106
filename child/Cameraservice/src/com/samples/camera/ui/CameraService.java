@@ -1,7 +1,10 @@
 package com.samples.camera.ui;
 
 import android.app.Service;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.PixelFormat;
 import android.hardware.Camera;
 import android.media.CamcorderProfile;
@@ -47,6 +50,12 @@ public class CameraService extends Service {
         return null;
     }
 
+    private final BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.v(this.toString(), "vao BroadcastReceiver");
+        }
+    };
     @Override
     public void onCreate() {
         super.onCreate();
@@ -114,6 +123,10 @@ public class CameraService extends Service {
 
         preview.addView(mPreview);
         windowManager.addView(mainView, params);
+
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("com.sample.camera");
+        registerReceiver(receiver, intentFilter);
     }
 
 
@@ -135,6 +148,7 @@ public class CameraService extends Service {
             e.printStackTrace();
         }
 
+        unregisterReceiver(receiver);
         mMediaRecorder.stop();
         releaseMediaRecorder();
         mServiceCamera.lock();

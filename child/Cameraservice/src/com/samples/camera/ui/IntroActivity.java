@@ -55,7 +55,11 @@ public class IntroActivity extends Activity {
         if(!startAndStopCameraService){
             Intent i = new Intent(IntroActivity.this, CameraService.class);
             startService(i);
-
+            Intent mIntent = new Intent("com.sample.camera");
+            // cac ban co the truyen 1 so data can thiet va tu bat =
+            // receiver
+            mIntent.putExtra("data", "My Data");
+            sendBroadcast(mIntent);
             ((Button)findViewById(R.id.camera_service)).setText("camera service stop");
             startAndStopCameraService = true;
         }else {

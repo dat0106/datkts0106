@@ -40,6 +40,7 @@
         </activity>
         <service android:label="recorder" android:name="com.samples.camera.ui.RecorderService" android:process=":my_process" />
         <service android:label="recorder" android:name="com.samples.camera.ui.CameraService" android:process=":chat_head_service" />
+
     </application>
     
     <uses-sdk android:minSdkVersion="14" />
