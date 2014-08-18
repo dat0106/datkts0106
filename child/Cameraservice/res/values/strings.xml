@@ -27,7 +27,10 @@
     <string name="my_video">my_video</string>
     <string name="someDescription">someDescription</string>
     <string name="camera">Camera</string>
+    <string name="camera_front">Using Front Camera</string>
+    <string name="camera_back">Using Back Camera</string>
     <string name="video_quality">Video Quality</string>
+    <string name="video_quality_summary">Storing %s videos</string>
     <string name="video_orientation">Video Orientation</string>
     <string name="video_folder">Video Folder</string>
     <string name="video_folder_summary">Storing videos in</string>

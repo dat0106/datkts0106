@@ -9,12 +9,12 @@
     <PreferenceCategory android:title="Video Setting">
         <ListPreference
             android:entries="@array/camera"
-            android:entryValues="@array/camera_entry_values"
             android:title="@string/camera"
             android:key="camera" />
         <ListPreference
                 android:entries="@array/video_quality"
                 android:title="@string/video_quality"
+                android:defaultValue="0"
                 android:key="video_quality" />
         <ListPreference
                 android:entries="@array/video_orientation"
