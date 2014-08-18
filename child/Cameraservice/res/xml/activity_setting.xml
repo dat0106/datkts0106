@@ -1,12 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="Camera Setting">
-        <CheckBoxPreference android:title="Recorder by Camera" android:key="use_camera_front" android:summary="ON - Use front camera for recorder" />
-        <CheckBoxPreference android:title="Show display preview" android:key="preview" android:summary="ON - Use preview" android:defaultValue="false" />
-        <ListPreference android:entries="@array/video_quality" android:title="Video Quality" android:key="video_quality" android:summary="Choose the Video Quality" android:defaultValue="0" android:entryValues="@array/video_quality_value" />
+    <Preference
+        android:key="@string/my_video"
+        android:summary="@string/someDescription"
+        android:title="Some Random Title" >
+    </Preference>
+    <PreferenceCategory android:title="Video Setting">
+        <ListPreference
+            android:entries="@array/camera"
+            android:entryValues="@array/camera_entry_values"
+            android:title="@string/camera"
+            android:key="camera" />
+        <ListPreference
+                android:entries="@array/video_quality"
+                android:title="@string/video_quality"
+                android:key="video_quality" />
+        <ListPreference
+                android:entries="@array/video_orientation"
+                android:title="@string/video_orientation"
+                android:key="video_orientation" />
+        <EditTextPreference
+            android:key="video_folder"
+            android:title="@string/video_folder"
+            android:summary="@string/video_folder_summary"
+            android:dialogTitle="@string/video_folder" />
+        <CheckBoxPreference
+                android:title="@string/flashlight"
+                android:key="flashlight"
+                android:summary="@string/flashlight_summary"
+                android:defaultValue="false"/>
+
     </PreferenceCategory>
-    <PreferenceCategory android:title="Enable notification">
-        <CheckBoxPreference android:title="Show icon in Notification bar" android:key="use_notification" android:summary="ON - Show icon camera when recording" android:defaultValue="true" />
+    <PreferenceCategory android:title="@string/notification_settings">
+        <CheckBoxPreference
+                android:title="@string/show_preview"
+                android:key="show_preview"
+                android:summaryOff="@string/show_preview_summary_off"
+                android:summaryOn="@string/show_preview_summary_on"
+                android:defaultValue="false"
+                />
+        <CheckBoxPreference
+                android:title="@string/show_notification"
+                android:key="show_notification"
+                android:summaryOff="@string/show_notification_summary_off"
+                android:summaryOn="@string/show_notification_summary_on"
+                android:defaultValue="false"
+                />
+        <CheckBoxPreference
+                android:title="@string/hide_video"
+                android:key="hide_video"
+                android:summary="@string/hide_video_summary"
+                android:summaryOn="@string/hide_video_summary_on"
+                android:summaryOff="@string/hide_video_summary_off"
+                android:defaultValue="false"
+                />
     </PreferenceCategory>
 </PreferenceScreen>

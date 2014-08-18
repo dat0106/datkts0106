@@ -142,8 +142,8 @@ public class CameraService extends Service {
             }else{
                 // preview
                 params = new WindowManager.LayoutParams(
-                        200,
-                        400,
+                        600,
+                        600,
                         WindowManager.LayoutParams.TYPE_PHONE,
                         WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                         PixelFormat.TRANSLUCENT);
@@ -197,7 +197,23 @@ public class CameraService extends Service {
                 }
             }
 
+            // get Camera parameters
+            Camera.Parameters paramsCamera = mServiceCamera.getParameters();
 
+            Log.v(this.toString(), "params1" + paramsCamera.flatten());
+            List<String> focusModes = paramsCamera.getSupportedFocusModes();
+            if (focusModes.contains(Camera.Parameters.FOCUS_MODE_AUTO)) {
+                // Autofocus mode is supported
+
+                paramsCamera.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
+               // set Camera parameters
+                mServiceCamera.setParameters(paramsCamera);
+            }
+
+            List<Camera.Size> sizes = (List<Camera.Size>) paramsCamera.getSupportedPictureSizes();
+            for (int i=0;i<sizes.size();i++){
+                Log.i("PictureSize", "Supported Size: " + sizes.get(i).width + " : " +  sizes.get(i).height );
+            }
 
             mPreview = new CameraPreview(this, mServiceCamera);
 
@@ -294,7 +310,7 @@ public class CameraService extends Service {
         }
     }
     /** A safe way to get an instance of the Camera object. */
-    public static Camera getCameraInstance(int cameraId){
+    public Camera getCameraInstance(int cameraId){
         Camera c = null;
         try {
             if(cameraId == Camera.CameraInfo.CAMERA_FACING_BACK) {

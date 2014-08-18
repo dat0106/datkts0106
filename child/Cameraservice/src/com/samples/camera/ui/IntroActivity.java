@@ -1,5 +1,7 @@
 package com.samples.camera.ui;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import com.varma.samples.camera.R;
 
 import android.app.Activity;
@@ -10,6 +12,8 @@ import android.widget.Button;
 
 public class IntroActivity extends Activity {
 
+
+    private static final int RESULT_SETTINGS = 1;
     private boolean startAndStopCameraService = false;
 
     @Override
@@ -17,9 +21,9 @@ public class IntroActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.intro);
 		
-//		((Button)findViewById(R.id.start_camera)).setOnClickListener(onButtonClick);
-//        ((Button)findViewById(R.id.start_camera_video)).setOnClickListener(onButtonClick);
-//        ((Button)findViewById(R.id.start_camera_recording)).setOnClickListener(onButtonClick);
+		((Button)findViewById(R.id.start_camera)).setOnClickListener(onButtonClick);
+        ((Button)findViewById(R.id.start_camera_video)).setOnClickListener(onButtonClick);
+        ((Button)findViewById(R.id.start_camera_recording)).setOnClickListener(onButtonClick);
         ((Button)findViewById(R.id.camera_service)).setOnClickListener(onButtonClick);
 	}
 
@@ -36,6 +40,7 @@ public class IntroActivity extends Activity {
             // cac ban co the truyen 1 so data can thiet va tu bat =
             // receiver
             mIntent.putExtra("data", "My Data");
+            mIntent.putExtra("camera_id", false);
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
@@ -62,11 +67,56 @@ public class IntroActivity extends Activity {
 
                     break;
                 }
+                case R.id.start_camera:
+                {
+                    references();
+
+                    break;
+                }
+
 			}
 		}
 
 
     };
+
+    private void references() {
+        Intent i = new Intent(this, UserSettingActivity.class);
+        startActivityForResult(i, RESULT_SETTINGS);
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case RESULT_SETTINGS:
+                showUserSettings();
+                break;
+
+        }
+
+    }
+    private void showUserSettings() {
+        SharedPreferences sharedPrefs = PreferenceManager
+                .getDefaultSharedPreferences(this);
+
+//        StringBuilder builder = new StringBuilder();
+//
+//        builder.append("\n Username: "
+//                + sharedPrefs.getString("prefUsername", "NULL"));
+//
+//        builder.append("\n Send report:"
+//                + sharedPrefs.getBoolean("prefSendReport", false));
+//
+//        builder.append("\n Sync Frequency: "
+//                + sharedPrefs.getString("prefSyncFrequency", "NULL"));
+//
+//        TextView settingsTextView = (TextView) findViewById(R.id.textUserSettings);
+//
+//        settingsTextView.setText(builder.toString());
+    }
 
 
 }

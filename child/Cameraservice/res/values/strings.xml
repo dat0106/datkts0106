@@ -24,5 +24,25 @@
     <string name="recordingError">Error recording audio</string>
     <string name="saveRecordError">Error saving audio record</string>
     <string name="videoRecordingError">Recording video failed</string>
+    <string name="my_video">my_video</string>
+    <string name="someDescription">someDescription</string>
+    <string name="camera">Camera</string>
+    <string name="video_quality">Video Quality</string>
+    <string name="video_orientation">Video Orientation</string>
+    <string name="video_folder">Video Folder</string>
+    <string name="video_folder_summary">Storing videos in</string>
+    <string name="flashlight">Enable Flashlight</string>
+    <string name="flashlight_summary">Flashlight is NOT enabled</string>
+    <string name="notification_settings">Notification Settings</string>
+    <string name="show_preview">Show Preview</string>
+    <string name="show_notification">Show Notification</string>
+    <string name="hide_video">Hide Video</string>
+    <string name="hide_video_summary">Videos will be hidden from Gallery</string>
+    <string name="hide_video_summary_on">Videos will be hidden from Gallery</string>
+    <string name="hide_video_summary_off">Videos will show in Gallery</string>
+    <string name="show_preview_summary_off">Preview is off</string>
+    <string name="show_preview_summary_on">Preview is on</string>
+    <string name="show_notification_summary_off">Notification will NOT show</string>
+    <string name="show_notification_summary_on">Notification will show</string>
 
 </resources>
