@@ -18,6 +18,8 @@
                 android:key="video_quality" />
         <ListPreference
                 android:entries="@array/video_orientation"
+                android:entryValues="@array/video_orientation_value"
+                android:defaultValue="0"
                 android:title="@string/video_orientation"
                 android:key="video_orientation" />
         <EditTextPreference
@@ -28,7 +30,8 @@
         <CheckBoxPreference
                 android:title="@string/flashlight"
                 android:key="flashlight"
-                android:summary="@string/flashlight_summary"
+                android:summaryOff="@string/flashlight_summary_off"
+                android:summaryOn="@string/flashlight_summary_on"
                 android:defaultValue="false"/>
 
     </PreferenceCategory>

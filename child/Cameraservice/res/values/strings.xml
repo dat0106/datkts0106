@@ -33,9 +33,10 @@
     <string name="video_quality_summary">Storing %s videos</string>
     <string name="video_orientation">Video Orientation</string>
     <string name="video_folder">Video Folder</string>
-    <string name="video_folder_summary">Storing videos in</string>
+    <string name="video_folder_summary">Storing videos in %s</string>
     <string name="flashlight">Enable Flashlight</string>
-    <string name="flashlight_summary">Flashlight is NOT enabled</string>
+    <string name="flashlight_summary_off">Flashlight is NOT enabled</string>
+    <string name="flashlight_summary_on">Flashlight is enabled</string>
     <string name="notification_settings">Notification Settings</string>
     <string name="show_preview">Show Preview</string>
     <string name="show_notification">Show Notification</string>
@@ -47,5 +48,6 @@
     <string name="show_preview_summary_on">Preview is on</string>
     <string name="show_notification_summary_off">Notification will NOT show</string>
     <string name="show_notification_summary_on">Notification will show</string>
+
 
 </resources>

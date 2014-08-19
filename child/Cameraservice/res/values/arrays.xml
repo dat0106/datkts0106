@@ -3,17 +3,19 @@
 
     <string-array name="camera">
     </string-array>
-
-
-
     <string-array name="video_quality">
-        <item>Hight Quality</item>
-        <item>Low Quality</item>
     </string-array>
-    <string-array name="video_quality_value">
+    <string-array name="video_orientation">
+        <item>0 degress</item>
+        <item>90 degress</item>
+        <item>180 degress</item>
+        <item>270 degress</item>
+    </string-array>
+    <string-array name="video_orientation_value">
         <item>0</item>
-        <item>1</item>
+        <item>90</item>
+        <item>180</item>
+        <item>270</item>
     </string-array>
-    <string-array name="video_orientation"/>
 
 </resources>

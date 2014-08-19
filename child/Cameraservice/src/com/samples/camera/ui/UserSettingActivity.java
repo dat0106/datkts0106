@@ -1,9 +1,11 @@
 package com.samples.camera.ui;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.hardware.Camera;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.ListPreference;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.preference.Preference;
@@ -16,6 +18,8 @@ import java.util.List;
 public class UserSettingActivity extends PreferenceActivity implements
         OnSharedPreferenceChangeListener  {
     private  Camera cameraDevice;
+    private  ListPreference cameraPreference;
+    private ListPreference videoQualityPreference;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -27,34 +31,25 @@ public class UserSettingActivity extends PreferenceActivity implements
         pref.setSummary("12");
 
 
-        final ListPreference cameraPreference = (ListPreference) this.findPreference("camera");
+        cameraPreference = (ListPreference) this.findPreference("camera");
 
         setCameraPreferences(cameraPreference);
 
-        final ListPreference videoQualityPreference = (ListPreference) this.findPreference("video_quality");
+        videoQualityPreference = (ListPreference) this.findPreference("video_quality");
         setSizePreferences(videoQualityPreference, cameraPreference);
 
-        cameraPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                cameraPreference.setSummary(cameraPreference.getEntry());
-                setSizePreferences(videoQualityPreference, cameraPreference);
-                return true;
-            }
-        });
 
-        Log.v(this.toString(), "camera.getEntry()" + (String)cameraPreference.getEntry());
-
-
+        Log.v("Environment", Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsolutePath());
         pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 Intent intent =  new Intent(getApplicationContext(), MyVideo.class);
                 startActivity(intent);
-
                 return true;
             }
         });
+
+        updateSummary();
 	}
 
     @Override
@@ -102,13 +97,13 @@ public class UserSettingActivity extends PreferenceActivity implements
         cameraPreference.setEntries(entries);
         cameraPreference.setEntryValues(entryValues);
         cameraPreference.setDefaultValue(0);
-        cameraPreference.setSummary(cameraPreference.getEntry());
 
     } // setCameraPreferences(ListPreference)
 
     private void setSizePreferences(final ListPreference sizePreference,
                                     final ListPreference cameraPreference)
     {
+
         final String cameraPreferenceValue = cameraPreference.getValue();
         final int cameraIndex;
         if (cameraPreferenceValue != null)
@@ -138,10 +133,6 @@ public class UserSettingActivity extends PreferenceActivity implements
         sizePreference.setEntries(entries);
         sizePreference.setEntryValues(entryValues);
         sizePreference.setDefaultValue(0);
-        sizePreference.setSummary(
-            String.format(getResources().getString(R.string.video_quality_summary),
-            sizePreference.getEntry())
-        );
 
     } // setSizePreferenceData(ListPreference)
 
@@ -184,5 +175,20 @@ public class UserSettingActivity extends PreferenceActivity implements
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 
+        setSizePreferences(videoQualityPreference, cameraPreference);
+        updateSummary();
+
+    }
+
+    private void updateSummary() {
+        cameraPreference.setSummary(cameraPreference.getEntry());
+        videoQualityPreference.setSummary(
+                String.format(getResources().getString(R.string.video_quality_summary),
+                        videoQualityPreference.getEntry())
+        );
+        ListPreference videoOrientation = (ListPreference) this.findPreference("video_orientation");
+        videoOrientation.setSummary(
+                videoOrientation.getEntry()
+        );
     }
 }
