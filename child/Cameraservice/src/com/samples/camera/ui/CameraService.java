@@ -43,6 +43,16 @@ public class CameraService extends Service {
     private boolean mRecordingStatus = false;
     private CameraPreview mPreview;
 
+    // api
+    private int cameraID;
+    private int videoQuality;
+    private int videoOrientation;
+    private String videoFolder;
+    private boolean flashlight;
+    private boolean showPreivew;
+    private boolean showNotification;
+    private boolean hideVideo;
+
     RelativeLayout mainView;
     private boolean checkStopService = false;
 
@@ -117,11 +127,15 @@ public class CameraService extends Service {
         FrameLayout preview = (FrameLayout) mainView.findViewById(R.id.camera_preview);
 
         // api conrespond with Preference
-        int cameraID = intent.getIntExtra("camera", Camera.CameraInfo.CAMERA_FACING_BACK);
+        cameraID = intent.getIntExtra("camera", Camera.CameraInfo.CAMERA_FACING_BACK);
         // max size camera
-        int videoQuality = intent.getIntExtra("video_quality", 0);
-
-        boolean showPreivew = intent.getBooleanExtra("show_preview", false);
+        videoQuality = intent.getIntExtra("video_quality", 0);
+        videoOrientation =  intent.getIntExtra("video_orientation", 0);
+        videoFolder =  intent.getStringExtra("video_folder");
+        flashlight =  intent.getBooleanExtra("flashlight", false);
+        showPreivew = intent.getBooleanExtra("show_preview", false);
+        showNotification =  intent.getBooleanExtra("show_notification", true);
+        hideVideo = intent.getBooleanExtra("hidden_video", false);
         mServiceCamera = getCameraInstance(cameraID);
 
         if(mServiceCamera == null){
