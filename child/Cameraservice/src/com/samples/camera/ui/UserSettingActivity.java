@@ -1,11 +1,11 @@
 package com.samples.camera.ui;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.preference.Preference;
@@ -20,11 +20,13 @@ public class UserSettingActivity extends PreferenceActivity implements
     private  Camera cameraDevice;
     private  ListPreference cameraPreference;
     private ListPreference videoQualityPreference;
-	@Override
+    private EditTextPreference videoFolder;
+
+    @Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		addPreferencesFromResource(R.xml.activity_setting);
+		addPreferencesFromResource(R.xml.video_setting_preference);
 
 
         Preference pref = (Preference)this.findPreference("my_video");
@@ -39,7 +41,11 @@ public class UserSettingActivity extends PreferenceActivity implements
         setSizePreferences(videoQualityPreference, cameraPreference);
 
 
-        Log.v("Environment", Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsolutePath());
+        String folder =
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsolutePath() + "/MySecretCamera";
+
+        videoFolder =  (EditTextPreference) this.findPreference("video_folder");
+        videoFolder.setText(folder);
         pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
@@ -125,7 +131,7 @@ public class UserSettingActivity extends PreferenceActivity implements
              previewSizeIndex++)
         {
             Camera.Size supportedPreviewSize = supportedPreviewSizes.get(previewSizeIndex);
-            entries[previewSizeIndex] = supportedPreviewSize.width + "x"
+            entryValues[previewSizeIndex] = entries[previewSizeIndex] = supportedPreviewSize.width + "x"
                     + supportedPreviewSize.height;
             entryValues[previewSizeIndex] = String.valueOf(previewSizeIndex);
         } // for
@@ -189,6 +195,10 @@ public class UserSettingActivity extends PreferenceActivity implements
         ListPreference videoOrientation = (ListPreference) this.findPreference("video_orientation");
         videoOrientation.setSummary(
                 videoOrientation.getEntry()
+        );
+
+        videoFolder.setSummary(
+                String.format(getResources().getString(R.string.video_folder_summary), videoFolder.getText())
         );
     }
 }

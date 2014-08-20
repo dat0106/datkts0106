@@ -1,7 +1,9 @@
 package com.samples.camera.ui;
 
 import android.content.SharedPreferences;
+import android.hardware.Camera;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import com.varma.samples.camera.R;
 
 import android.app.Activity;
@@ -35,12 +37,25 @@ public class IntroActivity extends Activity {
             Intent i = new Intent(IntroActivity.this, CameraService.class);
             i.putExtra("camera_id", 0);
             i.putExtra("camera_preview", true);
-            startService(i);
-            Intent mIntent = new Intent("com.sample.camera");
+
             // cac ban co the truyen 1 so data can thiet va tu bat =
             // receiver
-            mIntent.putExtra("data", "My Data");
-            mIntent.putExtra("camera_id", false);
+            SharedPreferences sharedPrefs = PreferenceManager
+                    .getDefaultSharedPreferences(this);
+
+            // api conrespond with Preference
+            i.putExtra("camera", sharedPrefs.getInt("camera", Camera.CameraInfo.CAMERA_FACING_BACK));
+            i.putExtra("video_quality", sharedPrefs.getInt("video_quality", 0));
+            i.putExtra("video_orientation", sharedPrefs.getInt("video_orientation", 0));
+            i.putExtra("video_folder", sharedPrefs.getString("video_folder", null));
+            i.putExtra("flashlight", sharedPrefs.getBoolean("flashlight", false));
+            i.putExtra("show_preview", sharedPrefs.getBoolean("show_preview", false));
+            i.putExtra("show_notification", sharedPrefs.getBoolean("show_notification", false));
+            i.putExtra("hide_video", sharedPrefs.getBoolean("hide_video", false));
+
+            startService(i);
+            Intent mIntent = new Intent("com.sample.camera");
+
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
@@ -73,6 +88,11 @@ public class IntroActivity extends Activity {
 
                     break;
                 }
+                case R.id.start_camera_recording:
+                {
+                    showUserSettings();
+                    break;
+                }
 
 			}
 		}
@@ -86,22 +106,15 @@ public class IntroActivity extends Activity {
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        switch (requestCode) {
-            case RESULT_SETTINGS:
-                showUserSettings();
-                break;
-
-        }
-
-    }
     private void showUserSettings() {
         SharedPreferences sharedPrefs = PreferenceManager
                 .getDefaultSharedPreferences(this);
 
+
+        Log.v("camera", String.valueOf(sharedPrefs.getInt("camera", 0)));
+        Log.v("video_quality", sharedPrefs.getString("video_quality", "NULL"));
+        Log.v("video_orientation", sharedPrefs.getString("video_orientation", "NULL"));
+        Log.v("video_folder", sharedPrefs.getString("video_folder", "NULL"));
 //        StringBuilder builder = new StringBuilder();
 //
 //        builder.append("\n Username: "

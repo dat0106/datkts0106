@@ -116,9 +116,12 @@ public class CameraService extends Service {
 
         FrameLayout preview = (FrameLayout) mainView.findViewById(R.id.camera_preview);
 
-        // create camera
-        int cameraID = intent.getIntExtra("camera_id", Camera.CameraInfo.CAMERA_FACING_BACK);
-        boolean cameraPreview = intent.getBooleanExtra("camera_preview", false);
+        // api conrespond with Preference
+        int cameraID = intent.getIntExtra("camera", Camera.CameraInfo.CAMERA_FACING_BACK);
+        // max size camera
+        int videoQuality = intent.getIntExtra("video_quality", 0);
+
+        boolean showPreivew = intent.getBooleanExtra("show_preview", false);
         mServiceCamera = getCameraInstance(cameraID);
 
         if(mServiceCamera == null){
@@ -128,7 +131,7 @@ public class CameraService extends Service {
             stopSelf();
         }else {
 
-            if(!cameraPreview) {
+            if(!showPreivew) {
                 // no preview
                 params = new WindowManager.LayoutParams(
                         2,
