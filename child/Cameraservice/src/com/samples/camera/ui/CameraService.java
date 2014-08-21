@@ -46,6 +46,7 @@ public class CameraService extends Service {
     // api
     private int cameraID;
     private int videoQuality;
+    private Camera.Size videoSize;
     private int videoOrientation;
     private String videoFolder;
     private boolean flashlight;
@@ -138,6 +139,15 @@ public class CameraService extends Service {
         hideVideo = intent.getBooleanExtra("hidden_video", false);
         mServiceCamera = getCameraInstance(cameraID);
 
+        Log.v("camera", String.valueOf(cameraID));
+        Log.v("video_quality", String.valueOf(videoQuality));
+        Log.v("video_orientation", String.valueOf(videoOrientation));
+        Log.v("video_folder", videoFolder);
+        Log.v("flashlight", String.valueOf(flashlight));
+        Log.v("show_preview", String.valueOf(showPreivew));
+        Log.v("show_notification", String.valueOf(showNotification));
+
+
         if(mServiceCamera == null){
             Log.d(this.toString(), "can not open camera");
             // TODO LEDAT xem co phai show notify ko
@@ -197,7 +207,7 @@ public class CameraService extends Service {
 
 
             // setCameraDisplayOrientation
-            CameraHelpers.setCameraDisplayOrientation(cameraID, mServiceCamera, Surface.ROTATION_0);
+            CameraHelpers.setCameraDisplayOrientation(cameraID, mServiceCamera, videoOrientation);
 
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
                 if(mServiceCamera.getParameters().getMaxNumDetectedFaces() >0) {
@@ -217,20 +227,24 @@ public class CameraService extends Service {
             // get Camera parameters
             Camera.Parameters paramsCamera = mServiceCamera.getParameters();
 
-            Log.v(this.toString(), "params1" + paramsCamera.flatten());
+
+            paramsCamera.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
+
+//            Log.v(this.toString(), "params1" + paramsCamera.flatten());
             List<String> focusModes = paramsCamera.getSupportedFocusModes();
             if (focusModes.contains(Camera.Parameters.FOCUS_MODE_AUTO)) {
                 // Autofocus mode is supported
 
                 paramsCamera.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
                // set Camera parameters
-                mServiceCamera.setParameters(paramsCamera);
+
             }
 
-            List<Camera.Size> sizes = (List<Camera.Size>) paramsCamera.getSupportedPictureSizes();
-            for (int i=0;i<sizes.size();i++){
-                Log.i("PictureSize", "Supported Size: " + sizes.get(i).width + " : " +  sizes.get(i).height );
-            }
+
+            mServiceCamera.setParameters(paramsCamera);
+
+            List<Camera.Size> sizes = paramsCamera.getSupportedVideoSizes();
+            videoSize = sizes.get(videoQuality);
 
             mPreview = new CameraPreview(this, mServiceCamera);
 
@@ -289,6 +303,11 @@ public class CameraService extends Service {
 
         // Step 4: Set output file
         mMediaRecorder.setOutputFile(getOutputMediaFile(MEDIA_TYPE_VIDEO).toString());
+
+        if(videoSize != null) {
+            Log.v("videoSize", videoSize.width + "x" + videoSize.height);
+                   mMediaRecorder.setVideoSize(videoSize.width, videoSize.height);
+        }
 
         // Step 5: Set the preview output
         mMediaRecorder.setPreviewDisplay(mPreview.getHolder().getSurface());

@@ -42,11 +42,10 @@ public class IntroActivity extends Activity {
             // receiver
             SharedPreferences sharedPrefs = PreferenceManager
                     .getDefaultSharedPreferences(this);
-
             // api conrespond with Preference
-            i.putExtra("camera", sharedPrefs.getInt("camera", Camera.CameraInfo.CAMERA_FACING_BACK));
-            i.putExtra("video_quality", sharedPrefs.getInt("video_quality", 0));
-            i.putExtra("video_orientation", sharedPrefs.getInt("video_orientation", 0));
+            i.putExtra("camera", Integer.getInteger(sharedPrefs.getString("camera", null)));
+            i.putExtra("video_quality", Integer.getInteger(sharedPrefs.getString("video_quality", null)));
+            i.putExtra("video_orientation", Integer.parseInt(sharedPrefs.getString("video_orientation", null)));
             i.putExtra("video_folder", sharedPrefs.getString("video_folder", null));
             i.putExtra("flashlight", sharedPrefs.getBoolean("flashlight", false));
             i.putExtra("show_preview", sharedPrefs.getBoolean("show_preview", false));
@@ -111,10 +110,7 @@ public class IntroActivity extends Activity {
                 .getDefaultSharedPreferences(this);
 
 
-        Log.v("camera", String.valueOf(sharedPrefs.getInt("camera", 0)));
-        Log.v("video_quality", sharedPrefs.getString("video_quality", "NULL"));
-        Log.v("video_orientation", sharedPrefs.getString("video_orientation", "NULL"));
-        Log.v("video_folder", sharedPrefs.getString("video_folder", "NULL"));
+
 //        StringBuilder builder = new StringBuilder();
 //
 //        builder.append("\n Username: "

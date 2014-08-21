@@ -30,12 +30,22 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     public void surfaceCreated(SurfaceHolder holder) {
         // The Surface has been created, now tell the camera where to draw the preview.
         try {
+
+//            Camera.Parameters paramsCamera = mCamera.getParameters();
+//
+//
+//            paramsCamera.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
+//
+//            mCamera.setParameters(paramsCamera);
+            //            mCamera.setParameters();
             mCamera.setPreviewDisplay(holder);
+
             mCamera.startPreview();
         } catch (IOException e) {
             Log.d(this.toString(), "Error setting camera preview: " + e.getMessage());
         }
     }
+
 
     public void surfaceDestroyed(SurfaceHolder holder) {
         // empty. Take care of releasing the Camera preview in your activity.
